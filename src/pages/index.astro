@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Mac Admins Europe 2026 | April 30th, Leiden">
@@ -19,8 +21,8 @@ import Layout from '../layouts/Layout.astro';
         networking, and discovering the latest in macOS and iOS device management.
       </p>
       <div class="hero-cta">
-        <a href="/tickets" class="btn btn-primary">Get Your Ticket</a>
-        <a href="/program" class="btn btn-secondary">View Program</a>
+        <a href={`${base}tickets`} class="btn btn-primary">Get Your Ticket</a>
+        <a href={`${base}program`} class="btn btn-secondary">View Program</a>
       </div>
 
     </div>
@@ -140,7 +142,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       
       <div class="section-cta text-center mt-3">
-        <a href="/speakers" class="btn btn-outline">View All Speakers</a>
+        <a href={`${base}speakers`} class="btn btn-outline">View All Speakers</a>
       </div>
     </div>
   </section> -->
@@ -160,7 +162,7 @@ import Layout from '../layouts/Layout.astro';
           <span class="deadline-date">February 28, 2026</span>
         </div>
         <div class="cfp-button">
-          <a href="/submit" class="btn btn-primary mt-2">Submit Your Proposal</a>
+          <a href={`${base}submit`} class="btn btn-primary mt-2">Submit Your Proposal</a>
         </div>
       </div>
     </div>
@@ -221,7 +223,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       
       <div class="section-cta text-center mt-3">
-        <a href="/program" class="btn btn-outline">Full Program Coming Soon</a>
+        <a href={`${base}program`} class="btn btn-outline">Full Program Coming Soon</a>
       </div>
     </div>
   </section>
@@ -263,7 +265,7 @@ import Layout from '../layouts/Layout.astro';
       
       <div class="section-cta text-center mt-3">
         <p class="sponsor-cta-text">Interested in sponsoring Mac Admins Europe?</p>
-        <a href="/sponsors" class="btn btn-primary">Become a Sponsor</a>
+        <a href={`${base}sponsors`} class="btn btn-primary">Become a Sponsor</a>
       </div>
     </div>
   </section>
@@ -310,7 +312,7 @@ import Layout from '../layouts/Layout.astro';
               <span>Hotels within walking distance</span>
             </li>
           </ul>
-          <a href="/location" class="btn btn-outline mt-2">Venue Details</a>
+          <a href={`${base}location`} class="btn btn-outline mt-2">Venue Details</a>
         </div>
         <div class="location-map">
           <div class="map-placeholder">
@@ -332,7 +334,7 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-white" style="opacity: 0.9; max-width: 500px; margin: 0 auto var(--space-xl);">
         Secure your spot at Mac Admins Europe 2026. Early bird tickets available now!
       </p>
-      <a href="/tickets" class="btn btn-primary">Get Your Ticket</a>
+      <a href={`${base}tickets`} class="btn btn-primary">Get Your Ticket</a>
     </div>
   </section>
 </Layout>
