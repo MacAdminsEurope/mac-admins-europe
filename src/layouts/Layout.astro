@@ -200,14 +200,14 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
     list-style: none;
   }
 
-  .nav-menu a {
+  .nav-menu a:not(.btn) {
     color: var(--white);
     font-weight: 500;
     padding: var(--space-sm);
     transition: color var(--transition-fast);
   }
 
-  .nav-menu a:hover {
+  .nav-menu a:not(.btn):hover {
     color: var(--eu-gold);
   }
 
@@ -375,10 +375,16 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
       width: 100%;
     }
 
-    .nav-menu a {
+    .nav-menu a:not(.btn) {
       display: block;
       padding: var(--space-md) 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu .btn {
+      width: 100%;
+      margin-top: var(--space-md);
+      justify-content: center;
     }
 
     .footer-grid {

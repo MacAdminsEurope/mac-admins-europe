@@ -2,12 +2,12 @@ import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 
 export default defineConfig({
-  output: 'server',
-  adapter: node({
-    mode: 'standalone',
-  }),
-  site: 'https://yourusername.github.io',
-  // base: '/mac-admins-europe', // Uncomment for GitHub Pages deployment
+  // output: 'server', // Disabled for GitHub Pages (Static Site Only)
+  // adapter: node({
+  //   mode: 'standalone',
+  // }),
+  site: 'https://mac-admins-europe.github.io',
+  base: '/mac-admins-europe', // Required for GitHub Pages project sites
   build: {
     assets: 'assets'
   }
