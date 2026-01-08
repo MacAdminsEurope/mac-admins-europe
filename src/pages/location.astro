@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Map from '../components/Map.astro';
+---
+
+<Layout title="Location | Mac Admins Europe 2026">
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">The Venue</span>
+      <h1>Leiden, Netherlands</h1>
+      <p>A historic university city, perfectly connected</p>
+    </div>
+  </section>
+
+  <section class="location-content">
+    <div class="container">
+      <div class="venue-info">
+        <div class="venue-details">
+          <span class="section-label">Conference Venue</span>
+          <h2>Leidse Schouwburg – Stadsgehoorzaal</h2>
+          <p class="venue-address">
+            Breestraat 1, 2311 CK Leiden, Netherlands
+          </p>
+          <p class="venue-description">
+            Experience Mac Admins Europe 2026 in a truly historic setting! 
+            The Leidse Schouwburg – Stadsgehoorzaal combines two monumental venues 
+            with over 500 years of combined history. The Leidse Schouwburg, 
+            opened in 1705, is the Netherlands' oldest theater, while the 
+            Stadsgehoorzaal celebrates its 200th anniversary in 2026.
+          </p>
+          <p class="venue-description">
+            These beautifully preserved venues offer modern conference facilities 
+            within stunning neorenaissance architecture. With multiple halls, 
+            excellent acoustics, and flexible seating arrangements, they provide 
+            the perfect atmosphere for learning, networking, and community building.
+          </p>
+        </div>
+        <div class="venue-map">
+          <Map />
+        </div>
+      </div>
+
+      <div class="why-leiden">
+        <h2>Why Leiden?</h2>
+        <div class="leiden-features">
+          <div class="feature-card">
+            <div class="feature-icon">✈️</div>
+            <h3>Easy to Reach</h3>
+            <p>Just 15 minutes by train from Amsterdam Schiphol Airport, one of Europe's best-connected hubs.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏛️</div>
+            <h3>Rich History</h3>
+            <p>Home to the Netherlands' oldest university (1575), Leiden combines historic charm with modern facilities.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚂</div>
+            <h3>Central Location</h3>
+            <p>Excellent train connections to Amsterdam (35 min), Rotterdam (30 min), and The Hague (10 min).</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏨</div>
+            <h3>Great Hotels</h3>
+            <p>Wide range of accommodation options within walking distance of the city center.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="travel-info">
+        <h2>Getting There</h2>
+        
+        <div class="travel-grid">
+          <div class="travel-section">
+            <h3>✈️ By Air</h3>
+            <div class="travel-option">
+              <h4>Amsterdam Schiphol Airport (AMS)</h4>
+              <p>The closest and most convenient airport. Direct trains to Leiden Central Station run every 10-15 minutes.</p>
+              <ul>
+                <li>Travel time: ~15 minutes</li>
+                <li>Train fare: ~€10</li>
+              </ul>
+            </div>
+            <div class="travel-option">
+              <h4>Rotterdam The Hague Airport (RTM)</h4>
+              <p>A smaller alternative, especially for budget carriers. Take bus + train to Leiden.</p>
+              <ul>
+                <li>Travel time: ~45 minutes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="travel-section">
+            <h3>🚂 By Train</h3>
+            <p>Leiden Central Station is well-connected to all major Dutch cities and international destinations.</p>
+            <div class="train-times">
+              <div class="train-time">
+                <span class="destination">Amsterdam</span>
+                <span class="duration">35 min</span>
+              </div>
+              <div class="train-time">
+                <span class="destination">Rotterdam</span>
+                <span class="duration">30 min</span>
+              </div>
+              <div class="train-time">
+                <span class="destination">The Hague</span>
+                <span class="duration">10 min</span>
+              </div>
+              <div class="train-time">
+                <span class="destination">Utrecht</span>
+                <span class="duration">40 min</span>
+              </div>
+            </div>
+            <p class="travel-tip">
+              <strong>Tip:</strong> Book train tickets at <a href="https://www.ns.nl" target="_blank">ns.nl</a> or use the NS app. Consider an OV-chipkaart for easy travel.
+            </p>
+          </div>
+
+          <div class="travel-section">
+            <h3>🚗 By Car</h3>
+            <p>Leiden is easily accessible via the A4 and A44 motorways. Note that parking in the city center can be limited and expensive.</p>
+            <ul>
+              <li>From Amsterdam: ~40 km (30-45 min)</li>
+              <li>From Rotterdam: ~35 km (30-40 min)</li>
+              <li>P+R facilities available at city edges</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accommodation">
+        <h2>Where to Stay</h2>
+        <p class="accommodation-intro">
+          Leiden offers a range of hotels to suit every budget. We recommend booking early 
+          as April is a popular time to visit the Netherlands.
+        </p>
+        
+        <div class="hotels-grid">
+          <div class="hotel-category">
+            <h3>City Center</h3>
+            <p>Walk to the venue and enjoy Leiden's historic center</p>
+            <ul>
+              <li>Golden Tulip Leiden Centre</li>
+              <li>Boutique Hotel d'Oude Morsch</li>
+              <li>City Hotel Leiden</li>
+            </ul>
+          </div>
+          <div class="hotel-category">
+            <h3>Near Station</h3>
+            <p>Convenient if you're traveling by train</p>
+            <ul>
+              <li>Tulip Inn Leiden Centre</li>
+              <li>ibis Leiden Centre</li>
+              <li>Best Western City Hotel</li>
+            </ul>
+          </div>
+          <div class="hotel-category">
+            <h3>Budget Options</h3>
+            <p>More affordable choices, slightly outside center</p>
+            <ul>
+              <li>Holiday Inn Express Leiden</li>
+              <li>Van der Valk Hotel Leiden</li>
+              <li>Airbnb apartments</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="accommodation-note">
+          <strong>Pro tip:</strong> Also consider staying in nearby cities like The Hague or Schiphol area 
+          if Leiden is fully booked. Train connections are excellent!
+        </p>
+      </div>
+
+      <div class="explore-leiden">
+        <h2>While You're Here</h2>
+        <p class="explore-intro">
+          Extend your stay and explore what Leiden and the Netherlands have to offer!
+        </p>
+        
+        <div class="attractions-grid">
+          <div class="attraction">
+            <span class="attraction-icon">🌷</span>
+            <h4>Keukenhof Gardens</h4>
+            <p>World-famous flower gardens, open in spring. Just 20 minutes away!</p>
+          </div>
+          <div class="attraction">
+            <span class="attraction-icon">🎨</span>
+            <h4>Leiden Museums</h4>
+            <p>Visit the Rijksmuseum van Oudheden, Naturalis, or the Boerhaave science museum.</p>
+          </div>
+          <div class="attraction">
+            <span class="attraction-icon">🚤</span>
+            <h4>Canal Tours</h4>
+            <p>Explore Leiden's beautiful canals by boat, just like Amsterdam but quieter.</p>
+          </div>
+          <div class="attraction">
+            <span class="attraction-icon">🏖️</span>
+            <h4>Beach Day</h4>
+            <p>The North Sea beaches at Katwijk and Noordwijk are just 15 minutes away.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
