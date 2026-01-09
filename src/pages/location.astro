@@ -76,7 +76,7 @@ import Map from '../components/Map.astro';
               <h4>Amsterdam Schiphol Airport (AMS)</h4>
               <p>The closest and most convenient airport. Direct trains to Leiden Central Station run every 10-15 minutes.</p>
               <ul>
-                <li>Travel time: ~15 minutes</li>
+                <li>📍 <strong class="location">Amsterdam Schiphol</strong> - ⏱️ <strong class="time">~15 minutes</strong></li>
                 <li>Train fare: ~€10</li>
               </ul>
             </div>
@@ -84,7 +84,7 @@ import Map from '../components/Map.astro';
               <h4>Rotterdam The Hague Airport (RTM)</h4>
               <p>A smaller alternative, especially for budget carriers. Take bus + train to Leiden.</p>
               <ul>
-                <li>Travel time: ~45 minutes</li>
+                <li>📍 <strong class="location">Rotterdam The Hague</strong> - ⏱️ <strong class="time">~45 minutes</strong></li>
               </ul>
             </div>
           </div>
@@ -92,24 +92,12 @@ import Map from '../components/Map.astro';
           <div class="travel-section">
             <h3>🚂 By Train</h3>
             <p>Leiden Central Station is well-connected to all major Dutch cities and international destinations.</p>
-            <div class="train-times">
-              <div class="train-time">
-                <span class="destination">Amsterdam</span>
-                <span class="duration">35 min</span>
-              </div>
-              <div class="train-time">
-                <span class="destination">Rotterdam</span>
-                <span class="duration">30 min</span>
-              </div>
-              <div class="train-time">
-                <span class="destination">The Hague</span>
-                <span class="duration">10 min</span>
-              </div>
-              <div class="train-time">
-                <span class="destination">Utrecht</span>
-                <span class="duration">40 min</span>
-              </div>
-            </div>
+            <ul>
+              <li>📍 <strong class="location">Amsterdam</strong> - ⏱️ <strong class="time">35 minutes</strong></li>
+              <li>📍 <strong class="location">Rotterdam</strong> - ⏱️ <strong class="time">30 minutes</strong></li>
+              <li>📍 <strong class="location">The Hague</strong> - ⏱️ <strong class="time">10 minutes</strong></li>
+              <li>📍 <strong class="location">Utrecht</strong> - ⏱️ <strong class="time">40 minutes</strong></li>
+            </ul>
             <p class="travel-tip">
               <strong>Tip:</strong> Book train tickets at <a href="https://www.ns.nl" target="_blank">ns.nl</a> or use the NS app. Consider an OV-chipkaart for easy travel.
             </p>
@@ -119,49 +107,47 @@ import Map from '../components/Map.astro';
             <h3>🚗 By Car</h3>
             <p>Leiden is easily accessible via the A4 and A44 motorways. Note that parking in the city center can be limited and expensive.</p>
             <ul>
-              <li>From Amsterdam: ~40 km (30-45 min)</li>
-              <li>From Rotterdam: ~35 km (30-40 min)</li>
-              <li>P+R facilities available at city edges</li>
+              <li>📍 <strong class="location">Amsterdam</strong> - 🚗 <strong class="distance">~40 km</strong> - ⏱️ <strong class="time">30-45 min</strong></li>
+              <li>📍 <strong class="location">Rotterdam</strong> - 🚗 <strong class="distance">~35 km</strong> - ⏱️ <strong class="time">30-40 min</strong></li>
             </ul>
+             <p class="travel-tip">
+                         <strong>Tip:</strong>P+R facilities available at city edges
+            </p>
           </div>
         </div>
       </div>
 
       <div class="accommodation">
         <h2>Where to Stay</h2>
-        <p class="accommodation-intro">
+        <p>
           Leiden offers a range of hotels to suit every budget. We recommend booking early 
           as April is a popular time to visit the Netherlands.
         </p>
         
-        <div class="hotels-grid">
-          <div class="hotel-category">
-            <h3>City Center</h3>
-            <p>Walk to the venue and enjoy Leiden's historic center</p>
-            <ul>
-              <li>Golden Tulip Leiden Centre</li>
-              <li>Boutique Hotel d'Oude Morsch</li>
-              <li>City Hotel Leiden</li>
-            </ul>
-          </div>
-          <div class="hotel-category">
-            <h3>Near Station</h3>
-            <p>Convenient if you're traveling by train</p>
-            <ul>
-              <li>Tulip Inn Leiden Centre</li>
-              <li>ibis Leiden Centre</li>
-              <li>Best Western City Hotel</li>
-            </ul>
-          </div>
-          <div class="hotel-category">
-            <h3>Budget Options</h3>
-            <p>More affordable choices, slightly outside center</p>
-            <ul>
-              <li>Holiday Inn Express Leiden</li>
-              <li>Van der Valk Hotel Leiden</li>
-              <li>Airbnb apartments</li>
-            </ul>
-          </div>
+        <div class="accommodation-options">
+          <h3>City Center Hotels</h3>
+          <p>Walk to the venue and enjoy Leiden's historic center:</p>
+          <ul>
+            <li>Golden Tulip Leiden Centre</li>
+            <li>Boutique Hotel d'Oude Morsch</li>
+            <li>City Hotel Leiden</li>
+          </ul>
+          
+          <h3>Near Station</h3>
+          <p>Convenient if you're traveling by train:</p>
+          <ul>
+            <li>Tulip Inn Leiden Centre</li>
+            <li>ibis Leiden Centre</li>
+            <li>Best Western City Hotel</li>
+          </ul>
+          
+          <h3>Budget Options</h3>
+          <p>More affordable choices, slightly outside center:</p>
+          <ul>
+            <li>Holiday Inn Express Leiden</li>
+            <li>Van der Valk Hotel Leiden</li>
+            <li>Airbnb apartments</li>
+          </ul>
         </div>
 
         <p class="accommodation-note">
