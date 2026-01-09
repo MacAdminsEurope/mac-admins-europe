@@ -23,7 +23,7 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/images/og-image.png">
+  <meta property="og:image" content={`${base}/images/og-image.png`}>
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -31,18 +31,18 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
   <meta name="twitter:description" content={description}>
   
   <!-- Favicons -->
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href={`${base}/favicon-96x96.png`} sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+  <link rel="shortcut icon" href={`${base}/favicon.ico`} />
+  <link rel="apple-touch-icon" sizes="180x180" href={`${base}/apple-touch-icon.png`} />
+  <link rel="manifest" href={`${base}/site.webmanifest`} />
   
   <title>{title}</title>
 </head>
 <body>
   <header class="header">
     <nav class="nav container">
-      <a href="/" class="logo">
+      <a href={base} class="logo">
         <span class="logo-icon">⌘</span>
         <span class="logo-text">Mac Admins <strong>Europe</strong></span>
       </a>
