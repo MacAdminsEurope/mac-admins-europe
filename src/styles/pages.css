@@ -1952,3 +1952,86 @@
     flex-direction: column;
   }
 }
+
+/* ==========================================================================
+   CODE OF CONDUCT PAGE
+   ========================================================================== */
+
+.coc-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coc-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.coc-section h2 {
+  color: var(--eu-blue);
+  margin-bottom: var(--space-md);
+  font-size: 1.5rem;
+}
+
+.coc-section p {
+  margin-bottom: var(--space-md);
+  line-height: 1.8;
+}
+
+.coc-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-md) 0;
+}
+
+.coc-list li {
+  position: relative;
+  padding-left: var(--space-xl);
+  margin-bottom: var(--space-sm);
+  line-height: 1.7;
+}
+
+.coc-list li::before {
+  content: "⌘";
+  position: absolute;
+  left: 0;
+  color: var(--eu-gold);
+  font-weight: bold;
+}
+
+.coc-section a {
+  color: var(--eu-blue);
+  text-decoration: underline;
+}
+
+.coc-section a:hover {
+  color: var(--eu-blue-dark);
+}
+
+.coc-attribution {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--gray-200);
+}
+
+.coc-attribution p {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+}
+
+.coc-contact {
+  background: var(--eu-blue);
+  color: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
+.coc-contact h3 {
+  color: var(--eu-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.coc-contact p {
+  margin-bottom: var(--space-lg);
+  opacity: 0.9;
+}
