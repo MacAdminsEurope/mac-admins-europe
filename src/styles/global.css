@@ -10,6 +10,9 @@
   --eu-gold: #FFCC00;
   --eu-gold-dark: #e6b800;
   --eu-gold-light: #ffd633;
+  --eu-green: #00A651;
+  --eu-green-dark: #008540;
+  --eu-green-light: #00B860;
   
   /* Neutrals */
   --white: #ffffff;
@@ -1741,26 +1744,25 @@ section { padding: var(--space-4xl) 0; }
   padding: var(--space-xs) 0;
 }
 
-.train-times {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-sm);
-  margin: var(--space-lg) 0;
-}
-
-.train-time {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--off-white);
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-}
-
-.train-time .duration {
+.travel-option .location,
+.travel-section .location {
   color: var(--eu-blue);
   font-weight: 600;
 }
+
+.travel-option .time,
+.travel-section .time {
+  color: var(--eu-gold);
+  font-weight: 600;
+}
+
+.travel-option .distance,
+.travel-section .distance {
+  color: var(--eu-green);
+  font-weight: 600;
+}
+
+/* Train times simplified to use standard ul styling */
 
 .travel-tip {
   font-size: 0.85rem;
@@ -1784,51 +1786,48 @@ section { padding: var(--space-4xl) 0; }
   margin-bottom: var(--space-md);
 }
 
-.accommodation-intro {
+.accommodation > p {
   text-align: center;
   color: var(--gray-600);
   max-width: 600px;
-  margin: 0 auto var(--space-2xl);
+  margin: 0 auto var(--space-xl);
 }
 
-.hotels-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
+.accommodation-options {
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+}
+
+.accommodation-options h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--eu-blue);
+  margin-top: var(--space-xl);
+}
+
+.accommodation-options h3:first-child {
+  margin-top: 0;
+}
+
+.accommodation-options p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-md);
+  max-width: none;
+}
+
+.accommodation-options ul {
+  list-style: none;
+  padding-left: 0;
   margin-bottom: var(--space-xl);
 }
 
-.hotel-category {
-  background: var(--off-white);
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
-}
-
-.hotel-category h3 {
-  font-size: 1.125rem;
-  margin-bottom: var(--space-xs);
-}
-
-.hotel-category > p {
-  color: var(--gray-500);
-  font-size: 0.85rem;
-  margin-bottom: var(--space-md);
-}
-
-.hotel-category ul {
-  list-style: none;
-}
-
-.hotel-category li {
-  padding: var(--space-xs) 0;
+.accommodation-options li {
   font-size: 0.9rem;
   color: var(--gray-700);
-  border-bottom: 1px solid var(--gray-200);
+  padding: var(--space-xs) 0;
 }
 
-.hotel-category li:last-child {
-  border-bottom: none;
-}
+/* Old hotel grid styles removed - simplified to single column layout */
 
 .accommodation-note {
   text-align: center;
@@ -2390,7 +2389,6 @@ section { padding: var(--space-4xl) 0; }
 
   .leiden-features,
   .travel-grid,
-  .hotels-grid,
   .attractions-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2476,7 +2474,6 @@ section { padding: var(--space-4xl) 0; }
   /* Location page */
   .leiden-features,
   .travel-grid,
-  .hotels-grid,
   .attractions-grid {
     grid-template-columns: 1fr;
   }
