@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Map from '../components/Map.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Location | Mac Admins Europe 2026">
@@ -34,6 +36,16 @@ import Map from '../components/Map.astro';
             excellent acoustics, and flexible seating arrangements, they provide 
             the perfect atmosphere for learning, networking, and community building.
           </p>
+        </div>
+        <div class="venue-images">
+          <div class="venue-image">
+            <img src="/img/venue-empty.jpg" alt="Empty Aalmarktzaal venue hall" loading="lazy">
+            <p class="image-caption">The beautiful Aalmarktzaal hall - perfect setup for our conference</p>
+          </div>
+          <div class="venue-image">
+            <img src="/img/venue-conference.jpg" alt="Aalmarktzaal filled with conference attendees" loading="lazy">
+            <p class="image-caption">Conference in progress - see how the venue comes to life!</p>
+          </div>
         </div>
         <div class="venue-map">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2447.616511521583!2d4.4840605967895595!3d52.15948349999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5c6ed5eaed619%3A0x2c357eb707d8c249!2sStadsgehoorzaal!5e0!3m2!1sen!2snl!4v1767976704392!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

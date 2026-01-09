@@ -1640,6 +1640,36 @@ section { padding: var(--space-4xl) 0; }
   margin-bottom: var(--space-md);
 }
 
+.venue-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.venue-image {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.venue-image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-caption {
+  padding: var(--space-md);
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  text-align: center;
+  font-style: italic;
+}
+
 .venue-map {
   background: var(--gray-100);
   border-radius: var(--radius-xl);
@@ -2476,6 +2506,14 @@ section { padding: var(--space-4xl) 0; }
   .travel-grid,
   .attractions-grid {
     grid-template-columns: 1fr;
+  }
+
+  .venue-images {
+    grid-template-columns: 1fr;
+  }
+
+  .venue-image img {
+    height: 200px;
   }
 
   /* Sponsors page */
