@@ -28,7 +28,7 @@ npm run preview
 ├── src/
 │   ├── components/      # Reusable components
 │   ├── layouts/         # Page layouts (header, footer)
-│   │   └── Layout.astro     # Main layout with favicon links
+│   │   └── Layout.astro     # Main layout with nav, footer, analytics
 │   ├── pages/           # Website pages
 │   │   ├── index.astro      # Homepage with circular video logo
 │   │   ├── program.astro    # Program/schedule
@@ -36,10 +36,11 @@ npm run preview
 │   │   ├── sponsors.astro   # Sponsors
 │   │   ├── location.astro   # Venue & travel info
 │   │   ├── tickets.astro    # Ticket information
-│   │   └── contact.astro    # Contact page
+│   │   ├── contact.astro    # Contact page
+│   │   ├── coc.astro        # Code of Conduct
+│   │   └── privacy.astro    # Privacy Policy (GDPR compliant)
 │   └── styles/          # Global CSS
-│       ├── global.css       # Base styles + imports pages.css
-│       └── pages.css        # All page-specific styles (consolidated)
+│       └── global.css       # All styles consolidated in one file
 └── astro.config.mjs     # Astro configuration
 ```
 
@@ -64,9 +65,17 @@ Edit the `.astro` files in `src/pages/` to update content.
 
 ### CSS Architecture
 
-- **Global styles** in `src/styles/global.css` - base styles, variables, utilities
-- **Page styles** consolidated in `src/styles/pages.css` - all page-specific CSS
-- No inline `<style>` blocks in `.astro` files (all moved to pages.css)
+All CSS is consolidated into a single file for optimal performance:
+
+- **`src/styles/global.css`** - Contains all styles:
+  - CSS variables (colors, spacing, typography)
+  - Base/reset styles
+  - Layout styles (header, footer, navigation)
+  - Page-specific styles (hero, speakers, program, etc.)
+  - Responsive breakpoints
+- No inline `<style>` blocks in `.astro` files
+- Single CSS file reduces HTTP requests and improves load times
+
 ## 🚀 Deploy to GitHub Pages
 
 The project is pre-configured for automated deployment via GitHub Actions.
