@@ -233,6 +233,16 @@ section { padding: var(--space-4xl) 0; }
 .mb-2 { margin-bottom: var(--space-xl); }
 .mb-3 { margin-bottom: var(--space-2xl); }
 
+/* Opacity utilities */
+.opacity-90 { opacity: 0.9; }
+.opacity-85 { opacity: 0.85; }
+.opacity-80 { opacity: 0.8; }
+
+/* Max-width utilities */
+.max-w-500 { max-width: 500px; margin-left: auto; margin-right: auto; }
+.max-w-600 { max-width: 600px; margin-left: auto; margin-right: auto; }
+.max-w-700 { max-width: 700px; margin-left: auto; margin-right: auto; }
+
 /* Animations */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }

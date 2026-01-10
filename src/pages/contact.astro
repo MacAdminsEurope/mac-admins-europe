@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Contact">
@@ -77,6 +79,15 @@ import Layout from '../layouts/Layout.astro';
         </div>
         
         <div class="contact-form-wrapper">
+          <!--
+            TODO: This form requires backend integration for static site deployment.
+            Options for GitHub Pages:
+            - Formspree (https://formspree.io)
+            - Netlify Forms (requires Netlify hosting)
+            - EmailJS (https://www.emailjs.com)
+            - GetForm (https://getform.io)
+            Replace action="#" with your form service endpoint
+          -->
           <form class="contact-form" action="#" method="POST">
             <h3>Send us a Message</h3>
             
@@ -126,7 +137,12 @@ import Layout from '../layouts/Layout.astro';
       <div class="newsletter-content">
         <h2 class="text-white">Stay Updated</h2>
         <p class="text-white">Subscribe to our newsletter for the latest conference news and announcements.</p>
-        
+
+        <!--
+          TODO: Newsletter form requires backend integration.
+          Options: Mailchimp, ConvertKit, EmailOctopus, or Formspree
+          Replace action="#" with your newsletter service endpoint
+        -->
         <form class="newsletter-form" action="#" method="POST">
           <div class="form-group">
             <input type="email" placeholder="Enter your email" required>
