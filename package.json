@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.5.1",
-    "astro": "^5.16.7",
-    "leaflet": "^1.9.4"
+    "astro": "^5.16.7"
   },
   "devDependencies": {
     "typescript": "^5.9.3"

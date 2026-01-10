@@ -2,6 +2,10 @@
 dist/
 .astro/
 
+# Claude Code
+CLAUDE.md
+.claude/
+
 # Dependencies
 node_modules/
 
