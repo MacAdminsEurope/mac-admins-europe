@@ -22,7 +22,7 @@
   --gray-300: #dee2e6;
   --gray-400: #ced4da;
   --gray-500: #adb5bd;
-  --gray-600: #868e96;
+  --gray-600: #6c757d;
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
@@ -84,7 +84,9 @@ html {
 body {
   font-family: var(--font-display);
   font-weight: 400;
-  line-height: 1.6;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
   color: var(--gray-800);
   background-color: var(--white);
   overflow-x: hidden;
@@ -102,7 +104,11 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.01em; }
 h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 h4 { font-size: 1.25rem; }
 
-p { max-width: 65ch; }
+p {
+  max-width: 65ch;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
 
 a {
   color: var(--eu-blue);
