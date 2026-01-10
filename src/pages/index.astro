@@ -275,11 +275,15 @@ const base = import.meta.env.BASE_URL;
       <div class="location-grid">
         <div class="location-info">
           <span class="section-label">The Venue</span>
-          <h2>Leiden, Netherlands</h2>
+          <h2>Leidse Schouwburg – Stadsgehoorzaal</h2>
+          <p class="venue-address-home">
+            Breestraat 1, 2311 CK Leiden, Netherlands
+          </p>
           <p>
-            Just 15 minutes from Amsterdam Schiphol Airport, Leiden is a charming 
-            university city with rich history and excellent conference facilities. 
-            The perfect setting for Mac Admins Europe 2026.
+            Experience the conference in a truly historic setting! Located in the heart of Leiden,
+            the Leidse Schouwburg (opened 1705, Netherlands' oldest theater) and Stadsgehoorzaal
+            (celebrating 200 years in 2026) combine stunning neorenaissance architecture with
+            modern conference facilities.
           </p>
           <ul class="location-features">
             <li>
@@ -294,14 +298,14 @@ const base = import.meta.env.BASE_URL;
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              <span>Historic city center</span>
+              <span>Historic city center location</span>
             </li>
             <li>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              <span>Excellent public transport</span>
+              <span>Excellent public transport connections</span>
             </li>
             <li>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -311,16 +315,10 @@ const base = import.meta.env.BASE_URL;
               <span>Hotels within walking distance</span>
             </li>
           </ul>
-          <a href={`${base}/location`} class="btn btn-outline mt-2">Venue Details</a>
+          <a href={`${base}/location`} class="btn btn-outline mt-2">Full Venue & Travel Info</a>
         </div>
         <div class="location-map">
-          <div class="map-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span>Interactive map coming soon</span>
-          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2447.616511521583!2d4.4840605967895595!3d52.15948349999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5c6ed5eaed619%3A0x2c357eb707d8c249!2sStadsgehoorzaal!5e0!3m2!1sen!2snl!4v1767976704392!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
