@@ -24,31 +24,32 @@ const base = import.meta.env.BASE_URL;
             Breestraat 1, 2311 CK Leiden, Netherlands
           </p>
           <p class="venue-description">
-            Experience Mac Admins Europe 2026 in a truly historic setting! 
-            The Leidse Schouwburg – Stadsgehoorzaal combines two monumental venues 
-            with over 500 years of combined history. The Leidse Schouwburg, 
-            opened in 1705, is the Netherlands' oldest theater, while the 
+            Experience Mac Admins Europe 2026 in a truly historic setting!
+            The Leidse Schouwburg – Stadsgehoorzaal combines two monumental venues
+            with over 500 years of combined history. The Leidse Schouwburg,
+            opened in 1705, is the Netherlands' oldest theater, while the
             Stadsgehoorzaal celebrates its 200th anniversary in 2026.
           </p>
           <p class="venue-description">
-            These beautifully preserved venues offer modern conference facilities 
-            within stunning neorenaissance architecture. With multiple halls, 
-            excellent acoustics, and flexible seating arrangements, they provide 
+            These beautifully preserved venues offer modern conference facilities
+            within stunning neorenaissance architecture. With multiple halls,
+            excellent acoustics, and flexible seating arrangements, they provide
             the perfect atmosphere for learning, networking, and community building.
           </p>
         </div>
-        <div class="venue-images">
-          <div class="venue-image">
-            <img src={`${base}/img/venue-empty.jpg`} alt="Empty Aalmarktzaal venue hall" loading="lazy">
-            <p class="image-caption">The beautiful Aalmarktzaal hall - perfect setup for our conference</p>
-          </div>
-          <div class="venue-image">
-            <img src={`${base}/img/venue-conference.jpg`} alt="Aalmarktzaal filled with conference attendees" loading="lazy">
-            <p class="image-caption">Conference in progress - see how the venue comes to life!</p>
-          </div>
-        </div>
         <div class="venue-map">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2447.616511521583!2d4.4840605967895595!3d52.15948349999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5c6ed5eaed619%3A0x2c357eb707d8c249!2sStadsgehoorzaal!5e0!3m2!1sen!2snl!4v1767976704392!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <div class="venue-gallery">
+        <div class="venue-thumbnail" data-image={`${base}/img/venue-empty.jpg`} data-caption="The beautiful Aalmarktzaal hall - perfect setup for our conference">
+          <img src={`${base}/img/venue-empty.jpg`} alt="Empty Aalmarktzaal venue hall" loading="lazy">
+          <p class="thumbnail-caption">The beautiful Aalmarktzaal hall - perfect setup for our conference</p>
+        </div>
+        <div class="venue-thumbnail" data-image={`${base}/img/venue-conference.jpg`} data-caption="Conference in progress - see how the venue comes to life!">
+          <img src={`${base}/img/venue-conference.jpg`} alt="Aalmarktzaal filled with conference attendees" loading="lazy">
+          <p class="thumbnail-caption">Conference in progress - see how the venue comes to life!</p>
         </div>
       </div>
 
@@ -199,5 +200,59 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-image" src="" alt="">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script>
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const thumbnails = document.querySelectorAll('.venue-thumbnail');
+
+    // Open lightbox when clicking a thumbnail
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        const imageSrc = thumbnail.dataset.image;
+        const caption = thumbnail.dataset.caption;
+
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = caption;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close lightbox
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
 </Layout>
 
