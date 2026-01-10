@@ -14,7 +14,7 @@ npm run build  # Build for production
 
 ## Questions?
 
-For any questions or inquiries, please email: [hello@mac-admins.eu](mailto:hello@mac-admins.eu)
+For any questions or inquiries, please email: [hello@macadmins-eu.org](mailto:hello@macadmins-eu.org)
 
 ---
 
