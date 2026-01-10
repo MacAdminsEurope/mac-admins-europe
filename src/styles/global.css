@@ -2135,7 +2135,7 @@ section { padding: var(--space-4xl) 0; }
 
 .packages-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-lg);
   margin-bottom: var(--space-4xl);
 }
