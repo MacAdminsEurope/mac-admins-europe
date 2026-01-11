@@ -15,45 +15,40 @@ const base = import.meta.env.BASE_URL;
 
   <section class="sponsors-content">
     <div class="container">
+      <!-- Hero CTA -->
+      <div class="sponsor-hero">
+        <h2>Partner with Mac Admins Europe</h2>
+        <p class="hero-subtitle">
+          Connect with over 4,000 Mac Admin members and IT decision-makers across Europe
+        </p>
+      </div>
+
+      <!-- Current Sponsors -->
       <div class="current-sponsors">
+        <h2 class="section-title">Our 2026 Sponsors</h2>
+        <p class="section-subtitle">Join these amazing companies supporting Mac Admins Europe</p>
+
+        <!-- Add sponsor logos here as they come in -->
+        <!--
         <div class="sponsor-tier platinum">
-          <h2 class="tier-title">Platinum Sponsors</h2>
+          <h3 class="tier-title">Platinum Sponsors</h3>
           <div class="tier-logos">
-            <div class="sponsor-placeholder large">
-              <span>Become a Platinum Sponsor</span>
-            </div>
+            <img src="{base}/sponsors/company-logo.png" alt="Company Name" class="sponsor-logo large">
           </div>
         </div>
+        -->
 
-        <div class="sponsor-tier gold">
-          <h2 class="tier-title">Gold Sponsors</h2>
+        <div class="sponsor-tier">
           <div class="tier-logos">
-            <div class="sponsor-placeholder medium">
-              <span>Become a Gold Sponsor</span>
-            </div>
-            <div class="sponsor-placeholder medium">
-              <span>Become a Gold Sponsor</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sponsor-tier silver">
-          <h2 class="tier-title">Silver Sponsors</h2>
-          <div class="tier-logos">
-            <div class="sponsor-placeholder small">
-              <span>Become a Sponsor</span>
-            </div>
-            <div class="sponsor-placeholder small">
-              <span>Become a Sponsor</span>
-            </div>
-            <div class="sponsor-placeholder small">
+            <div class="sponsor-placeholder">
               <span>Become a Sponsor</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="become-sponsor">
+      <!-- Benefits Section -->
+      <div class="sponsor-benefits-section">
         <h2>Become a Sponsor</h2>
         <p class="sponsor-intro">
           Mac Admins Europe brings together IT professionals from across the continent 
@@ -64,8 +59,8 @@ const base = import.meta.env.BASE_URL;
         <div class="sponsor-benefits">
           <div class="benefit">
             <div class="benefit-icon">👥</div>
-            <h3>300+ Attendees</h3>
-            <p>Connect with Mac admins from companies across Europe</p>
+            <h3>Community Impact</h3>
+            <p>Connect with 4,000+ Mac Admin community members</p>
           </div>
           <div class="benefit">
             <div class="benefit-icon">🎯</div>
@@ -83,64 +78,107 @@ const base = import.meta.env.BASE_URL;
             <p>Logo placement, booth space, and speaking opportunities</p>
           </div>
         </div>
+      </div>
 
-        <div class="sponsor-packages">
-          <h3>Sponsorship Packages</h3>
-          
-          <div class="packages-grid">
-            <div class="package platinum">
-              <div class="package-header">
-                <span class="package-tier">Platinum</span>
-                <span class="package-price">Contact Us</span>
-              </div>
-              <ul class="package-features">
-                <li>Premium booth location</li>
-                <li>Keynote slot opportunity</li>
-                <li>Logo on all materials</li>
-                <li>5 conference passes</li>
-                <li>Social media promotion</li>
-                <li>Newsletter feature</li>
-                <li>Exclusive networking event</li>
-                <li>Video testimonial opportunity</li>
-              </ul>
-            </div>
+      <!-- Sponsorship Packages -->
+      <div class="sponsor-packages-section">
+        <h2 class="packages-title">Sponsorship Opportunities</h2>
+        <p class="packages-subtitle">Choose the package that best fits your goals</p>
 
-            <div class="package gold">
-              <div class="package-header">
-                <span class="package-tier">Gold</span>
-                <span class="package-price">Contact Us</span>
-              </div>
-              <ul class="package-features">
-                <li>Standard booth space</li>
-                <li>Demo session slot</li>
-                <li>Logo on event materials</li>
-                <li>3 conference passes</li>
-                <li>Social media mentions</li>
-                <li>Newsletter mention</li>
-              </ul>
+        <div class="packages-grid-new">
+          <!-- Platinum - Featured -->
+          <div class="package-card platinum featured">
+            <div class="package-badge">Most Popular</div>
+            <div class="package-header">
+              <div class="package-icon">⭐</div>
+              <h3>Platinum Sponsor</h3>
             </div>
+            <div class="package-price-section">
+              <span class="package-price">Contact Us</span>
+              <span class="price-note">Custom pricing available</span>
+            </div>
+            <ul class="package-features">
+              <li>Premium booth location (prime spot)</li>
+              <li>Keynote speaking opportunity</li>
+              <li>Logo on all event materials</li>
+              <li>5 full conference passes</li>
+              <li>Featured social media promotion</li>
+              <li>Newsletter feature article</li>
+              <li>Exclusive VIP networking event access</li>
+              <li>Video testimonial opportunity</li>
+            </ul>
+            <a href="mailto:sponsors@macadmins-eu.org?subject=Platinum Sponsorship Inquiry" class="btn btn-primary btn-full">Become a Platinum Sponsor</a>
+          </div>
 
-            <div class="package silver">
-              <div class="package-header">
-                <span class="package-tier">Silver</span>
-                <span class="package-price">Contact Us</span>
-              </div>
-              <ul class="package-features">
-                <li>Tabletop display</li>
-                <li>Logo on website</li>
-                <li>2 conference passes</li>
-                <li>Social media mention</li>
-              </ul>
+          <!-- Gold -->
+          <div class="package-card gold">
+            <div class="package-header">
+              <div class="package-icon">🥇</div>
+              <h3>Gold Sponsor</h3>
+              <p class="package-desc">Excellent visibility and engagement</p>
             </div>
+            <div class="package-price-section">
+              <span class="package-price">Contact Us</span>
+              <span class="price-note">Flexible options</span>
+            </div>
+            <ul class="package-features">
+              <li>Standard booth space</li>
+              <li>Demo session slot (20 minutes)</li>
+              <li>Logo on event materials</li>
+              <li>3 full conference passes</li>
+              <li>Social media mentions</li>
+              <li>Newsletter mention</li>
+            </ul>
+            <a href="mailto:sponsors@macadmins-eu.org?subject=Gold Sponsorship Inquiry" class="btn btn-outline btn-full">Become a Gold Sponsor</a>
+          </div>
+
+          <!-- Silver -->
+          <div class="package-card silver">
+            <div class="package-header">
+              <div class="package-icon">🥈</div>
+              <h3>Silver Sponsor</h3>
+              <p class="package-desc">Great brand presence</p>
+            </div>
+            <div class="package-price-section">
+              <span class="package-price">Contact Us</span>
+              <span class="price-note">Affordable option</span>
+            </div>
+            <ul class="package-features">
+              <li>Tabletop display area</li>
+              <li>Logo on event website</li>
+              <li>2 full conference passes</li>
+              <li>Social media mention</li>
+            </ul>
+            <a href="mailto:sponsors@macadmins-eu.org?subject=Silver Sponsorship Inquiry" class="btn btn-outline btn-full">Become a Silver Sponsor</a>
+          </div>
+
+          <!-- Community -->
+          <div class="package-card community">
+            <div class="package-header">
+              <div class="package-icon">🤝</div>
+              <h3>Community Sponsor</h3>
+            </div>
+            <div class="package-price-section">
+              <span class="package-price">Contact Us</span>
+              <span class="price-note">Starting tier</span>
+            </div>
+            <ul class="package-features">
+              <li>Logo on event website</li>
+              <li>1 conference pass</li>
+              <li>Social media thank you</li>
+            </ul>
+            <a href="mailto:sponsors@macadmins-eu.org?subject=Community Sponsorship Inquiry" class="btn btn-outline btn-full">Become a Community Sponsor</a>
           </div>
         </div>
 
-        <div class="sponsor-cta">
-          <h3>Interested in Sponsoring?</h3>
-          <p>Let's discuss how we can create a custom package that meets your goals.</p>
-          <a href="mailto:sponsors@macadmins-eu.org" class="btn btn-primary">Contact Us</a>
+        <!-- Custom CTA -->
+        <div class="custom-package-cta">
+          <h3>Need a Custom Package?</h3>
+          <p>Let's discuss how we can create a sponsorship that perfectly matches your goals and budget.</p>
+          <a href="mailto:sponsors@macadmins-eu.org?subject=Custom Sponsorship Inquiry" class="btn btn-primary">Contact Our Sponsorship Team</a>
         </div>
       </div>
+
     </div>
   </section>
 </Layout>
