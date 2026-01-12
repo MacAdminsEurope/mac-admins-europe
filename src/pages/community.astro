@@ -16,8 +16,11 @@ import Layout from '../layouts/Layout.astro';
       
       <!-- Map Section -->
       <div class="map-section">
+        
+        <div class="section-header text-center">
         <h2 class="section-title">Mac Admins Around Europe</h2>
         <p class="section-subtitle">We're a European community connected by our passion for Apple administration. Here you can find the Mac Admins across Europe.</p>
+        </div>
         <div class="map-embed">
           <iframe 
             src="https://www.google.com/maps/d/embed?mid=1JbzWZz3nBKqku0eGQzKRdgsYL6QGFaU&ehbc=2E312F" 
@@ -31,8 +34,9 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Regional Groups Grid -->
         <div class="regional-groups">
-          <!-- <h2 class="section-title">Join regional Mac Admin Groups</h2> -->
-          <p class="section-subtitle">Join your local community on the MacAdmins Slack</p>
+          <div class="section-header text-center">
+          <p>Join your local community on the Mac Admins Slack</p>
+        </div>
           <div class="groups-grid">
             <!-- Benelux -->
             <a href="https://macadmins.slack.com/channels/thenetherlands" target="_blank" class="group-item">
@@ -157,11 +161,10 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-     <!-- Join Community Section -->
+      <!-- Join Community Section -->
       <div class="join-section">
         <h2 class="section-title">Join the Community</h2>
         <p class="section-subtitle"></p>
-        
         <div class="join-grid">
           <a href="https://macadmins.slack.com/join/shared_invite/zt-3ixgiyv84-f6Hhnpk36Ep0Ua1nN1OD3g#/shared-invite/email" target="_blank" class="join-card">
             <div class="join-icon">
@@ -195,13 +198,14 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Community Events Section -->
       <div class="events-section">
-        <h2 class="section-title">Community Events</h2>
+        <h2 class="section-title">Community Event</h2>
         <p class="section-subtitle">Mac Admin conferences organized by the community</p>
-
+        
         <div class="community-events-grid">
-          <a href="/" class="community-event-card">
+          <a href="/" class="community-event-card mac-admins-europe-card">
             <div class="community-event-logo">
-              <img src="/mac-admins-europe/img/mac-admins-europe-logo.png" alt="Mac Admins Europe">
+              <img src="/mac-admins-europe/img/mac-admins-europe-logo-blue.png" alt="Mac Admins Europe" class="logo-default">
+              <img src="/mac-admins-europe/img/mac-admins-europe-logo-white.png" alt="Mac Admins Europe" class="logo-hover">
             </div>
             <div class="community-event-info">
               <h3>Mac Admins Europe</h3>
@@ -227,6 +231,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="events-section">
         <h2 class="section-title">International Conferences</h2>
         <p class="section-subtitle">Global conferences focused on Apple management and security</p>
+        
         <div class="conferences-grid">
           <a href="https://www.macad.uk/" target="_blank" class="conference-card">
             <div class="conference-info">
@@ -300,13 +305,16 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
+
       <!-- Add Your Event -->
       <div class="add-event">
         <div class="section-header text-center">
-          <h3>Organize a Mac Admin event?</h3>
+          <h3>Organize a Mac Admin event?</h2>
           <p>Let us know and we'll add it to the list!</p>
-          <a href="/contact" class="btn btn-outline">Contact Us</a>
         </div>
+        <!-- <h3>Organize a Mac Admin event?</h3>
+        <p>Let us know and we'll add it to the list!</p> -->
+        <a href="/contact" class="btn btn-outline">Contact Us</a>
       </div>
 
     </div>
@@ -466,12 +474,30 @@ import Layout from '../layouts/Layout.astro';
     justify-content: center;
     border-radius: var(--radius-lg);
     overflow: hidden;
+    position: relative;
   }
 
   .community-event-logo img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+  }
+
+  /* Mac Admins Europe logo swap */
+  .mac-admins-europe-card .logo-default {
+    display: block;
+  }
+
+  .mac-admins-europe-card .logo-hover {
+    display: none;
+  }
+
+  .mac-admins-europe-card:hover .logo-default {
+    display: none;
+  }
+
+  .mac-admins-europe-card:hover .logo-hover {
+    display: block;
   }
 
   .community-event-info h3 {
