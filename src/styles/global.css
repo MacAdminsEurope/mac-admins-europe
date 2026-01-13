@@ -1054,35 +1054,16 @@ section { padding: var(--space-4xl) 0; }
   flex-shrink: 0;
 }
 
-.location-map {
-  aspect-ratio: 4/3;
-  background: var(--gray-100);
+.location-image {
   border-radius: var(--radius-xl);
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
 }
 
-.map-placeholder {
+.location-image img {
   width: 100%;
   height: 100%;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-md);
-  color: var(--gray-500);
-}
-
-.map-placeholder small {
-  font-size: 0.8rem;
-  color: var(--gray-400);
-}
-
-.location-map iframe {
-  width: 100%;
-  height: 100%;
-  min-height: 400px;
-  border: none;
+  object-fit: cover;
   display: block;
 }
 
