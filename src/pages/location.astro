@@ -211,6 +211,8 @@ const base = import.meta.env.BASE_URL;
   <!-- Lightbox Modal -->
   <div id="lightbox" class="lightbox">
     <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+    <button class="lightbox-next" aria-label="Next image">&#10095;</button>
     <div class="lightbox-content">
       <img id="lightbox-image" src="" alt="">
       <p id="lightbox-caption" class="lightbox-caption"></p>
@@ -223,17 +225,45 @@ const base = import.meta.env.BASE_URL;
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
     const thumbnails = document.querySelectorAll('.venue-thumbnail');
+    let currentIndex = 0;
+
+    // Get image data from thumbnails
+    const getImageData = (index) => {
+      const thumbnail = thumbnails[index];
+      return {
+        src: thumbnail.dataset.image,
+        caption: thumbnail.dataset.caption
+      };
+    };
+
+    // Show image at index
+    const showImage = (index) => {
+      currentIndex = index;
+      const data = getImageData(index);
+      lightboxImage.src = data.src;
+      lightboxImage.alt = data.caption;
+      lightboxCaption.textContent = data.caption;
+    };
+
+    // Navigate to previous image
+    const prevImage = () => {
+      currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+      showImage(currentIndex);
+    };
+
+    // Navigate to next image
+    const nextImage = () => {
+      currentIndex = (currentIndex + 1) % thumbnails.length;
+      showImage(currentIndex);
+    };
 
     // Open lightbox when clicking a thumbnail
-    thumbnails.forEach(thumbnail => {
+    thumbnails.forEach((thumbnail, index) => {
       thumbnail.addEventListener('click', () => {
-        const imageSrc = thumbnail.dataset.image;
-        const caption = thumbnail.dataset.caption;
-
-        lightboxImage.src = imageSrc;
-        lightboxImage.alt = caption;
-        lightboxCaption.textContent = caption;
+        showImage(index);
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
@@ -246,6 +276,8 @@ const base = import.meta.env.BASE_URL;
     };
 
     lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', prevImage);
+    lightboxNext.addEventListener('click', nextImage);
 
     // Close on background click
     lightbox.addEventListener('click', (e) => {
@@ -254,10 +286,16 @@ const base = import.meta.env.BASE_URL;
       }
     });
 
-    // Close on Escape key
+    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
         closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
       }
     });
   </script>
