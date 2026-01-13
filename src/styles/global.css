@@ -1785,6 +1785,42 @@ section { padding: var(--space-4xl) 0; }
   transform: rotate(90deg) scale(1.1);
 }
 
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--eu-gold);
+  color: var(--eu-blue-dark);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-gold);
+  z-index: 10000;
+}
+
+.lightbox-prev {
+  left: var(--space-xl);
+}
+
+.lightbox-next {
+  right: var(--space-xl);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: var(--eu-gold-light);
+  transform: translateY(-50%) scale(1.1);
+}
+
 .venue-map {
   background: var(--gray-100);
   border-radius: var(--radius-xl);
@@ -2848,6 +2884,21 @@ section { padding: var(--space-4xl) 0; }
     width: 40px;
     height: 40px;
     font-size: 1.5rem;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .lightbox-prev {
+    left: var(--space-md);
+  }
+
+  .lightbox-next {
+    right: var(--space-md);
   }
 
   .lightbox-content {
