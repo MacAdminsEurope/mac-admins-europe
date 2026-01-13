@@ -1974,41 +1974,120 @@ section { padding: var(--space-4xl) 0; }
   margin: 0 auto var(--space-xl);
 }
 
-.accommodation-options {
-  max-width: 800px;
-  margin: 0 auto var(--space-xl);
+.accommodation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
 }
 
-.accommodation-options h3 {
+.accommodation-card {
+  background: var(--off-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.accommodation-card:hover {
+  background: var(--eu-blue);
+}
+
+.accommodation-card:hover h3,
+.accommodation-card:hover p,
+.accommodation-card:hover li {
+  color: var(--white);
+}
+
+.accommodation-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+}
+
+.accommodation-card h3 {
+  color: var(--gray-900);
   margin-bottom: var(--space-sm);
-  color: var(--eu-blue);
-  margin-top: var(--space-xl);
+  transition: color var(--transition-base);
 }
 
-.accommodation-options h3:first-child {
-  margin-top: 0;
-}
-
-.accommodation-options p {
+.accommodation-card > p {
   color: var(--gray-600);
   font-size: 0.9rem;
   margin-bottom: var(--space-md);
   max-width: none;
+  transition: color var(--transition-base);
 }
 
-.accommodation-options ul {
+.accommodation-card ul {
   list-style: none;
   padding-left: 0;
-  margin-bottom: var(--space-xl);
+  margin: 0;
 }
 
-.accommodation-options li {
+.accommodation-card li {
   font-size: 0.9rem;
   color: var(--gray-700);
   padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--gray-200);
+  transition: color var(--transition-base), border-color var(--transition-base);
 }
 
-/* Old hotel grid styles removed - simplified to single column layout */
+.accommodation-card:hover li {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.accommodation-card li:last-child {
+  border-bottom: none;
+}
+
+.booking-search-box {
+  background: var(--eu-blue);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.booking-header {
+  margin-bottom: var(--space-lg);
+}
+
+.booking-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.booking-search-box h3 {
+  color: var(--white);
+  margin-bottom: var(--space-xs);
+}
+
+.booking-search-box .booking-header p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  max-width: none;
+}
+
+.booking-btn {
+  background: var(--eu-gold);
+  color: var(--eu-blue-dark);
+  font-weight: 600;
+  padding: var(--space-md) var(--space-2xl);
+  font-size: 1.1rem;
+}
+
+.booking-btn:hover {
+  background: var(--eu-gold-light);
+  transform: translateY(-2px);
+}
+
+.booking-dates {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  margin-top: var(--space-md);
+  margin-bottom: 0;
+}
 
 .accommodation-note {
   text-align: center;
@@ -2772,7 +2851,8 @@ section { padding: var(--space-4xl) 0; }
 
   .leiden-features,
   .travel-grid,
-  .attractions-grid {
+  .attractions-grid,
+  .accommodation-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -2866,7 +2946,8 @@ section { padding: var(--space-4xl) 0; }
   /* Location page */
   .leiden-features,
   .travel-grid,
-  .attractions-grid {
+  .attractions-grid,
+  .accommodation-grid {
     grid-template-columns: 1fr;
   }
 

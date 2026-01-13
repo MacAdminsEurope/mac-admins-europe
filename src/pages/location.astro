@@ -138,36 +138,65 @@ const base = import.meta.env.BASE_URL;
       </div>
 
       <div class="accommodation">
-        <h2>Where to Stay</h2>
-        <p>
-          Leiden offers a range of hotels to suit every budget. We recommend booking early 
-          as April is a popular time to visit the Netherlands.
-        </p>
+        <div class="section-header text-center">
+          <h2>Where to Stay</h2>
+          <p>
+            Leiden offers a range of hotels to suit every budget. We recommend booking early 
+            as April is a popular time to visit the Netherlands.
+          </p>
+        </div>
         
-        <div class="accommodation-options">
-          <h3>City Center Hotels</h3>
-          <p>Walk to the venue and enjoy Leiden's historic center:</p>
-          <ul>
-            <li>Golden Tulip Leiden Centre</li>
-            <li>Boutique Hotel d'Oude Morsch</li>
-            <li>City Hotel Leiden</li>
-          </ul>
+        <div class="accommodation-grid">
+          <div class="accommodation-card">
+            <div class="accommodation-icon">🏨</div>
+            <h3>City Center Hotels</h3>
+            <p>Walk to the venue and enjoy Leiden's historic center:</p>
+            <ul>
+              <li>Golden Tulip Leiden Centre</li>
+              <li>Boutique Hotel d'Oude Morsch</li>
+              <li>City Hotel Leiden</li>
+            </ul>
+          </div>
           
-          <h3>Near Station</h3>
-          <p>Convenient if you're traveling by train:</p>
-          <ul>
-            <li>Tulip Inn Leiden Centre</li>
-            <li>ibis Leiden Centre</li>
-            <li>Best Western City Hotel</li>
-          </ul>
+          <div class="accommodation-card">
+            <div class="accommodation-icon">🚂</div>
+            <h3>Near Station</h3>
+            <p>Convenient if you're traveling by train:</p>
+            <ul>
+              <li>Tulip Inn Leiden Centre</li>
+              <li>ibis Leiden Centre</li>
+              <li>Best Western City Hotel</li>
+            </ul>
+          </div>
           
-          <h3>Budget Options</h3>
-          <p>More affordable choices, slightly outside center:</p>
-          <ul>
-            <li>Holiday Inn Express Leiden</li>
-            <li>Van der Valk Hotel Leiden</li>
-            <li>Airbnb apartments</li>
-          </ul>
+          <div class="accommodation-card">
+            <div class="accommodation-icon">💰</div>
+            <h3>Budget Options</h3>
+            <p>More affordable choices, slightly outside center:</p>
+            <ul>
+              <li>Holiday Inn Express Leiden</li>
+              <li>Van der Valk Hotel Leiden</li>
+              <li>Airbnb apartments</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="booking-search-box">
+          <div class="booking-header">
+            <span class="booking-icon">🔍</span>
+            <h3>Search Hotels in Leiden</h3>
+            <p>Find and book your accommodation for Mac Admins Europe 2026</p>
+                      <p class="booking-dates">Pre-filled for April 29-30, 2026</p>
+
+          </div>
+          <a 
+            href="https://www.booking.com/searchresults.html?ss=Leiden%2C+Netherlands&checkin=2026-04-29&checkout=2026-04-30&group_adults=1&no_rooms=1" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn btn-primary booking-btn"
+          >
+            Search on Booking.com
+          </a>
         </div>
 
         <p class="accommodation-note">
