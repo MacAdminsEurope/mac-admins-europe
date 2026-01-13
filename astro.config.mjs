@@ -6,8 +6,8 @@ export default defineConfig({
   // adapter: node({
   //   mode: 'standalone',
   // }),
-  site: 'https://macadminseurope.github.io',
-  base: '/mac-admins-europe', // Required for GitHub Pages project sites
+  site: 'https://macadmins-eu.org',
+  // base: '/mac-admins-europe', // Not needed for custom domain
   build: {
     assets: 'assets'
   }
