@@ -186,11 +186,11 @@ const base = import.meta.env.BASE_URL;
             <span class="booking-icon">🔍</span>
             <h3>Search Hotels in Leiden</h3>
             <p>Find and book your accommodation for Mac Admins Europe 2026</p>
-                      <p class="booking-dates">Pre-filled for April 29-30, 2026</p>
+                      <p class="booking-dates">Pre-filled for April 30th to May 1st, 2026</p>
 
           </div>
           <a 
-            href="https://www.booking.com/searchresults.html?ss=Leiden%2C+Netherlands&checkin=2026-04-29&checkout=2026-04-30&group_adults=1&no_rooms=1" 
+            href="https://www.booking.com/searchresults.html?ss=Leiden%2C+Netherlands&checkin=2026-04-30&checkout=2026-05-01&group_adults=1&no_rooms=1" 
             target="_blank" 
             rel="noopener noreferrer"
             class="btn btn-primary booking-btn"
@@ -207,10 +207,8 @@ const base = import.meta.env.BASE_URL;
 
       <div class="explore-leiden">
         <h2>While You're Here</h2>
-        <p class="explore-intro">
-          Extend your stay and explore what Leiden and the Netherlands have to offer!
-        </p>
-        
+        <p style="text-align: center;">Extend your stay and explore what Leiden and the Netherlands have to offer!</p>
+        <br />
         <div class="attractions-grid">
           <div class="attraction">
             <span class="attraction-icon">🌷</span>
@@ -251,16 +249,21 @@ const base = import.meta.env.BASE_URL;
   <script>
     // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.querySelector('.lightbox-close');
     const lightboxPrev = document.querySelector('.lightbox-prev');
     const lightboxNext = document.querySelector('.lightbox-next');
-    const thumbnails = document.querySelectorAll('.venue-thumbnail');
+    const thumbnails = document.querySelectorAll<HTMLElement>('.venue-thumbnail');
+
+    if (!lightbox || !lightboxImage || !lightboxClose || !lightboxPrev || !lightboxNext) {
+      throw new Error('Lightbox elements not found');
+    }
+
     let currentIndex = 0;
 
     // Get image data from thumbnails
-    const getImageData = (index) => {
+    const getImageData = (index: number) => {
       const thumbnail = thumbnails[index];
       return {
         src: thumbnail.dataset.image,
@@ -269,12 +272,12 @@ const base = import.meta.env.BASE_URL;
     };
 
     // Show image at index
-    const showImage = (index) => {
+    const showImage = (index: number) => {
       currentIndex = index;
       const data = getImageData(index);
-      lightboxImage.src = data.src;
-      lightboxImage.alt = data.caption;
-      lightboxCaption.textContent = data.caption;
+      lightboxImage.src = data.src ?? '';
+      lightboxImage.alt = data.caption ?? '';
+      if (lightboxCaption) lightboxCaption.textContent = data.caption ?? null;
     };
 
     // Navigate to previous image
