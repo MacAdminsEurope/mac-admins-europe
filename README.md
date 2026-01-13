@@ -19,3 +19,5 @@ For any questions or inquiries, please email: [hello@macadmins-eu.org](mailto:he
 ---
 
 **Mac Admins Europe** - For the community, by the community 🇪🇺
+
+[![Deploy to GitHub Pages](https://github.com/MacAdminsEurope/mac-admins-europe/actions/workflows/deploy.yml/badge.svg)](https://github.com/MacAdminsEurope/mac-admins-europe/actions/workflows/deploy.yml)
