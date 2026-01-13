@@ -2087,10 +2087,10 @@ section { padding: var(--space-4xl) 0; }
   margin-right: auto;
 }
 
-/* New Package Cards - 2 Column Grid */
+/* New Package Cards - 4 Column Grid */
 .packages-grid-new {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
   margin-bottom: var(--space-2xl);
 }
@@ -2111,9 +2111,8 @@ section { padding: var(--space-4xl) 0; }
   box-shadow: var(--shadow-xl);
 }
 
-/* Platinum - Featured & Larger */
+/* Platinum - Featured */
 .package-card.platinum {
-  grid-column: 1 / -1;
   border-color: var(--eu-gold);
   border-width: 3px;
   background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
@@ -2122,7 +2121,7 @@ section { padding: var(--space-4xl) 0; }
 
 .package-card.platinum .package-header {
   padding: var(--space-lg);
-  background: linear-gradient(135deg, var(--eu-blue-dark) 0%, var(--eu-blue) 100%);
+  background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
   margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-lg)) var(--space-md);
   border-radius: var(--radius-md) var(--radius-md) 0 0;
   color: var(--white);
@@ -2153,7 +2152,7 @@ section { padding: var(--space-4xl) 0; }
 }
 
 .package-card.community {
-  grid-column: 1 / -1;
+  border-color: var(--eu-blue);
 }
 
 .package-card.community .package-header {
@@ -2783,6 +2782,11 @@ section { padding: var(--space-4xl) 0; }
   .visual-card {
     width: 300px;
     height: 300px;
+  }
+
+  /* Sponsors page - 4 column to 2 column */
+  .packages-grid-new {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Speakers page */
