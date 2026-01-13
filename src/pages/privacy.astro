@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === '/' ? '' : baseUrl;
 ---
 
 <Layout title="Privacy Policy - Mac Admins Europe 2026" description="Privacy Policy for Mac Admins Europe conference. Learn how we collect, use, and protect your personal data in compliance with GDPR.">
