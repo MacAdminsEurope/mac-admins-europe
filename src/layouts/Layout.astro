@@ -56,6 +56,7 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
       </button>
       
       <ul class="nav-menu">
+        <button class="nav-close" aria-label="Close navigation">&times;</button>
         <li><a href={base}>Home</a></li>
         <li><a href={`${base}/program`}>Program</a></li>
         <li><a href={`${base}/speakers`}>Speakers</a></li>
@@ -134,12 +135,24 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
     // Mobile navigation toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const navClose = document.querySelector('.nav-close');
+    
+    const openNav = () => {
+      navToggle?.setAttribute('aria-expanded', 'true');
+      navMenu?.classList.add('is-open');
+    };
+
+    const closeNav = () => {
+      navToggle?.setAttribute('aria-expanded', 'false');
+      navMenu?.classList.remove('is-open');
+    };
     
     navToggle?.addEventListener('click', () => {
       const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', (!isExpanded).toString());
-      navMenu?.classList.toggle('is-open');
+      isExpanded ? closeNav() : openNav();
     });
+
+    navClose?.addEventListener('click', closeNav);
 
     // Header scroll effect
     const header = document.querySelector('.header');
