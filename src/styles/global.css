@@ -1654,6 +1654,7 @@ section { padding: var(--space-4xl) 0; }
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4xl);
   margin-bottom: var(--space-4xl);
+  align-items: start;
 }
 
 .venue-details h2 {
