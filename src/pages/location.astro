@@ -42,6 +42,14 @@ const base = import.meta.env.BASE_URL;
       </div>
 
       <div class="venue-gallery">
+        <div class="venue-thumbnail" data-image={`${base}/img/venue-main.jpg`} data-caption="Stadsgehoorzaal - Our stunning main venue">
+          <img src={`${base}/img/venue-main.jpg`} alt="Stadsgehoorzaal main venue exterior" loading="lazy">
+          <p class="thumbnail-caption">Stadsgehoorzaal - Our stunning main venue</p>
+        </div>
+        <div class="venue-thumbnail" data-image={`${base}/img/venue-main-side.jpg`} data-caption="Historic architecture meets modern conference facilities">
+          <img src={`${base}/img/venue-main-side.jpg`} alt="Stadsgehoorzaal side view" loading="lazy">
+          <p class="thumbnail-caption">Historic architecture meets modern conference facilities</p>
+        </div>
         <div class="venue-thumbnail" data-image={`${base}/img/venue-empty.jpg`} data-caption="The beautiful Aalmarktzaal hall - perfect setup for our conference">
           <img src={`${base}/img/venue-empty.jpg`} alt="Empty Aalmarktzaal venue hall" loading="lazy">
           <p class="thumbnail-caption">The beautiful Aalmarktzaal hall - perfect setup for our conference</p>
