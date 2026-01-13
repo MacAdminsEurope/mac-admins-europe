@@ -105,7 +105,6 @@ h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
 h4 { font-size: 1.25rem; }
 
 p {
-  max-width: 65ch;
   line-height: 1.75;
   letter-spacing: 0.01em;
 }
@@ -556,7 +555,6 @@ section { padding: var(--space-4xl) 0; }
 
 .section-header p {
   color: var(--gray-600);
-  max-width: 500px;
   margin: 0 auto;
 }
 
