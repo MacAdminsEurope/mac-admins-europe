@@ -49,7 +49,6 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
         <span class="logo-icon">⌘</span>
         <span class="logo-text">Mac Admins <strong>Europe</strong></span>
       </a>
-      <script defer src="https://stoic-angelfish.pikapod.net/script.js" data-website-id="3a6349b1-5943-4026-b687-e06bbf1bfc0a"></script>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
@@ -131,6 +130,19 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
     </div>
   </footer>
 
+  <!-- Cookie Consent Notice -->
+  <div id="cookie-notice" class="cookie-notice" style="display: none;">
+    <div class="cookie-notice-content">
+      <p class="cookie-notice-text">
+        We use privacy-friendly analytics to improve your experience. No personal data is collected.
+      </p>
+      <div class="cookie-notice-actions">
+        <button id="cookie-accept" class="btn btn-primary btn-sm">Accept</button>
+        <button id="cookie-decline" class="btn btn-secondary btn-sm">Decline</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Mobile navigation toggle
     const navToggle = document.querySelector('.nav-toggle');
@@ -163,6 +175,53 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
         header?.classList.remove('is-scrolled');
       }
     });
+
+    // Cookie Consent Management
+    const CONSENT_KEY = 'macadmins-eu-analytics-consent';
+    const ANALYTICS_SCRIPT_SRC = 'https://stoic-angelfish.pikapod.net/script.js';
+    const ANALYTICS_WEBSITE_ID = '3a6349b1-5943-4026-b687-e06bbf1bfc0a';
+
+    const cookieNotice = document.getElementById('cookie-notice');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const declineBtn = document.getElementById('cookie-decline');
+
+    // Load analytics script
+    function loadAnalytics() {
+      const script = document.createElement('script');
+      script.defer = true;
+      script.src = ANALYTICS_SCRIPT_SRC;
+      script.setAttribute('data-website-id', ANALYTICS_WEBSITE_ID);
+      document.head.appendChild(script);
+    }
+
+    // Check consent and show notice if needed
+    function checkConsent() {
+      const consent = localStorage.getItem(CONSENT_KEY);
+
+      if (consent === 'accepted') {
+        loadAnalytics();
+      } else if (consent === null) {
+        // No consent recorded, show notice
+        cookieNotice.style.display = 'block';
+      }
+      // If declined, do nothing (no analytics loaded)
+    }
+
+    // Handle accept
+    acceptBtn?.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      cookieNotice.style.display = 'none';
+      loadAnalytics();
+    });
+
+    // Handle decline
+    declineBtn?.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      cookieNotice.style.display = 'none';
+    });
+
+    // Initialize on page load
+    checkConsent();
   </script>
 </body>
 </html>
