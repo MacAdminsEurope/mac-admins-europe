@@ -46,35 +46,14 @@ const base = baseUrl === '/' ? '' : baseUrl;
             
             <div class="contact-method">
               <div>
-                <strong>LinkedIn</strong>
-                <a href="https://linkedin.com/company/mac-admins-europe" target="_blank" rel="noopener">
+                <strong>Discord</strong>
+                <a href="https://discord.gg/macadmins-eu" target="_blank" rel="noopener">
                   Mac Admins Europe
                 </a>
               </div>
             </div>
           </div>
           
-          <div class="specific-inquiries">
-            <h3>Specific Inquiries</h3>
-            <ul>
-              <li>
-                <strong>Tickets & Registration:</strong>
-                <a href="mailto:tickets@macadmins-eu.org">tickets@macadmins-eu.org</a>
-              </li>
-              <li>
-                <strong>Sponsorship:</strong>
-                <a href="mailto:sponsors@macadmins-eu.org">sponsors@macadmins-eu.org</a>
-              </li>
-              <li>
-                <strong>Speaking / CFP:</strong>
-                <a href="mailto:speakers@macadmins-eu.org">speakers@macadmins-eu.org</a>
-              </li>
-              <li>
-                <strong>Press & Media:</strong>
-                <a href="mailto:press@macadmins-eu.org">press@macadmins-eu.org</a>
-              </li>
-            </ul>
-          </div>
         </div>
         
         <div class="contact-form-wrapper">
@@ -122,19 +101,21 @@ const base = baseUrl === '/' ? '' : baseUrl;
       </div>
     </div>
   </section>
-<hr class="section-divider" /> 
 
     <!-- Team Section -->
   <section class="section team-section">
     <div class="container">
-      <div class="section-header text-center">
-        <span class="section-label">The People Behind the Event</span>
-        <h2>Meet the Team</h2>
-        <p>The volunteers who make Mac Admins Europe happen</p>
+      <div class="team-notice">
+        <div class="notice-icon">👥</div>
+        <div class="notice-content">
+          <h3>Meet the Team</h3>
+          <p>The volunteers who make Mac Admins Europe happen</p>
+        </div>
       </div>
       
       <div class="team-grid">
-        <div class="team-card">
+      
+                <div class="team-card">
           <div class="team-photo">
             <img src={`${base}/img/team/mischa.jpg`} alt="Mischa van der Bent">
           </div>
@@ -142,8 +123,7 @@ const base = baseUrl === '/' ? '' : baseUrl;
             <h3>Mischa van der Bent</h3>
             <span class="team-role">appleshare.it</span>
             <p class="team-bio">
-              He's a prominent figure and founder of the Mac Admin community in the Benelux and is the founding member of this conference.
-            </p>
+He is a seasoned Apple IT professional and community leader. He runs the Benelux Mac Admin community and is a founding member of this conference. Throughout his career, he has held many technical roles, from support engineer to Technical Director and CIO of an enterprise reseller, focusing on keeping Apple management simple, scalable, connecting the dots, and automating what is possible.            </p>
             <div class="team-links">
               <a href="https://macadmins.slack.com/team/U053L9REF" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/></svg>
@@ -155,7 +135,7 @@ const base = baseUrl === '/' ? '' : baseUrl;
           </div>
         </div>
 
-        <div class="team-card">
+              <div class="team-card">
           <div class="team-photo">
             <img src={`${base}/img/team/armin.jpg`} alt="Armin Briegel" />
           </div>
@@ -199,27 +179,20 @@ Rob is a Canadian expat based in the Netherlands, where he lives with his family
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Newsletter -->
-  <section class="section newsletter bg-blue">
-    <div class="container">
-      <div class="newsletter-content">
-        <h2 class="text-white">Stay Updated</h2>
-        <p class="text-white">Subscribe to our newsletter for the latest conference news and announcements.</p>
-
-        <!--
-          TODO: Newsletter form requires backend integration.
-          Options: Mailchimp, ConvertKit, EmailOctopus, or Formspree
-          Replace action="#" with your newsletter service endpoint
-        -->
-        <form class="newsletter-form" action="#" method="POST">
-          <div class="form-group">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </div>
-        </form>
+      <!-- Community Thank You Box -->
+      <div class="ambassadors-content text-center">
+        <span class="section-label"></span>
+        <h2>Community Ambassadors</h2>
+        <p class="ambassadors-message">
+          Mac Admins Europe wouldn't be possible without the countless volunteers, advocates, and community members
+          who work tirelessly behind the scenes. From organizing local meetups and spreading the word, to providing
+          feedback and helping newcomers feel welcome — your contributions make this community what it is.
+        </p>
+        <p class="ambassadors-submessage">
+          To everyone who has shared their knowledge, mentored others, or simply shown up to support fellow admins:
+          <strong>thank you.</strong><br>This event is for the community, by the community — and that means all of you.
+        </p>
       </div>
     </div>
   </section>

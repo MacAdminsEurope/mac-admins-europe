@@ -2617,6 +2617,16 @@ section { padding: var(--space-4xl) 0; }
   background: var(--gray-50);
 }
 
+.team-notice {
+  display: flex;
+  gap: var(--space-lg);
+  background: var(--off-white);
+  border-left: 4px solid var(--eu-gold);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-3xl);
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2696,6 +2706,41 @@ section { padding: var(--space-4xl) 0; }
 .team-link:hover {
   background: var(--eu-blue);
   color: var(--white);
+}
+
+/* Ambassadors Content Box */
+.ambassadors-content {
+  background: var(--eu-blue);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-3xl);
+  margin-top: var(--space-2xl);
+}
+
+.ambassadors-content .section-label {
+  color: var(--eu-gold);
+}
+
+.ambassadors-content h2 {
+  color: var(--white);
+  margin-bottom: var(--space-xl);
+}
+
+.ambassadors-message {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: var(--space-lg);
+}
+
+.ambassadors-submessage {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.ambassadors-submessage strong {
+  color: var(--eu-gold);
 }
 
 .section-divider {
@@ -2790,7 +2835,7 @@ section { padding: var(--space-4xl) 0; }
 
 .newsletter-form {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   max-width: 400px;
   margin: 0 auto;
 }
@@ -2986,6 +3031,10 @@ section { padding: var(--space-4xl) 0; }
 
 @media (max-width: 768px) {
   /* Team Section */
+  .team-notice {
+    flex-direction: column;
+  }
+
   .team-grid {
     grid-template-columns: 1fr;
     max-width: 400px;
@@ -3448,5 +3497,114 @@ section { padding: var(--space-4xl) 0; }
 @media (max-width: 480px) {
   .groups-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Thank You Page
+   ========================================================================== */
+.thank-you-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-3xl) 0;
+}
+
+.thank-you-icon {
+  margin-bottom: var(--space-xl);
+}
+
+.thank-you-icon svg {
+  margin: 0 auto;
+  display: block;
+}
+
+.thank-you-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: var(--space-md);
+  color: var(--gray-900);
+}
+
+.thank-you-message {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+  color: var(--gray-700);
+}
+
+.thank-you-submessage {
+  font-size: 1rem;
+  margin-bottom: var(--space-xl);
+  color: var(--gray-600);
+}
+
+.thank-you-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .thank-you-title {
+    font-size: 2rem;
+  }
+
+  .thank-you-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .thank-you-actions .btn {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* ==========================================================================
+   404 Page
+   ========================================================================== */
+.not-found-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-3xl) 0;
+}
+
+.not-found-icon {
+  margin-bottom: var(--space-xl);
+}
+
+.not-found-icon svg {
+  margin: 0 auto;
+  display: block;
+}
+
+.not-found-message {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+  color: var(--gray-700);
+}
+
+.not-found-submessage {
+  font-size: 1rem;
+  margin-bottom: var(--space-xl);
+  color: var(--gray-600);
+}
+
+.not-found-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .not-found-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .not-found-actions .btn {
+    width: 100%;
+    max-width: 250px;
   }
 }

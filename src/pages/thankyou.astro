@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Thank You">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Confirmation</span>
+      <h1 id="hero-title">Thank You</h1>
+      <p id="hero-subtitle">We've received your submission</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="thank-you-content text-center">
+        <div class="thank-you-icon">
+          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="var(--eu-green)" stroke-width="2"/>
+            <path d="M8 12l2 2 4-4" stroke="var(--eu-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <p id="thank-you-message" class="thank-you-message">Thank you for your submission.</p>
+        <p id="thank-you-submessage" class="thank-you-submessage">We appreciate your interest in MacAdmins Europe 2026.</p>
+
+        <div class="thank-you-actions">
+          <a href="https://macadmins-eu.org" class="btn btn-primary">Return to Homepage</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Read query parameters client-side (required for static site)
+    const params = new URLSearchParams(window.location.search);
+    const action = params.get('action');
+
+    const heroTitleEl = document.getElementById('hero-title');
+    const heroSubtitleEl = document.getElementById('hero-subtitle');
+    const messageEl = document.getElementById('thank-you-message');
+    const submessageEl = document.getElementById('thank-you-submessage');
+
+    if (action === 'thankyouform') {
+      if (heroTitleEl) heroTitleEl.textContent = 'Thank You';
+      if (heroSubtitleEl) heroSubtitleEl.textContent = 'We\'ve received your message';
+      if (messageEl) messageEl.textContent = 'We have received your message and will get back to you soon.';
+      if (submessageEl) submessageEl.textContent = 'We appreciate your interest in MacAdmins Europe 2026.';
+      document.title = 'Thank You for Contacting Us | MacAdmins Europe';
+    } else if (action === 'thankyousignup') {
+      if (heroTitleEl) heroTitleEl.textContent = 'Thank You';
+      if (heroSubtitleEl) heroSubtitleEl.textContent = 'You\'re on the list!';
+      if (messageEl) messageEl.textContent = 'Thank you for signing up to our newsletter!';
+      if (submessageEl) submessageEl.textContent = 'We will be in touch with the latest conference news and announcements.';
+      document.title = 'Thank You for Signing Up | MacAdmins Europe';
+    }
+  </script>
+</Layout>

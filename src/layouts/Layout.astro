@@ -45,11 +45,11 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
 <body>
   <header class="header">
     <nav class="nav container">
-      <a href="https://macadmins-eu.org" class="logo">
+      <a href={`${base}/`} class="logo">
         <span class="logo-icon">⌘</span>
         <span class="logo-text">Mac Admins <strong>Europe</strong></span>
       </a>
-      
+      <script defer src="https://stoic-angelfish.pikapod.net/script.js" data-website-id="3a6349b1-5943-4026-b687-e06bbf1bfc0a"></script>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span>
         <span></span>
@@ -116,11 +116,12 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
         <div class="footer-newsletter">
           <h4>Stay Updated</h4>
           <p>Get the latest news about speakers, sessions, and early bird tickets.</p>
-          <!-- TODO: Newsletter form requires backend integration (Mailchimp, ConvertKit, etc.) -->
-          <form class="newsletter-form">
-            <input type="email" placeholder="your@email.com" required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+          <form class="newsletter-form" action="https://getform.io/f/aroxxeqb" method="POST">
+            <div class="form-group">
+          <input type="email" name="email" placeholder="your@email.com" required>
+              <button type="submit" class="btn btn-primary">Notify Me</button>
           </form>
+        </div>
         </div>
       </div>
       
