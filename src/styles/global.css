@@ -2617,13 +2617,7 @@ section { padding: var(--space-4xl) 0; }
   background: var(--gray-50);
 }
 
-.team-notice {
-  display: flex;
-  gap: var(--space-lg);
-  background: var(--off-white);
-  border-left: 4px solid var(--eu-gold);
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
+.team-section .section-header {
   margin-bottom: var(--space-3xl);
 }
 
@@ -3031,10 +3025,6 @@ section { padding: var(--space-4xl) 0; }
 
 @media (max-width: 768px) {
   /* Team Section */
-  .team-notice {
-    flex-direction: column;
-  }
-
   .team-grid {
     grid-template-columns: 1fr;
     max-width: 400px;
