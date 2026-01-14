@@ -36,7 +36,6 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
   <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
   <link rel="shortcut icon" href={`${base}/favicon.ico`} />
   <link rel="apple-touch-icon" sizes="180x180" href={`${base}/apple-touch-icon.png`} />
-  <link rel="manifest" href={`${base}/site.webmanifest`} />
   
   <!-- Analytics -->
      
@@ -196,6 +195,8 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
 
     // Check consent and show notice if needed
     function checkConsent() {
+      if (!cookieNotice) return;
+
       const consent = localStorage.getItem(CONSENT_KEY);
 
       if (consent === 'accepted') {
@@ -208,17 +209,21 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
     }
 
     // Handle accept
-    acceptBtn?.addEventListener('click', () => {
-      localStorage.setItem(CONSENT_KEY, 'accepted');
-      cookieNotice.style.display = 'none';
-      loadAnalytics();
-    });
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', () => {
+        localStorage.setItem(CONSENT_KEY, 'accepted');
+        if (cookieNotice) cookieNotice.style.display = 'none';
+        loadAnalytics();
+      });
+    }
 
     // Handle decline
-    declineBtn?.addEventListener('click', () => {
-      localStorage.setItem(CONSENT_KEY, 'declined');
-      cookieNotice.style.display = 'none';
-    });
+    if (declineBtn) {
+      declineBtn.addEventListener('click', () => {
+        localStorage.setItem(CONSENT_KEY, 'declined');
+        if (cookieNotice) cookieNotice.style.display = 'none';
+      });
+    }
 
     // Initialize on page load
     checkConsent();
