@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@astrojs/node": "^9.5.1",
-    "astro": "^5.16.7"
+    "astro": "^5.16.7",
+    "forminit": "^0.2.3"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
