@@ -18,85 +18,49 @@
 </form>
 
 <script>
-  // Replace with your actual Forminit Form ID for newsletter
+  // @ts-ignore - Forminit is loaded from external script in Layout
+  const forminit = new Forminit();
   const NEWSLETTER_FORM_ID = '1q9gp77a4zm';
-
+  
   const form = document.getElementById('newsletter-form') as HTMLFormElement;
-  const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
-  const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-  const input = form.querySelector('input[type="email"]') as HTMLInputElement;
-
-  // Load Forminit SDK (check if already loaded)
-  const loadForminit = () => {
-    return new Promise((resolve, reject) => {
-      // @ts-ignore
-      if (typeof Forminit !== 'undefined') {
-        resolve(true);
-        return;
-      }
-
-      const script = document.createElement('script');
-      script.src = 'https://forminit.com/sdk/v1/forminit.js';
-      script.onload = () => resolve(true);
-      script.onerror = () => reject(new Error('Failed to load Forminit SDK'));
-      document.body.appendChild(script);
-    });
-  };
-
-  loadForminit()
-    .then(() => {
-      // @ts-ignore
-      const forminit = new Forminit();
-
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // Reset and show sending state
-        status.textContent = 'Subscribing...';
-        status.className = 'newsletter-status status-sending';
-        button.disabled = true;
-        const originalButtonText = button.textContent;
-        button.textContent = 'Sending...';
-
-        const formData = new FormData(form);
-
-        try {
-          // @ts-ignore
-          const { data, error } = await forminit.submit(NEWSLETTER_FORM_ID, formData);
-
-          button.disabled = false;
-          button.textContent = originalButtonText;
-
-          if (error) {
-            status.textContent = error.message || 'Subscription failed. Please try again.';
-            status.className = 'newsletter-status status-error';
-            return;
-          }
-
-          // Success!
-          status.textContent = 'Success! You\'re subscribed to updates.';
-          status.className = 'newsletter-status status-success';
-          input.value = '';
-
-          // Clear success message after 5 seconds
-          setTimeout(() => {
-            status.textContent = '';
-            status.className = 'newsletter-status';
-          }, 5000);
-        } catch (err) {
-          button.disabled = false;
-          button.textContent = originalButtonText;
-          status.textContent = 'Something went wrong. Please try again.';
-          status.className = 'newsletter-status status-error';
-          console.error('Newsletter subscription error:', err);
-        }
-      });
-    })
-    .catch((err) => {
-      console.error('Forminit SDK loading error:', err);
-      status.textContent = 'Form unavailable. Please try again later.';
+  
+  form?.addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const input = form.querySelector('input[type="email"]') as HTMLInputElement;
+    const originalButtonText = button.textContent;
+    
+    // Show sending state
+    status.textContent = 'Subscribing...';
+    status.className = 'newsletter-status status-sending';
+    button.disabled = true;
+    button.textContent = 'Sending...';
+    
+    const formData = new FormData(form);
+    // @ts-ignore - forminit types
+    const { data, error } = await forminit.submit(NEWSLETTER_FORM_ID, formData);
+    
+    button.disabled = false;
+    button.textContent = originalButtonText || 'Notify Me';
+    
+    if (error) {
+      status.textContent = error.message || 'Subscription failed. Please try again.';
       status.className = 'newsletter-status status-error';
-    });
+      return;
+    }
+    
+    status.textContent = 'Success! You\'re subscribed to updates.';
+    status.className = 'newsletter-status status-success';
+    input.value = '';
+    
+    // Clear success message after 5 seconds
+    setTimeout(() => {
+      status.textContent = '';
+      status.className = 'newsletter-status';
+    }, 5000);
+  });
 </script>
 
 <style>
