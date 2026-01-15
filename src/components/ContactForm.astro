@@ -3,17 +3,23 @@
 ---
 
 <div class="contact-form-wrapper">
-  <form id="contact-form" class="contact-form">
+  <form 
+    id="contact-form" 
+    class="contact-form"
+    method="POST"
+    action="https://forminit.com/f/d90rfc8kn9k"
+    accept-charset="UTF-8"
+  >
     <h3>Send us a Message</h3>
 
     <div class="form-row">
       <div class="form-group">
         <label for="firstName">First Name *</label>
-        <input type="text" id="firstName" name="fi-sender-firstName" placeholder="First Name" required>
+        <input type="text" id="firstName" name="fi-sender-firstName" placeholder="First Name" required minlength="2">
       </div>
       <div class="form-group">
         <label for="lastName">Last Name *</label>
-        <input type="text" id="lastName" name="fi-sender-lastName" placeholder="Last Name" required>
+        <input type="text" id="lastName" name="fi-sender-lastName" placeholder="Last Name" required minlength="2">
       </div>
     </div>
 
@@ -37,62 +43,18 @@
 
     <div class="form-group">
       <label for="message">Message *</label>
-      <textarea id="message" name="fi-text-message" rows="5" placeholder="Your message..." required></textarea>
+      <textarea id="message" name="fi-text-message" rows="5" placeholder="Your message..." required minlength="10"></textarea>
     </div>
 
     <input type="hidden" name="website_url" style="display:none !important" />
 
     <button type="submit" class="btn btn-primary btn-full">Send Message</button>
 
-    <p id="form-result" class="form-status" aria-live="polite"></p>
-
     <p class="form-note">
       We typically respond within 24-48 hours on business days.
     </p>
   </form>
 </div>
-
-<script>
-  const forminit = new Forminit();
-  const FORM_ID = 'd90rfc8kn9k';
-  
-  const form = document.getElementById('contact-form');
-  
-  form.addEventListener('submit', async function(event) {
-    event.preventDefault();
-    
-    const result = document.getElementById('form-result');
-    const button = form.querySelector('button[type="submit"]');
-    const originalButtonText = button.textContent;
-    
-    // Show sending state
-    result.textContent = 'Sending...';
-    result.className = 'form-status status-sending';
-    button.disabled = true;
-    button.textContent = 'Sending...';
-    
-    const formData = new FormData(form);
-    const { data, redirectUrl, error } = await forminit.submit(FORM_ID, formData);
-    
-    button.disabled = false;
-    button.textContent = originalButtonText;
-    
-    if (error) {
-      result.textContent = error.message;
-      result.className = 'form-status status-error';
-      return;
-    }
-    
-    result.textContent = 'Message sent successfully!';
-    result.className = 'form-status status-success';
-    form.reset();
-    
-    // Redirect to thank you page after 2 seconds
-    setTimeout(() => {
-      window.location.href = redirectUrl || '/thankyou';
-    }, 2000);
-  });
-</script>
 
 <style>
   .form-status {

@@ -1,9 +1,14 @@
 ---
 // Newsletter Form Component with Forminit Integration
-// Replace 'YOUR-NEWSLETTER-FORM-ID' with your actual Forminit form ID
 ---
 
-<form id="newsletter-form" class="newsletter-form">
+<form 
+  id="newsletter-form" 
+  class="newsletter-form"
+  method="POST"
+  action="https://forminit.com/f/1q9gp77a4zm"
+  accept-charset="UTF-8"
+>
   <div class="form-group">
     <input
       type="email"
@@ -14,54 +19,7 @@
     >
     <button type="submit" class="btn btn-primary">Notify Me</button>
   </div>
-  <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
 </form>
-
-<script>
-  // @ts-ignore - Forminit is loaded from external script in Layout
-  const forminit = new Forminit();
-  const NEWSLETTER_FORM_ID = '1q9gp77a4zm';
-  
-  const form = document.getElementById('newsletter-form') as HTMLFormElement;
-  
-  form?.addEventListener('submit', async function(event) {
-    event.preventDefault();
-    
-    const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
-    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
-    const input = form.querySelector('input[type="email"]') as HTMLInputElement;
-    const originalButtonText = button.textContent;
-    
-    // Show sending state
-    status.textContent = 'Subscribing...';
-    status.className = 'newsletter-status status-sending';
-    button.disabled = true;
-    button.textContent = 'Sending...';
-    
-    const formData = new FormData(form);
-    // @ts-ignore - forminit types
-    const { data, error } = await forminit.submit(NEWSLETTER_FORM_ID, formData);
-    
-    button.disabled = false;
-    button.textContent = originalButtonText || 'Notify Me';
-    
-    if (error) {
-      status.textContent = error.message || 'Subscription failed. Please try again.';
-      status.className = 'newsletter-status status-error';
-      return;
-    }
-    
-    status.textContent = 'Success! You\'re subscribed to updates.';
-    status.className = 'newsletter-status status-success';
-    input.value = '';
-    
-    // Clear success message after 5 seconds
-    setTimeout(() => {
-      status.textContent = '';
-      status.className = 'newsletter-status';
-    }, 5000);
-  });
-</script>
 
 <style>
   .newsletter-status {
