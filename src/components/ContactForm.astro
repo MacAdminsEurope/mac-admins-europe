@@ -1,6 +1,5 @@
 ---
 // Contact Form Component with Forminit Integration
-// Replace 'YOUR-FORM-ID' with your actual Forminit form ID
 ---
 
 <div class="contact-form-wrapper">
@@ -9,13 +8,18 @@
 
     <div class="form-row">
       <div class="form-group">
-        <label for="name">Your Name *</label>
-        <input type="text" id="name" name="fi-sender-name" required>
+        <label for="firstName">First Name *</label>
+        <input type="text" id="firstName" name="fi-sender-firstName" placeholder="First Name" required>
       </div>
       <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="fi-sender-email" required>
+        <label for="lastName">Last Name *</label>
+        <input type="text" id="lastName" name="fi-sender-lastName" placeholder="Last Name" required>
       </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="fi-sender-email" placeholder="your@email.com" required>
     </div>
 
     <div class="form-group">
@@ -33,12 +37,14 @@
 
     <div class="form-group">
       <label for="message">Message *</label>
-      <textarea id="message" name="fi-text-message" rows="5" required></textarea>
+      <textarea id="message" name="fi-text-message" rows="5" placeholder="Your message..." required></textarea>
     </div>
+
+    <input type="hidden" name="website_url" style="display:none !important" />
 
     <button type="submit" class="btn btn-primary btn-full">Send Message</button>
 
-    <p id="form-status" class="form-status" aria-live="polite"></p>
+    <p id="form-result" class="form-status" aria-live="polite"></p>
 
     <p class="form-note">
       We typically respond within 24-48 hours on business days.
@@ -47,45 +53,43 @@
 </div>
 
 <script>
-  // @ts-ignore - Forminit is loaded from external script
   const forminit = new Forminit();
-  const FORM_ID = "d90rfc8kn9k";
-
-  document.getElementById("contact-form")?.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  const FORM_ID = 'd90rfc8kn9k';
+  
+  const form = document.getElementById('contact-form');
+  
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault();
     
-    const form = e.target as HTMLFormElement;
-    const status = document.getElementById('form-status') as HTMLParagraphElement;
-    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const result = document.getElementById('form-result');
+    const button = form.querySelector('button[type="submit"]');
     const originalButtonText = button.textContent;
     
     // Show sending state
-    status.textContent = 'Sending...';
-    status.className = 'form-status status-sending';
+    result.textContent = 'Sending...';
+    result.className = 'form-status status-sending';
     button.disabled = true;
     button.textContent = 'Sending...';
     
     const formData = new FormData(form);
-    // @ts-ignore - forminit types
-    const { data, error } = await forminit.submit(FORM_ID, formData);
+    const { data, redirectUrl, error } = await forminit.submit(FORM_ID, formData);
     
     button.disabled = false;
-    button.textContent = originalButtonText || 'Send Message';
+    button.textContent = originalButtonText;
     
     if (error) {
-      status.textContent = error.message;
-      status.className = 'form-status status-error';
+      result.textContent = error.message;
+      result.className = 'form-status status-error';
       return;
     }
     
-    status.textContent = "Message sent successfully! We'll get back to you soon.";
-    status.className = 'form-status status-success';
+    result.textContent = 'Message sent successfully!';
+    result.className = 'form-status status-success';
     form.reset();
     
     // Redirect to thank you page after 2 seconds
     setTimeout(() => {
-      const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
-      window.location.href = `${base}/thankyou`;
+      window.location.href = redirectUrl || '/thankyou';
     }, 2000);
   });
 </script>
