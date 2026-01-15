@@ -124,7 +124,7 @@ const base = baseUrl === '/' ? '' : baseUrl;
           Bringing your team? Contact us for group discounts on 5 or more tickets. 
           We also offer custom packages for companies looking to maximize their experience.
         </p>
-        <a href="mailto:tickets@macadmins-eu.org" class="btn btn-outline">Contact for Group Rates</a>
+        <a href={`${base}/contact`} class="btn btn-primary">Contact for Group Rates</a>
       </div>
 
       <div class="faq">
@@ -157,14 +157,15 @@ const base = baseUrl === '/' ? '' : baseUrl;
         </div>
       </div>
 
-      <div class="newsletter-cta">
+<!--       <div class="newsletter-cta">
         <h3>Be the First to Know</h3>
         <p>Subscribe to our newsletter to get notified when ticket sales open.</p>
         <form class="newsletter-form" action="https://getform.io/f/aroxxeqb" method="POST">
           <input type="email" name="email" placeholder="your@email.com" required>
           <button type="submit" class="btn btn-primary">Notify Me</button>
         </form>
-      </div>
+      </div> -->
+
     </div>
   </section>
 </Layout>

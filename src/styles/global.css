@@ -153,7 +153,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .btn-primary:hover {
   background: var(--eu-gold-light);
-  color: #003399 !important;
+  color: var(--eu-blue) !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
 }
@@ -183,84 +183,34 @@ img { max-width: 100%; height: auto; display: block; }
 /* Section spacing */
 section { padding: var(--space-4xl) 0; }
 
-/* Badge */
-.badge {
-  display: inline-block;
-  padding: var(--space-xs) var(--space-md);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-radius: var(--radius-full);
-  background: var(--eu-gold);
-  color: var(--eu-blue-dark);
-}
-
-/* Card */
-.card {
-  background: var(--white);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  transition: all var(--transition-base);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
-}
-
-/* Grid utilities */
-.grid { display: grid; gap: var(--space-xl); }
-.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.grid-4 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
 /* Text utilities */
 .text-center { text-align: center; }
 .text-white { color: var(--white); }
 .text-gold { color: var(--eu-gold); }
-.text-blue { color: var(--eu-blue); }
 .text-muted { color: var(--gray-600); }
 
 /* Background utilities */
 .bg-blue { background-color: var(--eu-blue); }
-.bg-blue-dark { background-color: var(--eu-blue-dark); }
-.bg-gold { background-color: var(--eu-gold); }
-.bg-white { background-color: var(--white); }
 .bg-off-white { background-color: var(--off-white); }
 
 /* Spacing utilities */
-.mt-1 { margin-top: var(--space-md); }
 .mt-2 { margin-top: var(--space-xl); }
 .mt-3 { margin-top: var(--space-2xl); }
-.mb-1 { margin-bottom: var(--space-md); }
 .mb-2 { margin-bottom: var(--space-xl); }
-.mb-3 { margin-bottom: var(--space-2xl); }
 
 /* Opacity utilities */
 .opacity-90 { opacity: 0.9; }
-.opacity-85 { opacity: 0.85; }
-.opacity-80 { opacity: 0.8; }
 
 /* Max-width utilities */
 .max-w-500 { max-width: 500px; margin-left: auto; margin-right: auto; }
 .max-w-600 { max-width: 600px; margin-left: auto; margin-right: auto; }
-.max-w-700 { max-width: 700px; margin-left: auto; margin-right: auto; }
 
 /* Animations */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-fade-in-up { animation: fadeInUp 0.6s ease forwards; }
-.animate-float { animation: float 3s ease-in-out infinite; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -815,7 +765,7 @@ section { padding: var(--space-4xl) 0; }
 
 .speakers-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
 }
 
@@ -922,22 +872,6 @@ section { padding: var(--space-4xl) 0; }
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--eu-gold);
-}
-
-/* CFP Button specific styles */
-.cfp-button {
-  text-align: center;
-}
-
-.cfp-button .btn-primary {
-  background: var(--eu-gold);
-  color: var(--eu-blue-dark);
-  border: none;
-}
-
-.cfp-button .btn-primary:hover {
-  background: var(--eu-gold-light);
-  color: var(--eu-blue) !important;
 }
 
 /* ==========================================================================
@@ -1653,15 +1587,14 @@ section { padding: var(--space-4xl) 0; }
   padding: var(--space-4xl) 0;
 }
 
-.venue-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4xl);
+/* Venue header section - full width title */
+.venue-header-section {
+  text-align: center;
   margin-bottom: var(--space-4xl);
-  align-items: start;
 }
 
-.venue-details h2 {
+.venue-header-section h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   margin-bottom: var(--space-md);
 }
 
@@ -1669,51 +1602,63 @@ section { padding: var(--space-4xl) 0; }
   font-size: 1.125rem;
   color: var(--eu-blue);
   font-weight: 500;
-  margin-bottom: var(--space-lg);
+}
+
+/* Venue info grid - text beside 2x2 image grid */
+.venue-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+  margin-bottom: var(--space-4xl);
+}
+
+.venue-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
 .venue-description {
-  color: var(--gray-600);
-  margin-bottom: var(--space-md);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--gray-700);
 }
 
-/* Venue Gallery (Thumbnails) */
-.venue-gallery {
+/* 2x2 Gallery grid */
+.venue-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-xl);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
 }
 
 .venue-thumbnail {
-  background: var(--white);
+  cursor: pointer;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
 }
 
 .venue-thumbnail:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
 }
 
 .venue-thumbnail img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
   display: block;
+  aspect-ratio: 4/3;
 }
 
 .thumbnail-caption {
-  padding: var(--space-md);
-  margin: 0;
+  padding: var(--space-sm);
   font-size: 0.875rem;
   color: var(--gray-600);
   text-align: center;
-  font-style: italic;
+  background: var(--white);
 }
 
 /* Lightbox Modal */
@@ -1827,10 +1772,21 @@ section { padding: var(--space-4xl) 0; }
   transform: translateY(-50%) scale(1.1);
 }
 
+/* Map section - proper spacing */
+.venue-map-section {
+  margin-top: var(--space-4xl);
+  margin-bottom: var(--space-4xl);
+}
+
+.venue-map-section h2 {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
 .venue-map {
-  background: var(--gray-100);
   border-radius: var(--radius-xl);
   overflow: hidden;
+  box-shadow: var(--shadow-lg);
   height: 450px;
 }
 
@@ -1840,9 +1796,11 @@ section { padding: var(--space-4xl) 0; }
   border: none;
 }
 
-/* Why Leiden */
+/* Why Leiden section - proper spacing */
 .why-leiden {
-  margin-bottom: var(--space-4xl);
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-4xl);
+  border-top: 1px solid var(--gray-200);
 }
 
 .why-leiden h2 {
@@ -3020,8 +2978,13 @@ section { padding: var(--space-4xl) 0; }
   }
 
   /* Location page */
-  .venue-info {
+  .venue-info-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .venue-gallery-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
   .leiden-features,
@@ -3142,19 +3105,38 @@ section { padding: var(--space-4xl) 0; }
   }
 
   /* Location page */
+  .venue-header-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .venue-info-grid {
+    gap: var(--space-2xl);
+  }
+
+  .venue-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .venue-map {
+    height: 350px;
+  }
+
+  .venue-map-section {
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-3xl);
+  }
+
+  .why-leiden {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-3xl);
+  }
+
   .leiden-features,
   .travel-grid,
   .attractions-grid,
   .accommodation-grid {
     grid-template-columns: 1fr;
-  }
-
-  .venue-gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .venue-thumbnail img {
-    height: 180px;
   }
 
   .lightbox-close {

@@ -1,0 +1,134 @@
+---
+// Newsletter Form Component with Forminit Integration
+// Replace 'YOUR-NEWSLETTER-FORM-ID' with your actual Forminit form ID
+---
+
+<form id="newsletter-form" class="newsletter-form">
+  <div class="form-group">
+    <input
+      type="email"
+      name="fi-sender-email"
+      placeholder="your@email.com"
+      required
+      aria-label="Email address for newsletter"
+    >
+    <button type="submit" class="btn btn-primary">Notify Me</button>
+  </div>
+  <p id="newsletter-status" class="newsletter-status" aria-live="polite"></p>
+</form>
+
+<script>
+  // Replace with your actual Forminit Form ID for newsletter
+  const NEWSLETTER_FORM_ID = '1q9gp77a4zm';
+
+  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const status = document.getElementById('newsletter-status') as HTMLParagraphElement;
+  const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+  const input = form.querySelector('input[type="email"]') as HTMLInputElement;
+
+  // Load Forminit SDK (check if already loaded)
+  const loadForminit = () => {
+    return new Promise((resolve, reject) => {
+      // @ts-ignore
+      if (typeof Forminit !== 'undefined') {
+        resolve(true);
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://forminit.com/sdk/v1/forminit.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => reject(new Error('Failed to load Forminit SDK'));
+      document.body.appendChild(script);
+    });
+  };
+
+  loadForminit()
+    .then(() => {
+      // @ts-ignore
+      const forminit = new Forminit();
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Reset and show sending state
+        status.textContent = 'Subscribing...';
+        status.className = 'newsletter-status status-sending';
+        button.disabled = true;
+        const originalButtonText = button.textContent;
+        button.textContent = 'Sending...';
+
+        const formData = new FormData(form);
+
+        try {
+          // @ts-ignore
+          const { data, error } = await forminit.submit(NEWSLETTER_FORM_ID, formData);
+
+          button.disabled = false;
+          button.textContent = originalButtonText;
+
+          if (error) {
+            status.textContent = error.message || 'Subscription failed. Please try again.';
+            status.className = 'newsletter-status status-error';
+            return;
+          }
+
+          // Success!
+          status.textContent = 'Success! You\'re subscribed to updates.';
+          status.className = 'newsletter-status status-success';
+          input.value = '';
+
+          // Clear success message after 5 seconds
+          setTimeout(() => {
+            status.textContent = '';
+            status.className = 'newsletter-status';
+          }, 5000);
+        } catch (err) {
+          button.disabled = false;
+          button.textContent = originalButtonText;
+          status.textContent = 'Something went wrong. Please try again.';
+          status.className = 'newsletter-status status-error';
+          console.error('Newsletter subscription error:', err);
+        }
+      });
+    })
+    .catch((err) => {
+      console.error('Forminit SDK loading error:', err);
+      status.textContent = 'Form unavailable. Please try again later.';
+      status.className = 'newsletter-status status-error';
+    });
+</script>
+
+<style>
+  .newsletter-status {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .status-sending {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+  }
+
+  .status-success {
+    background: rgba(0, 166, 81, 0.15);
+    color: var(--eu-green);
+    border: 1px solid var(--eu-green);
+  }
+
+  .status-error {
+    background: rgba(220, 38, 38, 0.15);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+  }
+
+  .newsletter-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 const base = baseUrl === '/' ? '' : baseUrl;
@@ -56,48 +57,7 @@ const base = baseUrl === '/' ? '' : baseUrl;
           
         </div>
         
-        <div class="contact-form-wrapper">
-
-          <form class="contact-form" action="https://getform.io/f/aolqqyyb" method="POST">
-            <h3>Send us a Message</h3>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Your Name *</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="subject">Subject *</label>
-              <select id="subject" name="subject" required>
-                <option value="">Select a topic...</option>
-                <option value="tickets">Tickets & Registration</option>
-                <option value="sponsors">Group Bookings</option>
-                <option value="sponsorship">Sponsorship Inquiry</option>
-                <option value="speaking">Speaker Inquiries</option>
-                <option value="press">Press & Media</option>
-                <option value="other">Other</option>
-              </select>
-              <input type="hidden" name="_gotcha" style="display:none !important">
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Message *</label>
-              <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            
-            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-            
-            <p class="form-note">
-              We typically respond within 24-48 hours on business days.
-            </p>
-          </form>
-        </div>
+        <ContactForm />
     </div>
   </section>
 

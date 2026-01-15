@@ -1,0 +1,155 @@
+---
+// Contact Form Component with Forminit Integration
+// Replace 'YOUR-FORM-ID' with your actual Forminit form ID
+---
+
+<div class="contact-form-wrapper">
+  <form id="contact-form" class="contact-form">
+    <h3>Send us a Message</h3>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" name="fi-sender-name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="fi-sender-email" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Subject *</label>
+      <select id="subject" name="fi-select-subject" required>
+        <option value="">Select a topic...</option>
+        <option value="tickets">Tickets & Registration</option>
+        <option value="group-bookings">Group Bookings</option>
+        <option value="sponsorship">Sponsorship Inquiry</option>
+        <option value="speaking">Speaker Inquiries</option>
+        <option value="press">Press & Media</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message *</label>
+      <textarea id="message" name="fi-text-message" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+
+    <p id="form-status" class="form-status" aria-live="polite"></p>
+
+    <p class="form-note">
+      We typically respond within 24-48 hours on business days.
+    </p>
+  </form>
+</div>
+
+<script>
+  // Replace with your actual Forminit Form ID
+  const FORM_ID = 'd90rfc8kn9k';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('form-status') as HTMLParagraphElement;
+  const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+  // Load Forminit SDK
+  const script = document.createElement('script');
+  script.src = 'https://forminit.com/sdk/v1/forminit.js';
+  script.onload = () => {
+    // @ts-ignore - Forminit is loaded from external script
+    const forminit = new Forminit();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Reset status
+      status.textContent = 'Sending...';
+      status.className = 'form-status status-sending';
+      button.disabled = true;
+      button.textContent = 'Sending...';
+
+      const formData = new FormData(form);
+
+      try {
+        // @ts-ignore - forminit types
+        const { data, error, redirectUrl } = await forminit.submit(FORM_ID, formData);
+
+        button.disabled = false;
+        button.textContent = 'Send Message';
+
+        if (error) {
+          status.textContent = error.message || 'Something went wrong. Please try again.';
+          status.className = 'form-status status-error';
+          return;
+        }
+
+        // Success! Show message and optionally redirect
+        status.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+        status.className = 'form-status status-success';
+        form.reset();
+
+        // Redirect to thank you page after 2 seconds if redirectUrl is set
+        if (redirectUrl) {
+          setTimeout(() => {
+            window.location.href = redirectUrl;
+          }, 2000);
+        } else {
+          // Or redirect to your thank you page
+          setTimeout(() => {
+            const base = import.meta.env.BASE_URL;
+            window.location.href = `${base}/thankyou`;
+          }, 2000);
+        }
+      } catch (err) {
+        button.disabled = false;
+        button.textContent = 'Send Message';
+        status.textContent = 'Something went wrong. Please try again.';
+        status.className = 'form-status status-error';
+        console.error('Form submission error:', err);
+      }
+    });
+  };
+
+  script.onerror = () => {
+    console.error('Failed to load Forminit SDK');
+    status.textContent = 'Failed to load form. Please refresh the page.';
+    status.className = 'form-status status-error';
+  };
+
+  document.body.appendChild(script);
+</script>
+
+<style>
+  .form-status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .status-sending {
+    background: var(--gray-100);
+    color: var(--gray-700);
+  }
+
+  .status-success {
+    background: rgba(0, 166, 81, 0.1);
+    color: var(--eu-green);
+    border: 1px solid var(--eu-green);
+  }
+
+  .status-error {
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+    border: 1px solid #dc2626;
+  }
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+</style>

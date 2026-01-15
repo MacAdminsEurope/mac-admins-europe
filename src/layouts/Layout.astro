@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import NewsletterForm from '../components/NewsletterForm.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 const base = baseUrl === '/' ? '' : baseUrl;
@@ -115,15 +116,9 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
         <div class="footer-newsletter">
           <h4>Stay Updated</h4>
           <p>Get the latest news about speakers, sessions, and early bird tickets.</p>
-          <form class="newsletter-form" action="https://getform.io/f/aroxxeqb" method="POST">
-            <div class="form-group">
-          <input type="email" name="email" placeholder="your@email.com" required>
-              <button type="submit" class="btn btn-primary">Notify Me</button>
-          </form>
-        </div>
+          <NewsletterForm />
         </div>
       </div>
-      
       <div class="footer-bottom">
         <p>&copy; 2026 Mac Admins Europe. For the community, by the community.</p>
       </div>

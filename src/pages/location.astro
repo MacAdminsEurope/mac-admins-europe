@@ -16,13 +16,18 @@ const base = baseUrl === '/' ? '' : baseUrl;
 
   <section class="location-content">
     <div class="container">
-      <div class="venue-info">
-        <div class="venue-details">
-          <span class="section-label">Conference Venue</span>
-          <h2>Leidse Schouwburg – Stadsgehoorzaal</h2>
-          <p class="venue-address">
+      <div class="venue-header-section">
+        <span class="section-label">Conference Venue</span>
+        <h2>Leidse Schouwburg – Stadsgehoorzaal</h2>
+        <p class="venue-address">
+          <a href="https://www.google.com/maps/search/?api=1&query=Breestraat+60%2C+2311+CK+Leiden%2C+Netherlands" target="_blank" rel="noopener noreferrer">
             Breestraat 60, 2311 CK Leiden, Netherlands
-          </p>
+          </a>
+        </p>
+      </div>
+
+      <div class="venue-info-grid">
+        <div class="venue-details">
           <p class="venue-description">
             Experience Mac Admins Europe 2026 in a truly historic setting!
             The Leidse Schouwburg – Stadsgehoorzaal combines two monumental venues
@@ -37,27 +42,31 @@ const base = baseUrl === '/' ? '' : baseUrl;
             the perfect atmosphere for learning, networking, and community building.
           </p>
         </div>
-        <div class="venue-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2447.616511521583!2d4.4840605967895595!3d52.15948349999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5c6ed5eaed619%3A0x2c357eb707d8c249!2sStadsgehoorzaal!5e0!3m2!1sen!2snl!4v1767976704392!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+        <div class="venue-gallery-grid">
+          <div class="venue-thumbnail" data-image={`${base}/img/venue-main.jpg`} data-caption="Stadsgehoorzaal - Our stunning main venue">
+            <img src={`${base}/img/venue-main.jpg`} alt="Stadsgehoorzaal main venue exterior" loading="lazy">
+            <p class="thumbnail-caption">Stadsgehoorzaal - Our stunning main venue</p>
+          </div>
+          <div class="venue-thumbnail" data-image={`${base}/img/venue-main-side.jpg`} data-caption="Historic architecture meets modern conference facilities">
+            <img src={`${base}/img/venue-main-side.jpg`} alt="Stadsgehoorzaal side view" loading="lazy">
+            <p class="thumbnail-caption">Historic architecture meets modern conference facilities</p>
+          </div>
+          <div class="venue-thumbnail" data-image={`${base}/img/venue-empty.jpg`} data-caption="The beautiful Aalmarktzaal hall - perfect setup for our conference">
+            <img src={`${base}/img/venue-empty.jpg`} alt="Empty Aalmarktzaal venue hall" loading="lazy">
+            <p class="thumbnail-caption">The beautiful Aalmarktzaal hall - perfect setup for our conference</p>
+          </div>
+          <div class="venue-thumbnail" data-image={`${base}/img/venue-conference.jpg`} data-caption="Conference in progress - see how the venue comes to life!">
+            <img src={`${base}/img/venue-conference.jpg`} alt="Aalmarktzaal filled with conference attendees" loading="lazy">
+            <p class="thumbnail-caption">Conference in progress - see how the venue comes to life!</p>
+          </div>
         </div>
       </div>
 
-      <div class="venue-gallery">
-        <div class="venue-thumbnail" data-image={`${base}/img/venue-main.jpg`} data-caption="Stadsgehoorzaal - Our stunning main venue">
-          <img src={`${base}/img/venue-main.jpg`} alt="Stadsgehoorzaal main venue exterior" loading="lazy">
-          <p class="thumbnail-caption">Stadsgehoorzaal - Our stunning main venue</p>
-        </div>
-        <div class="venue-thumbnail" data-image={`${base}/img/venue-main-side.jpg`} data-caption="Historic architecture meets modern conference facilities">
-          <img src={`${base}/img/venue-main-side.jpg`} alt="Stadsgehoorzaal side view" loading="lazy">
-          <p class="thumbnail-caption">Historic architecture meets modern conference facilities</p>
-        </div>
-        <div class="venue-thumbnail" data-image={`${base}/img/venue-empty.jpg`} data-caption="The beautiful Aalmarktzaal hall - perfect setup for our conference">
-          <img src={`${base}/img/venue-empty.jpg`} alt="Empty Aalmarktzaal venue hall" loading="lazy">
-          <p class="thumbnail-caption">The beautiful Aalmarktzaal hall - perfect setup for our conference</p>
-        </div>
-        <div class="venue-thumbnail" data-image={`${base}/img/venue-conference.jpg`} data-caption="Conference in progress - see how the venue comes to life!">
-          <img src={`${base}/img/venue-conference.jpg`} alt="Aalmarktzaal filled with conference attendees" loading="lazy">
-          <p class="thumbnail-caption">Conference in progress - see how the venue comes to life!</p>
+      <div class="venue-map-section">
+        <h2>Find Us</h2>
+        <div class="venue-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2447.616511521583!2d4.4840605967895595!3d52.15948349999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5c6ed5eaed619%3A0x2c357eb707d8c249!2sStadsgehoorzaal!5e0!3m2!1sen!2snl!4v1767976704392!5m2!1sen!2snl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
 
@@ -114,10 +123,10 @@ const base = baseUrl === '/' ? '' : baseUrl;
             <h3>🚂 By Train</h3>
             <p>Leiden Central Station is well-connected to all major Dutch cities and international destinations.</p>
             <ul>
-              <li>📍 <strong class="location">Amsterdam</strong> - ⏱️ <strong class="time">35 minutes</strong></li>
-              <li>📍 <strong class="location">Rotterdam</strong> - ⏱️ <strong class="time">30 minutes</strong></li>
-              <li>📍 <strong class="location">The Hague</strong> - ⏱️ <strong class="time">10 minutes</strong></li>
-              <li>📍 <strong class="location">Utrecht</strong> - ⏱️ <strong class="time">40 minutes</strong></li>
+              <li>📍 <strong class="location">Amsterdam</strong> <br/>⏱️ <strong class="time">~35 minutes</strong></li>
+              <li>📍 <strong class="location">Rotterdam</strong> <br/>⏱️ <strong class="time">~30 minutes</strong></li>
+              <li>📍 <strong class="location">The Hague</strong> <br/>⏱️ <strong class="time">~10 minutes</strong></li>
+              <li>📍 <strong class="location">Utrecht</strong> <br/>⏱️ <strong class="time">~40 minutes</strong></li>
             </ul>
             <p class="travel-tip">
               <strong>Tip:</strong> Book train tickets at <a href="https://www.ns.nl" target="_blank">ns.nl</a> or use the NS app. Consider an OV-chipkaart for easy travel.
@@ -128,8 +137,8 @@ const base = baseUrl === '/' ? '' : baseUrl;
             <h3>🚗 By Car</h3>
             <p>Leiden is easily accessible via the A4 and A44 motorways. Note that parking in the city center can be limited and expensive.</p>
             <ul>
-              <li>📍 <strong class="location">Amsterdam</strong> - 🚗 <strong class="distance">~40 km</strong> - ⏱️ <strong class="time">30-45 min</strong></li>
-              <li>📍 <strong class="location">Rotterdam</strong> - 🚗 <strong class="distance">~35 km</strong> - ⏱️ <strong class="time">30-40 min</strong></li>
+              <li>📍 <strong class="location">Amsterdam</strong> <br/>  🚗 <strong class="distance">~40 km</strong> - ⏱️ <strong class="time">30-45 min</strong></li>
+              <li>📍 <strong class="location">Rotterdam</strong> <br/>  🚗 <strong class="distance">~35 km</strong> - ⏱️ <strong class="time">30-40 min</strong></li>
             </ul>
              <p class="travel-tip">
                          <strong>Tip:</strong>P+R facilities available at city edges
@@ -201,8 +210,7 @@ const base = baseUrl === '/' ? '' : baseUrl;
         </div>
 
         <p class="accommodation-note">
-          <strong>Pro tip:</strong> Also consider staying in nearby cities like The Hague or Schiphol area 
-          if Leiden is fully booked. Train connections are excellent!
+          <strong>Pro tip:</strong> Also consider staying in nearby cities like The Hague or Lisse area if Leiden is fully booked. Train connections are excellent!
         </p>
       </div>
 
@@ -215,6 +223,7 @@ const base = baseUrl === '/' ? '' : baseUrl;
             <span class="attraction-icon">🌷</span>
             <h4>Keukenhof Gardens</h4>
             <p>World-famous flower gardens, open in spring. Just 20 minutes away!</p>
+            <a href="https://keukenhof.nl/en/" target="_blank" rel="noopener" class="attraction-link">Visit Website</a>
           </div>
           <div class="attraction">
             <span class="attraction-icon">🎨</span>
@@ -333,4 +342,5 @@ const base = baseUrl === '/' ? '' : baseUrl;
     });
   </script>
 </Layout>
+
 
