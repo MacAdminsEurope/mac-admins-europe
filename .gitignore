@@ -6,6 +6,9 @@ dist/
 CLAUDE.md
 .claude/
 
+# Project Documentation (local only)
+project.md
+
 # Dependencies
 node_modules/
 
