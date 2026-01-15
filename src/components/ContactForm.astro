@@ -10,17 +10,17 @@
     <div class="form-row">
       <div class="form-group">
         <label for="name">Your Name *</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="fi-sender-name" required>
       </div>
       <div class="form-group">
         <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="fi-sender-email" required>
       </div>
     </div>
 
     <div class="form-group">
       <label for="subject">Subject *</label>
-      <select id="subject" name="subject" required>
+      <select id="subject" name="fi-select-subject" required>
         <option value="">Select a topic...</option>
         <option value="tickets">Tickets & Registration</option>
         <option value="group-bookings">Group Bookings</option>
@@ -33,7 +33,7 @@
 
     <div class="form-group">
       <label for="message">Message *</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <textarea id="message" name="fi-text-message" rows="5" required></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary btn-full">Send Message</button>
@@ -54,71 +54,77 @@
   const status = document.getElementById('form-status') as HTMLParagraphElement;
   const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 
-  // Load Forminit SDK
-  const script = document.createElement('script');
-  script.src = 'https://forminit.com/sdk/v1/forminit.js';
-  script.onload = () => {
-    // @ts-ignore - Forminit is loaded from external script
-    const forminit = new Forminit();
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Reset status
-      status.textContent = 'Sending...';
-      status.className = 'form-status status-sending';
-      button.disabled = true;
-      button.textContent = 'Sending...';
-
-      const formData = new FormData(form);
-
-      try {
-        // @ts-ignore - forminit types
-        const { data, error, redirectUrl } = await forminit.submit(FORM_ID, formData);
-
-        button.disabled = false;
-        button.textContent = 'Send Message';
-
-        if (error) {
-          status.textContent = error.message || 'Something went wrong. Please try again.';
-          status.className = 'form-status status-error';
-          return;
-        }
-
-        // Success! Show message and optionally redirect
-        status.textContent = 'Message sent successfully! We\'ll get back to you soon.';
-        status.className = 'form-status status-success';
-        form.reset();
-
-        // Redirect to thank you page after 2 seconds if redirectUrl is set
-        if (redirectUrl) {
-          setTimeout(() => {
-            window.location.href = redirectUrl;
-          }, 2000);
-        } else {
-          // Or redirect to your thank you page
-          setTimeout(() => {
-            const base = import.meta.env.BASE_URL;
-            window.location.href = `${base}/thankyou`;
-          }, 2000);
-        }
-      } catch (err) {
-        button.disabled = false;
-        button.textContent = 'Send Message';
-        status.textContent = 'Something went wrong. Please try again.';
-        status.className = 'form-status status-error';
-        console.error('Form submission error:', err);
+  // Load Forminit SDK (check if already loaded)
+  const loadForminit = () => {
+    return new Promise((resolve, reject) => {
+      // @ts-ignore
+      if (typeof Forminit !== 'undefined') {
+        resolve(true);
+        return;
       }
+
+      const script = document.createElement('script');
+      script.src = 'https://forminit.com/sdk/v1/forminit.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => reject(new Error('Failed to load Forminit SDK'));
+      document.body.appendChild(script);
     });
   };
 
-  script.onerror = () => {
-    console.error('Failed to load Forminit SDK');
-    status.textContent = 'Failed to load form. Please refresh the page.';
-    status.className = 'form-status status-error';
-  };
+  loadForminit()
+    .then(() => {
+      // @ts-ignore
+      const forminit = new Forminit();
 
-  document.body.appendChild(script);
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Reset and show sending state
+        status.textContent = 'Sending...';
+        status.className = 'form-status status-sending';
+        button.disabled = true;
+        const originalButtonText = button.textContent;
+        button.textContent = 'Sending...';
+
+        const formData = new FormData(form);
+
+        try {
+          // @ts-ignore
+          const { data, error } = await forminit.submit(FORM_ID, formData);
+
+          button.disabled = false;
+          button.textContent = originalButtonText;
+
+          if (error) {
+            status.textContent = error.message || 'Something went wrong. Please try again.';
+            status.className = 'form-status status-error';
+            return;
+          }
+
+          // Success!
+          status.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+          status.className = 'form-status status-success';
+          form.reset();
+
+          // Redirect to thank you page after 2 seconds
+          setTimeout(() => {
+            const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+            window.location.href = `${base}/thankyou`;
+          }, 2000);
+        } catch (err) {
+          button.disabled = false;
+          button.textContent = originalButtonText;
+          status.textContent = 'Something went wrong. Please try again.';
+          status.className = 'form-status status-error';
+          console.error('Form submission error:', err);
+        }
+      });
+    })
+    .catch((err) => {
+      console.error('Forminit SDK loading error:', err);
+      status.textContent = 'Form unavailable. Please try again later.';
+      status.className = 'form-status status-error';
+    });
 </script>
 
 <style>
