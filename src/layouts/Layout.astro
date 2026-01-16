@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import 'lineicons/dist/lineicons.css';
 import NewsletterForm from '../components/NewsletterForm.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -108,7 +109,8 @@ const { title, description = "Mac Admins Europe - For the community, by the comm
           <ul>
             <li><a href={`${base}/contact`}>Contact</a></li>
             <li><a href={`${base}/community`}>Community</a></li>
-            <li><a href={`${base}/code-of-conduct`}>Code of Conduct</a></li>
+            <li><a href="https://github.com/macadminsdotorg/codeofconduct">Code of Conduct</a></li>
+            <li><a href={`${base}/convince-the-boss`}>Convince the Boss</a></li>
             <li><a href={`${base}/privacy`}>Privacy Policy</a></li>
           </ul>
         </div>

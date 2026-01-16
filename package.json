@@ -11,7 +11,8 @@
   "dependencies": {
     "@astrojs/node": "^9.5.1",
     "astro": "^5.16.7",
-    "forminit": "^0.2.3"
+    "forminit": "^0.2.3",
+    "lineicons": "^1.3.2"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
