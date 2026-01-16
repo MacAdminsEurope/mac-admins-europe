@@ -264,6 +264,10 @@ section { padding: var(--space-4xl) 0; }
   color: var(--eu-gold);
 }
 
+.logo-text {
+  white-space: nowrap;
+}
+
 .logo-text strong {
   font-weight: 800;
 }
