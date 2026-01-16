@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === '/' ? '' : baseUrl;
+---
+
+<Layout title="Convince the Boss - Mac Admins Europe 2026" description="Need to convince your boss to send you to Mac Admins Europe? Here are five solid arguments for why attending this conference is a smart investment.">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Make Your Case</span>
+      <h1>Convince the Boss</h1>
+      <p>Five solid arguments for attending Mac Admins Europe 2026</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="contact-content">
+    <div class="container">
+      <div class="coc-wrapper">
+
+        <div class="coc-section">
+          <div class="venue-header-section">
+            <span class="section-label">Read on</span>
+            <h2>Want to go but need to convince your boss?</h2>
+            <p>Here are five solid arguments.</p>
+          </div>
+        </div>
+
+        <div class="coc-section">
+          <h2>🇪🇺 It's focused, European, and built for us</h2>
+          <p>Mac Admins Europe isn't some massive generic tech conference. It's a European meetup specifically for Apple admins—around 200+ people who actually manage macOS and iOS fleets day-to-day. The sessions, discussions, and solutions reflect European organizations, GDPR realities, and local compliance needs. Everything's designed around how we actually work here, not retrofitted from somewhere else.</p>
+        </div>
+
+        <div class="coc-section">
+          <h2>👥 Smaller means better (and way more fun)</h2>
+          <p>Unlike massive conferences where you're fighting crowds of thousands, this event is intentionally kept small. That means real access to speakers, vendors, and peers who get what you're dealing with. I'll actually have time to dig into our specific challenges—security, automation, deployment, compliance—and come back with concrete answers, not just generic "best practices" slides. Plus, you know, actual conversations instead of awkward hallway small talk.</p>
+        </div>
+
+        <div class="coc-section">
+          <h2>🤝 It builds our European network</h2>
+          <p>By going, we're connecting with the European Mac admin community we already rely on for knowledge and support. I'll meet people at other orgs solving the exact same problems we face, compare approaches and tooling, and build a local network we can lean on when new OS releases drop or regulations change. Think of it as investing in our support system before we actually need emergency help at 3am.</p>
+        </div>
+
+        <div class="coc-section">
+          <h2>⚡ Immediate practical impact</h2>
+          <p>The program focuses on expert sessions and hands-on workshops around macOS, iOS, and MDM. I expect to bring back at least 3-5 concrete improvements to our workflows, ideas to reduce manual work and support tickets through automation, and updated security practices that match what other European organizations are actually doing. I'll document everything in a short post-event summary so we can clearly track the value. No fluff, just actionable stuff.</p>
+        </div>
+
+        <div class="coc-section">
+          <h2>💰 Low overhead, clear ROI</h2>
+          <p>It's a single-day event on April 30 in Leiden—easy to reach from Schiphol with good public transport. Total cost is around €500-1000 (ticket, travel, maybe a hotel if needed). That's way cheaper than multi-day international conferences while delivering:</p>
+          <ul class="coc-list">
+            <li>Focused learning time with minimal disruption</li>
+            <li>Direct access to European peers and vendors</li>
+            <li>Long-term value from being part of a growing European community</li>
+          </ul>
+          <p>If it helps, I can prep a quick agenda beforehand (key sessions, specific questions to ask) and a concise debrief afterwards outlining improvements, estimated time savings, and follow-up actions. That way we can clearly measure the ROI and justify future attendance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section bg-blue">
+    <div class="container text-center">
+      <h2 class="text-white">Ready to make your case?</h2>
+      <p class="text-white opacity-90 max-w-500 mb-2">
+        Need more information or have questions? Get in touch and we'll help you build the perfect pitch.
+      </p>
+      <a href={`${base}/tickets`} class="btn btn-primary">Get Your Ticket</a>
+    </div>
+  </section>
+</Layout>
