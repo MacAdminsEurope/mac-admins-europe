@@ -1065,6 +1065,14 @@ section { padding: var(--space-4xl) 0; }
   margin-bottom: var(--space-md);
 }
 
+.cta-section a:not(.btn) {
+  color: var(--eu-gold);
+}
+
+.cta-section a:not(.btn):hover {
+  color: var(--eu-gold-light);
+}
+
 /* ==========================================================================
    PROGRAM PAGE
    ========================================================================== */
