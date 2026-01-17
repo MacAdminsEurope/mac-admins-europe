@@ -14,6 +14,14 @@
   --eu-green-dark: #008540;
   --eu-green-light: #00B860;
   
+  /* Status Colors */
+  --error-red: #dc2626;
+  --error-red-light: #ff6b6b;
+  --success-green-bg: #e8f5e9;
+  --success-green-text: #2e7d32;
+  --social-pink-bg: #fce4ec;
+  --social-pink-text: #c2185b;
+  
   /* Neutrals */
   --white: #ffffff;
   --off-white: #f8f9fa;
@@ -153,7 +161,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 .btn-primary:hover {
   background: var(--eu-gold-light);
-  color: var(--eu-blue) !important;
+  color: var(--eu-blue);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
 }
@@ -1046,6 +1054,13 @@ section { padding: var(--space-4xl) 0; }
   padding: var(--space-4xl) 0;
 }
 
+.cta-section .cta-logo {
+  display: block;
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto var(--space-lg);
+}
+
 .cta-section h2 {
   margin-bottom: var(--space-md);
 }
@@ -1142,13 +1157,13 @@ section { padding: var(--space-4xl) 0; }
 }
 
 .registration .block-type {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: var(--success-green-bg);
+  color: var(--success-green-text);
 }
 
 .social .block-type {
-  background: #fce4ec;
-  color: #c2185b;
+  background: var(--social-pink-bg);
+  color: var(--social-pink-text);
 }
 
 .block-content h3 {
@@ -3215,13 +3230,21 @@ section { padding: var(--space-4xl) 0; }
    COMMUNITY PAGE STYLES
    ========================================================================== */
 
-.community-content {
+/* Community Section - consistent with other pages */
+.community-section {
   padding: var(--space-4xl) 0;
 }
 
-/* Map Section */
-.map-section {
-  margin-bottom: var(--space-4xl);
+/* Section titles for community page */
+.community-section .section-title {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.community-section .section-subtitle {
+  text-align: center;
+  color: var(--gray-600);
+  margin-bottom: var(--space-2xl);
 }
 
 .map-embed {
@@ -3286,9 +3309,6 @@ section { padding: var(--space-4xl) 0; }
 }
 
 /* Community Events */
-.events-section {
-  margin-bottom: var(--space-4xl);
-}
 
 .community-events-grid {
   display: grid;
@@ -3424,8 +3444,9 @@ section { padding: var(--space-4xl) 0; }
 }
 
 /* Join Section */
-.join-section {
-  margin-bottom: var(--space-4xl);
+.join-content .section-title {
+  text-align: center;
+  margin-bottom: var(--space-md);
 }
 
 .join-grid {
@@ -3485,24 +3506,25 @@ section { padding: var(--space-4xl) 0; }
 }
 
 /* Add Event */
-.add-event {
+.add-event-content {
   text-align: center;
-  background: var(--off-white);
-  padding: var(--space-3xl);
-  border-radius: var(--radius-xl);
 }
 
-.add-event h3 {
+.add-event-content h3 {
   margin-bottom: var(--space-sm);
 }
 
-.add-event p {
+.add-event-content p {
   color: var(--gray-600);
   margin-bottom: var(--space-xl);
 }
 
 /* Community Page Responsive */
 @media (max-width: 768px) {
+  .community-section {
+    padding: var(--space-3xl) 0;
+  }
+
   .groups-grid {
     grid-template-columns: repeat(2, 1fr);
   }

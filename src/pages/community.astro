@@ -1,5 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === "/" ? "" : baseUrl;
 ---
 
 <Layout title="Community | Mac Admins Europe 2026">
@@ -11,183 +14,327 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <section class="community-content">
+  <!-- Map Section -->
+  <section class="community-section">
     <div class="container">
-      
-      <!-- Map Section -->
-      <div class="map-section">
-        
+      <div class="map-content">
         <div class="section-header text-center">
-        <h2 class="section-title">Mac Admins Around Europe</h2>
-        <p class="section-subtitle">We're a European community connected by our passion for Apple administration. Here you can find the Mac Admins across Europe.</p>
+          <h2 class="section-title">Mac Admins Around Europe</h2>
+          <p class="section-subtitle">
+            We're a European community connected by our passion for Apple
+            administration. Here you can find the Mac Admins across Europe.
+          </p>
         </div>
         <div class="map-embed">
-          <iframe 
-            src="https://www.google.com/maps/d/embed?mid=1JbzWZz3nBKqku0eGQzKRdgsYL6QGFaU&ehbc=2E312F" 
-            width="100%" 
-            height="500" 
-            style="border:0; border-radius: 16px;" 
-            allowfullscreen="" 
-            loading="lazy">
+          <iframe
+            src="https://www.google.com/maps/d/embed?mid=1JbzWZz3nBKqku0eGQzKRdgsYL6QGFaU&ehbc=2E312F"
+            width="100%"
+            height="500"
+            style="border:0; border-radius: 16px;"
+            allowfullscreen=""
+            loading="lazy"
+          >
           </iframe>
         </div>
 
         <!-- Regional Groups Grid -->
         <div class="regional-groups">
           <div class="section-header text-center">
-          <p>Join your local community on the Mac Admins Slack</p>
-        </div>
+            <p>Join your local community on the Mac Admins Slack</p>
+          </div>
           <div class="groups-grid">
             <!-- Benelux -->
-            <a href="https://macadmins.slack.com/channels/thenetherlands" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/thenetherlands"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇳🇱🇧🇪</span>
               <span class="group-name">Mac Admins Benelux</span>
             </a>
-            
+
             <!-- Nordic -->
-            <a href="https://macadmins.slack.com/channels/iceland" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/iceland"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇮🇸</span>
               <span class="group-name">Mac Admins Iceland</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/norway" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/norway"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇳🇴</span>
               <span class="group-name">Mac Admins Norwegian</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/sweden" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/sweden"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇸🇪</span>
               <span class="group-name">Mac Admins Zweden</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/finland" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/finland"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇫🇮</span>
               <span class="group-name">Mac Admins Finnish</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/denmark" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/denmark"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇩🇰</span>
               <span class="group-name">Mac Admins Denmark</span>
             </a>
-            
+
             <!-- UK & Ireland -->
-            <a href="https://macadmins.slack.com/channels/ireland" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/ireland"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇮🇪</span>
               <span class="group-name">Mac Admins Ireland</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/scotland" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/scotland"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
               <span class="group-name">Mac Admins Scotland</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/london" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/london"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇬🇧</span>
               <span class="group-name">Apple Admins London</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/eastmidlands" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/eastmidlands"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇬🇧</span>
               <span class="group-name">Mac Admins East Midlands</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/westmidlands" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/westmidlands"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇬🇧</span>
               <span class="group-name">Mac Admins West Midlands</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/cambridge" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/cambridge"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇬🇧</span>
               <span class="group-name">Mac Admins Cambridge UK</span>
             </a>
-            
+
             <!-- Germany -->
-            <a href="https://macadmins.slack.com/channels/germany" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/germany"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇩🇪</span>
               <span class="group-name">Mac Admins Germany</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/hamburg" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/hamburg"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇩🇪</span>
               <span class="group-name">Mac Admins Hamburg</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/berlin" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/berlin"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇩🇪</span>
               <span class="group-name">Mac Admins Berlin</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/munich" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/munich"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇩🇪</span>
               <span class="group-name">Mac Admins Munich</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/franken-macadmins" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/franken-macadmins"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇩🇪</span>
               <span class="group-name">Mac Admins Nuremberg</span>
             </a>
-            
+
             <!-- Central Europe -->
-            <a href="https://macadmins.slack.com/channels/poland" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/poland"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇵🇱</span>
               <span class="group-name">Mac Admins PL</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/czech-admins" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/czech-admins"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇨🇿</span>
               <span class="group-name">Mac Admins Czech</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/ukraine" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/ukraine"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇺🇦</span>
               <span class="group-name">Mac Admins Kiev</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/switzerland" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/switzerland"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇨🇭</span>
               <span class="group-name">Mac Admins Swiss</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/austria" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/austria"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇦🇹</span>
               <span class="group-name">Mac Admins Austria</span>
             </a>
-            
+
             <!-- Southern Europe -->
-            <a href="https://macadmins.slack.com/channels/italia" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/italia"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇮🇹</span>
               <span class="group-name">Mac Admins Italia</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/france" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/france"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇫🇷</span>
               <span class="group-name">Mac Admins France</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/spain-admins" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/spain-admins"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇪🇸</span>
               <span class="group-name">Mac Admins Spain</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/portugal" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/portugal"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇵🇹</span>
               <span class="group-name">Mac Admins Portugal</span>
             </a>
-            <a href="https://macadmins.slack.com/channels/israel" target="_blank" class="group-item">
+            <a
+              href="https://macadmins.slack.com/channels/israel"
+              target="_blank"
+              class="group-item"
+            >
               <span class="group-flag">🇮🇱</span>
               <span class="group-name">Mac Admins Israel</span>
             </a>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Join Community Section -->
-      <div class="join-section">
+  <!-- Join Community Section -->
+  <section class="community-section">
+    <div class="container">
+      <div class="join-content">
         <h2 class="section-title">Join the Community</h2>
-        <p class="section-subtitle"></p>
+        <p class="section-subtitle">Learn and help others on Slack, contribute code on GitHub, or support the Mac Admins Foundation</p>
         <div class="join-grid">
-          <a href="https://macadmins.slack.com/join/shared_invite/zt-3ixgiyv84-f6Hhnpk36Ep0Ua1nN1OD3g#/shared-invite/email" target="_blank" class="join-card">
+          <a
+            href="https://macadmins.slack.com/join/shared_invite/zt-3ixgiyv84-f6Hhnpk36Ep0Ua1nN1OD3g#/shared-invite/email"
+            target="_blank"
+            class="join-card"
+          >
             <div class="join-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"
+                ></path>
               </svg>
             </div>
             <h3>Mac Admins Slack</h3>
             <p>80,000+ members discussing all things Apple admin</p>
           </a>
 
-          <a href="https://www.macadmins.org/" target="_blank" class="join-card join-card-foundation">
+          <a
+            href="https://www.macadmins.org/"
+            target="_blank"
+            class="join-card join-card-foundation"
+          >
             <div class="join-icon">
-              <img src="https://images.squarespace-cdn.com/content/v1/5c185595a2772c9fcbf1fc90/fc870892-52a1-453d-b417-b4f9d355476b/MAF_Badge_4c.png?format=300w" alt="Mac Admins Foundation" class="foundation-logo">
+              <img
+                src="https://images.squarespace-cdn.com/content/v1/5c185595a2772c9fcbf1fc90/fc870892-52a1-453d-b417-b4f9d355476b/MAF_Badge_4c.png?format=300w"
+                alt="Mac Admins Foundation"
+                class="foundation-logo"
+              />
             </div>
             <h3>Mac Admins Foundation</h3>
             <p>Supporting the community through grants and resources</p>
           </a>
 
-          <a href="https://github.com/macadmins" target="_blank" class="join-card">
+          <a
+            href="https://github.com/macadmins"
+            target="_blank"
+            class="join-card"
+          >
             <div class="join-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                ></path>
               </svg>
             </div>
             <h3>Mac Admins Open Source</h3>
@@ -195,17 +342,31 @@ import Layout from '../layouts/Layout.astro';
           </a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Community Events Section -->
-      <div class="events-section">
+  <!-- Community Events Section -->
+  <section class="community-section">
+    <div class="container">
+      <div class="events-content">
         <h2 class="section-title">Community Conferences</h2>
-        <p class="section-subtitle">Mac Admin conferences organized by the community</p>
-        
+        <p class="section-subtitle">
+          Mac Admin conferences organized by the community
+        </p>
+
         <div class="community-events-grid">
           <a href="/" class="community-event-card mac-admins-europe-card">
             <div class="community-event-logo">
-              <img src="/img/mac-admins-europe-logo-blue.png" alt="Mac Admins Europe" class="logo-default">
-              <img src="/img/mac-admins-europe-logo-white.png" alt="Mac Admins Europe" class="logo-hover">
+              <img
+                src="/img/mac-admins-europe-logo-blue.png"
+                alt="Mac Admins Europe"
+                class="logo-default"
+              />
+              <img
+                src="/img/mac-admins-europe-logo-white.png"
+                alt="Mac Admins Europe"
+                class="logo-hover"
+              />
             </div>
             <div class="community-event-info">
               <h3>Mac Admins Europe</h3>
@@ -214,66 +375,141 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </a>
 
-          <a href="https://conference.macadmins.in" target="_blank" class="community-event-card mac-admins-europe-card">
+          <a
+            href="https://conference.macadmins.in"
+            target="_blank"
+            class="community-event-card mac-admins-europe-card"
+          >
             <div class="community-event-logo">
-              <img src="/img/MacAdminsIndia.png" alt="Mac Admins India" class="logo-default">
-              <img src="/img/MacAdminsIndia-white.png" alt="Mac Admins India" class="logo-hover">
+              <img
+                src="/img/MacAdminsIndia.png"
+                alt="Mac Admins India"
+                class="logo-default"
+              />
+              <img
+                src="/img/MacAdminsIndia-white.png"
+                alt="Mac Admins India"
+                class="logo-hover"
+              />
             </div>
             <div class="community-event-info">
               <h3>Mac Admins India Connect</h3>
               <p class="event-location">Bengaluru, India • August 1, 2026</p>
-              <p class="event-tagline">The premier Mac Admin conference in India</p>
+              <p class="event-tagline">
+                The premier Mac Admin conference in India
+              </p>
             </div>
           </a>
 
-          <a href="https://macadmins.psu.edu/" target="_blank" class="community-event-card mac-admins-europe-card">
+          <a
+            href="https://macadmins.psu.edu/"
+            target="_blank"
+            class="community-event-card mac-admins-europe-card"
+          >
             <div class="community-event-logo">
-              <img src="/img/psu-blue.png" alt="PSU MacAdmins" class="logo-default">
-              <img src="/img/psu-white.png" alt="PSU MacAdmins" class="logo-hover">
+              <img
+                src="/img/psu-blue.png"
+                alt="PSU MacAdmins"
+                class="logo-default"
+              />
+              <img
+                src="/img/psu-white.png"
+                alt="PSU MacAdmins"
+                class="logo-hover"
+              />
             </div>
             <div class="community-event-info">
               <h3>PSU MacAdmins</h3>
               <p class="event-location">Penn State, PA, USA • Jul 7–10</p>
-              <p class="event-tagline">The premier Mac Admin conference in Penn State</p>
+              <p class="event-tagline">
+                The premier Mac Admin conference in Penn State
+              </p>
             </div>
           </a>
 
-          <a href="https://xworld.au/" target="_blank" class="community-event-card mac-admins-europe-card">
+          <a
+            href="https://xworld.au/"
+            target="_blank"
+            class="community-event-card mac-admins-europe-card"
+          >
             <div class="community-event-logo">
-              <img src="/img/x-world-blue.png" alt="X World" class="logo-default">
-              <img src="/img/x-world-white.png" alt="X World" class="logo-hover">
+              <img
+                src="/img/x-world-blue.png"
+                alt="X World"
+                class="logo-default"
+              />
+              <img
+                src="/img/x-world-white.png"
+                alt="X World"
+                class="logo-hover"
+              />
             </div>
             <div class="community-event-info">
               <h3>X World</h3>
               <p class="event-location">Australia • TB</p>
-              <p class="event-tagline">The premier Mac Admin conference in Australia</p>
+              <p class="event-tagline">
+                The premier Mac Admin conference in Australia
+              </p>
             </div>
           </a>
-
         </div>
       </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section bg-blue">
+    <div class="container text-center">
+      <img 
+        src="https://dxj7eshgz03ln.cloudfront.net/production/publication/logo/17463/0bc45c1a-c4fd-4a97-b4f5-9a0d280e1ea1.png" 
+        alt="Weekly Mac Admin Newsletter" 
+        class="cta-logo"
+      />
+      <h2 class="text-white">macadmins.news</h2>
+      <p class="text-white opacity-90 max-w-800 mb-2">
+        <strong>Stay connected</strong> with the Mac Admins community. Subscribe to our newsletter for a weekly summary of news, blog posts, updates and other links for Apple device management and security professionals, curated by Armin Briegel of Scripting OS X.
+      </p>
+      <a href="https://macadmins.news/" target="_blank" class="btn btn-primary">Subscribe to the Newsletter</a>
+    </div>
+  </section>
 
-      <!-- International Conferences Section -->
-      <div class="events-section">
+  <!-- International Conferences Section -->
+  <section class="community-section">
+    <div class="container">
+      <div class="events-content">
         <h2 class="section-title">International Conferences</h2>
-        <p class="section-subtitle">Global conferences focused on Apple management and security</p>
-        
+        <p class="section-subtitle">
+          Global conferences focused on Apple management and security
+        </p>
+
         <div class="conferences-grid">
-          <a href="https://www.macad.uk/" target="_blank" class="conference-card">
+          <a
+            href="https://www.macad.uk/"
+            target="_blank"
+            class="conference-card"
+          >
             <div class="conference-info">
               <h4>MacAD.UK</h4>
               <p>Brighton, UK • Apr 21–22</p>
             </div>
           </a>
 
-          <a href="https://acesconf.com/" target="_blank" class="conference-card">
+          <a
+            href="https://acesconf.com/"
+            target="_blank"
+            class="conference-card"
+          >
             <div class="conference-info">
               <h4>ACES Conference</h4>
               <p>Minneapolis, MN, USA • May 12–13</p>
             </div>
           </a>
 
-          <a href="https://developer.apple.com/wwdc/" target="_blank" class="conference-card">
+          <a
+            href="https://developer.apple.com/wwdc/"
+            target="_blank"
+            class="conference-card"
+          >
             <div class="conference-info">
               <h4>WWDC</h4>
               <p>Online • June</p>
@@ -294,21 +530,33 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </a> -->
 
-          <a href="https://www.jamf.com/events/jamf-nation-user-conference/" target="_blank" class="conference-card">
+          <a
+            href="https://www.jamf.com/events/jamf-nation-user-conference/"
+            target="_blank"
+            class="conference-card"
+          >
             <div class="conference-info">
               <h4>JNUC</h4>
               <p>Kansas City, MO, USA • Sep 22–25</p>
             </div>
           </a>
 
-          <a href="https://www.macsysadmin.se/" target="_blank" class="conference-card">
+          <a
+            href="https://www.macsysadmin.se/"
+            target="_blank"
+            class="conference-card"
+          >
             <div class="conference-info">
               <h4>MacSysAdmin</h4>
               <p>Göteborg, Sweden • Sep 29 – Oct 2</p>
             </div>
           </a>
 
-          <a href="https://objectivebythesea.org/" target="_blank" class="conference-card">
+          <a
+            href="https://objectivebythesea.org/"
+            target="_blank"
+            class="conference-card"
+          >
             <div class="conference-info">
               <h4>Objective by the Sea</h4>
               <p>Apple Security Conference • TBA</p>
@@ -322,7 +570,11 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </a> -->
 
-          <a href="https://connect.gete.net/" target="_blank" class="conference-card">
+          <a
+            href="https://connect.gete.net/"
+            target="_blank"
+            class="conference-card"
+          >
             <div class="conference-info">
               <h4>MacConnect</h4>
               <p>Paris, France • TBA</p>
@@ -330,19 +582,21 @@ import Layout from '../layouts/Layout.astro';
           </a>
         </div>
       </div>
+    </div>
+  </section>
 
-
-      <!-- Add Your Event -->
-      <div class="add-event">
+  <!-- Add Your Event -->
+  <section class="community-section bg-off-white">
+    <div class="container">
+      <div class="add-event-content">
         <div class="section-header text-center">
-          <h3>Organize a Mac Admin Conference?</h2>
+          <h3>Organize a Mac Admin Conference?</h3>
           <p>Let us know and we'll add it to the list!</p>
         </div>
         <!-- <h3>Organize a Mac Admin event?</h3>
         <p>Let us know and we'll add it to the list!</p> -->
-        <a href="/contact" class="btn btn-outline">Contact Us</a>
+        <a href="/contact" class="btn btn-primary">Contact Us</a>
       </div>
-
     </div>
   </section>
 </Layout>
