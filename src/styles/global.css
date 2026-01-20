@@ -2613,6 +2613,12 @@ section { padding: var(--space-4xl) 0; }
   margin-top: var(--space-3xl);
 }
 
+.team-grid-single {
+  grid-template-columns: 1fr;
+  max-width: 400px;
+  margin: var(--space-2xl) auto 0;
+}
+
 .team-card {
   background: var(--white);
   border-radius: var(--radius-xl);
