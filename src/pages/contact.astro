@@ -61,26 +61,29 @@ const base = baseUrl === '/' ? '' : baseUrl;
     </div>
   </section>
 
-    <!-- Team Section -->
-  <section class="section team-section">
+  <!-- Meet the Team Banner -->
+  <section class="cta-section bg-blue">
+    <div class="container text-center">
+      <span class="section-label">The People Behind the Event</span>
+      <h2 class="text-white">Meet the Team</h2>
+      <p class="text-white opacity-90 max-w-600">The volunteers who make Mac Admins Europe happen</p>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
     <div class="container">
-      <div class="section-header text-center">
-        <span class="section-label">The People Behind the Event</span>
-        <h2>Meet the Team</h2>
-        <p>The volunteers who make Mac Admins Europe happen</p>
-      </div>
-      
       <div class="team-grid">
       
                 <div class="team-card">
           <div class="team-photo">
-            <img src={`${base}/img/team/mischa.jpg`} alt="Mischa van der Bent">
+            <img src={`${base}/img/team/mischa.jpg`} alt="Mischa">
           </div>
           <div class="team-info">
-            <h3>Mischa van der Bent</h3>
+            <h3>Mischa 🇳🇱</h3>
             <span class="team-role">appleshare.it</span>
             <p class="team-bio">
-He is a seasoned Apple IT professional and community leader. He runs the Benelux Mac Admin community and is a founding member of this conference. Throughout his career, he has held many technical roles, from support engineer to Technical Director and CIO of an enterprise reseller, focusing on keeping Apple management simple, scalable, connecting the dots, and automating what is possible.            </p>
+Mischa is a seasoned Apple IT professional and community leader. He runs the Benelux Mac Admin community and is a founding member of this conference. Throughout his career, he has held many technical roles, from support engineer to Technical Director and CIO of an enterprise reseller, focusing on keeping Apple management simple, scalable, connecting the dots, and automating what is possible.</p>
             <div class="team-links">
               <a href="https://macadmins.slack.com/team/U053L9REF" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/></svg>
@@ -94,13 +97,13 @@ He is a seasoned Apple IT professional and community leader. He runs the Benelux
 
               <div class="team-card">
           <div class="team-photo">
-            <img src={`${base}/img/team/armin.jpg`} alt="Armin Briegel" />
+            <img src={`${base}/img/team/armin.jpg`} alt="Armin" />
           </div>
           <div class="team-info">
-            <h3>Armin Briegel</h3>
+            <h3>Armin 🇩🇪</h3>
             <span class="team-role">Scripting OS X, MacAdmins.news</span>
             <p class="team-bio">
-Armin Briegel is a highly respected consultant and author in the Mac administration community, best known for his blog Scripting OS X (scriptingosx.com) and his extensive work with Apple device management. He has been managing Macs and their users for nearly 30 years and has held virtually every technical job title in the Apple ecosystem.
+Armin is a highly respected consultant and author in the Mac administration community, best known for his blog Scripting OS X and his extensive work with Apple device management. Armin has been managing Macs and their users for nearly 30 years and has held virtually every technical job title in the Apple ecosystem.
             </p>
             <div class="team-links">
               <a href="https://macadmins.slack.com/team/U06R6V15J" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
@@ -118,10 +121,10 @@ Armin Briegel is a highly respected consultant and author in the Mac administrat
 
         <div class="team-card">
           <div class="team-photo">
-            <img src={`${base}/img/team/rob.jpg`} alt="Rob Potvin">
+            <img src={`${base}/img/team/rob.jpg`} alt="Rob">
           </div>
           <div class="team-info">
-            <h3>Rob Potvin</h3>
+            <h3>Rob 🇨🇦</h3>
             <span class="team-role">motionbug.com</span>
             <p class="team-bio">
 Rob is a Canadian expat based in the Netherlands, where he lives with his family and in the past helped train what feels like half of Europe’s Mac Admins. A long-time Mac admin and volunteer of the Mac Admins community, he brings deep, hands-on experience in managing, deploying, and supporting Apple devices and virtual "apple" machines.</p>
@@ -135,23 +138,21 @@ Rob is a Canadian expat based in the Netherlands, where he lives with his family
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Additional Team Member -->
-      <div class="team-grid team-grid-single">
         <div class="team-card">
           <div class="team-photo">
-            <img src={`${base}/img/team/jordy.jpg`} alt="Jordy Thery">
+            <img src={`${base}/img/team/jordy.jpg`} alt="Jordy">
           </div>
           <div class="team-info">
-            <h3>Jordy Thery</h3>
-            <span class="team-role">Social Media Fellow</span>
+            <h3>Jordy 🇧🇪</h3>
+            <span class="team-role">jordythery.be</span>
             <p class="team-bio">
-Is a Belgian tech nerd with a deep passion for Apple. Working for Belgiums largest Apple Premium Partner he tries to evangelise the use of Apple devices in Enterprise and being active within the MacAdmins community whilst he does it.</p>
+Jordy is a Belgian tech nerd with a deep passion for Apple. Working for Belgiums largest Apple Premium Partner he tries to evangelise the use of Apple devices in Enterprise and being active within the MacAdmins community whilst he does it.</p>
             <div class="team-links">
               <a href="https://macadmins.slack.com/team/U04AHQ0F5FT" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/></svg>
-               <a href="http://jordythery.be/" target="_blank" rel="noopener" aria-label="Website" class="team-link">
+              </a>
+              <a href="http://jordythery.be/" target="_blank" rel="noopener" aria-label="Website" class="team-link">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </a>
             </div>
