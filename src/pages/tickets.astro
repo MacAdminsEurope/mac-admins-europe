@@ -79,6 +79,31 @@ const base = baseUrl === '/' ? '' : baseUrl;
               <button class="btn btn-outline" disabled>Coming Soon</button>
             </div>
           </div>
+
+          <div class="ticket-card group">
+            <div class="ticket-badge">5+ Tickets</div>
+            <div class="ticket-header">
+              <h3>Group</h3>
+              <div class="ticket-price">
+                <span class="price">For Teams</span>
+                <span class="price-note">Contact us for more information</span>
+              </div>
+            </div>
+            <div class="ticket-body">
+              <ul class="ticket-features">
+                <li>Full conference access</li>
+                <li>All sessions & workshops</li>
+                <li>Lunch & refreshments</li>
+                <li>Networking drinks</li>
+                <li>Conference swag bag</li>
+                <li>Group discount pricing</li>
+              </ul>
+              <p class="ticket-availability">For teams of 5 or more</p>
+            </div>
+            <div class="ticket-footer">
+              <a href={`${base}/contact`} class="btn btn-outline">Contact Us</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -118,14 +143,6 @@ const base = baseUrl === '/' ? '' : baseUrl;
         </div>
       </div>
 
-      <div class="group-tickets">
-        <h2>Group Bookings</h2>
-        <p>
-          Bringing your team? Contact us for group discounts on 5 or more tickets. 
-          We also offer custom packages for companies looking to maximize their experience.
-        </p>
-        <a href={`${base}/contact`} class="btn btn-primary">Contact for Group Rates</a>
-      </div>
     </div>
   </section>
 
