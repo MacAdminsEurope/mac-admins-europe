@@ -1377,7 +1377,7 @@ section { padding: var(--space-4xl) 0; }
 
 .tickets-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
   margin-bottom: var(--space-4xl);
 }
@@ -1396,8 +1396,69 @@ section { padding: var(--space-4xl) 0; }
   box-shadow: var(--shadow-lg);
 }
 
+/* Early Bird - Featured/Highlighted */
 .ticket-card.early-bird {
   border-color: var(--eu-gold);
+  transform: scale(1.03);
+  box-shadow: var(--shadow-xl);
+  z-index: 1;
+}
+
+.ticket-card.early-bird:hover {
+  transform: scale(1.05);
+}
+
+/* Group - Full blue background */
+.ticket-card.group {
+  background: var(--eu-blue);
+  border-color: var(--eu-blue);
+}
+
+.ticket-card.group:hover {
+  border-color: var(--eu-blue-light);
+}
+
+.ticket-card.group .ticket-badge {
+  background: var(--eu-gold);
+  color: var(--eu-blue-dark);
+}
+
+.ticket-card.group .ticket-header {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.ticket-card.group .ticket-header h3 {
+  color: var(--white);
+}
+
+.ticket-card.group .ticket-price .price {
+  color: var(--eu-gold);
+}
+
+.ticket-card.group .ticket-price .price-note {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ticket-card.group .ticket-features li {
+  color: var(--white);
+}
+
+.ticket-card.group .ticket-features li::before {
+  color: var(--eu-gold);
+}
+
+.ticket-card.group .ticket-availability {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ticket-card.group .btn-outline {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.ticket-card.group .btn-outline:hover {
+  background: var(--white);
+  color: var(--eu-blue);
 }
 
 .ticket-badge {
@@ -3001,9 +3062,13 @@ section { padding: var(--space-4xl) 0; }
 
   /* Tickets page */
   .tickets-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tickets-grid .ticket-card:last-child {
+    grid-column: 1 / -1;
     max-width: 400px;
-    margin: 0 auto var(--space-4xl);
+    justify-self: center;
   }
 
   .included-grid {
@@ -3052,6 +3117,18 @@ section { padding: var(--space-4xl) 0; }
 }
 
 @media (max-width: 768px) {
+  /* Tickets page */
+  .tickets-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto var(--space-4xl);
+  }
+
+  .tickets-grid .ticket-card:last-child {
+    grid-column: auto;
+    max-width: none;
+  }
+
   /* Team Section */
   .team-grid {
     grid-template-columns: 1fr;
