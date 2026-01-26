@@ -12,14 +12,16 @@ const sponsorshipTiers = [
     benefits: [
       { label: "Logo on our website", value: true },
       { label: "Inclusive tickets", value: "1" },
+      { label: "Branding on stage", value: true },
     ]
   },
   {
     name: "Silver",
     class: "silver",
     available: null,
-    isIncremental: true,
+    isIncremental: false,
     benefits: [
+      { label: "Logo on our website", value: true },
       { label: "Social media promotion", value: true },
       { label: "Inclusive tickets", value: "2" },
       { label: "Discounted tickets", value: "Max. 2" },
@@ -140,7 +142,7 @@ const sponsorshipTiers = [
                 <ul class="package-features mt-auto">
                   {tier.isIncremental && (
                     <li class="incremental-label">
-                      {tier.name === "Silver" ? "Everything in Patron:" : `Everything in ${sponsorshipTiers[sponsorshipTiers.indexOf(tier) - 1].name}:`}
+                      {tier.name === "Silver" ? "Everything in Patron +" : `Includes ${sponsorshipTiers[sponsorshipTiers.indexOf(tier) - 1].name} plus:`}
                     </li>
                   )}
                   {tier.benefits
