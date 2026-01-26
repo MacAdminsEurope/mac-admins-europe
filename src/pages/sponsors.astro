@@ -3,6 +3,80 @@ import Layout from '../layouts/Layout.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 const base = baseUrl === '/' ? '' : baseUrl;
+
+const sponsorshipTiers = [
+  {
+    name: "Patron",
+    class: "community",
+    available: null,
+    benefits: [
+      { label: "Event website profile and logo", value: true },
+      { label: "Inclusive tickets", value: "1" },
+      { label: "Social media promotion", value: false },
+      { label: "Speaker bio on website", value: false },
+      { label: "Newsletter inclusion", value: false },
+      { label: "Exhibition space", value: false },
+      { label: "Branding on stage", value: false },
+      { label: "Speaker presentation (25 min)", value: false },
+      { label: "Event lanyard logo", value: false },
+      { label: "Logo in YouTube videos", value: false },
+    ]
+  },
+  {
+    name: "Silver",
+    class: "silver",
+    available: null,
+    benefits: [
+      { label: "Event website profile and logo", value: true },
+      { label: "Inclusive tickets", value: "2" },
+      { label: "Discounted tickets (Max. 2)", value: true },
+      { label: "Social media promotion", value: true },
+      { label: "Newsletter inclusion", value: true },
+      { label: "Branding on stage", value: true },
+      { label: "Logo in YouTube videos", value: true },
+      { label: "Exhibition space", value: false },
+      { label: "Speaker bio on website", value: false },
+      { label: "Speaker presentation (25 min)", value: false },
+      { label: "Event lanyard logo", value: false },
+    ]
+  },
+  {
+    name: "Gold",
+    class: "gold",
+    available: 4,
+    benefits: [
+      { label: "Event website profile and logo", value: true },
+      { label: "Inclusive tickets", value: "3" },
+      { label: "Discounted tickets (Max. 3)", value: true },
+      { label: "Social media promotion", value: true },
+      { label: "Newsletter inclusion", value: true },
+      { label: "Exhibition space", value: "Standard" },
+      { label: "Branding on stage", value: true },
+      { label: "Logo in YouTube videos", value: true },
+      { label: "Speaker bio on website", value: false },
+      { label: "Speaker presentation (25 min)", value: false },
+      { label: "Event lanyard logo", value: false },
+    ]
+  },
+  {
+    name: "Platinum",
+    class: "platinum featured",
+    available: 3,
+    benefits: [
+      { label: "Event website profile and logo", value: true },
+      { label: "Inclusive tickets", value: "4" },
+      { label: "Discounted tickets (Max. 4)", value: true },
+      { label: "Social media promotion", value: true },
+      { label: "Newsletter inclusion", value: true },
+      { label: "Exhibition space", value: "Premium" },
+      { label: "Branding on stage", value: true },
+      { label: "Speaker bio on website", value: true },
+      { label: "Speaker presentation (25 min)", value: true },
+      { label: "Event lanyard logo", value: true },
+      { label: "Logo in YouTube videos", value: true },
+    ]
+  }
+];
 ---
 
 <Layout title="Sponsors | Mac Admins Europe 2026">
@@ -87,78 +161,27 @@ const base = baseUrl === '/' ? '' : baseUrl;
         <p class="packages-subtitle">Choose the package that best fits your goals</p>
 
         <div class="packages-grid-new">
-          <!-- Patron - Starting tier (left) -->
-          <div class="package-card community">
-            <div class="package-header">
-              <h3>Patron</h3>
+          {sponsorshipTiers.map((tier) => (
+            <div class={`package-card ${tier.class}`}>
+              <div class="package-header">
+                <h3>{tier.name}</h3>
+                {tier.available && (
+                  <span class="availability">({tier.available} available)</span>
+                )}
+              </div>
+              <div class="package-price-section">
+                <span class="package-price">Contact Us</span>
+              </div>
+              <ul class="package-features">
+                {tier.benefits.filter(b => b.value !== false).map((benefit) => (
+                  <li>
+                    {benefit.label}
+                    {typeof benefit.value === 'string' && ` (${benefit.value})`}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div class="package-price-section">
-              <span class="package-price">Contact Us</span>
-              <span class="price-note">Starting tier</span>
-            </div>
-            <ul class="package-features">
-              <li>Logo on event website</li>
-              <li>1 conference pass</li>
-              <li>Perfect for startups</li>
-            </ul>
-          </div>
-
-          <!-- Silver -->
-          <div class="package-card silver">
-            <div class="package-header">
-              <h3>Silver</h3>
-            </div>
-            <div class="package-price-section">
-              <span class="package-price">Contact Us</span>
-              <span class="price-note">Affordable option</span>
-            </div>
-            <ul class="package-features">
-              <li>Tabletop display</li>
-              <li>Logo on website</li>
-              <li>2 conference passes</li>
-              <li>Social media mention</li>
-            </ul>
-          </div>
-
-          <!-- Gold -->
-          <div class="package-card gold">
-            <div class="package-header">
-              <h3>Gold</h3>
-            </div>
-            <div class="package-price-section">
-              <span class="package-price">Contact Us</span>
-              <span class="price-note">Flexible options</span>
-            </div>
-            <ul class="package-features">
-              <li>Standard booth space</li>
-              <li>Demo session slot</li>
-              <li>Logo on event materials</li>
-              <li>3 conference passes</li>
-              <li>Social media mentions</li>
-              <li>Newsletter mention</li>
-            </ul>
-          </div>
-
-          <!-- Platinum - Featured (right) -->
-          <div class="package-card platinum featured">
-            <div class="package-header">
-              <h3>Platinum</h3>
-            </div>
-            <div class="package-price-section">
-              <span class="package-price">Contact Us</span>
-              <span class="price-note">Custom pricing available</span>
-            </div>
-            <ul class="package-features">
-              <li>Premium booth location</li>
-              <li>Keynote slot opportunity</li>
-              <li>Logo on all materials</li>
-              <li>5 conference passes</li>
-              <li>Social media promotion</li>
-              <li>Newsletter feature</li>
-              <li>Exclusive networking event</li>
-              <li>Video testimonial opportunity</li>
-            </ul>
-          </div>
+          ))}
         </div>
 
         <!-- Custom CTA -->

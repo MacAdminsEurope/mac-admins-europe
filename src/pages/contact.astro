@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContactForm from '../components/ContactForm.astro';
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
-const base = baseUrl === '/' ? '' : baseUrl;
+const base = baseUrl === "/" ? "" : baseUrl;
 ---
 
 <Layout title="Contact">
@@ -16,7 +16,6 @@ const base = baseUrl === '/' ? '' : baseUrl;
     </div>
   </section>
 
-
   <!-- Contact Section -->
   <section class="section contact">
     <div class="container">
@@ -24,158 +23,389 @@ const base = baseUrl === '/' ? '' : baseUrl;
         <div class="contact-info">
           <h2>Let's Talk</h2>
           <p>
-            Whether you have questions about tickets, sponsorship, speaking 
+            Whether you have questions about tickets, sponsorship, speaking
             opportunities, or anything else, our team is ready to help.
           </p>
-          
+
           <div class="contact-methods">
             <div class="contact-method">
               <div>
-                <strong>Email</strong>
-                <a href="mailto:hello@macadmins-eu.org">hello@macadmins-eu.org</a>
+                <strong
+                  ><svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="vertical-align: middle; margin-right: 0.25em;"
+                    ><path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+                  > Email</strong
+                >
+                <a href="mailto:hello@macadmins-eu.org"
+                  >hello@macadmins-eu.org</a
+                >
               </div>
             </div>
-            
             <div class="contact-method">
               <div>
-                <strong>Slack</strong>
-                <a href="https://macadmins.slack.com" target="_blank" rel="noopener">
-                  #mac-admins-europe on MacAdmins Slack
-                </a>
-              </div>
-            </div>
-            
-            <div class="contact-method">
-              <div>
-                <strong>Discord</strong>
-                <a href="https://discord.gg/macadmins-eu" target="_blank" rel="noopener">
+                <strong
+                  ><svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    style="vertical-align: middle; margin-right: 0.25em;"
+                    ><path
+                      d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"
+                    ></path></svg
+                  > Discord Server</strong
+                >
+                <a
+                  href="https://discord.com/invite/rQtcuuesDy"
+                  target="_blank"
+                  rel="noopener"
+                >
                   Mac Admins Europe
                 </a>
               </div>
             </div>
+            <div class="contact-method">
+              <div>
+                <strong
+                  ><svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    style="vertical-align: middle; margin-right: 0.25em;"
+                    ><path
+                      d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"
+                    ></path></svg
+                  > Slack</strong
+                >
+                Mac Admins Slack <br />
+                <a
+                  href="https://macadmins.slack.com/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  #mac-admins-europe
+                </a>
+              </div>
+            </div>
           </div>
-          
         </div>
 
         <ContactForm />
-    </div>
-  </section>
-
-  <!-- Meet the Team Banner -->
-  <section class="cta-section bg-blue">
-    <div class="container text-center">
-      <span class="section-label">The People Behind the Event</span>
-      <h2 class="text-white">Meet the Team</h2>
-      <p class="text-white opacity-90 max-w-600">The volunteers who make Mac Admins Europe happen</p>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="team-section">
-    <div class="container">
-      <div class="team-grid">
-      
-                <div class="team-card">
-          <div class="team-photo">
-            <img src={`${base}/img/team/mischa.jpg`} alt="Mischa">
-          </div>
-          <div class="team-info">
-            <h3>Mischa 🇳🇱</h3>
-            <span class="team-role">appleshare.it</span>
-            <p class="team-bio">
-Mischa is a seasoned Apple IT professional and community leader. He runs the Benelux Mac Admin community and is a founding member of this conference. Throughout his career, he has held many technical roles, from support engineer to Technical Director and CIO of an enterprise reseller, focusing on keeping Apple management simple, scalable, connecting the dots, and automating what is possible.</p>
-            <div class="team-links">
-              <a href="https://macadmins.slack.com/team/U053L9REF" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/></svg>
-              </a>
-              <a href="https://appleshare.it" target="_blank" rel="noopener" aria-label="Website" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-              <div class="team-card">
-          <div class="team-photo">
-            <img src={`${base}/img/team/armin.jpg`} alt="Armin" />
-          </div>
-          <div class="team-info">
-            <h3>Armin 🇩🇪</h3>
-            <span class="team-role">Scripting OS X, MacAdmins.news</span>
-            <p class="team-bio">
-Armin is a highly respected consultant and author in the Mac administration community, best known for his blog Scripting OS X and his extensive work with Apple device management. Armin has been managing Macs and their users for nearly 30 years and has held virtually every technical job title in the Apple ecosystem.
-            </p>
-            <div class="team-links">
-              <a href="https://macadmins.slack.com/team/U06R6V15J" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/></svg>
-              </a>
-              <a href="https://scriptingosx.com/" target="_blank" rel="noopener" aria-label="Website" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
-              </a>
-              <a href="https://macadmins.news" target="_blank" rel="noopener" aria-label="MacAdmins News" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo">
-            <img src={`${base}/img/team/rob.jpg`} alt="Rob">
-          </div>
-          <div class="team-info">
-            <h3>Rob 🇨🇦</h3>
-            <span class="team-role">motionbug.com</span>
-            <p class="team-bio">
-Rob is a Canadian expat based in the Netherlands, where he lives with his family and in the past helped train what feels like half of Europe’s Mac Admins. A long-time Mac admin and volunteer of the Mac Admins community, he brings deep, hands-on experience in managing, deploying, and supporting Apple devices and virtual "apple" machines.</p>
-            <div class="team-links">
-              <a href="https://macadmins.slack.com/team/U07706K3K" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/></svg>
-              </a>
-              <a href="https://motionbug.com" target="_blank" rel="noopener" aria-label="Website" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo">
-            <img src={`${base}/img/team/jordy.jpg`} alt="Jordy">
-          </div>
-          <div class="team-info">
-            <h3>Jordy 🇧🇪</h3>
-            <span class="team-role">jordythery.be</span>
-            <p class="team-bio">
-Jordy is a Belgian tech nerd with a deep passion for Apple. Working for Belgiums largest Apple Premium Partner he tries to evangelise the use of Apple devices in Enterprise and being active within the MacAdmins community whilst he does it.</p>
-            <div class="team-links">
-              <a href="https://macadmins.slack.com/team/U04AHQ0F5FT" target="_blank" rel="noopener" aria-label="Slack" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"/></svg>
-              </a>
-              <a href="http://jordythery.be/" target="_blank" rel="noopener" aria-label="Website" class="team-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Community Thank You Box -->
-      <div class="ambassadors-content text-center">
-        <h2 class="ambassadors-title">Community Ambassadors</h2>
-        <p class="ambassadors-message">
-          Mac Admins Europe wouldn't be possible without the countless volunteers, advocates, and community members
-          who work tirelessly behind the scenes. From organizing local meetups and spreading the word,
-          to providing feedback and helping newcomers feel welcome — your contributions make this community what it is.
-        </p>
-        <p class="ambassadors-message">
-          To everyone who has shared their knowledge, mentored others, or simply shown up to support fellow admins:
-        </p>
-        <h3 class="ambassadors-thanks">Thank you!</h3>
-        <p class="ambassadors-message ambassadors-final">
-          This event is for the community, by the community — and that means all of you.
-        </p>
       </div>
     </div>
-  </section>
-</Layout>
+
+    <!-- Meet the Team Banner -->
+    <section class="cta-section bg-blue">
+      <div class="container text-center">
+        <span class="section-label">The People Behind the Event</span>
+        <h2 class="text-white">Meet the Team</h2>
+        <p class="text-white opacity-90 max-w-600">
+          The volunteers who make Mac Admins Europe happen
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-photo">
+              <img src={`${base}/img/team/mischa.jpg`} alt="Mischa" />
+            </div>
+            <div class="team-info">
+              <h3>Mischa 🇳🇱</h3>
+              <span class="team-role">appleshare.it</span>
+              <p class="team-bio">
+                Mischa is a seasoned Apple IT professional and community leader.
+                He runs the Benelux Mac Admin community and is a founding member
+                of this conference. Throughout his career, he has held many
+                technical roles, from support engineer to Technical Director and
+                CIO of an enterprise reseller, focusing on keeping Apple
+                management simple, scalable, connecting the dots, and automating
+                what is possible.
+              </p>
+              <div class="team-links">
+                <a
+                  href="https://macadmins.slack.com/team/U053L9REF"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Slack"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    ><path
+                      d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"
+                    ></path></svg
+                  >
+                </a>
+                <a
+                  href="https://appleshare.it"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Website"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><circle cx="12" cy="12" r="10"></circle><line
+                      x1="2"
+                      y1="12"
+                      x2="22"
+                      y2="12"></line><path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                    ></path></svg
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-photo">
+              <img src={`${base}/img/team/armin.jpg`} alt="Armin" />
+            </div>
+            <div class="team-info">
+              <h3>Armin 🇩🇪</h3>
+              <span class="team-role">Scripting OS X, MacAdmins.news</span>
+              <p class="team-bio">
+                Armin is a highly respected consultant and author in the Mac
+                administration community, best known for his blog Scripting OS X
+                and his extensive work with Apple device management. Armin has
+                been managing Macs and their users for nearly 30 years and has
+                held virtually every technical job title in the Apple ecosystem.
+              </p>
+              <div class="team-links">
+                <a
+                  href="https://macadmins.slack.com/team/U06R6V15J"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Slack"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    ><path
+                      d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"
+                    ></path></svg
+                  >
+                </a>
+                <a
+                  href="https://scriptingosx.com/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Website"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="4" y1="9" x2="20" y2="9"></line><line
+                      x1="4"
+                      y1="15"
+                      x2="20"
+                      y2="15"></line><line x1="10" y1="3" x2="8" y2="21"
+                    ></line><line x1="16" y1="3" x2="14" y2="21"></line></svg
+                  >
+                </a>
+                <a
+                  href="https://macadmins.news"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="MacAdmins News"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path
+                      d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"
+                    ></path><path
+                      d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"
+                    ></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"
+                    ></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"
+                    ></path></svg
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-photo">
+              <img src={`${base}/img/team/rob.jpg`} alt="Rob" />
+            </div>
+            <div class="team-info">
+              <h3>Rob 🇨🇦</h3>
+              <span class="team-role">motionbug.com</span>
+              <p class="team-bio">
+                Rob is a Canadian expat based in the Netherlands, where he lives
+                with his family and in the past helped train what feels like
+                half of Europe’s Mac Admins. A long-time Mac admin and volunteer
+                of the Mac Admins community, he brings deep, hands-on experience
+                in managing, deploying, and supporting Apple devices and virtual
+                "apple" machines.
+              </p>
+              <div class="team-links">
+                <a
+                  href="https://macadmins.slack.com/team/U07706K3K"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Slack"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    ><path
+                      d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"
+                    ></path></svg
+                  >
+                </a>
+                <a
+                  href="https://motionbug.com"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Website"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><circle cx="12" cy="12" r="10"></circle><line
+                      x1="2"
+                      y1="12"
+                      x2="22"
+                      y2="12"></line><path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                    ></path></svg
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-photo">
+              <img src={`${base}/img/team/jordy.jpg`} alt="Jordy" />
+            </div>
+            <div class="team-info">
+              <h3>Jordy 🇧🇪</h3>
+              <span class="team-role">jordythery.be</span>
+              <p class="team-bio">
+                Jordy is a Belgian tech nerd with a deep passion for Apple.
+                Working for Belgiums largest Apple Premium Partner he tries to
+                evangelise the use of Apple devices in Enterprise and being
+                active within the MacAdmins community whilst he does it.
+              </p>
+              <div class="team-links">
+                <a
+                  href="https://macadmins.slack.com/team/U04AHQ0F5FT"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Slack"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    ><path
+                      d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.271 0a2.528 2.528 0 0 1-2.521 2.521 2.528 2.528 0 0 1-2.521-2.521V2.522A2.528 2.528 0 0 1 15.165 0a2.528 2.528 0 0 1 2.52 2.522v6.312zm-2.52 10.122a2.528 2.528 0 0 1 2.52 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.521-2.522v-2.522h2.521zm0-1.271a2.527 2.527 0 0 1-2.521-2.521 2.526 2.526 0 0 1 2.521-2.521h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.52h-6.313z"
+                    ></path></svg
+                  >
+                </a>
+                <a
+                  href="http://jordythery.be/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Website"
+                  class="team-link"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    ><circle cx="12" cy="12" r="10"></circle><line
+                      x1="2"
+                      y1="12"
+                      x2="22"
+                      y2="12"></line><path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                    ></path></svg
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Community Thank You Box -->
+        <div class="ambassadors-content text-center">
+          <h2 class="ambassadors-title">Community Ambassadors</h2>
+          <p class="ambassadors-message">
+            Mac Admins Europe wouldn't be possible without the countless
+            volunteers, advocates, and community members who work tirelessly
+            behind the scenes. From organizing local meetups and spreading the
+            word, to providing feedback and helping newcomers feel welcome —
+            your contributions make this community what it is.
+          </p>
+          <p class="ambassadors-message">
+            To everyone who has shared their knowledge, mentored others, or
+            simply shown up to support fellow admins:
+          </p>
+          <h3 class="ambassadors-thanks">Thank you!</h3>
+          <p class="ambassadors-message ambassadors-final">
+            This event is for the community, by the community — and that means
+            all of you.
+          </p>
+        </div>
+      </div>
+    </section>
+  </section></Layout
+>
