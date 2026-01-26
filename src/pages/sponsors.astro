@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
-const base = baseUrl === '/' ? '' : baseUrl;
+const base = baseUrl === "/" ? "" : baseUrl;
 
 const sponsorshipTiers = [
   {
@@ -10,70 +10,47 @@ const sponsorshipTiers = [
     class: "community",
     available: null,
     benefits: [
-      { label: "Event website profile and logo", value: true },
+      { label: "Logo on our website", value: true },
       { label: "Inclusive tickets", value: "1" },
-      { label: "Social media promotion", value: false },
-      { label: "Speaker bio on website", value: false },
-      { label: "Newsletter inclusion", value: false },
-      { label: "Exhibition space", value: false },
-      { label: "Branding on stage", value: false },
-      { label: "Speaker presentation (25 min)", value: false },
-      { label: "Event lanyard logo", value: false },
-      { label: "Logo in YouTube videos", value: false },
     ]
   },
   {
     name: "Silver",
     class: "silver",
     available: null,
+    isIncremental: true,
     benefits: [
-      { label: "Event website profile and logo", value: true },
-      { label: "Inclusive tickets", value: "2" },
-      { label: "Discounted tickets (Max. 2)", value: true },
       { label: "Social media promotion", value: true },
+      { label: "Inclusive tickets", value: "2" },
+      { label: "Discounted tickets", value: "Max. 2" },
       { label: "Newsletter inclusion", value: true },
       { label: "Branding on stage", value: true },
       { label: "Logo in YouTube videos", value: true },
-      { label: "Exhibition space", value: false },
-      { label: "Speaker bio on website", value: false },
-      { label: "Speaker presentation (25 min)", value: false },
-      { label: "Event lanyard logo", value: false },
     ]
   },
   {
     name: "Gold",
     class: "gold",
     available: 4,
+    isIncremental: true,
     benefits: [
-      { label: "Event website profile and logo", value: true },
       { label: "Inclusive tickets", value: "3" },
-      { label: "Discounted tickets (Max. 3)", value: true },
-      { label: "Social media promotion", value: true },
-      { label: "Newsletter inclusion", value: true },
+      { label: "Discounted tickets", value: "Max. 3" },
       { label: "Exhibition space", value: "Standard" },
-      { label: "Branding on stage", value: true },
-      { label: "Logo in YouTube videos", value: true },
-      { label: "Speaker bio on website", value: false },
-      { label: "Speaker presentation (25 min)", value: false },
-      { label: "Event lanyard logo", value: false },
     ]
   },
   {
     name: "Platinum",
     class: "platinum featured",
     available: 3,
+    isIncremental: true,
     benefits: [
-      { label: "Event website profile and logo", value: true },
-      { label: "Inclusive tickets", value: "4" },
-      { label: "Discounted tickets (Max. 4)", value: true },
-      { label: "Social media promotion", value: true },
-      { label: "Newsletter inclusion", value: true },
-      { label: "Exhibition space", value: "Premium" },
-      { label: "Branding on stage", value: true },
       { label: "Speaker bio on website", value: true },
-      { label: "Speaker presentation (25 min)", value: true },
+      { label: "Inclusive tickets", value: "4" },
+      { label: "Discounted tickets", value: "Max. 4" },
+      { label: "Exhibition space", value: "Premium" },
+      { label: "Speaker slot (25 min)", value: true },
       { label: "Event lanyard logo", value: true },
-      { label: "Logo in YouTube videos", value: true },
     ]
   }
 ];
@@ -90,45 +67,26 @@ const sponsorshipTiers = [
 
   <section class="sponsors-content">
     <div class="container">
-      <!-- Hero CTA -->
-      <div class="sponsor-hero">
+      <!-- Intro Section -->
+      <div class="sponsor-intro-header text-center mb-4">
         <h2>Partner with Mac Admins Europe</h2>
         <p class="hero-subtitle">
-          Connect with over 4,000 Mac Admin members and IT decision-makers across Europe
+          Connect with over 4,000 Mac Admin members and IT decision-makers
+          across Europe
         </p>
       </div>
 
-      <!-- Current Sponsors -->
-      <div class="current-sponsors">
-        <h2 class="section-title">Our 2026 Sponsors</h2>
-        <p class="section-subtitle">Join these amazing companies supporting Mac Admins Europe</p>
-
-        <!-- Add sponsor logos here as they come in -->
-        <!--
-        <div class="sponsor-tier platinum">
-          <h3 class="tier-title">Platinum Sponsors</h3>
-          <div class="tier-logos">
-            <img src="{base}/sponsors/company-logo.png" alt="Company Name" class="sponsor-logo large">
-          </div>
-        </div>
-
-        <div class="sponsor-tier">
-          <div class="tier-logos">
-            <div class="sponsor-placeholder">
-              <span>Sponsor Placeholder</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      -->
-      
-      <!-- Benefits Section -->
+      <!-- Why Sponsor Section -->
       <div class="sponsor-benefits-section">
-        <h2>Become a Sponsor</h2>
+        <div class="text-center mb-2">
+          <span class="section-label">Partner with Us</span>
+          <h2>Why Sponsor Mac Admins Europe?</h2>
+        </div>
         <p class="sponsor-intro">
-          Mac Admins Europe brings together IT professionals from across the continent 
-          who manage Apple devices in enterprise environments. Sponsoring our event puts 
-          your brand in front of decision-makers actively looking for solutions.
+          Mac Admins Europe brings together IT professionals from across the
+          continent who manage Apple devices in enterprise environments.
+          Sponsoring our event puts your brand in front of decision-makers
+          actively looking for solutions.
         </p>
 
         <div class="sponsor-benefits">
@@ -157,42 +115,75 @@ const sponsorshipTiers = [
 
       <!-- Sponsorship Packages -->
       <div class="sponsor-packages-section">
-        <h2 class="packages-title">Sponsorship Opportunities</h2>
-        <p class="packages-subtitle">Choose the package that best fits your goals</p>
-
-        <div class="packages-grid-new">
-          {sponsorshipTiers.map((tier) => (
-            <div class={`package-card ${tier.class}`}>
-              <div class="package-header">
-                <h3>{tier.name}</h3>
-                {tier.available && (
-                  <span class="availability">({tier.available} available)</span>
-                )}
-              </div>
-              <div class="package-price-section">
-                <span class="package-price">Contact Us</span>
-              </div>
-              <ul class="package-features">
-                {tier.benefits.filter(b => b.value !== false).map((benefit) => (
-                  <li>
-                    {benefit.label}
-                    {typeof benefit.value === 'string' && ` (${benefit.value})`}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div class="text-center mb-2">
+          <span class="section-label">Opportunities</span>
+          <h2 class="packages-title">How You Can Sponsor</h2>
+          <p class="packages-subtitle">
+            Choose the package that best fits your goals
+          </p>
         </div>
 
-        <!-- Custom CTA -->
-        <div class="custom-package-cta">
-          <h3>Need a Custom Package?</h3>
-          <p>Let's discuss how we can create a sponsorship that perfectly matches your goals and budget.</p>
-          <a href={`${base}/contact`} class="btn btn-primary">Contact Our Sponsorship Team</a>
+        <div class="packages-grid-new">
+          {
+            sponsorshipTiers.map((tier) => (
+              <div class={`package-card ${tier.class}`}>
+                <div class="package-header">
+                  <h3>{tier.name}</h3>
+                  <div class="package-availability-wrapper">
+                    {tier.available ? (
+                      <span class="availability">({tier.available} available)</span>
+                    ) : (
+                      <span class="availability spacer">&nbsp;</span>
+                    )}
+                  </div>
+                </div>
+                <ul class="package-features mt-auto">
+                  {tier.isIncremental && (
+                    <li class="incremental-label">
+                      {tier.name === "Silver" ? "Everything in Patron:" : `Everything in ${sponsorshipTiers[sponsorshipTiers.indexOf(tier) - 1].name}:`}
+                    </li>
+                  )}
+                  {tier.benefits
+                    .filter((b) => b.value !== false)
+                    .map((benefit) => (
+                      <li>
+                        {benefit.label}
+                        {typeof benefit.value === "string" && ` (${benefit.value})`}
+                      </li>
+                    ))}
+                </ul>
+                <div class="package-cta">
+                  <a
+                    href={`${base}/sponsor-contact`}
+                    class="btn btn-primary btn-sm w-full"
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
 
+      <!-- Current Sponsors -->
+      <div class="current-sponsors">
+        <div class="text-center">
+          <h2 class="section-title">Our 2026 Sponsors</h2>
+          <div class="sponsor-coming-soon">
+            <div class="coming-soon-badge">Coming Soon</div>
+            <p class="section-subtitle">
+              Join these amazing companies supporting Mac Admins Europe.
+              Sponsorship opportunities are now open!
+            </p>
+            <div class="mt-2">
+              <a href={`${base}/sponsor-contact`} class="btn btn-primary">
+                Become a Sponsor
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
-

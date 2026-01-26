@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SponsorContactForm from "../components/SponsorContactForm.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === "/" ? "" : baseUrl;
+---
+
+<Layout title="Sponsor Contact | Mac Admins Europe 2026">
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Partner With Us</span>
+      <h1>Become a Sponsor</h1>
+      <p>Fill out the form below and our sponsorship team will be in touch</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact">
+    <div class="container">
+      <div class="sponsor-contact-container">
+        <div class="contact-info text-center max-w-700">
+          <h2>Let's Discuss Your Partnership</h2>
+          <p>
+            Whether you're interested in one of our standard packages or want to
+            discuss a custom opportunity, we're here to help you find the best
+            way to connect with the Mac Admin community.
+          </p>
+
+          <div class="contact-methods-simple">
+            <div class="contact-method-inline">
+              <strong><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 0.25em;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Email:</strong>
+              <a href="mailto:sponsors@macadmins-eu.org">sponsors@macadmins-eu.org</a>
+              <br/>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-form-full">
+          <SponsorContactForm />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
