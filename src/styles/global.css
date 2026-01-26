@@ -1377,9 +1377,12 @@ section { padding: var(--space-4xl) 0; }
 
 .tickets-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
   margin-bottom: var(--space-4xl);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ticket-card {
@@ -1411,11 +1414,16 @@ section { padding: var(--space-4xl) 0; }
 /* Group - Full blue background */
 .ticket-card.group {
   background: var(--eu-blue);
-  border-color: var(--eu-blue);
+  border: 2px solid var(--eu-gold);
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.3), 0 10px 30px rgba(0, 51, 153, 0.2);
+  position: relative;
+  transform: translateY(-4px);
 }
 
 .ticket-card.group:hover {
-  border-color: var(--eu-blue-light);
+  border-color: var(--eu-gold);
+  box-shadow: 0 0 40px rgba(255, 204, 0, 0.5), 0 15px 40px rgba(0, 51, 153, 0.3);
+  transform: translateY(-8px);
 }
 
 .ticket-card.group .ticket-badge {
@@ -1559,7 +1567,7 @@ section { padding: var(--space-4xl) 0; }
 
 .included-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-xl);
 }
 
