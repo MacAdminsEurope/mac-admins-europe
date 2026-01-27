@@ -9,6 +9,7 @@ const sponsorshipTiers = [
     name: "Patron",
     class: "community",
     available: null,
+    isIncremental: true,
     benefits: [
       { label: "Logo on our website", value: true },
       { label: "Inclusive tickets", value: "1" },
@@ -19,14 +20,12 @@ const sponsorshipTiers = [
     name: "Silver",
     class: "silver",
     available: null,
-    isIncremental: false,
+    isIncremental: true,
     benefits: [
-      { label: "Logo on our website", value: true },
       { label: "Social media promotion", value: true },
       { label: "Inclusive tickets", value: "2" },
       { label: "Discounted tickets", value: "Max. 2" },
       { label: "Newsletter inclusion", value: true },
-      { label: "Branding on stage", value: true },
       { label: "Logo in YouTube videos", value: true },
     ]
   },
@@ -142,7 +141,7 @@ const sponsorshipTiers = [
                 <ul class="package-features mt-auto">
                   {tier.isIncremental && (
                     <li class="incremental-label">
-                      {tier.name === "Silver" ? "Everything in Patron +" : `Includes ${sponsorshipTiers[sponsorshipTiers.indexOf(tier) - 1].name} plus:`}
+                      {tier.name === "Patron" ? "Includes:" : `Includes ${sponsorshipTiers[sponsorshipTiers.indexOf(tier) - 1].name} plus:`}
                     </li>
                   )}
                   {tier.benefits
