@@ -1931,6 +1931,9 @@ section { padding: var(--space-4xl) 0; }
 
 /* Travel Info */
 .travel-info {
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-4xl);
+  border-top: 1px solid var(--gray-200);
   margin-bottom: var(--space-4xl);
 }
 
