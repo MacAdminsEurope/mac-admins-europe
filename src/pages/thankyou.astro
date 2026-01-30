@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === '/' ? '' : baseUrl;
 ---
 
 <Layout title="Thank You">
@@ -28,7 +29,7 @@ const base = import.meta.env.BASE_URL;
         <p id="thank-you-submessage" class="thank-you-submessage">We appreciate your interest in MacAdmins Europe 2026.</p>
 
         <div class="thank-you-actions">
-          <a href="https://macadmins-eu.org" class="btn btn-primary">Return to Homepage</a>
+          <a href={`${base}/`} class="btn btn-primary">Return to Homepage</a>
         </div>
       </div>
     </div>

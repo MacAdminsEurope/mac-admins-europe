@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://macadmins-eu.org/sitemap.xml
+
+# Disallow thankyou page (utility page, not useful for search)
+Disallow: /thankyou
+
+# Disallow 404 page
+Disallow: /404

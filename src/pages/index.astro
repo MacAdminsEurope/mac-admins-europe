@@ -3,9 +3,47 @@ import Layout from '../layouts/Layout.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 const base = baseUrl === '/' ? '' : baseUrl;
+
+const eventSchema = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Mac Admins Europe 2026",
+  "startDate": "2026-04-30",
+  "endDate": "2026-04-30",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "Leidse Schouwburg – Stadsgehoorzaal",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Breestraat 60",
+      "addressLocality": "Leiden",
+      "postalCode": "2311 CK",
+      "addressCountry": "NL"
+    }
+  },
+  "image": "https://macadmins-eu.org/images/og-image.png",
+  "description": "European community meetup for Apple administrators. Join fellow Mac admins for knowledge sharing, networking, and discovering the latest in macOS and iOS device management.",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://macadmins-eu.org/tickets",
+    "availability": "https://schema.org/InStock",
+    "price": "75.00",
+    "priceCurrency": "EUR",
+    "validFrom": "2026-01-01"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Mac Admins Europe",
+    "url": "https://macadmins-eu.org"
+  }
+};
 ---
 
 <Layout title="Mac Admins Europe 2026 | April 30th, Leiden">
+  <script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
+  
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-bg">

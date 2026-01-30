@@ -8,11 +8,13 @@ const base = baseUrl === "/" ? "" : baseUrl;
 interface Props {
   title: string;
   description?: string;
+  canonicalUrl?: string;
 }
 
 const {
   title,
   description = "Mac Admins Europe - For the community, by the community. Join us in Leiden on April 30th for the premier European Apple administration conference.",
+  canonicalUrl,
 } = Astro.props;
 ---
 
@@ -27,16 +29,20 @@ const {
       content="Mac Admin, Apple, macOS, iOS, MDM, Jamf, conference, Europe, Leiden, Netherlands"
     />
 
+    <link rel="canonical" href={canonicalUrl || `https://macadmins-eu.org${Astro.url.pathname}`} />
+
     <!-- Open Graph -->
+    <meta property="og:url" content={canonicalUrl || `https://macadmins-eu.org${Astro.url.pathname}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content={`${base}/images/og-image.png`} />
+    <meta property="og:image" content="https://macadmins-eu.org/images/og-image.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://macadmins-eu.org/images/og-image.png" />
 
     <!-- Favicons -->
     <link

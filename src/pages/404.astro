@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const base = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === '/' ? '' : baseUrl;
 ---
 
 <Layout title="Page Not Found">
@@ -29,7 +30,7 @@ const base = import.meta.env.BASE_URL;
         <p class="not-found-submessage">It may have been moved, deleted, or perhaps never existed.</p>
 
         <div class="not-found-actions">
-          <a href="https://macadmins-eu.org" class="btn btn-primary">Return to Homepage</a>
+          <a href={`${base}/`} class="btn btn-primary">Return to Homepage</a>
         </div>
       </div>
     </div>
