@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === '/' ? '' : baseUrl;
+---
+
+<Layout title="Newsletter | Mac Admins Europe 2026">
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">Stay Connected</span>
+      <h1>Join Our Newsletter</h1>
+      <p>Get the latest updates delivered to your inbox</p>
+    </div>
+  </section>
+
+  <section class="newsletter-content">
+    <div class="container">
+      <div class="newsletter-card">
+        <h2>Stay in the Loop</h2>
+        <p class="newsletter-description">
+          Join the Mac Admins Europe newsletter to get exclusive updates about:
+        </p>
+        <ul class="newsletter-benefits">
+          <li><span class="check">✓</span> Early bird ticket notifications</li>
+          <li><span class="check">✓</span> Speaker announcements</li>
+          <li><span class="check">✓</span> Community news and event updates</li>
+        </ul>
+        <p class="newsletter-promise">
+          We respect your privacy. Unsubscribe anytime. <br/>No spam, ever.
+        </p>
+        <NewsletterForm />
+      </div>
+    </div>
+  </section>
+</Layout>
