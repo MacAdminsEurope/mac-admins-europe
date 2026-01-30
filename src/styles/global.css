@@ -754,8 +754,8 @@ section { padding: var(--space-4xl) 0; }
 }
 
 .visual-card {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -3215,6 +3215,53 @@ section { padding: var(--space-4xl) 0; }
   color: var(--eu-blue-dark);
 }
 
+/* Photo Policy Collapsible */
+.photo-policy-details {
+  margin-top: var(--space-md);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.photo-policy-details summary {
+  padding: var(--space-md) var(--space-lg);
+  background: var(--gray-50);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--eu-blue);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.photo-policy-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.photo-policy-details summary::before {
+  content: "▶";
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.photo-policy-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.photo-policy-details summary:hover {
+  background: var(--gray-100);
+}
+
+.photo-policy-details .details-content {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--gray-200);
+}
+
+.photo-policy-details .details-content p:last-child {
+  margin-bottom: 0;
+}
+
 .coc-attribution {
   padding-top: var(--space-xl);
   border-top: 1px solid var(--gray-200);
@@ -3265,8 +3312,8 @@ section { padding: var(--space-4xl) 0; }
   }
 
   .visual-card {
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
   }
 
   /* Sponsors page - 4 column to 2 column */
