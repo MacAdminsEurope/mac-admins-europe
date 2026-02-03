@@ -28,6 +28,47 @@ const base = baseUrl === "/" ? "" : baseUrl;
             way to connect with the Mac Admin community.
           </p>
 
+          <!-- Pricing Summary Cards -->
+          <div class="pricing-summary-grid">
+            <div class="pricing-summary-card patron">
+              <span class="tier-label">Patron</span>
+              <span class="tier-price">€500 +VAT</span>
+              <span class="tier-availability">&nbsp;</span>
+            </div>
+            <div class="pricing-summary-card silver">
+              <span class="tier-label">Silver</span>
+              <span class="tier-price">€2,000 +VAT</span>
+              <span class="tier-availability">&nbsp;</span>
+            </div>
+            <div class="pricing-summary-card gold">
+              <span class="tier-label">Gold</span>
+              <span class="tier-price">€4,500 +VAT</span>
+              <span class="tier-availability">5 available</span>
+            </div>
+            <div class="pricing-summary-card platinum">
+              <span class="tier-label">Platinum</span>
+              <span class="tier-price">€8,000 +VAT</span>
+              <span class="tier-availability">4 available</span>
+            </div>
+          </div>
+
+          <!-- PDF Download Box -->
+          <div class="pdf-download-box">
+            <svg class="pdf-download-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <line x1="9" y1="15" x2="15" y2="15"></line>
+            </svg>
+            <div class="pdf-download-content">
+              <h3>Download Sponsorship Prospectus</h3>
+              <p>View complete tier details and benefits</p>
+            </div>
+            <a href={`${base}/pdf/sponsor-tiers.pdf`} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Download PDF
+            </a>
+          </div>
+
           <div class="contact-methods-simple">
             <div class="contact-method-inline">
               <strong><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 0.25em;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Email:</strong>

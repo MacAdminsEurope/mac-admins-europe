@@ -2744,6 +2744,138 @@ section { padding: var(--space-4xl) 0; }
 }
 
 
+/* Pricing Summary Table - Sponsor Contact Page */
+.pricing-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+
+.pricing-summary-card {
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: transform var(--transition-base);
+}
+
+.pricing-summary-card:hover {
+  transform: translateY(-4px);
+}
+
+.pricing-summary-card.patron {
+  background: var(--white);
+  border: 2px solid var(--eu-blue);
+}
+
+.pricing-summary-card.silver {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  border: 2px solid var(--gray-400);
+}
+
+.pricing-summary-card.gold {
+  background: linear-gradient(135deg, var(--eu-gold-light) 0%, #fff9e6 100%);
+  border: 2px solid var(--eu-gold-dark);
+}
+
+.pricing-summary-card.platinum {
+  background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
+  border: 2px solid var(--eu-gold);
+  color: var(--white);
+}
+
+.pricing-summary-card .tier-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.pricing-summary-card.patron .tier-label { color: var(--eu-blue); }
+.pricing-summary-card.silver .tier-label { color: var(--gray-700); }
+.pricing-summary-card.gold .tier-label { color: var(--eu-blue-dark); }
+.pricing-summary-card.platinum .tier-label { color: var(--eu-gold); }
+
+.pricing-summary-card .tier-price {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.pricing-summary-card.platinum .tier-price { color: var(--white); }
+
+.pricing-summary-card .tier-availability {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray-600);
+}
+
+.pricing-summary-card.gold .tier-availability { color: var(--eu-blue-dark); }
+.pricing-summary-card.platinum .tier-availability { color: var(--eu-gold); }
+
+/* PDF Download Box */
+.pdf-download-box {
+  background: var(--eu-blue);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.pdf-download-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  color: var(--white);
+}
+
+.pdf-download-content {
+  flex-grow: 1;
+}
+
+.pdf-download-content h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-xs);
+  color: var(--white);
+}
+
+.pdf-download-content p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.pdf-download-box .btn {
+  flex-shrink: 0;
+}
+
+/* Responsive: Pricing Summary */
+@media (max-width: 1024px) {
+  .pricing-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-download-box {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pdf-download-content {
+    text-align: center;
+  }
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
