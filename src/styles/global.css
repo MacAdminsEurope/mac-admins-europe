@@ -1380,7 +1380,7 @@ section { padding: var(--space-4xl) 0; }
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
-  margin-bottom: var(--space-4xl);
+  margin-bottom: var(--space-md);
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
