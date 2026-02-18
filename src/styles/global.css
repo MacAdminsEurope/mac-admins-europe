@@ -3932,7 +3932,7 @@ section { padding: var(--space-4xl) 0; }
 
 .join-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
 }
 
@@ -3971,6 +3971,24 @@ section { padding: var(--space-4xl) 0; }
 .foundation-logo {
   height: 60px;
   width: auto;
+}
+
+.jamfnation-logo {
+  height: 48px;
+  width: auto;
+  transition: opacity var(--transition-base);
+}
+
+.jamfnation-logo-yellow {
+  display: none;
+}
+
+.join-card:hover .jamfnation-logo-grey {
+  display: none;
+}
+
+.join-card:hover .jamfnation-logo-yellow {
+  display: block;
 }
 
 .join-card h3 {
