@@ -19,16 +19,8 @@ const base = baseUrl === '/' ? '' : baseUrl;
 
   <section class="program-content">
     <div class="container">
-      <div class="program-notice">
-        <div class="notice-icon">📋</div>
-        <div class="notice-content">
-          <h3>Full Program Coming Soon</h3>
-          <p>We're finalizing our speaker lineup and session details. Subscribe to our newsletter to be the first to know when the full program is announced!</p>
-        </div>
-      </div>
-<!-- 
       <div class="program-preview">
-        <h2>Preliminary Schedule</h2>
+        <h2>What's on the Day</h2>
         
         <div class="schedule-day">
           <div class="day-header">
@@ -36,8 +28,9 @@ const base = baseUrl === '/' ? '' : baseUrl;
           </div>
 
           <div class="schedule-block registration">
-            <div class="block-time">08:00 - 09:00</div>
+            <div class="block-time">08:30 - 09:15</div>
             <div class="block-content">
+              <span class="block-emoji">☕️🎫</span>
               <span class="block-type">Registration</span>
               <h3>Registration & Welcome Coffee</h3>
               <p>Pick up your badge, grab a coffee, and start networking with fellow Mac Admins</p>
@@ -45,27 +38,41 @@ const base = baseUrl === '/' ? '' : baseUrl;
           </div>
 
           <div class="schedule-block keynote">
-            <div class="block-time">09:00 - 09:45</div>
+            <div class="block-time">09:15 - 09:30</div>
             <div class="block-content">
-              <span class="block-type">Keynote</span>
-              <h3>Opening Keynote</h3>
+              <span class="block-emoji">🎉</span>
+              <span class="block-type">Opening</span>
+              <h3>Opening</h3>
               <p>Welcome to Mac Admins Europe 2026</p>
-              <span class="speaker-tba">Speaker to be announced</span>
             </div>
           </div>
 
           <div class="schedule-block session">
-            <div class="block-time">10:00 - 10:45</div>
+            <div class="block-time">09:30 - 10:15</div>
             <div class="block-content">
               <span class="block-type">Session</span>
-              <h3>Morning Sessions - Block 1</h3>
-              <p>Multiple sessions available</p>
+              <h3>Speaker 1</h3>
+              <div class="speaker-placeholder">
+                <div class="speaker-avatar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <span class="speaker-tba">Speaker to be announced</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-block sponsor">
+            <div class="block-time">10:15 - 10:40</div>
+            <div class="block-content">
+              <span class="block-type">Sponsor</span>
+              <h3>Sponsor Session 1</h3>
             </div>
           </div>
 
           <div class="schedule-block break">
-            <div class="block-time">10:45 - 11:15</div>
+            <div class="block-time">10:40 - 11:10</div>
             <div class="block-content">
+              <span class="block-emoji">☕️</span>
               <span class="block-type">Break</span>
               <h3>Coffee Break</h3>
               <p>Refresh and visit our exhibitors</p>
@@ -73,17 +80,31 @@ const base = baseUrl === '/' ? '' : baseUrl;
           </div>
 
           <div class="schedule-block session">
-            <div class="block-time">11:15 - 12:00</div>
+            <div class="block-time">11:10 - 11:55</div>
             <div class="block-content">
               <span class="block-type">Session</span>
-              <h3>Morning Sessions - Block 2</h3>
-              <p>Multiple sessions available</p>
+              <h3>Speaker 2</h3>
+              <div class="speaker-placeholder">
+                <div class="speaker-avatar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <span class="speaker-tba">Speaker to be announced</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-block sponsor">
+            <div class="block-time">11:55 - 12:20</div>
+            <div class="block-content">
+              <span class="block-type">Sponsor</span>
+              <h3>Sponsor Session 2</h3>
             </div>
           </div>
 
           <div class="schedule-block lunch">
-            <div class="block-time">12:00 - 13:30</div>
+            <div class="block-time">12:20 - 13:20</div>
             <div class="block-content">
+              <span class="block-emoji">🍽️</span>
               <span class="block-type">Lunch</span>
               <h3>Lunch & Networking</h3>
               <p>Enjoy lunch, visit exhibitors, and connect with peers</p>
@@ -91,29 +112,48 @@ const base = baseUrl === '/' ? '' : baseUrl;
           </div>
 
           <div class="schedule-block session">
-            <div class="block-time">13:30 - 14:15</div>
+            <div class="block-time">13:20 - 14:05</div>
             <div class="block-content">
               <span class="block-type">Session</span>
-              <h3>Afternoon Sessions - Block 1</h3>
-              <p>Multiple sessions available</p>
+              <h3>Speaker 3</h3>
+              <div class="speaker-placeholder">
+                <div class="speaker-avatar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <span class="speaker-tba">Speaker to be announced</span>
+              </div>
             </div>
           </div>
 
           <div class="schedule-block session">
-            <div class="block-time">14:30 - 15:15</div>
+            <div class="block-time">14:05 - 14:50</div>
             <div class="block-content">
               <span class="block-type">Session</span>
-              <h3>Afternoon Sessions - Block 2</h3>
-              <p>Multiple sessions available</p>
+              <h3>Speaker 4</h3>
+              <div class="speaker-placeholder">
+                <div class="speaker-avatar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <span class="speaker-tba">Speaker to be announced</span>
+              </div>
             </div>
           </div>
 
           <div class="schedule-block break">
-            <div class="block-time">15:15 - 15:45</div>
+            <div class="block-time">14:50 - 15:20</div>
             <div class="block-content">
+              <span class="block-emoji">☕️</span>
               <span class="block-type">Break</span>
-              <h3>Afternoon Break</h3>
+              <h3>Coffee Break</h3>
               <p>Last chance to visit exhibitors</p>
+            </div>
+          </div>
+
+          <div class="schedule-block sponsor">
+            <div class="block-time">15:20 - 15:45</div>
+            <div class="block-content">
+              <span class="block-type">Sponsor</span>
+              <h3>Sponsor Session 3</h3>
             </div>
           </div>
 
@@ -121,33 +161,35 @@ const base = baseUrl === '/' ? '' : baseUrl;
             <div class="block-time">15:45 - 16:30</div>
             <div class="block-content">
               <span class="block-type">Session</span>
-              <h3>Afternoon Sessions - Block 3</h3>
-              <p>Multiple sessions available</p>
+              <h3>Speaker 5</h3>
+              <div class="speaker-placeholder">
+                <div class="speaker-avatar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <span class="speaker-tba">Speaker to be announced</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="schedule-block sponsor">
+            <div class="block-time">16:30 - 16:55</div>
+            <div class="block-content">
+              <span class="block-type">Sponsor</span>
+              <h3>Sponsor Session 4</h3>
             </div>
           </div>
 
           <div class="schedule-block keynote">
-            <div class="block-time">16:45 - 17:30</div>
+            <div class="block-time">16:55 - 17:15</div>
             <div class="block-content">
+              <span class="block-emoji">🎬</span>
               <span class="block-type">Closing</span>
-              <h3>Closing Keynote & Wrap-up</h3>
+              <h3>Closing Session</h3>
               <p>Key takeaways and looking ahead</p>
-              <span class="speaker-tba">Speaker to be announced</span>
-            </div>
-          </div>
-
-          <div class="schedule-block social">
-            <div class="block-time">17:30 - 20:00</div>
-            <div class="block-content">
-              <span class="block-type">Social</span>
-              <h3>Networking Drinks</h3>
-              <p>Unwind and continue the conversations over drinks</p>
             </div>
           </div>
         </div>
-      </div>
- -->
-      
+      </div>      
     </div>
   </section>
 </Layout>

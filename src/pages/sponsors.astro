@@ -32,6 +32,7 @@ const sponsorshipTiers = [
   {
     name: "Gold",
     class: "gold",
+    soldOut: true,
     isIncremental: true,
     benefits: [
       { label: "Inclusive tickets", value: "3" },
@@ -42,6 +43,7 @@ const sponsorshipTiers = [
   {
     name: "Platinum",
     class: "platinum featured",
+    soldOut: true,
     isIncremental: true,
     benefits: [
       { label: "Inclusive tickets", value: "4" },
@@ -130,7 +132,8 @@ const sponsorshipTiers = [
         <div class="packages-grid-new">
           {
             sponsorshipTiers.map((tier) => (
-              <div class={`package-card ${tier.class}`}>
+              <div class={`package-card ${tier.class}${tier.soldOut ? ' sold-out' : ''}`}>
+                {tier.soldOut && <div class="sold-out-overlay"><span>Sold Out</span></div>}
                 <div class="package-header">
                   <h3>{tier.name}</h3>
                   <div class="package-availability-wrapper">
@@ -157,12 +160,16 @@ const sponsorshipTiers = [
                     ))}
                 </ul>
                 <div class="package-cta">
-                  <a
-                    href={`${base}/sponsor-contact`}
-                    class="btn btn-primary btn-sm w-full"
-                  >
-                    Contact Us
-                  </a>
+                  {tier.soldOut ? (
+                    <span class="btn btn-primary btn-sm w-full btn-disabled">Sold Out</span>
+                  ) : (
+                    <a
+                      href={`${base}/sponsor-contact`}
+                      class="btn btn-primary btn-sm w-full"
+                    >
+                      Contact Us
+                    </a>
+                  )}
                 </div>
               </div>
             ))

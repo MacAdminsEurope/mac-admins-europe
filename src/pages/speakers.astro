@@ -3,6 +3,33 @@ import Layout from '../layouts/Layout.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
 const base = baseUrl === '/' ? '' : baseUrl;
+
+// ============================================================
+// SPEAKERS - Edit this array to add/update speakers
+// Put speaker images in /public/img/speakers/
+// ============================================================
+interface Speaker {
+  name: string;
+  role: string;
+  company?: string;
+  image: string;
+  bio?: string;
+  talk?: string;
+}
+
+const speakers: Speaker[] = [
+  // {
+  //   name: "Jane Doe",
+  //   role: "Senior Mac Admin",
+  //   company: "Acme Corp",
+  //   image: "/img/speakers/jane-doe.jpg",
+  //   bio: "Jane has 15 years of experience managing Apple fleets at scale.",
+  //   talk: "Managing 10,000 Macs Without Losing Your Mind",
+  // },
+];
+
+// Total number of speaker slots to show (fills remaining with TBA placeholders)
+const totalSlots = 6;
 ---
 
 <Layout
@@ -19,107 +46,48 @@ const base = baseUrl === '/' ? '' : baseUrl;
 
   <section class="speakers-content">
     <div class="container">
-      <div class="speakers-notice">
-        <div class="notice-icon">🎤</div>
-        <div class="notice-content">
-          <h3>Speaker Announcements Coming Soon</h3>
-          <p>We're assembling an incredible lineup of speakers for Mac Admins Europe 2026. Check back regularly or subscribe to our newsletter to be the first to know!</p>
+      {speakers.length === 0 && (
+        <div class="speakers-notice">
+          <div class="notice-icon">🎤</div>
+          <div class="notice-content">
+            <h3>Speaker Announcements Coming Soon</h3>
+            <p>We're assembling an incredible lineup of speakers for Mac Admins Europe 2026. Check back regularly or subscribe to our newsletter to be the first to know!</p>
+          </div>
         </div>
-      </div>
+      )}
 
       <div class="speakers-placeholder">
         <h2>Featured Speakers</h2>
         <div class="speakers-grid">
-          <div class="speaker-card placeholder">
-            <div class="speaker-image">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
-                <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
-                <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
-              </svg>
+          {speakers.map((speaker) => (
+            <div class="speaker-card">
+              <div class="speaker-image">
+                <img src={speaker.image} alt={speaker.name} />
+              </div>
+              <div class="speaker-info">
+                <h3>{speaker.name}</h3>
+                <p class="speaker-role">{speaker.role}</p>
+                {speaker.company && <p class="speaker-company">{speaker.company}</p>}
+                {speaker.talk && <p class="speaker-talk">{speaker.talk}</p>}
+                {speaker.bio && <p class="speaker-bio">{speaker.bio}</p>}
+              </div>
             </div>
-            <div class="speaker-info">
-              <h3>To Be Announced</h3>
-              <p class="speaker-role">Speaker</p>
-              <!-- <p class="speaker-company">Company Name</p> -->
-              <!-- <p class="speaker-bio">Speaker bio</p> -->
+          ))}
+          {Array.from({ length: Math.max(0, totalSlots - speakers.length) }).map(() => (
+            <div class="speaker-card placeholder">
+              <div class="speaker-image">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
+                  <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
+                  <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
+                </svg>
+              </div>
+              <div class="speaker-info">
+                <h3>To Be Announced</h3>
+                <p class="speaker-role">Speaker</p>
+              </div>
             </div>
-          </div>
-          <div class="speaker-card placeholder">
-            <div class="speaker-image">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
-                <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
-                <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
-              </svg>
-            </div>
-            <div class="speaker-info">
-              <h3>To Be Announced</h3>
-              <p class="speaker-role">Speaker</p>
-              <!-- <p class="speaker-company">Company Name</p> -->
-              <!-- <p class="speaker-bio">Speaker bio</p> -->
-            </div>
-          </div>
-          <div class="speaker-card placeholder">
-            <div class="speaker-image">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
-                <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
-                <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
-              </svg>
-            </div>
-            <div class="speaker-info">
-              <h3>To Be Announced</h3>
-              <p class="speaker-role">Speaker</p>
-              <!-- <p class="speaker-company">Company Name</p> -->
-              <!-- <p class="speaker-bio">Speaker bio</p> -->
-            </div>
-          </div>
-          <div class="speaker-card placeholder">
-            <div class="speaker-image">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
-                <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
-                <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
-              </svg>
-            </div>
-            <div class="speaker-info">
-              <h3>To Be Announced</h3>
-              <p class="speaker-role">Speaker</p>
-              <!-- <p class="speaker-company">Company Name</p> -->
-              <!-- <p class="speaker-bio">Speaker bio</p> -->
-            </div>
-          </div>
-          <div class="speaker-card placeholder">
-            <div class="speaker-image">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
-                <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
-                <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
-              </svg>
-            </div>
-            <div class="speaker-info">
-              <h3>To Be Announced</h3>
-              <p class="speaker-role">Speaker</p>
-              <!-- <p class="speaker-company">Company Name</p> -->
-              <!-- <p class="speaker-bio">Speaker bio</p> -->
-            </div>
-          </div>
-          <div class="speaker-card placeholder">
-            <div class="speaker-image">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
-                <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
-                <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
-              </svg>
-            </div>
-            <div class="speaker-info">
-              <h3>To Be Announced</h3>
-              <p class="speaker-role">Speaker</p>
-              <!-- <p class="speaker-company">Company Name</p> -->
-              <!-- <p class="speaker-bio">Speaker bio</p> -->
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

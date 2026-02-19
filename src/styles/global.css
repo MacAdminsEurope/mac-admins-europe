@@ -1116,8 +1116,42 @@ section { padding: var(--space-4xl) 0; }
 
 .schedule-block {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 180px 1fr;
   border-bottom: 1px solid var(--gray-200);
+  border-left: 4px solid transparent;
+  transition: background 0.15s ease;
+}
+
+.schedule-block:nth-child(even) {
+  background: var(--gray-100);
+}
+
+.schedule-block.session {
+  border-left-color: var(--eu-blue);
+}
+
+.schedule-block.sponsor {
+  border-left-color: var(--eu-gold);
+}
+
+.schedule-block.keynote {
+  border-left-color: var(--eu-gold);
+  background: #fffbeb;
+}
+
+.schedule-block.break {
+  border-left-color: var(--gray-400);
+  background: #f0fdf4;
+}
+
+.schedule-block.lunch {
+  border-left-color: var(--eu-green);
+  background: #f0fdf4;
+}
+
+.schedule-block.registration {
+  border-left-color: var(--eu-green);
+  background: #edf2ff;
 }
 
 .schedule-block:last-child {
@@ -1125,17 +1159,27 @@ section { padding: var(--space-4xl) 0; }
 }
 
 .block-time {
-  background: var(--gray-100);
   padding: var(--space-lg);
   font-family: var(--font-mono);
   font-weight: 600;
+  font-size: 0.95rem;
   color: var(--eu-blue);
   display: flex;
   align-items: center;
+  white-space: nowrap;
+  background: rgba(0,0,0,0.02);
 }
 
 .block-content {
   padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.block-emoji {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-xs);
 }
 
 .block-type {
@@ -1159,10 +1203,19 @@ section { padding: var(--space-4xl) 0; }
   color: var(--white);
 }
 
-.break .block-type,
+.sponsor .block-type {
+  background: var(--eu-gold);
+  color: var(--eu-blue-dark);
+}
+
+.break .block-type {
+  background: #dcfce7;
+  color: #166534;
+}
+
 .lunch .block-type {
-  background: var(--gray-200);
-  color: var(--gray-700);
+  background: #dcfce7;
+  color: #166534;
 }
 
 .registration .block-type {
@@ -1178,6 +1231,34 @@ section { padding: var(--space-4xl) 0; }
 .block-content h3 {
   font-size: 1.125rem;
   margin-bottom: var(--space-xs);
+}
+
+.session .block-content h3 {
+  font-size: 1.25rem;
+}
+
+.speaker-placeholder {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.speaker-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.speaker-avatar svg {
+  width: 24px;
+  height: 24px;
+  color: var(--gray-400);
 }
 
 .block-content p {
@@ -2679,6 +2760,46 @@ section { padding: var(--space-4xl) 0; }
   margin-top: var(--space-lg);
 }
 
+/* Sold Out Overlay */
+.package-card.sold-out {
+  overflow: hidden;
+}
+
+.package-card.sold-out:hover {
+  transform: none;
+}
+
+.sold-out-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: inherit;
+}
+
+.sold-out-overlay span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  color: var(--white);
+  background: var(--eu-blue);
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-lg);
+  transform: rotate(-6deg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .incremental-label {
   font-weight: 700;
   font-size: 0.8rem;
@@ -2815,6 +2936,24 @@ section { padding: var(--space-4xl) 0; }
 
 .pricing-summary-card.gold .tier-availability { color: var(--eu-blue-dark); }
 .pricing-summary-card.platinum .tier-availability { color: var(--eu-gold); }
+
+.pricing-summary-card.sold-out {
+  opacity: 0.6;
+  position: relative;
+}
+
+.pricing-summary-card.sold-out:hover {
+  transform: none;
+}
+
+.tier-sold-out {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pricing-summary-card.gold .tier-sold-out { color: var(--eu-blue-dark); }
+.pricing-summary-card.platinum .tier-sold-out { color: var(--eu-gold); }
 
 /* PDF Download Box */
 .pdf-download-box {
