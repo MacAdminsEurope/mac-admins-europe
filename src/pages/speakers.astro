@@ -1,4 +1,5 @@
 ---
+import { reference } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -9,6 +10,7 @@ const base = baseUrl === '/' ? '' : baseUrl;
 // Put speaker images in /public/img/speakers/
 // ============================================================
 interface Speaker {
+  order: number;
   name: string;
   role: string;
   company?: string;
@@ -18,18 +20,94 @@ interface Speaker {
 }
 
 const speakers: Speaker[] = [
-  // {
-  //   name: "Jane Doe",
-  //   role: "Senior Mac Admin",
-  //   company: "Acme Corp",
-  //   image: "/img/speakers/jane-doe.jpg",
-  //   bio: "Jane has 15 years of experience managing Apple fleets at scale.",
-  //   talk: "Managing 10,000 Macs Without Losing Your Mind",
-  // },
+   {
+     order: 7,
+     name: "Alex Smith",
+     role: "Lead Endpoint Security Engineer",
+     company: "Adyen",
+     image: "/img/speakers/alex.jpg",
+     bio: "Alex Smith is a Lead Endpoint Security Engineer at Adyen, bringing extensive experience across financial services, fashion, and education. As a Security Researcher and Threat Hunter, Alex specializes in Apple platform security within enterprise environments,with deep expertise in deployment, threat detection, vulnerability management, and security governance. Alex holds the full suite of Jamf certifications, Jamf Certified Technician, Administrator, Expert, and Endpoint Security Admin, reflecting a strong commitment to staying at the forefront of Apple enterprise management and security.",
+     talk: "TBA",
+   },
+   {
+     order: 8,
+     name: "Henry Stamerjohann",
+     role: "Platform Engineer",
+     company: "Fleet",
+     image: "/img/speakers/henry.jpg",
+     bio: "Henry Stamerjohann is a platform engineer, consultant, and was a co-founder of Zentral in 2015. He is a primary contributor to the Mac Admins SOFA project and the Swift Dialog project. He is also a contributor and developer on many other open-source projects focused around Apple device management in the enterprise and government. Henry has a new Roland TR-1000 drum machine! He lives in Hamburg, Germany and is currently a Solutions Consultant and individual contributor at Fleet Device Management.",
+     talk: "TBA",
+   },
+   {
+     order: 6,
+     name: "Harrison Ravazzolo",
+     role: "Solutions Consultant",
+     company: "Fleet",
+     image: "/img/speakers/harrison.jpg",
+     bio: "Harrison Ravazzolo is a security, identity and client platform engineer formerly with Deputy and other companies in Silicon Valley. He is a chef & baker who does real gigs in real restaurants in San Francisco, CA (one of the world's premiere food scenes.) He is also a rock climber & is a huge fan of Yogi Bear (or maybe Yoga...) Harrison is currently a Solutions Consultant with Fleet Device Management.",
+     talk: "TBA",
+   },
+   {
+     order: 9,
+     name: "David Starr",
+     role: "Partners",
+     company: "Workbrew",
+     image: "/img/speakers/david.jpg",
+     bio: "David Starr has spent almost 25 years focused entirely on architecting Apple solutions for business, enterprise, and education organizations. David was a Consulting Engineer at Apple in the US and he later co-founded Black Glove, a managed services provider dedicated to delivering scaleable Apple-centric IT services.Today, David leads Partners @ Workbrew (https://workbrew.com/), helping bring Workbrew’s secure software delivery platform to organizations around the world. He is a proud member of the Benelux and European MacAdmin communities and is based in The Hague, Netherlands where he lives with his wife and two children.",
+     talk: "TBA",
+   },
+   {
+     order: 3,
+     name: "Weldon Dodd",
+     role: "Distinguished Engineer",
+     company: "Iru",
+     image: "/img/speakers/weldon.jpg",
+     bio: "Weldon Dodd began his career running a campus Mac lab and NeXT lab at the University of California. He then went to wireless telecom just as digital networks and the Internet came to mobile. The next stage was automating large Apple deployments and running the Apple Authorized Training Center in Colorado. Weldon joined Kandji in early 2020 where he has built and led several teams, and now serves as a Distinguished Engineer.",
+     talk: "TBA",
+   },
+   {
+     order: 4,
+     name: "Guillaume Gète",
+     role: "Apple consultant",
+     company: "Gete.Net Consulting",
+     image: "/img/speakers/guillaume.jpg",
+     bio: "Guillaume Gète is a renowned French Apple consultant and technical expert who has been navigating the Apple ecosystem since the days of System 7. With over thirty years of experience, he has become a leading voice in the Mac admin community by bridging the gap between complex infrastructure and the end-user experience. As an author of several reference books on macOS, Guillaume identifies himself as an « Apple Experience Creator for the enterprise ». He specializes in MDM strategy, security compliance, and automated provisioning, ensuring that the « Apple Way » delivers its full potential in professional environments, and creating useful tools for Mac admins like DiskMaker X. Beyond the technical architecture, Guillaume is a passionate educator. He believes that learning technology should be as engaging as using it, often injecting a healthy dose of humor into his training sessions to demystify even the most daunting IT concepts. Oh, and he's avid Doctor Who fan, too.",
+     talk: "TBA",
+   },
+      {
+     order: 1,
+     name: "Ulrik Aabye-Hansen",
+     role: "Apple consultant",
+     company: "TalkTech ApS",
+     image: "/img/speakers/ulrik.jpg",
+     bio: "Ulrik Aabye-Hansen is a seasoned Apple consultant, trainer, and co-founder of TalkTech ApS. With a path into the world of Apple originally shaped by music, he now specializes in Apple device management planning, automation, and security — but first and foremost in helping organizations train and upskill staff to maintain modern, manageable Apple environments. Ulrik delivers Apple-focused and Device Management training across EMEIA and is known for turning complex technical topics into clear, practical sessions. A regular conference speaker, he combines deep technical insight with real-world experience and a movie reference or two.",
+     talk: "TBA",
+   },
+    {
+      order: 2,
+      name: "Armin Briegel",
+      role: "Senior Consulting Engineer",
+      company: "Jamf",
+      image: "/img/speakers/armin.jpg",
+      bio: "Armin Briegel has been managing Macs and their users since the time when Apple was beleaguered. He has held most existing technical job titles at one time or another. He worked for at Apple in the US and Germany. Then, he put theory into practice as a System Administrator and Consultant. He used to live near Leiden. He currently works for Jamf and also writes and posts on his weblogs, scriptingosx.com and macadmins.news.",
+      talk: "TBA",
+    },
+    {
+      order: 5,
+      name: "Rob Potvin",
+      role: "Senior Consulting Engineer",
+      company: "Jamf",
+      image: "/img/speakers/rob.jpg",
+      bio: "Rob is a Canadian expat based in the Netherlands, where he lives with his family and in the past helped train what feels like half of Europe’s Mac Admins. A long-time Mac admin and volunteer of the Mac Admins community, he brings deep, hands-on experience in managing, deploying, and supporting Apple devices and virtual \"apple\" machines.",
+      talk: "TBA",
+    }
+
 ];
 
+const sortedSpeakers = [...speakers].sort((a, b) => a.order - b.order);
+
 // Total number of speaker slots to show (fills remaining with TBA placeholders)
-const totalSlots = 6;
+const totalSlots = 9;
 ---
 
 <Layout
@@ -58,36 +136,50 @@ const totalSlots = 6;
 
       <div class="speakers-placeholder">
         <h2>Featured Speakers</h2>
-        <div class="speakers-grid">
-          {speakers.map((speaker) => (
-            <div class="speaker-card">
-              <div class="speaker-image">
-                <img src={speaker.image} alt={speaker.name} />
+        <div class="schedule-day">
+          <div class="speakers-grid">
+            {sortedSpeakers.map((speaker) => (
+              <div class="speaker-card">
+                <div class="speaker-card-top">
+                  <div class="speaker-image">
+                    <img src={speaker.image} alt={speaker.name} style="width:100%;height:100%;object-fit:cover;" />
+                  </div>
+                  <div class="speaker-info">
+                    <h3>{speaker.name}</h3>
+                    <div class="speaker-tags">
+                      <span class="speaker-tag role">{speaker.role}</span>
+                      {speaker.company && <span class="speaker-tag company">{speaker.company}</span>}
+                      {speaker.talk && <span class="speaker-tag talk">🎤 {speaker.talk}</span>}
+                    </div>
+                  </div>
+                </div>
+                {speaker.bio && (
+                  <div class="speaker-bio-row">
+                    <span class="speaker-bio">{speaker.bio}</span>
+                  </div>
+                )}
               </div>
-              <div class="speaker-info">
-                <h3>{speaker.name}</h3>
-                <p class="speaker-role">{speaker.role}</p>
-                {speaker.company && <p class="speaker-company">{speaker.company}</p>}
-                {speaker.talk && <p class="speaker-talk">{speaker.talk}</p>}
-                {speaker.bio && <p class="speaker-bio">{speaker.bio}</p>}
+            ))}
+            {Array.from({ length: Math.max(0, totalSlots - speakers.length) }).map(() => (
+              <div class="speaker-card placeholder">
+                <div class="speaker-card-top">
+                  <div class="speaker-image" style="display:flex;align-items:center;justify-content:center;">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+                      <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
+                      <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
+                      <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
+                    </svg>
+                  </div>
+                  <div class="speaker-info">
+                    <h3>To Be Announced</h3>
+                    <div class="speaker-tags">
+                      <span class="speaker-tag role">Speaker</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
-          {Array.from({ length: Math.max(0, totalSlots - speakers.length) }).map(() => (
-            <div class="speaker-card placeholder">
-              <div class="speaker-image">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="100" cy="100" r="100" fill="#e5e7eb"/>
-                  <circle cx="100" cy="75" r="35" fill="#9ca3af"/>
-                  <path d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z" fill="#9ca3af"/>
-                </svg>
-              </div>
-              <div class="speaker-info">
-                <h3>To Be Announced</h3>
-                <p class="speaker-role">Speaker</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
