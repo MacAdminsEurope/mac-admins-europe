@@ -4046,9 +4046,26 @@ a.sponsor-card:hover {
     flex-direction: column;
   }
 
+  .speaker-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .speaker-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
+    min-width: unset;
+    border-radius: 0;
+  }
+
+  .speaker-info {
+    width: 100%;
+    justify-content: flex-start;
+    padding: var(--space-md);
+  }
+
+  .speaker-bio-row {
+    padding: var(--space-md);
   }
 
   .timeline-item {
