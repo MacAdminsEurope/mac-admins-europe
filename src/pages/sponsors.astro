@@ -4,6 +4,43 @@ import Layout from "../layouts/Layout.astro";
 const baseUrl = import.meta.env.BASE_URL;
 const base = baseUrl === "/" ? "" : baseUrl;
 
+// ============================================================
+// CURRENT SPONSORS - Edit this array to add/update sponsors
+// Put sponsor logos in /public/img/sponsors/
+// tier: "platinum" | "gold" | "silver" | "patron"
+// ============================================================
+interface Sponsor {
+  name: string;
+  tier: "platinum" | "gold" | "silver" | "patron";
+  logo?: string;
+  url?: string;
+  tagline?: string;
+}
+
+const currentSponsors: Sponsor[] = [
+  // {
+  //   name: "Acme Corp",
+  //   tier: "platinum",
+  //   logo: "/img/sponsors/acme-corp.png",
+  //   url: "https://acmecorp.com",
+  //   tagline: "Enterprise Apple Management",
+  // },
+];
+
+const tierOrder = ["platinum", "gold", "silver", "patron"] as const;
+const tierLabels: Record<string, string> = {
+  platinum: "Platinum Sponsors",
+  gold: "Gold Sponsors",
+  silver: "Silver Sponsors",
+  patron: "Patron Sponsors",
+};
+const tierPlaceholderCounts: Record<string, number> = {
+  platinum: 3,
+  gold: 5,
+  silver: 4,
+  patron: 4,
+};
+
 const sponsorshipTiers = [
   {
     name: "Patron",
@@ -65,57 +102,66 @@ const sponsorshipTiers = [
     <div class="container">
       <span class="section-label">Our Partners</span>
       <h1>Sponsors</h1>
-      <p>Mac Admins Europe is made possible by these amazing partners</p>
+      <p>Made possible by:</p>
     </div>
   </section>
 
   <section class="sponsors-content">
     <div class="container">
-      <!-- Intro Section -->
-      <div class="sponsor-intro-header text-center mb-4">
-        <h2>Partner with Mac Admins Europe</h2>
-        <p class="hero-subtitle">
-          Connect with over 4,000 Mac Admin members and IT decision-makers
-          across Europe
-        </p>
-      </div>
 
-      <!-- Why Sponsor Section -->
-      <div class="sponsor-benefits-section">
-        <div class="text-center mb-2">
-          <span class="section-label">Partner with Us</span>
-          <h2>Why Sponsor Mac Admins Europe?</h2>
-        </div>
-        <p class="sponsor-intro">
-          Mac Admins Europe brings together IT professionals from across the
-          continent who manage Apple devices in enterprise environments.
-          Sponsoring our event puts your brand in front of decision-makers
-          actively looking for solutions.
-        </p>
+      <!-- Current Sponsors -->
+      <div class="current-sponsors">
+        <div class="text-center">
+          <h2 class="section-title">Our 2026 Sponsors</h2>
+          <p class="section-subtitle">These companies helped make Mac Admins Europe 2026 possible.</p>        </div>
 
-        <div class="sponsor-benefits">
-          <div class="benefit">
-            <div class="benefit-icon">👥</div>
-            <h3>Connecting Communities</h3>
-            <p>Connecting local communities across Europe (4000+ members)</p>
-            <!-- <h3>Community Impact</h3> -->
-            <!-- <p>Connect with 4,000+ Mac Admin community members</p> -->
-          </div>
-          <div class="benefit">
-            <div class="benefit-icon">🎯</div>
-            <h3>Targeted Audience</h3>
-            <p>IT professionals with purchasing influence</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit-icon">🤝</div>
-            <h3>Face-to-Face</h3>
-            <p>In-person networking and relationship building</p>
-          </div>
-          <div class="benefit">
-            <div class="benefit-icon">📣</div>
-            <h3>Brand Visibility</h3>
-            <p>Logo placement, booth space, and speaking opportunities</p>
-          </div>
+        {tierOrder.map((tier) => {
+          const tierSponsors = currentSponsors.filter((s) => s.tier === tier);
+          const placeholderCount = Math.max(0, tierPlaceholderCounts[tier] - tierSponsors.length);
+          const hasContent = tierSponsors.length > 0 || true;
+          return hasContent && (
+            <div class={`sponsor-tier-section tier-${tier}`}>
+              <h3 class="sponsor-tier-heading">{tierLabels[tier]}</h3>
+              <div class={`sponsor-cards-grid tier-grid-${tier}`}>
+                {tierSponsors.map((sponsor) => (
+                  <a
+                    href={sponsor.url ?? "#"}
+                    target={sponsor.url ? "_blank" : undefined}
+                    rel={sponsor.url ? "noopener noreferrer" : undefined}
+                    class={`sponsor-card tier-${tier}`}
+                  >
+                    <div class="sponsor-card-logo">
+                      {sponsor.logo
+                        ? <img src={sponsor.logo} alt={sponsor.name} />
+                        : <span class="sponsor-card-name-only">{sponsor.name}</span>
+                      }
+                    </div>
+                    <div class="sponsor-card-info">
+                      <span class="sponsor-card-name">{sponsor.name}</span>
+                      {sponsor.tagline && <span class="sponsor-card-tagline">{sponsor.tagline}</span>}
+                    </div>
+                  </a>
+                ))}
+                {Array.from({ length: placeholderCount }).map(() => (
+                  <div class={`sponsor-card tier-${tier} sponsor-card-placeholder`}>
+                    <div class="sponsor-card-logo">
+                      <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="60" rx="6" fill="none"/>
+                        <text x="60" y="36" text-anchor="middle" font-size="11" fill="currentColor" font-family="sans-serif">Your Logo Here</text>
+                      </svg>
+                    </div>
+                    <div class="sponsor-card-info">
+                      <span class="sponsor-card-name">To Be Announced</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+
+        <div class="text-center mt-4">
+          <a href={`${base}/sponsor-contact`} class="btn btn-primary">Become a Sponsor</a>
         </div>
       </div>
 
@@ -177,21 +223,41 @@ const sponsorshipTiers = [
         </div>
       </div>
 
-      <!-- Current Sponsors -->
-      <div class="current-sponsors">
-        <div class="text-center">
-          <h2 class="section-title">Our 2026 Sponsors</h2>
-          <div class="sponsor-coming-soon">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <p class="section-subtitle">
-              Join these amazing companies supporting Mac Admins Europe.
-              Sponsorship opportunities are now open!
-            </p>
-            <div class="mt-2">
-              <a href={`${base}/sponsor-contact`} class="btn btn-primary">
-                Become a Sponsor
-              </a>
-            </div>
+      <!-- Why Sponsor Section -->
+      <div class="sponsor-benefits-section">
+        <div class="text-center mb-2">
+          <span class="section-label">Partner with Us</span>
+          <h2>Why Sponsor Mac Admins Europe?</h2>
+        </div>
+        <p class="sponsor-intro">
+          Mac Admins Europe brings together IT professionals from across the
+          continent who manage Apple devices in enterprise environments.
+          Sponsoring our event puts your brand in front of decision-makers
+          actively looking for solutions.
+        </p>
+
+        <div class="sponsor-benefits">
+          <div class="benefit">
+            <div class="benefit-icon">👥</div>
+            <h3>Connecting Communities</h3>
+            <p>Connecting local communities across Europe (4000+ members)</p>
+            <!-- <h3>Community Impact</h3> -->
+            <!-- <p>Connect with 4,000+ Mac Admin community members</p> -->
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🎯</div>
+            <h3>Targeted Audience</h3>
+            <p>IT professionals with purchasing influence</p>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🤝</div>
+            <h3>Face-to-Face</h3>
+            <p>In-person networking and relationship building</p>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">📣</div>
+            <h3>Brand Visibility</h3>
+            <p>Logo placement, booth space, and speaking opportunities</p>
           </div>
         </div>
       </div>
