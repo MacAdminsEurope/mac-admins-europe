@@ -10,21 +10,77 @@ const base = baseUrl === "/" ? "" : baseUrl;
 // tier: "platinum" | "gold" | "silver" | "patron"
 // ============================================================
 interface Sponsor {
-  name: string;
   tier: "platinum" | "gold" | "silver" | "patron";
   logo?: string;
   url?: string;
-  tagline?: string;
 }
 
 const currentSponsors: Sponsor[] = [
-  // {
-  //   name: "Acme Corp",
-  //   tier: "platinum",
-  //   logo: "/img/sponsors/acme-corp.png",
-  //   url: "https://acmecorp.com",
-  //   tagline: "Enterprise Apple Management",
-  // },
+  // Platinum
+  {
+    tier: "platinum",
+    logo: "/img/sponsors/jamfdark.png",
+    url: `${base}/sponsors/jamf`,
+  },
+  {
+    tier: "platinum",
+    logo: "/img/sponsors/iru.png",
+    url: `${base}/sponsors/iru`,
+  },
+  {
+    tier: "platinum",
+    logo: "/img/sponsors/fleet-logo-dark-rgb.png",
+    url: `${base}/sponsors/fleetdm`,
+  },
+ 
+  // Gold
+  {
+    tier: "gold",
+    logo: "/img/sponsors/Logo-Workbrew-purple.png",
+    url: "https://workbrew.com",
+  },
+  {
+    tier: "gold",
+    logo: "/img/sponsors/Pro-Warehouse_Logo_2024.png",
+    url: "https://www.prowarehouse.nl/en/",
+  },
+  {
+    tier: "gold",
+    logo: "/img/sponsors/lai.png",
+    url: "https://www.lai.nl/?lang=en",
+  },
+  {
+    tier: "gold",
+    logo: "/img/sponsors/mbh.png",
+    url: "https://www.mbhglobal.co.uk",
+  },
+  // Silver
+  {
+    tier: "silver",
+    logo: "/img/sponsors/root3.png",
+    url: "https://www.root3.nl/en/",
+  },
+  {
+    tier: "silver",
+    logo: "/img/sponsors/next.png",
+    url: "https://www.nextenterprise.it",
+  },
+  {
+    tier: "silver",
+    logo: "/img/sponsors/lab9.png",
+    url: "https://lab9pro.be/",
+  },
+  {
+    tier: "silver",
+    logo: "/img/sponsors/zentral.png",
+    url: "https://www.zentral.com",
+  },
+  // Patron
+  {
+    tier: "patron",
+    logo: "/img/sponsors/macpaw.png",
+    url: "https://macpaw.com",
+  },
 ];
 
 const tierOrder = ["platinum", "gold", "silver", "patron"] as const;
@@ -35,13 +91,27 @@ const tierLabels: Record<string, string> = {
   patron: "Patron Sponsors",
 };
 const tierPlaceholderCounts: Record<string, number> = {
-  platinum: 3,
-  gold: 5,
+  platinum: 2,
+  gold: 4,
   silver: 4,
-  patron: 4,
+  patron: 1,
 };
 
-const sponsorshipTiers = [
+interface SponsorshipBenefit {
+  label: string;
+  value: string | boolean;
+}
+
+interface SponsorshipTier {
+  name: string;
+  class: string;
+  available?: number | null;
+  soldOut?: boolean;
+  isIncremental: boolean;
+  benefits: SponsorshipBenefit[];
+}
+
+const sponsorshipTiers: SponsorshipTier[] = [
   {
     name: "Patron",
     class: "patron",
@@ -123,25 +193,21 @@ const sponsorshipTiers = [
             <div class={`sponsor-tier-section tier-${tier}`}>
               <h3 class="sponsor-tier-heading">{tierLabels[tier]}</h3>
               <div class={`sponsor-cards-grid tier-grid-${tier}`}>
-                {tierSponsors.map((sponsor) => (
+                {tierSponsors.map((sponsor) => {
+                  const isExternalUrl = sponsor.url?.startsWith("http");
+                  return (
                   <a
                     href={sponsor.url ?? "#"}
-                    target={sponsor.url ? "_blank" : undefined}
-                    rel={sponsor.url ? "noopener noreferrer" : undefined}
+                    target={isExternalUrl ? "_blank" : undefined}
+                    rel={isExternalUrl ? "noopener noreferrer" : undefined}
                     class={`sponsor-card tier-${tier}`}
                   >
                     <div class="sponsor-card-logo">
-                      {sponsor.logo
-                        ? <img src={sponsor.logo} alt={sponsor.name} />
-                        : <span class="sponsor-card-name-only">{sponsor.name}</span>
-                      }
-                    </div>
-                    <div class="sponsor-card-info">
-                      <span class="sponsor-card-name">{sponsor.name}</span>
-                      {sponsor.tagline && <span class="sponsor-card-tagline">{sponsor.tagline}</span>}
+                      {sponsor.logo && <img src={sponsor.logo} alt="Sponsor logo" />}
                     </div>
                   </a>
-                ))}
+                  );
+                })}
                 {Array.from({ length: placeholderCount }).map(() => (
                   <div class={`sponsor-card tier-${tier} sponsor-card-placeholder`}>
                     <div class="sponsor-card-logo">
@@ -149,9 +215,6 @@ const sponsorshipTiers = [
                         <rect width="120" height="60" rx="6" fill="none"/>
                         <text x="60" y="36" text-anchor="middle" font-size="11" fill="currentColor" font-family="sans-serif">Your Logo Here</text>
                       </svg>
-                    </div>
-                    <div class="sponsor-card-info">
-                      <span class="sponsor-card-name">To Be Announced</span>
                     </div>
                   </div>
                 ))}

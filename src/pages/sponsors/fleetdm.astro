@@ -1,0 +1,155 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === "/" ? "" : baseUrl;
+---
+
+<Layout
+  title="Fleetdm | Platinum Sponsor | Mac Admins Europe 2026"
+  description="Fleetdm is a Platinum Sponsor of Mac Admins Europe 2026. Learn more about Fleet and featured keynote speaker Henry Stamerjohann."
+>
+  <section class="page-hero sponsor-detail-hero">
+    <div class="container">
+      <span class="section-label">Platinum Sponsor</span>
+      <h1>Fleetdm</h1>
+      <p>
+        Open device management expertise and enterprise-focused operations,
+        supporting the Mac Admins Europe community.
+      </p>
+      <div class="sponsor-detail-hero-actions">
+        <a href="https://fleetdm.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Visit Fleetdm
+        </a>
+        <a href={`${base}/sponsors`} class="btn btn-outline sponsor-detail-hero-back">
+          Back to Sponsors
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sponsor-detail-content">
+    <div class="container">
+      <div class="sponsor-detail-shell">
+        <div class="sponsor-detail-overview">
+          <div class="sponsor-detail-brand-card">
+            <div class="sponsor-detail-tier-badge">Platinum Sponsor</div>
+            <div class="sponsor-detail-logo-wrap">
+              <img src="/img/sponsors/fleet-logo-dark-rgb.png" alt="Fleetdm logo" class="sponsor-detail-logo" />
+            </div>
+            <p class="sponsor-detail-brand-note">
+              Supporting the community-first mission of Mac Admins Europe 2026.
+            </p>
+          </div>
+
+          <div class="sponsor-detail-copy-card">
+            <span class="section-label">About Fleetdm</span>
+            <h2>Device management and security with operational transparency</h2>
+            <p>
+              Fleet helps organizations manage and secure devices with a strong emphasis on visibility,
+              automation, and practical operational tooling. Their approach resonates with teams that value
+              open systems, clear workflows, and scalable endpoint management.
+            </p>
+            <p>
+              As a Platinum Sponsor of Mac Admins Europe 2026, Fleetdm is helping make space for high-quality
+              technical sessions and peer learning while bringing experienced practitioners into the
+              conversation with the Mac admin community.
+            </p>
+            <div class="sponsor-detail-actions">
+              <a href="https://fleetdm.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Explore Fleetdm
+              </a>
+              <a href={`${base}/program`} class="btn btn-secondary">
+                View Program
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-detail-highlights">
+          <article class="sponsor-detail-highlight-card">
+            <h3>Community Support</h3>
+            <p>
+              Fleetdm’s sponsorship helps support the event experience, from stage programming to the networking
+              spaces where Mac admins share ideas and solutions.
+            </p>
+          </article>
+          <article class="sponsor-detail-highlight-card">
+            <h3>Practical Expertise</h3>
+            <p>
+              Expect conversations grounded in real-world Apple fleet operations, modern management practices,
+              and the day-to-day realities of enterprise support.
+            </p>
+          </article>
+          <article class="sponsor-detail-highlight-card">
+            <h3>Meet the Team</h3>
+            <p>
+              Stop by during the event to connect with Fleetdm experts, ask questions, and continue the
+              discussion beyond the keynote session.
+            </p>
+          </article>
+        </div>
+
+        <div class="sponsor-detail-speaker-section">
+          <div class="section-header text-center">
+            <span class="section-label">Featured Keynote Speaker</span>
+            <h2>Henry Stamerjohann</h2>
+            <p>Platform Engineer at Fleet</p>
+          </div>
+
+          <div class="sponsor-keynote-card">
+            <div class="sponsor-keynote-image">
+              <img src="/img/speakers/henry.jpg" alt="Henry Stamerjohann" />
+            </div>
+
+            <div class="sponsor-keynote-content">
+              <div class="speaker-tags">
+                <span class="speaker-tag role">Platform Engineer</span>
+                <span class="speaker-tag company">Fleet</span>
+                <span class="speaker-tag talk">🎤 Keynote Speaker</span>
+              </div>
+
+              <h3>Henry Stamerjohann</h3>
+              <p>
+                Henry Stamerjohann is a platform engineer and consultant, and was a co-founder of Zentral in
+                2015. He is a primary contributor to the Mac Admins SOFA project and Swift Dialog, and has
+                contributed to many open-source projects focused on Apple device management in enterprise and
+                government environments.
+              </p>
+              <p>
+                Based in Hamburg, Henry currently works as a Solutions Consultant and individual contributor at
+                Fleet Device Management. He brings deep community roots, hands-on platform expertise, and a
+                builder’s perspective to the stage.
+              </p>
+
+              <div class="sponsor-detail-actions">
+                <a
+                  href="https://www.linkedin.com/in/henry-st/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline"
+                >
+                  Henry on LinkedIn
+                </a>
+                <a href={`${base}/speakers`} class="btn btn-secondary">
+                  See All Speakers
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-detail-event-note">
+          <span class="section-label">Mac Admins Europe 2026</span>
+          <h2>Community-first event, supported by Platinum sponsors</h2>
+          <p>
+            This sponsor page highlights Fleetdm’s support and the keynote speaker they are bringing to the
+            event. We’ll use the same structure for the other Platinum sponsors so attendees can quickly learn
+            about each company and the people they are featuring.
+          </p>
+          <a href={`${base}/sponsors`} class="sponsor-detail-back-link">← Back to all sponsors</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

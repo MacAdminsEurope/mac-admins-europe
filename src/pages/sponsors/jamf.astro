@@ -1,0 +1,155 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const base = baseUrl === "/" ? "" : baseUrl;
+---
+
+<Layout
+  title="Jamf | Platinum Sponsor | Mac Admins Europe 2026"
+  description="Jamf is a Platinum Sponsor of Mac Admins Europe 2026. Learn more about Jamf and featured keynote speaker Armin Briegel."
+>
+  <section class="page-hero sponsor-detail-hero">
+    <div class="container">
+      <span class="section-label">Platinum Sponsor</span>
+      <h1>Jamf</h1>
+      <p>
+        Apple-first management and security, supporting the Mac Admins Europe
+        community in Leiden and across Europe.
+      </p>
+      <div class="sponsor-detail-hero-actions">
+        <a href="https://jamf.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Visit Jamf
+        </a>
+        <a href={`${base}/sponsors`} class="btn btn-outline sponsor-detail-hero-back">
+          Back to Sponsors
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sponsor-detail-content">
+    <div class="container">
+      <div class="sponsor-detail-shell">
+        <div class="sponsor-detail-overview">
+          <div class="sponsor-detail-brand-card">
+            <div class="sponsor-detail-tier-badge">Platinum Sponsor</div>
+            <div class="sponsor-detail-logo-wrap">
+              <img src="/img/sponsors/jamfdark.png" alt="Jamf logo" class="sponsor-detail-logo" />
+            </div>
+            <p class="sponsor-detail-brand-note">
+              Supporting the community-first mission of Mac Admins Europe 2026.
+            </p>
+          </div>
+
+          <div class="sponsor-detail-copy-card">
+            <span class="section-label">About Jamf</span>
+            <h2>Helping organizations succeed with Apple</h2>
+            <p>
+              Jamf helps organizations deploy, manage, and secure Apple devices at scale while keeping the
+              user experience front and center. From zero-touch provisioning and configuration to ongoing
+              compliance and endpoint security, Jamf supports the workflows Mac admins rely on every day.
+            </p>
+            <p>
+              As a Platinum Sponsor of Mac Admins Europe 2026, Jamf is helping make space for practical
+              technical sessions, peer learning, and direct conversations with the people building and running
+              Apple environments across Europe.
+            </p>
+            <div class="sponsor-detail-actions">
+              <a href="https://jamf.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Explore Jamf
+              </a>
+              <a href={`${base}/program`} class="btn btn-secondary">
+                View Program
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-detail-highlights">
+          <article class="sponsor-detail-highlight-card">
+            <h3>Community Support</h3>
+            <p>
+              Jamf’s sponsorship helps support the event experience, from stage programming to the networking
+              spaces where Mac admins share ideas and solutions.
+            </p>
+          </article>
+          <article class="sponsor-detail-highlight-card">
+            <h3>Practical Expertise</h3>
+            <p>
+              Expect conversations grounded in real-world Apple fleet operations, modern management practices,
+              and the day-to-day realities of enterprise support.
+            </p>
+          </article>
+          <article class="sponsor-detail-highlight-card">
+            <h3>Meet the Team</h3>
+            <p>
+              Stop by during the event to connect with Jamf experts, ask questions, and continue the
+              discussion beyond the keynote session.
+            </p>
+          </article>
+        </div>
+
+        <div class="sponsor-detail-speaker-section">
+          <div class="section-header text-center">
+            <span class="section-label">Featured Keynote Speaker</span>
+            <h2>Armin Briegel</h2>
+            <p>Senior Consulting Engineer at Jamf</p>
+          </div>
+
+          <div class="sponsor-keynote-card">
+            <div class="sponsor-keynote-image">
+              <img src="/img/speakers/armin.jpg" alt="Armin Briegel" />
+            </div>
+
+            <div class="sponsor-keynote-content">
+              <div class="speaker-tags">
+                <span class="speaker-tag role">Senior Consulting Engineer</span>
+                <span class="speaker-tag company">Jamf</span>
+                <span class="speaker-tag talk">🎤 Keynote Speaker</span>
+              </div>
+
+              <h3>Armin Briegel</h3>
+              <p>
+                Armin Briegel has been managing Macs and their users since the time when Apple was
+                beleaguered. Over the years, he has worked across a wide range of technical roles, including
+                time at Apple in both the US and Germany, before bringing that experience into system
+                administration and consulting.
+              </p>
+              <p>
+                He now works at Jamf and is widely known in the Mac admin community through his writing and
+                publishing, including scriptingosx.com and macadmins.news. Armin brings deep technical insight
+                and a practical perspective that resonates with working admins.
+              </p>
+
+              <div class="sponsor-detail-actions">
+                <a
+                  href="https://www.linkedin.com/in/armin-briegel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline"
+                >
+                  Armin on LinkedIn
+                </a>
+                <a href={`${base}/speakers`} class="btn btn-secondary">
+                  See All Speakers
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sponsor-detail-event-note">
+          <span class="section-label">Mac Admins Europe 2026</span>
+          <h2>Community-first event, supported by Platinum sponsors</h2>
+          <p>
+            This sponsor page highlights Jamf’s support and the keynote speaker they are bringing to the
+            event. We’ll use the same structure for the other Platinum sponsors so attendees can quickly learn
+            about each company and the people they are featuring.
+          </p>
+          <a href={`${base}/sponsors`} class="sponsor-detail-back-link">← Back to all sponsors</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

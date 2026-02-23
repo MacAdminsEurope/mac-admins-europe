@@ -862,6 +862,28 @@ section { padding: var(--space-4xl) 0; }
   gap: var(--space-xs);
 }
 
+.speaker-social {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.speaker-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  color: var(--gray-500);
+  transition: color var(--transition-base), background var(--transition-base);
+}
+
+.speaker-social-link:hover {
+  color: var(--eu-blue);
+  background: var(--gray-100);
+}
+
 .speaker-bio-row {
   padding: var(--space-md) var(--space-lg) var(--space-lg);
   border-top: 1px solid var(--gray-200);
@@ -2914,15 +2936,48 @@ section { padding: var(--space-4xl) 0; }
 .sponsor-tier-heading::before { right: calc(50% + 8em); }
 .sponsor-tier-heading::after  { left:  calc(50% + 8em); }
 
-.tier-platinum .sponsor-tier-heading { color: var(--eu-gold); }
-.tier-gold     .sponsor-tier-heading { color: var(--eu-gold-dark); }
-.tier-silver   .sponsor-tier-heading { color: var(--gray-500); }
+.tier-platinum .sponsor-tier-heading {
+  color: #6b7280;
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #9ca3af 0%, #e5e7eb 40%, #9ca3af 60%, #6b7280 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tier-gold .sponsor-tier-heading {
+  color: var(--eu-gold-dark);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #b8860b 0%, #ffd700 35%, #e6b800 60%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tier-silver .sponsor-tier-heading {
+  color: var(--gray-600);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 .tier-patron   .sponsor-tier-heading { color: var(--eu-blue); }
 
 /* Grid layouts per tier */
 .sponsor-cards-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xl);
+}
+
+.tier-grid-gold {
+  display: grid;
+  grid-template-columns: repeat(2, 290px);
   justify-content: center;
   gap: var(--space-xl);
 }
@@ -2942,25 +2997,141 @@ section { padding: var(--space-4xl) 0; }
   gap: var(--space-md);
 }
 
-a.sponsor-card:hover {
+a.sponsor-card:not(.tier-platinum):hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
 
+.tier-platinum {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f5 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  margin-bottom: var(--space-4xl);
+  border: 1px solid #e9ecef;
+}
+
+.tier-gold {
+  background: linear-gradient(135deg, #fffdf5 0%, #ffffff 50%, #fffbeb 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-4xl);
+  border: 1px solid #fde68a;
+}
+
+.tier-silver {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-4xl);
+  border: 1px solid #e2e8f0;
+}
+
 /* Tier-specific card sizing and border accent */
 .sponsor-card.tier-platinum {
-  width: 280px;
-  border-color: var(--eu-gold);
-  border-width: 2px;
+  width: 320px;
+  border: none;
+  background: linear-gradient(145deg, #ffffff, #f3f4f6);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 1px 0 0 #ffffff inset,
+    0 -1px 0 0 #9ca3af inset,
+    4px 0 0 0 #e5e7eb inset,
+    -4px 0 0 0 #e5e7eb inset,
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 0 0 2px #c8cdd4,
+    0 0 0 4px #e9ecef,
+    0 0 0 5px #b0b7c0;
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.sponsor-card.tier-platinum::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg,
+    rgba(255,255,255,0.9) 0%,
+    rgba(229,231,235,0.4) 30%,
+    rgba(209,213,219,0.2) 60%,
+    rgba(156,163,175,0.3) 100%
+  );
+  pointer-events: none;
+}
+
+a.sponsor-card.tier-platinum:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 1px 0 0 #ffffff inset,
+    0 -1px 0 0 #9ca3af inset,
+    4px 0 0 0 #e5e7eb inset,
+    -4px 0 0 0 #e5e7eb inset,
+    0 16px 40px rgba(0, 0, 0, 0.16),
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 0 0 2px #c8cdd4,
+    0 0 0 4px #e9ecef,
+    0 0 0 5px #b0b7c0;
 }
 
 .sponsor-card.tier-gold {
-  width: 220px;
-  border-color: var(--eu-gold-dark);
+  width: 290px;
+  border: none;
+  background: linear-gradient(145deg, #ffffff, #ffffff);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 1px 0 0 #fffde0 inset,
+    0 -1px 0 0 #b8860b inset,
+    3px 0 0 0 #fef3c7 inset,
+    -3px 0 0 0 #fef3c7 inset,
+    0 6px 18px rgba(184, 134, 11, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 0 0 2px #d4a017,
+    0 0 0 4px #fef3c7,
+    0 0 0 5px #c8960c;
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+}
+
+a.sponsor-card.tier-gold:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 1px 0 0 #fffde0 inset,
+    0 -1px 0 0 #b8860b inset,
+    3px 0 0 0 #fef3c7 inset,
+    -3px 0 0 0 #fef3c7 inset,
+    0 14px 32px rgba(184, 134, 11, 0.22),
+    0 4px 8px rgba(0, 0, 0, 0.08),
+    0 0 0 2px #d4a017,
+    0 0 0 4px #fef3c7,
+    0 0 0 5px #c8960c;
 }
 
 .sponsor-card.tier-silver {
-  width: 180px;
+  width: 200px;
+  border: none;
+  background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 1px 0 0 #ffffff inset,
+    0 -1px 0 0 #cbd5e1 inset,
+    0 4px 12px rgba(71, 85, 105, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 0 0 1px #cbd5e1,
+    0 0 0 3px #e2e8f0;
+  padding: var(--space-md) var(--space-lg);
+  position: relative;
+}
+
+a.sponsor-card.tier-silver:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 1px 0 0 #ffffff inset,
+    0 -1px 0 0 #cbd5e1 inset,
+    0 8px 20px rgba(71, 85, 105, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 0 0 1px #94a3b8,
+    0 0 0 3px #e2e8f0;
 }
 
 .sponsor-card.tier-patron {
@@ -2975,8 +3146,8 @@ a.sponsor-card:hover {
   width: 100%;
 }
 
-.sponsor-card.tier-platinum .sponsor-card-logo { height: 90px; }
-.sponsor-card.tier-gold     .sponsor-card-logo { height: 70px; }
+.sponsor-card.tier-platinum .sponsor-card-logo { height: 110px; }
+.sponsor-card.tier-gold     .sponsor-card-logo { height: 95px; }
 .sponsor-card.tier-silver   .sponsor-card-logo { height: 55px; }
 .sponsor-card.tier-patron   .sponsor-card-logo { height: 50px; }
 
@@ -4734,5 +4905,280 @@ a.sponsor-card:hover {
 
   .newsletter-benefits li {
     justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   SPONSOR DETAIL PAGES
+   ========================================================================== */
+
+.sponsor-detail-hero {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 204, 0, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.12) 0%, transparent 40%),
+    var(--eu-blue);
+}
+
+.sponsor-detail-hero .section-label {
+  color: #fff2b3;
+}
+
+.sponsor-detail-hero-actions {
+  margin-top: var(--space-xl);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.sponsor-detail-hero-back {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--white);
+}
+
+.sponsor-detail-hero-back:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.sponsor-detail-content {
+  padding: var(--space-4xl) 0;
+  background: linear-gradient(180deg, #f8fbff 0%, #ffffff 30%, #f8fafc 100%);
+}
+
+.sponsor-detail-shell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.sponsor-detail-overview {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) 1fr;
+  gap: var(--space-2xl);
+  align-items: stretch;
+}
+
+.sponsor-detail-brand-card,
+.sponsor-detail-copy-card,
+.sponsor-detail-highlight-card,
+.sponsor-keynote-card,
+.sponsor-detail-event-note {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.sponsor-detail-brand-card {
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.sponsor-detail-tier-badge {
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4b5563;
+  background: linear-gradient(135deg, #e5e7eb 0%, #f9fafb 45%, #d1d5db 100%);
+  border: 1px solid #cbd5e1;
+}
+
+.sponsor-detail-logo-wrap {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+}
+
+.sponsor-detail-logo {
+  max-width: 100%;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+.sponsor-detail-brand-note {
+  margin: 0;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.sponsor-detail-copy-card {
+  padding: var(--space-2xl);
+}
+
+.sponsor-detail-copy-card h2 {
+  margin-bottom: var(--space-md);
+}
+
+.sponsor-detail-copy-card p {
+  color: var(--gray-700);
+  margin-bottom: var(--space-md);
+}
+
+.sponsor-detail-actions {
+  margin-top: var(--space-lg);
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.sponsor-detail-actions .btn-secondary {
+  background: transparent;
+  color: var(--eu-blue);
+  border: 2px solid rgba(0, 51, 153, 0.25);
+}
+
+.sponsor-detail-actions .btn-secondary:hover {
+  background: #edf2ff;
+  color: var(--eu-blue-dark);
+  border-color: rgba(0, 51, 153, 0.45);
+}
+
+.sponsor-detail-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.sponsor-detail-highlight-card {
+  padding: var(--space-xl);
+}
+
+.sponsor-detail-highlight-card h3 {
+  color: var(--eu-blue);
+  margin-bottom: var(--space-sm);
+  font-size: 1.05rem;
+}
+
+.sponsor-detail-highlight-card p {
+  margin: 0;
+  color: var(--gray-700);
+  line-height: 1.65;
+}
+
+.sponsor-detail-speaker-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.sponsor-detail-speaker-section .section-header {
+  margin-bottom: 0;
+}
+
+.sponsor-keynote-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  overflow: hidden;
+}
+
+.sponsor-keynote-image {
+  background: linear-gradient(180deg, #dbeafe 0%, #eff6ff 100%);
+  min-height: 100%;
+}
+
+.sponsor-keynote-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.sponsor-keynote-content {
+  padding: var(--space-2xl);
+}
+
+.sponsor-keynote-content h3 {
+  margin: var(--space-sm) 0 var(--space-md);
+  color: var(--eu-blue-dark);
+}
+
+.sponsor-keynote-content p {
+  color: var(--gray-700);
+  margin-bottom: var(--space-md);
+}
+
+.sponsor-detail-event-note {
+  padding: var(--space-2xl);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 204, 0, 0.08), transparent 45%),
+    #ffffff;
+}
+
+.sponsor-detail-event-note h2 {
+  margin-bottom: var(--space-md);
+}
+
+.sponsor-detail-event-note p {
+  max-width: 760px;
+  margin: 0 auto var(--space-lg);
+  color: var(--gray-700);
+}
+
+.sponsor-detail-back-link {
+  font-weight: 600;
+  color: var(--eu-blue);
+  text-decoration: none;
+}
+
+.sponsor-detail-back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .sponsor-detail-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-detail-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-keynote-card {
+    grid-template-columns: 1fr;
+  }
+
+  .sponsor-keynote-image {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsor-detail-copy-card,
+  .sponsor-detail-brand-card,
+  .sponsor-detail-highlight-card,
+  .sponsor-keynote-content,
+  .sponsor-detail-event-note {
+    padding: var(--space-lg);
+  }
+
+  .sponsor-detail-actions,
+  .sponsor-detail-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sponsor-detail-actions .btn,
+  .sponsor-detail-hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sponsor-keynote-image {
+    min-height: 260px;
   }
 }
