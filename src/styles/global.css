@@ -233,7 +233,7 @@ section { padding: var(--space-4xl) 0; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* Responsive foundation (global tokens and spacing) */
 @media (max-width: 768px) {
   :root { --container-padding: var(--space-md); }
   section { padding: var(--space-3xl) 0; }
@@ -426,13 +426,14 @@ section { padding: var(--space-4xl) 0; }
   font-size: 0.875rem;
 }
 
-/* Layout Responsive */
+/* Layout responsive: <=1024px */
 @media (max-width: 1024px) {
   .footer {
     --footer-grid-columns: 1fr 1fr;
   }
 }
 
+/* Layout responsive: <=768px */
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
@@ -3486,13 +3487,14 @@ a.sponsor-card.tier-silver:hover {
   flex-shrink: 0;
 }
 
-/* Responsive: Pricing Summary */
+/* Responsive: Pricing Summary <=1024px */
 @media (max-width: 1024px) {
   .pricing-summary-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Responsive: Pricing Summary <=480px */
 @media (max-width: 480px) {
   .pricing-summary-grid {
     grid-template-columns: 1fr;
@@ -4031,6 +4033,14 @@ a.sponsor-card.tier-silver:hover {
    PAGE RESPONSIVE STYLES
    ========================================================================== */
 
+/*
+ * Breakpoint index (maintain order to preserve cascade):
+ * - <=1024px: layout, pricing summary, page grids, sponsor details
+ * - <=768px: global spacing, navigation, page overrides, community, utility pages
+ * - <=480px: pricing summary and community narrow-screen overrides
+ */
+
+/* Page responsive: <=1024px */
 @media (max-width: 1024px) {
   /* Homepage */
   .about-grid,
@@ -4114,6 +4124,7 @@ a.sponsor-card.tier-silver:hover {
   }
 }
 
+/* Page responsive: <=768px */
 @media (max-width: 768px) {
   /* Tickets page */
   .tickets-grid {
@@ -4640,7 +4651,7 @@ a.sponsor-card.tier-silver:hover {
   margin-bottom: var(--space-xl);
 }
 
-/* Community Page Responsive */
+/* Community page responsive: <=768px */
 @media (max-width: 768px) {
   .community-section {
     padding: var(--space-3xl) 0;
@@ -4661,6 +4672,7 @@ a.sponsor-card.tier-silver:hover {
   }
 }
 
+/* Community page responsive: <=480px */
 @media (max-width: 480px) {
   .groups-grid {
     grid-template-columns: 1fr;
@@ -4711,6 +4723,7 @@ a.sponsor-card.tier-silver:hover {
   flex-wrap: wrap;
 }
 
+/* Thank-you page responsive: <=768px */
 @media (max-width: 768px) {
   .thank-you-title {
     font-size: 2rem;
@@ -4764,6 +4777,7 @@ a.sponsor-card.tier-silver:hover {
   flex-wrap: wrap;
 }
 
+/* 404 page responsive: <=768px */
 @media (max-width: 768px) {
   .not-found-actions {
     flex-direction: column;
@@ -4833,6 +4847,7 @@ a.sponsor-card.tier-silver:hover {
   margin-bottom: var(--space-xl);
 }
 
+/* Newsletter page responsive: <=768px */
 @media (max-width: 768px) {
   .newsletter-card {
     padding: var(--space-xl);
@@ -5067,6 +5082,7 @@ a.sponsor-card.tier-silver:hover {
   text-decoration: underline;
 }
 
+/* Sponsor detail page responsive: <=1024px */
 @media (max-width: 1024px) {
   .sponsor-detail-overview {
     grid-template-columns: 1fr;
@@ -5085,6 +5101,7 @@ a.sponsor-card.tier-silver:hover {
   }
 }
 
+/* Sponsor detail page responsive: <=768px */
 @media (max-width: 768px) {
   .sponsor-detail-copy-card,
   .sponsor-detail-brand-card,
