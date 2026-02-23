@@ -2810,15 +2810,15 @@ section { padding: var(--space-4xl) 0; }
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: var(--space-md);
-  list-style: none !important;
-  padding-left: 0 !important;
+  list-style: none;
+  padding-left: 0;
   min-height: 2.5em;
   display: flex;
   align-items: center;
 }
 
 .incremental-label::before {
-  content: none !important;
+  content: none;
 }
 
 /* Custom Package CTA */
@@ -3315,23 +3315,6 @@ a.sponsor-card.tier-silver:hover {
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
-}
-
-.incremental-label {
-  font-weight: 700;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-md);
-  list-style: none !important;
-  padding-left: 0 !important;
-  min-height: 2.5em;
-  display: flex;
-  align-items: center;
-}
-
-.incremental-label::before {
-  content: none !important;
 }
 
 .sponsor-contact-container {
