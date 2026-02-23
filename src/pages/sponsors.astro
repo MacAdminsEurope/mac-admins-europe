@@ -10,108 +10,130 @@ const base = baseUrl === "/" ? "" : baseUrl;
 // tier: "platinum" | "gold" | "silver" | "patron"
 // ============================================================
 interface Sponsor {
+  name: string;
   tier: "platinum" | "gold" | "silver" | "patron";
   logo?: string;
   url?: string;
+  tagline?: string;
 }
+type SponsorTier = Sponsor["tier"];
 
 const currentSponsors: Sponsor[] = [
   // Platinum
   {
+    name: "Jamf",
     tier: "platinum",
     logo: "/img/sponsors/jamfdark.png",
     url: `${base}/sponsors/jamf`,
+    tagline: "",
   },
   {
+    name: "Iru",
     tier: "platinum",
     logo: "/img/sponsors/iru.png",
     url: `${base}/sponsors/iru`,
+    tagline: "",
   },
   {
+    name: "Fleetdm",
     tier: "platinum",
     logo: "/img/sponsors/fleet-logo-dark-rgb.png",
     url: `${base}/sponsors/fleetdm`,
+    tagline: "",
   },
- 
+
   // Gold
   {
+    name: "WorkBrew",
     tier: "gold",
     logo: "/img/sponsors/Logo-Workbrew-purple.png",
     url: "https://workbrew.com",
+    tagline: "",
   },
   {
+    name: "ProWarehouse",
     tier: "gold",
     logo: "/img/sponsors/Pro-Warehouse_Logo_2024.png",
     url: "https://www.prowarehouse.nl/en/",
+    tagline: "",
   },
   {
+    name: "LAI",
     tier: "gold",
     logo: "/img/sponsors/lai.png",
     url: "https://www.lai.nl/?lang=en",
+    tagline: "",
   },
   {
+    name: "MBH Global",
     tier: "gold",
     logo: "/img/sponsors/mbh.png",
     url: "https://www.mbhglobal.co.uk",
+    tagline: "",
+  },
+  {
+    name: "ARP",
+    tier: "gold",
+    logo: "/img/sponsors/arp.png",
+    url: "https://www.arp.nl/nl-en/",
+    tagline: "",
   },
   // Silver
   {
+    name: "Root3",
     tier: "silver",
     logo: "/img/sponsors/root3.png",
     url: "https://www.root3.nl/en/",
+    tagline: "",
   },
   {
+    name: "NEXT Enterprise GmbH",
     tier: "silver",
     logo: "/img/sponsors/next.png",
     url: "https://www.nextenterprise.it",
+    tagline: "",
   },
   {
+    name: "Lab9 Pro",
     tier: "silver",
     logo: "/img/sponsors/lab9.png",
     url: "https://lab9pro.be/",
+    tagline: "",
   },
   {
+    name: "Zentral",
     tier: "silver",
     logo: "/img/sponsors/zentral.png",
     url: "https://www.zentral.com",
+    tagline: "",
   },
   // Patron
   {
+    name: "macPaw",
     tier: "patron",
     logo: "/img/sponsors/macpaw.png",
     url: "https://macpaw.com",
+    tagline: "",
   },
 ];
 
-const tierOrder = ["platinum", "gold", "silver", "patron"] as const;
-const tierLabels: Record<string, string> = {
+const tierOrder: SponsorTier[] = ["platinum", "gold", "silver", "patron"];
+const tierLabels: Record<SponsorTier, string> = {
   platinum: "Platinum Sponsors",
   gold: "Gold Sponsors",
   silver: "Silver Sponsors",
   patron: "Patron Sponsors",
 };
-const tierPlaceholderCounts: Record<string, number> = {
+const tierPlaceholderCounts: Record<SponsorTier, number> = {
   platinum: 2,
-  gold: 4,
+  gold: 5,
   silver: 4,
   patron: 1,
 };
 
-interface SponsorshipBenefit {
-  label: string;
-  value: string | boolean;
-}
+const isExternalUrl = (url?: string) => Boolean(url?.startsWith("http"));
 
-interface SponsorshipTier {
-  name: string;
-  class: string;
-  available?: number | null;
-  soldOut?: boolean;
-  isIncremental: boolean;
-  benefits: SponsorshipBenefit[];
-}
-
-const sponsorshipTiers: SponsorshipTier[] = [
+const sponsorshipTiers = [
   {
     name: "Patron",
     class: "patron",
@@ -183,29 +205,36 @@ const sponsorshipTiers: SponsorshipTier[] = [
       <div class="current-sponsors">
         <div class="text-center">
           <h2 class="section-title">Our 2026 Sponsors</h2>
-          <p class="section-subtitle">These companies helped make Mac Admins Europe 2026 possible.</p>        </div>
+          <p class="section-subtitle">These companies helped make Mac Admins Europe 2026 possible.</p>
+        </div>
 
         {tierOrder.map((tier) => {
           const tierSponsors = currentSponsors.filter((s) => s.tier === tier);
           const placeholderCount = Math.max(0, tierPlaceholderCounts[tier] - tierSponsors.length);
-          const hasContent = tierSponsors.length > 0 || true;
-          return hasContent && (
+          return (
             <div class={`sponsor-tier-section tier-${tier}`}>
               <h3 class="sponsor-tier-heading">{tierLabels[tier]}</h3>
               <div class={`sponsor-cards-grid tier-grid-${tier}`}>
                 {tierSponsors.map((sponsor) => {
-                  const isExternalUrl = sponsor.url?.startsWith("http");
                   return (
-                  <a
-                    href={sponsor.url ?? "#"}
-                    target={isExternalUrl ? "_blank" : undefined}
-                    rel={isExternalUrl ? "noopener noreferrer" : undefined}
-                    class={`sponsor-card tier-${tier}`}
-                  >
-                    <div class="sponsor-card-logo">
-                      {sponsor.logo && <img src={sponsor.logo} alt="Sponsor logo" />}
-                    </div>
-                  </a>
+                    <a
+                      href={sponsor.url ?? "#"}
+                      target={isExternalUrl(sponsor.url) ? "_blank" : undefined}
+                      rel={isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
+                      class={`sponsor-card tier-${tier}`}
+                      aria-label={sponsor.name}
+                    >
+                      <div class="sponsor-card-logo">
+                        {sponsor.logo
+                          ? <img src={sponsor.logo} alt={sponsor.name} />
+                          : <span class="sponsor-card-name-only">{sponsor.name}</span>
+                        }
+                      </div>
+                      <div class="sponsor-card-info">
+                        <span class="sponsor-card-name">{sponsor.name}</span>
+                        {sponsor.tagline && <span class="sponsor-card-tagline">{sponsor.tagline}</span>}
+                      </div>
+                    </a>
                   );
                 })}
                 {Array.from({ length: placeholderCount }).map(() => (
@@ -215,6 +244,9 @@ const sponsorshipTiers: SponsorshipTier[] = [
                         <rect width="120" height="60" rx="6" fill="none"/>
                         <text x="60" y="36" text-anchor="middle" font-size="11" fill="currentColor" font-family="sans-serif">Your Logo Here</text>
                       </svg>
+                    </div>
+                    <div class="sponsor-card-info">
+                      <span class="sponsor-card-name">To Be Announced</span>
                     </div>
                   </div>
                 ))}

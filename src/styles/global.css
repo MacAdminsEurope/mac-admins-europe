@@ -2942,10 +2942,6 @@ section { padding: var(--space-4xl) 0; }
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #9ca3af 0%, #e5e7eb 40%, #9ca3af 60%, #6b7280 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 .tier-gold .sponsor-tier-heading {
   color: var(--eu-gold-dark);
@@ -2953,10 +2949,6 @@ section { padding: var(--space-4xl) 0; }
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #b8860b 0%, #ffd700 35%, #e6b800 60%, #b8860b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 .tier-silver .sponsor-tier-heading {
   color: var(--gray-600);
@@ -3002,28 +2994,15 @@ a.sponsor-card:not(.tier-platinum):hover {
   box-shadow: var(--shadow-lg);
 }
 
-.tier-platinum {
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f5 100%);
-  border-radius: var(--radius-xl);
-  padding: var(--space-2xl);
+.sponsor-tier-section.tier-platinum,
+.sponsor-tier-section.tier-gold,
+.sponsor-tier-section.tier-silver,
+.sponsor-tier-section.tier-patron {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   margin-bottom: var(--space-4xl);
-  border: 1px solid #e9ecef;
-}
-
-.tier-gold {
-  background: linear-gradient(135deg, #fffdf5 0%, #ffffff 50%, #fffbeb 100%);
-  border-radius: var(--radius-xl);
-  padding: var(--space-xl);
-  margin-bottom: var(--space-4xl);
-  border: 1px solid #fde68a;
-}
-
-.tier-silver {
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  margin-bottom: var(--space-4xl);
-  border: 1px solid #e2e8f0;
 }
 
 /* Tier-specific card sizing and border accent */
@@ -3032,6 +3011,8 @@ a.sponsor-card:not(.tier-platinum):hover {
   border: none;
   background: linear-gradient(145deg, #ffffff, #f3f4f6);
   border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
   box-shadow:
     0 1px 0 0 #ffffff inset,
     0 -1px 0 0 #9ca3af inset,
@@ -3042,8 +3023,6 @@ a.sponsor-card:not(.tier-platinum):hover {
     0 0 0 2px #c8cdd4,
     0 0 0 4px #e9ecef,
     0 0 0 5px #b0b7c0;
-  padding: var(--space-xl);
-  position: relative;
 }
 
 .sponsor-card.tier-platinum::before {
@@ -3058,6 +3037,8 @@ a.sponsor-card:not(.tier-platinum):hover {
     rgba(156,163,175,0.3) 100%
   );
   pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
 }
 
 a.sponsor-card.tier-platinum:hover {
@@ -3072,6 +3053,11 @@ a.sponsor-card.tier-platinum:hover {
     0 0 0 2px #c8cdd4,
     0 0 0 4px #e9ecef,
     0 0 0 5px #b0b7c0;
+}
+
+a.sponsor-card.tier-platinum:hover::before,
+.sponsor-card.tier-platinum:focus-visible::before {
+  opacity: 0;
 }
 
 .sponsor-card.tier-gold {
@@ -3089,8 +3075,6 @@ a.sponsor-card.tier-platinum:hover {
     0 0 0 2px #d4a017,
     0 0 0 4px #fef3c7,
     0 0 0 5px #c8960c;
-  padding: var(--space-lg) var(--space-xl);
-  position: relative;
 }
 
 a.sponsor-card.tier-gold:hover {
@@ -3119,8 +3103,6 @@ a.sponsor-card.tier-gold:hover {
     0 1px 3px rgba(0, 0, 0, 0.05),
     0 0 0 1px #cbd5e1,
     0 0 0 3px #e2e8f0;
-  padding: var(--space-md) var(--space-lg);
-  position: relative;
 }
 
 a.sponsor-card.tier-silver:hover {
@@ -3136,6 +3118,15 @@ a.sponsor-card.tier-silver:hover {
 
 .sponsor-card.tier-patron {
   width: 160px;
+}
+
+.sponsor-card-placeholder {
+  padding: var(--space-lg);
+}
+
+.sponsor-card:focus-visible {
+  outline: 3px solid rgba(0, 68, 204, 0.35);
+  outline-offset: 3px;
 }
 
 /* Logo area */
@@ -3191,6 +3182,9 @@ a.sponsor-card.tier-silver:hover {
 .sponsor-card-placeholder {
   opacity: 0.45;
   border-style: dashed;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
 }
 
 .sponsor-card-placeholder .sponsor-card-name {
@@ -5033,18 +5027,6 @@ a.sponsor-card.tier-silver:hover {
   display: flex;
   gap: var(--space-md);
   flex-wrap: wrap;
-}
-
-.sponsor-detail-actions .btn-secondary {
-  background: transparent;
-  color: var(--eu-blue);
-  border: 2px solid rgba(0, 51, 153, 0.25);
-}
-
-.sponsor-detail-actions .btn-secondary:hover {
-  background: #edf2ff;
-  color: var(--eu-blue-dark);
-  border-color: rgba(0, 51, 153, 0.45);
 }
 
 .sponsor-detail-highlights {
