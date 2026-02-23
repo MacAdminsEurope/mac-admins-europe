@@ -2148,6 +2148,7 @@ section { padding: var(--space-4xl) 0; }
   transform: rotate(90deg) scale(1.1);
 }
 
+/* Lightbox nav controls: shared base */
 .lightbox-prev,
 .lightbox-next {
   --lightbox-nav-size: 48px;
@@ -2177,6 +2178,7 @@ section { padding: var(--space-4xl) 0; }
   left: var(--lightbox-nav-offset);
 }
 
+/* Lightbox nav controls: directional placement */
 .lightbox-next {
   right: var(--lightbox-nav-offset);
 }
@@ -2229,7 +2231,9 @@ section { padding: var(--space-4xl) 0; }
   gap: var(--space-xl);
 }
 
-.feature-card {
+/* Shared location card baseline */
+.feature-card,
+.attraction {
   background: var(--off-white);
   padding: var(--space-xl);
   border-radius: var(--radius-lg);
@@ -2241,7 +2245,8 @@ section { padding: var(--space-4xl) 0; }
   margin-bottom: var(--space-sm);
 }
 
-.feature-card p {
+.feature-card p,
+.attraction p {
   color: var(--gray-600);
   font-size: 0.9rem;
   margin: 0;
@@ -2503,13 +2508,6 @@ section { padding: var(--space-4xl) 0; }
   gap: var(--space-xl);
 }
 
-.attraction {
-  text-align: center;
-  padding: var(--space-xl);
-  background: var(--off-white);
-  border-radius: var(--radius-lg);
-}
-
 .attraction-icon {
   font-size: 2rem;
   display: block;
@@ -2518,12 +2516,6 @@ section { padding: var(--space-4xl) 0; }
 
 .attraction h4 {
   margin-bottom: var(--space-sm);
-}
-
-.attraction p {
-  color: var(--gray-600);
-  font-size: 0.9rem;
-  margin: 0;
 }
 
 /* ==========================================================================
@@ -3766,7 +3758,8 @@ a.sponsor-card.tier-silver:hover {
 
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.newsletter-form input:focus {
   outline: none;
   border-color: var(--eu-blue);
 }
@@ -3815,7 +3808,8 @@ a.sponsor-card.tier-silver:hover {
   border: 1px solid var(--error-red);
 }
 
-.contact-form button:disabled {
+.contact-form button:disabled,
+.newsletter-form button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -3838,11 +3832,6 @@ a.sponsor-card.tier-silver:hover {
   border: 2px solid var(--gray-300);
   border-radius: var(--radius-md);
   font-family: var(--font-display);
-}
-
-.newsletter-form input:focus {
-  outline: none;
-  border-color: var(--eu-blue);
 }
 
 .newsletter-form .form-group {
@@ -3877,11 +3866,6 @@ a.sponsor-card.tier-silver:hover {
   background: rgba(220, 38, 38, 0.15);
   color: var(--error-red-light);
   border: 1px solid var(--error-red-light);
-}
-
-.newsletter-form button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 /* ==========================================================================
