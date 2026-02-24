@@ -3350,6 +3350,21 @@ a.sponsor-card.tier-silver:hover {
   width: 100%;
 }
 
+.sponsor-card.logo-only {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.sponsor-card.logo-only .sponsor-card-logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .sponsor-card.tier-platinum .sponsor-card-logo { height: 110px; }
 .sponsor-card.tier-gold     .sponsor-card-logo { height: 95px; }
 .sponsor-card.tier-silver   .sponsor-card-logo { height: 55px; }
@@ -3359,6 +3374,7 @@ a.sponsor-card.tier-silver:hover {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  margin: 0 auto;
 }
 
 .sponsor-card-logo svg {

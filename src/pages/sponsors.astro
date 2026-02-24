@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getBaseUrl } from "../utils/baseUrl";
 
 const base = getBaseUrl();
-import { getBaseUrl } from "../utils/baseUrl";
 
 
 // ============================================================
@@ -217,15 +217,16 @@ const sponsorshipTiers = [
               <h3 class="sponsor-tier-heading">{tierLabels[tier]}</h3>
               <div class={`sponsor-cards-grid tier-grid-${tier}`}>
                 {tierSponsors.map((sponsor) => {
+                  const isPlatinum = tier === 'platinum';
                   return (
                     <>
                       <a
-                        href={tier === 'gold' || tier === 'silver' ? "javascript:void(0)" : (sponsor.url ?? "#")}
-                        target={!['gold', 'silver'].includes(tier) && isExternalUrl(sponsor.url) ? "_blank" : undefined}
-                        rel={!['gold', 'silver'].includes(tier) && isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
-                        class={`sponsor-card tier-${tier}`}
+                        href={isPlatinum ? (sponsor.url ?? "#") : "javascript:void(0)"}
+                        target={isPlatinum && isExternalUrl(sponsor.url) ? "_blank" : undefined}
+                        rel={isPlatinum && isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
+                        class={`sponsor-card tier-${tier} logo-only`}
                         aria-label={sponsor.name}
-                        data-sponsor-modal-trigger={tier === 'gold' || tier === 'silver' ? 'true' : undefined}
+                        data-sponsor-modal-trigger={isPlatinum ? undefined : "true"}
                       >
                         <div class="sponsor-card-logo">
                           {sponsor.logo
@@ -233,15 +234,9 @@ const sponsorshipTiers = [
                             : <span class="sponsor-card-name-only">{sponsor.name}</span>
                           }
                         </div>
-                        {tier !== 'gold' && tier !== 'silver' && (
-                          <div class="sponsor-card-info">
-                            {sponsor.logo ? '' : <span class="sponsor-card-name">{sponsor.name}</span>}
-                            {sponsor.tagline && <span class="sponsor-card-tagline">{sponsor.tagline}</span>}
-                          </div>
-                        )}
                       </a>
-                      
-                      {(tier === 'gold' || tier === 'silver') && (
+
+                      {!isPlatinum && (
                         <div class="sponsor-modal-overlay" data-sponsor-modal>
                           <div class="sponsor-modal-content">
                             <button class="sponsor-modal-close" aria-label="Close modal">&times;</button>
@@ -257,8 +252,8 @@ const sponsorshipTiers = [
                             </div>
                             <div class="sponsor-modal-footer">
                               {sponsor.url && (
-                                <a 
-                                  href={sponsor.url} 
+                                <a
+                                  href={sponsor.url}
                                   target={isExternalUrl(sponsor.url) ? "_blank" : undefined}
                                   rel={isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
                                   class="btn btn-primary"
