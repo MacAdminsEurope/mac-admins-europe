@@ -5,6 +5,7 @@ dist/
 # Claude Code
 CLAUDE.md
 .claude/
+.planning/
 
 # Project Documentation (local only)
 project.md

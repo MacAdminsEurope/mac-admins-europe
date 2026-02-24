@@ -48,35 +48,35 @@ const currentSponsors: Sponsor[] = [
     tier: "gold",
     logo: "/img/sponsors/Logo-Workbrew-purple.png",
     url: "https://workbrew.com",
-    tagline: "",
+    tagline: "Workbrew is a secure software delivery platform that makes managing Homebrew simple and scalable across your organization. Homebrew is trusted by developers and installed on millions of devices, but managing it across teams creates visibility gaps, compliance risk, and operational overhead. Workbrew brings structure and control to that complexity. With zero-touch deployment, full visibility into installed packages and versions, and enterprise-grade security built in, you can standardize software delivery without slowing developers down. Deploy from a library of 15,000+ packages in minutes, enforce policies centrally, manage vulnerabilities proactively, and keep every package patched automatically. Built for IT and security teams, Workbrew helps you maintain accurate inventory, meet compliance requirements, and securely deliver the software your teams need at scale.",
   },
   {
     name: "ProWarehouse",
     tier: "gold",
     logo: "/img/sponsors/Pro-Warehouse_Logo_2024.png",
     url: "https://www.prowarehouse.nl/en/",
-    tagline: "",
+    tagline: "Pro Warehouse delivers complete solutions for the Apple platform: from expert advice and logistics to seamless deployment, comprehensive management and ongoing support for organisations working with Apple devices. As an Apple Premium Business Partner, we help businesses design, implement and optimise their modern workplace. With deep expertise, personal guidance and a strong focus on user experience, we ensure technology not only works reliably, but truly contributes to productivity, continuity and sustainable growth.",
   },
   {
     name: "LAI",
     tier: "gold",
     logo: "/img/sponsors/lai.png",
     url: "https://www.lai.nl/?lang=en",
-    tagline: "",
+    tagline: "Since 1987, LAI has been the leading training partner for Apple technologies in Europe. We are proud of our long-standing expertise and experience in providing high-quality Apple training for businesses, educational institutions, and government agencies. \n LAI only works with experienced, certified instructors who know how to explain difficult subjects with ease and humor. Students appreciate the LAI approach and enjoy coming to our modern, well-equipped training facilities.",
   },
   {
     name: "MBH Global",
     tier: "gold",
     logo: "/img/sponsors/mbh.png",
     url: "https://www.mbhglobal.co.uk",
-    tagline: "",
+    tagline: "MBH Global helps organisations worldwide manage e-waste pickups through our bespoke client portal, removing the operational burden from IT teams. We securely recover, data-wipe, process, and report on IT assets all in one place, providing certified destruction documentation, ESG impact reporting, and rebate visibility. With operations across the UK, Europe, and the USA, we deliver secure IT lifecycle services including on-site data destruction, data centre decommissioning, and sustainable reuse. We ensure compliance, protect data, and maximise value at every stage of the asset lifecycle",
   },
   {
     name: "ARP",
     tier: "gold",
     logo: "/img/sponsors/arp.png",
     url: "https://www.arp.nl/nl-en/",
-    tagline: "",
+    tagline: "ARP is Apple Business Partner voor organisaties die Apple gebruiksklaar willen inzetten. Van levering tot installatie en integratie binnen de IT‑omgeving: alles geregeld door ervaren en gecertificeerde Apple technici. Met één partner voor hardware, services en support wordt de volledige Apple‑werkplek uit handen genomen. Als Apple Authorised Service Provider (AASP) verzorgen wij onderhoud en reparaties aan Apple‑hardware, zowel in‑ als out‑of‑warranty.",
   },
   // Silver
   {
@@ -84,28 +84,28 @@ const currentSponsors: Sponsor[] = [
     tier: "silver",
     logo: "/img/sponsors/root3.png",
     url: "https://www.root3.nl/en/",
-    tagline: "",
+    tagline: "Root3 believes that technology only truly works when people can use it effortlessly. As Apple specialists, we create digital environments where security and ease of use merge seamlessly. Our focus spans the complete employee journey: from zero-touch provisioning and modern device management to a watertight zero trust architecture. We ensure that Apple works within organizations the way Apple was meant to, creating space for calm, focus, and growth. By removing technical friction, we make Apple in the workplace effortless. Root3 - Apple Solutionists",
   },
   {
     name: "NEXT Enterprise GmbH",
     tier: "silver",
     logo: "/img/sponsors/next.png",
     url: "https://www.nextenterprise.it",
-    tagline: "",
+    tagline: "Apple in the enterprise, COMPETENT, COMMITTED. SOLUTION-ORIENTED! Our vision: As a leading partner for the Apple ecosystem, NEXT strives to accompany companies into the digital future by offering outstanding IT security and management solutions. Our mission: Through a unique combination of individual consulting, tailor-made solutions and managed services, NEXT paves the way to a successful digital future – always with our sights set on the horizon!",
   },
   {
     name: "Lab9 Pro",
     tier: "silver",
     logo: "/img/sponsors/lab9.png",
     url: "https://lab9pro.be/",
-    tagline: "",
+    tagline: "An IT partner (in crime) who shares your passion for Apple. We have been helping organizations and schools realize their IT vision for 30 years. We do not shy away from challenges: from network infrastructure to process automation to successful device management and security, our best people are happy to sink their teeth into it.  Lab9 Pro is the B2B division of Apple Premium Partner Lab9. As an Apple Authorized Service Provider and Apple Authorized Education Specialist, we are the only player in Belgium with the three most important Apple certifications. This is of course a great honor for us, but above all it means a lot of knowledge and benefits that we would like to share with you.",
   },
   {
     name: "Zentral",
     tier: "silver",
     logo: "/img/sponsors/zentral.png",
     url: "https://www.zentral.com",
-    tagline: "",
+    tagline: "Company description: Zentral is the leading European Apple MDM vendor and integrator of open source device management solutions for Apple in Enterprise. Since the release of the official Terraform provider in 2022 Zentral has been setting the standard for config-as-code at scale and helps customers solve reliability, auditability, role-based access problems. Zentral ships with a ready-to-use stack of integrations that usually takes IT teams years to build, such as event shipping to SIEMS, metrics & dashboards and an ACME capable custom CA.",
   },
   // Patron
   {
@@ -217,24 +217,59 @@ const sponsorshipTiers = [
               <div class={`sponsor-cards-grid tier-grid-${tier}`}>
                 {tierSponsors.map((sponsor) => {
                   return (
-                    <a
-                      href={sponsor.url ?? "#"}
-                      target={isExternalUrl(sponsor.url) ? "_blank" : undefined}
-                      rel={isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
-                      class={`sponsor-card tier-${tier}`}
-                      aria-label={sponsor.name}
-                    >
-                      <div class="sponsor-card-logo">
-                        {sponsor.logo
-                          ? <img src={sponsor.logo} alt={sponsor.name} />
-                          : <span class="sponsor-card-name-only">{sponsor.name}</span>
-                        }
-                      </div>
-                      <div class="sponsor-card-info">
-                        <span class="sponsor-card-name">{sponsor.name}</span>
-                        {sponsor.tagline && <span class="sponsor-card-tagline">{sponsor.tagline}</span>}
-                      </div>
-                    </a>
+                    <>
+                      <a
+                        href={tier === 'gold' || tier === 'silver' ? "javascript:void(0)" : (sponsor.url ?? "#")}
+                        target={!['gold', 'silver'].includes(tier) && isExternalUrl(sponsor.url) ? "_blank" : undefined}
+                        rel={!['gold', 'silver'].includes(tier) && isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
+                        class={`sponsor-card tier-${tier}`}
+                        aria-label={sponsor.name}
+                        data-sponsor-modal-trigger={tier === 'gold' || tier === 'silver' ? 'true' : undefined}
+                      >
+                        <div class="sponsor-card-logo">
+                          {sponsor.logo
+                            ? <img src={sponsor.logo} alt={sponsor.name} />
+                            : <span class="sponsor-card-name-only">{sponsor.name}</span>
+                          }
+                        </div>
+                        {tier !== 'gold' && tier !== 'silver' && (
+                          <div class="sponsor-card-info">
+                            {sponsor.logo ? '' : <span class="sponsor-card-name">{sponsor.name}</span>}
+                            {sponsor.tagline && <span class="sponsor-card-tagline">{sponsor.tagline}</span>}
+                          </div>
+                        )}
+                      </a>
+                      
+                      {(tier === 'gold' || tier === 'silver') && (
+                        <div class="sponsor-modal-overlay" data-sponsor-modal>
+                          <div class="sponsor-modal-content">
+                            <button class="sponsor-modal-close" aria-label="Close modal">&times;</button>
+                            <div class="sponsor-modal-header">
+                              {sponsor.logo ? (
+                                <img src={sponsor.logo} alt={sponsor.name} class="sponsor-modal-logo" />
+                              ) : (
+                                <h3 class="sponsor-modal-title">{sponsor.name}</h3>
+                              )}
+                            </div>
+                            <div class="sponsor-modal-body">
+                              <p>{sponsor.tagline ? sponsor.tagline : "More information coming soon."}</p>
+                            </div>
+                            <div class="sponsor-modal-footer">
+                              {sponsor.url && (
+                                <a 
+                                  href={sponsor.url} 
+                                  target={isExternalUrl(sponsor.url) ? "_blank" : undefined}
+                                  rel={isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
+                                  class="btn btn-primary"
+                                >
+                                  Visit {sponsor.name}
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   );
                 })}
                 {Array.from({ length: placeholderCount }).map(() => (
@@ -359,3 +394,60 @@ const sponsorshipTiers = [
     </div>
   </section>
 </Layout>
+
+<script>
+  // Add click handlers for modals
+  document.addEventListener('DOMContentLoaded', () => {
+    // Handle opening modals
+    const modalTriggers = document.querySelectorAll('[data-sponsor-modal-trigger="true"]');
+    
+    modalTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Find the modal next to this trigger
+        const modal = trigger.nextElementSibling;
+        
+        if (modal && modal.hasAttribute('data-sponsor-modal')) {
+          modal.classList.add('is-open');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+      });
+    });
+    
+    // Handle closing modals via button
+    const closeButtons = document.querySelectorAll('.sponsor-modal-close');
+    
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const modal = btn.closest('.sponsor-modal-overlay');
+        if (modal) {
+          modal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+    
+    // Close modal when clicking outside the content
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target && target.classList.contains('sponsor-modal-overlay')) {
+        target.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const openModal = document.querySelector('.sponsor-modal-overlay.is-open');
+        if (openModal) {
+          openModal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  });
+</script>
