@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
-const base = baseUrl === '/' ? '' : baseUrl;
+const base = getBaseUrl();
+import { getBaseUrl } from '../utils/baseUrl';
+
 ---
 
 <Layout title="Tickets | Mac Admins Europe 2026">

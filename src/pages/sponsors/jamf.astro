@@ -1,8 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-const baseUrl = import.meta.env.BASE_URL;
-const base = baseUrl === "/" ? "" : baseUrl;
+const base = getBaseUrl();
+import { getBaseUrl } from "../../utils/baseUrl";
+
 ---
 
 <Layout
@@ -93,44 +94,35 @@ const base = baseUrl === "/" ? "" : baseUrl;
         <div class="sponsor-detail-speaker-section">
           <div class="section-header text-center">
             <span class="section-label">Sponsor Session Spotlight</span>
-            <h2>Armin Briegel</h2>
-            <p>Senior Consulting Engineer at Jamf</p>
+            <h2>Speaker Coming Soon</h2>
+            <p>Jamf Sponsor Session</p>
           </div>
 
           <div class="sponsor-keynote-card">
             <div class="sponsor-keynote-image">
-              <img src="/img/speakers/armin.jpg" alt="Armin Briegel" />
+              <img src="/img/speakers/placeholder.jpg" alt="Speaker announcement coming soon" />
             </div>
 
             <div class="sponsor-keynote-content">
               <div class="speaker-tags">
-                <span class="speaker-tag role">Senior Consulting Engineer</span>
+                <span class="speaker-tag role">Sponsor Session</span>
                 <span class="speaker-tag company">Jamf</span>
-                <span class="speaker-tag talk">🎤 Platinum Sponsor Speaker</span>
+                <span class="speaker-tag talk">🎤 Speaker announcement pending</span>
               </div>
 
-              <h3>Armin Briegel</h3>
+              <h3>Speaker Announcement Coming Soon</h3>
               <p>
-                Armin Briegel has been managing Macs and their users since the time when Apple was
-                beleaguered. Over the years, he has worked across a wide range of technical roles, including
-                time at Apple in both the US and Germany, before bringing that experience into system
-                administration and consulting.
+                Jamf is finalizing the featured presenter for their Sponsor Session. Stay tuned for a deep-dive
+                on Apple-first management workflows, security insights, and practical automation tips that help
+                teams run Jamf at scale.
               </p>
               <p>
-                He now works at Jamf and is widely known in the Mac admin community through his writing and
-                publishing, including scriptingosx.com and macadmins.news. Armin brings deep technical insight
-                and a practical perspective that resonates with working admins.
+                We’ll update this page with speaker details soon. Until then, expect a session focused on
+                real-world admin challenges, the latest feature updates, and how Jamf’s team partners with the
+                Mac Admins community.
               </p>
 
               <div class="sponsor-detail-actions">
-                <a
-                  href="https://www.linkedin.com/in/armin-briegel/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-outline"
-                >
-                  Armin on LinkedIn
-                </a>
                 <a href={`${base}/speakers`} class="btn btn-outline">
                   See All Speakers
                 </a>

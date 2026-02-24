@@ -2,8 +2,9 @@
 import { reference } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
-const base = baseUrl === '/' ? '' : baseUrl;
+const base = getBaseUrl();
+import { getBaseUrl } from '../utils/baseUrl';
+
 
 // ============================================================
 // SPEAKERS - Edit this array to add/update speakers

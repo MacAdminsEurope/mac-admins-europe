@@ -1,8 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getBaseUrl } from "../../utils/baseUrl";
 
-const baseUrl = import.meta.env.BASE_URL;
-const base = baseUrl === "/" ? "" : baseUrl;
+const base = getBaseUrl();
+
 ---
 
 <Layout
@@ -93,8 +94,8 @@ const base = baseUrl === "/" ? "" : baseUrl;
         <div class="sponsor-detail-speaker-section">
           <div class="section-header text-center">
             <span class="section-label">Sponsor Session Spotlight</span>
-            <h2>Henry Stamerjohann</h2>
-            <p>Platform Engineer at Fleet</p>
+            <h2>Featured Speakers</h2>
+            <p>Fleet is bringing two community voices to Leiden.</p>
           </div>
 
           <div class="sponsor-keynote-card">
@@ -130,6 +131,46 @@ const base = baseUrl === "/" ? "" : baseUrl;
                   class="btn btn-outline"
                 >
                   Henry on LinkedIn
+                </a>
+                <a href={`${base}/speakers`} class="btn btn-outline">
+                  See All Speakers
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="sponsor-keynote-card">
+            <div class="sponsor-keynote-image">
+              <img src="/img/speakers/harrison.jpg" alt="Harrison Ravazzolo" />
+            </div>
+
+            <div class="sponsor-keynote-content">
+              <div class="speaker-tags">
+                <span class="speaker-tag role">Solutions Consultant</span>
+                <span class="speaker-tag company">Fleet</span>
+                <span class="speaker-tag talk">🎤 Platinum Sponsor Speaker</span>
+              </div>
+
+              <h3>Harrison Ravazzolo</h3>
+              <p>
+                Harrison Ravazzolo is a security, identity, and client platform engineer with experience at
+                Deputy and other Silicon Valley companies. Outside of IT, he’s a chef and baker who regularly
+                works in San Francisco restaurants, and a rock climber who swears he’s a fan of Yogi Bear (or
+                maybe yoga).
+              </p>
+              <p>
+                Harrison now serves as a Solutions Consultant with Fleet Device Management, bringing a mix of
+                hands-on enterprise experience and creative energy to the Sponsor Session in Leiden.
+              </p>
+
+              <div class="sponsor-detail-actions">
+                <a
+                  href="https://www.linkedin.com/in/harrison-ravazzolo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline"
+                >
+                  Harrison on LinkedIn
                 </a>
                 <a href={`${base}/speakers`} class="btn btn-outline">
                   See All Speakers
