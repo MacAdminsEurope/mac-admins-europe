@@ -893,6 +893,41 @@ section { padding: var(--space-4xl) 0; }
   text-align: left;
 }
 
+.speaker-session-row {
+  padding: var(--space-sm) var(--space-lg);
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.speaker-session-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--eu-blue);
+}
+
+.speaker-session-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--eu-blue-dark);
+  line-height: 1.4;
+}
+
+.speaker-actions {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: center;
+}
+
+.speaker-talk-btn {
+  width: 100%;
+  max-width: 300px;
+}
+
 .speaker-info h3 {
   font-size: 1.1rem;
   margin-bottom: var(--space-xs);
@@ -971,6 +1006,94 @@ section { padding: var(--space-4xl) 0; }
 .speaker-topic {
   color: var(--gray-600);
   font-size: 0.8rem;
+}
+
+/* Speaker Talk Modal */
+.speaker-talk-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.speaker-talk-modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.speaker-talk-modal-content {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform var(--transition-base);
+  overflow-y: auto;
+}
+
+.speaker-talk-modal-overlay.is-open .speaker-talk-modal-content {
+  transform: translateY(0);
+}
+
+.speaker-talk-modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--gray-400);
+  cursor: pointer;
+  padding: 0 var(--space-sm);
+  transition: color var(--transition-base);
+  z-index: 10;
+}
+
+.speaker-talk-modal-close:hover {
+  color: var(--gray-700);
+}
+
+.speaker-talk-modal-body {
+  padding-top: var(--space-lg);
+}
+
+.speaker-talk-modal-speaker {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--eu-blue);
+  margin-bottom: var(--space-sm);
+}
+
+.speaker-talk-modal-body h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--eu-blue-dark);
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+}
+
+.speaker-talk-modal-body p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--gray-700);
 }
 
 /* ==========================================================================
@@ -5365,5 +5488,27 @@ a.sponsor-card.tier-silver:hover {
 
   .sponsor-keynote-image {
     min-height: 260px;
+  }
+
+  /* Modal responsive styles */
+  .sponsor-modal-content,
+  .speaker-talk-modal-content {
+    padding: var(--space-lg);
+    max-width: 95%;
+    margin: var(--space-md);
+  }
+
+  .sponsor-modal-close,
+  .speaker-talk-modal-close {
+    top: var(--space-sm);
+    right: var(--space-sm);
+  }
+
+  .speaker-actions {
+    padding: var(--space-md);
+  }
+
+  .speaker-session-row {
+    padding: var(--space-sm) var(--space-md);
   }
 }
