@@ -200,6 +200,31 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--white);
 }
 
+.btn-gold {
+  background: var(--eu-gold);
+  color: var(--eu-blue-dark);
+  border: 2px solid var(--eu-gold);
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(255, 204, 0, 0.5), 0 0 30px rgba(255, 204, 0, 0.3);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.btn-gold:hover {
+  background: var(--eu-gold-light);
+  color: var(--eu-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 204, 0, 0.6), 0 0 40px rgba(255, 204, 0, 0.4);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(255, 204, 0, 0.5), 0 0 30px rgba(255, 204, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(255, 204, 0, 0.7), 0 0 40px rgba(255, 204, 0, 0.5);
+  }
+}
+
 /* Section spacing */
 section { padding: var(--space-4xl) 0; }
 
@@ -1324,6 +1349,19 @@ section { padding: var(--space-4xl) 0; }
   gap: var(--space-sm);
 }
 
+.ticket-urgency-badge {
+  display: inline-block;
+  background: var(--white);
+  color: var(--eu-blue-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-sm);
+}
+
 .programme-ticket-note {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
@@ -1921,6 +1959,24 @@ section { padding: var(--space-4xl) 0; }
   border-radius: var(--radius-sm);
 }
 
+.ticket-badge.gold {
+  background: var(--eu-gold);
+  color: var(--eu-blue-dark);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(255, 204, 0, 0.4);
+}
+
+.ticket-card.featured {
+  border: 2px solid var(--eu-gold);
+  box-shadow: 0 8px 30px rgba(255, 204, 0, 0.2), 0 4px 15px rgba(0, 51, 153, 0.1);
+  transform: scale(1.02);
+}
+
+.ticket-card.featured:hover {
+  box-shadow: 0 12px 40px rgba(255, 204, 0, 0.3), 0 6px 20px rgba(0, 51, 153, 0.15);
+  transform: scale(1.04) translateY(-4px);
+}
+
 .ticket-header {
   padding: var(--space-xl);
   text-align: center;
@@ -1993,6 +2049,15 @@ section { padding: var(--space-4xl) 0; }
 
 .ticket-footer .btn {
   width: 100%;
+}
+
+/* Sold Out Ticket Cards */
+.ticket-card.sold-out {
+  overflow: hidden;
+}
+
+.ticket-card.sold-out:hover {
+  transform: translateY(-4px);
 }
 
 /* What's Included */

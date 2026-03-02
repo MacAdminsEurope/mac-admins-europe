@@ -20,8 +20,8 @@ import { getBaseUrl } from '../utils/baseUrl';
       <div class="tickets-notice">
         <div class="notice-icon">🎟️</div>
         <div class="notice-content">
-          <h3>Tickets Are Now Available!</h3>
-          <p>Secure your spot at Mac Admins Europe 2026. Get your ticket today!</p>
+          <h3>Early Bird Sold Out - Regular Tickets Available!</h3>
+          <p>Early bird tickets sold out fast! Regular tickets are going quickly - secure your spot at Mac Admins Europe 2026 today.</p>
         </div>
       </div>
 
@@ -32,7 +32,8 @@ import { getBaseUrl } from '../utils/baseUrl';
         </p>
 
         <div class="tickets-grid">
-          <div class="ticket-card group">
+          <div class="ticket-card group sold-out">
+            <div class="sold-out-overlay"><span>Sold Out</span></div>
             <div class="ticket-badge">Only 100 tickets</div>
             <div class="ticket-header">
               <h3>Early Bird</h3>
@@ -53,11 +54,12 @@ import { getBaseUrl } from '../utils/baseUrl';
               <p class="ticket-availability">Available till sold out!</p>
             </div>
             <div class="ticket-footer">
-              <a href="https://apps.ticketmatic.com/widgets/leidse_schouwburg_stadsgehoorzaal/flow/verkooplink?event=883186246278&l=en#!/addtickets" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Buy Ticket</a>
+              <span class="btn btn-primary btn-disabled">Sold Out</span>
             </div>
           </div>
 
-          <div class="ticket-card regular">
+          <div class="ticket-card regular featured">
+            <div class="ticket-badge gold">Available Now</div>
             <div class="ticket-header">
               <h3>Regular</h3>
               <div class="ticket-price">
@@ -77,7 +79,7 @@ import { getBaseUrl } from '../utils/baseUrl';
               <p class="ticket-availability"></p>
             </div>
             <div class="ticket-footer">
-              <a href="https://apps.ticketmatic.com/widgets/leidse_schouwburg_stadsgehoorzaal/flow/verkooplink?event=883186246278&l=en#!/addtickets" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Buy Ticket</a>
+              <a href="https://apps.ticketmatic.com/widgets/leidse_schouwburg_stadsgehoorzaal/flow/verkooplink?event=883186246278&l=en#!/addtickets" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Buy Ticket</a>
             </div>
           </div>
         </div>
