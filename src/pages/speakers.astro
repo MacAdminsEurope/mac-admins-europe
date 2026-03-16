@@ -126,7 +126,7 @@ const speakers: Speaker[] = [
       slack: "https://macadmins.slack.com/team/U06R6V15J",
     },
     {
-      order: 5,
+      order: 10,
       name: "Rob Potvin",
       role: "Senior Consulting Engineer",
       company: "Jamf",
@@ -136,14 +136,27 @@ const speakers: Speaker[] = [
       talkDescription: placeholderTalkDescription,
       linkedin: "https://www.linkedin.com/in/robpotvin/",
       slack: "https://macadmins.slack.com/team/U07706K3K",
+    },
+    { 
+      order: 5,
+      name: "Rachelle Noel",
+      role: "Sales Engineer",
+      company: "Jamf",
+      image: "/img/speakers/rachelle.jpg",
+      bio: "Rachelle Noel is a Sales Engineer at Jamf with 20 years of post-production experience and a passion for clear, effective workflows. She works closely with customers and partners across technology and education sectors to translate complex challenges into workable solutions. Rachelle’s commitment to clarity and empowerment makes her sessions both actionable and engaging for IT professionals at any level.",
+      talk: "Think Different. Then Update: Software Updates, It's been a journey.",
+      talkDescription: "Apple's software update ecosystem has evolved from manual updates to declarative management. Let's take a walk down memory to see how far we have come and where software updates is going.",
+      linkedin: "https://www.linkedin.com/in/rachelle-noel-3703992a/",
+      slack: "https://macadmins.slack.com/team/U04K3J4D1GA",
     }
+
 
 ];
 
 const sortedSpeakers = [...speakers].sort((a, b) => a.order - b.order);
 
 // Total number of speaker slots to show (fills remaining with TBA placeholders)
-const totalSlots = 9;
+const totalSlots = 10;
 ---
 
 <Layout
