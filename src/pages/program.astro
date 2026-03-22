@@ -1,9 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getBaseUrl } from '../utils/baseUrl';
+import { speakers } from '../data/speakers';
+import { scheduleItems } from '../data/schedule';
 
 const base = getBaseUrl();
-import { getBaseUrl } from '../utils/baseUrl';
 
+const getSpeakerById = (id: number) => speakers.find(s => s.order === id);
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "speaker";
 ---
 
 <Layout
@@ -28,166 +37,81 @@ import { getBaseUrl } from '../utils/baseUrl';
             <span class="day-date">Thursday, April 30, 2026</span>
           </div>
 
-          <div class="schedule-block registration">
-            <div class="block-time">08:30 - 09:15</div>
-            <div class="block-content">
-              <span class="block-emoji">☕️🎫</span>
-              <span class="block-type">Registration</span>
-              <h3>Registration & Welcome Coffee</h3>
-              <p>Pick up your badge, grab a coffee, and start networking with fellow Mac Admins</p>
-            </div>
-          </div>
+          {scheduleItems.map((item) => {
+            const itemSpeakers = item.speakerIds 
+              ? item.speakerIds.map(id => getSpeakerById(id)).filter((s) => s !== undefined) as any[]
+              : [];
+            
+            const hasTalkDescription = itemSpeakers.length > 0 && itemSpeakers[0].talkDescription && itemSpeakers[0].talkDescription !== "Full session description coming soon. Check back for details about this talk.";
+            const talkModalId = hasTalkDescription ? `talk-modal-${slugify(itemSpeakers[0].talk || item.title)}` : '';
+              
+            return (
+              <>
+                <div 
+                  class={`schedule-block ${item.type}`}
+                  data-talk-modal-trigger={hasTalkDescription ? talkModalId : undefined}
+                  style={hasTalkDescription ? 'cursor: pointer;' : undefined}
+                >
+                <div class="block-time">{item.time}</div>
+                <div class="block-content">
+                  {item.emoji && <span class="block-emoji">{item.emoji}</span>}
+                  <span class="block-type">
+                    {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                  </span>
+                  
+                  {itemSpeakers.length > 0 ? (
+                    <h3>{itemSpeakers[0].talk || item.title}</h3>
+                  ) : (
+                    <h3>{item.title}</h3>
+                  )}
 
-          <div class="schedule-block keynote">
-            <div class="block-time">09:15 - 09:30</div>
-            <div class="block-content">
-              <span class="block-emoji">🎉</span>
-              <span class="block-type">Opening</span>
-              <h3>Opening</h3>
-              <p>Welcome to Mac Admins Europe 2026</p>
-            </div>
-          </div>
-
-          <div class="schedule-block session">
-            <div class="block-time">09:30 - 10:15</div>
-            <div class="block-content">
-              <span class="block-type">Session</span>
-              <h3>Speaker 1</h3>
-              <div class="speaker-placeholder">
-                <div class="speaker-avatar">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                  {itemSpeakers.length > 0 ? (
+                    <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:1rem;">
+                      {itemSpeakers.map((speaker: any) => (
+                        <div class="speaker-placeholder" style="border:none;background:transparent;padding:0;">
+                          <div class="speaker-avatar">
+                            {speaker.image ? (
+                              <img src={speaker.image} alt={speaker.name} style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
+                            ) : (
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            )}
+                          </div>
+                          <span class="speaker-tba" style="color:var(--text-main); font-weight: normal;">{speaker.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    item.description ? <p>{item.description}</p> : null
+                  )}
                 </div>
-                <span class="speaker-tba">Speaker to be announced</span>
               </div>
-            </div>
-          </div>
 
-          <div class="schedule-block sponsor">
-            <div class="block-time">10:15 - 10:40</div>
-            <div class="block-content">
-              <span class="block-type">Sponsor</span>
-              <h3>Sponsor Session 1</h3>
-            </div>
-          </div>
-
-          <div class="schedule-block break">
-            <div class="block-time">10:40 - 11:10</div>
-            <div class="block-content">
-              <span class="block-emoji">☕️</span>
-              <span class="block-type">Break</span>
-              <h3>Coffee Break</h3>
-              <p>Refresh and visit our exhibitors</p>
-            </div>
-          </div>
-
-          <div class="schedule-block session">
-            <div class="block-time">11:10 - 11:55</div>
-            <div class="block-content">
-              <span class="block-type">Session</span>
-              <h3>Speaker 2</h3>
-              <div class="speaker-placeholder">
-                <div class="speaker-avatar">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              {hasTalkDescription && (
+                <div
+                  class="speaker-talk-modal-overlay"
+                  data-talk-modal={talkModalId}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-hidden="true"
+                >
+                  <div class="speaker-talk-modal-content">
+                    <button
+                      class="speaker-talk-modal-close"
+                      data-talk-modal-close
+                      aria-label="Close talk details"
+                    >
+                      &times;
+                    </button>
+                    <div class="speaker-talk-modal-body">
+                      <h4>{itemSpeakers[0].talk || item.title}</h4>
+                      <p>{itemSpeakers[0].talkDescription}</p>
+                    </div>
+                  </div>
                 </div>
-                <span class="speaker-tba">Speaker to be announced</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="schedule-block sponsor">
-            <div class="block-time">11:55 - 12:20</div>
-            <div class="block-content">
-              <span class="block-type">Sponsor</span>
-              <h3>Sponsor Session 2</h3>
-            </div>
-          </div>
-
-          <div class="schedule-block lunch">
-            <div class="block-time">12:20 - 13:20</div>
-            <div class="block-content">
-              <span class="block-emoji">🍽️</span>
-              <span class="block-type">Lunch</span>
-              <h3>Lunch & Networking</h3>
-              <p>Enjoy lunch, visit exhibitors, and connect with peers</p>
-            </div>
-          </div>
-
-          <div class="schedule-block session">
-            <div class="block-time">13:20 - 14:05</div>
-            <div class="block-content">
-              <span class="block-type">Session</span>
-              <h3>Speaker 3</h3>
-              <div class="speaker-placeholder">
-                <div class="speaker-avatar">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <span class="speaker-tba">Speaker to be announced</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="schedule-block session">
-            <div class="block-time">14:05 - 14:50</div>
-            <div class="block-content">
-              <span class="block-type">Session</span>
-              <h3>Speaker 4</h3>
-              <div class="speaker-placeholder">
-                <div class="speaker-avatar">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <span class="speaker-tba">Speaker to be announced</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="schedule-block break">
-            <div class="block-time">14:50 - 15:20</div>
-            <div class="block-content">
-              <span class="block-emoji">☕️</span>
-              <span class="block-type">Break</span>
-              <h3>Coffee Break</h3>
-              <p>Last chance to visit exhibitors</p>
-            </div>
-          </div>
-
-          <div class="schedule-block sponsor">
-            <div class="block-time">15:20 - 15:45</div>
-            <div class="block-content">
-              <span class="block-type">Sponsor</span>
-              <h3>Sponsor Session 3</h3>
-            </div>
-          </div>
-
-          <div class="schedule-block session">
-            <div class="block-time">15:45 - 16:30</div>
-            <div class="block-content">
-              <span class="block-type">Session</span>
-              <h3>Speaker 5</h3>
-              <div class="speaker-placeholder">
-                <div class="speaker-avatar">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <span class="speaker-tba">Speaker to be announced</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="schedule-block sponsor">
-            <div class="block-time">16:30 - 16:55</div>
-            <div class="block-content">
-              <span class="block-type">Sponsor</span>
-              <h3>Sponsor Session 4</h3>
-            </div>
-          </div>
-
-          <div class="schedule-block keynote">
-            <div class="block-time">16:55 - 17:15</div>
-            <div class="block-content">
-              <span class="block-emoji">🎬</span>
-              <span class="block-type">Closing</span>
-              <h3>Closing Session</h3>
-              <p>Key takeaways and looking ahead</p>
-            </div>
+              )}
+            </>
+            );
+          })}   </div>
           </div>
         </div>
       </div>      
@@ -195,3 +119,56 @@ import { getBaseUrl } from '../utils/baseUrl';
   </section>
 </Layout>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const talkButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-trigger]");
+    const closeButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-close]");
+    const body = document.body;
+
+    const openModal = (modal: HTMLElement) => {
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      body.style.overflow = "hidden";
+    };
+
+    const closeModal = (modal?: HTMLElement | null) => {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      body.style.overflow = "";
+    };
+
+    talkButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.dataset.talkModalTrigger;
+        if (!targetId) return;
+
+        const modal = document.querySelector<HTMLElement>(`[data-talk-modal="${targetId}"]`);
+        if (modal) {
+          openModal(modal);
+        }
+      });
+    });
+
+    closeButtons.forEach((closeBtn) => {
+      closeBtn.addEventListener("click", () => {
+        const modal = closeBtn.closest<HTMLElement>("[data-talk-modal]");
+        closeModal(modal);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (target?.hasAttribute("data-talk-modal")) {
+        closeModal(target);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        const openModalEl = document.querySelector<HTMLElement>(".speaker-talk-modal-overlay.is-open");
+        closeModal(openModalEl);
+      }
+    });
+  });
+</script>
