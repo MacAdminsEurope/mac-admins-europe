@@ -7,6 +7,12 @@ import { scheduleItems } from '../data/schedule';
 const base = getBaseUrl();
 
 const getSpeakerById = (id: number) => speakers.find(s => s.order === id);
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "speaker";
 ---
 
 <Layout
@@ -35,9 +41,13 @@ const getSpeakerById = (id: number) => speakers.find(s => s.order === id);
             const itemSpeakers = item.speakerIds 
               ? item.speakerIds.map(id => getSpeakerById(id)).filter((s) => s !== undefined) as any[]
               : [];
+            
+            const hasTalkDescription = itemSpeakers.length > 0 && itemSpeakers[0].talkDescription && itemSpeakers[0].talkDescription !== "Full session description coming soon. Check back for details about this talk.";
+            const talkModalId = hasTalkDescription ? `talk-modal-${slugify(itemSpeakers[0].talk || item.title)}` : '';
               
             return (
-              <div class={`schedule-block ${item.type}`}>
+              <>
+                <div class={`schedule-block ${item.type}`}>
                 <div class="block-time">{item.time}</div>
                 <div class="block-content">
                   {item.emoji && <span class="block-emoji">{item.emoji}</span>}
@@ -69,8 +79,45 @@ const getSpeakerById = (id: number) => speakers.find(s => s.order === id);
                   ) : (
                     item.description ? <p>{item.description}</p> : null
                   )}
+
+                  {hasTalkDescription && (
+                    <div class="speaker-actions" style="margin-top: 1rem;">
+                      <button
+                        type="button"
+                        class="btn btn-outline speaker-talk-btn"
+                        data-talk-modal-trigger={talkModalId}
+                      >
+                        About This Session
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
+
+              {hasTalkDescription && (
+                <div
+                  class="speaker-talk-modal-overlay"
+                  data-talk-modal={talkModalId}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-hidden="true"
+                >
+                  <div class="speaker-talk-modal-content">
+                    <button
+                      class="speaker-talk-modal-close"
+                      data-talk-modal-close
+                      aria-label="Close talk details"
+                    >
+                      &times;
+                    </button>
+                    <div class="speaker-talk-modal-body">
+                      <h4>{itemSpeakers[0].talk || item.title}</h4>
+                      <p>{itemSpeakers[0].talkDescription}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </>
             );
           })}   </div>
           </div>
@@ -80,3 +127,56 @@ const getSpeakerById = (id: number) => speakers.find(s => s.order === id);
   </section>
 </Layout>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const talkButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-trigger]");
+    const closeButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-close]");
+    const body = document.body;
+
+    const openModal = (modal: HTMLElement) => {
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      body.style.overflow = "hidden";
+    };
+
+    const closeModal = (modal?: HTMLElement | null) => {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      body.style.overflow = "";
+    };
+
+    talkButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.dataset.talkModalTrigger;
+        if (!targetId) return;
+
+        const modal = document.querySelector<HTMLElement>(`[data-talk-modal="${targetId}"]`);
+        if (modal) {
+          openModal(modal);
+        }
+      });
+    });
+
+    closeButtons.forEach((closeBtn) => {
+      closeBtn.addEventListener("click", () => {
+        const modal = closeBtn.closest<HTMLElement>("[data-talk-modal]");
+        closeModal(modal);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (target?.hasAttribute("data-talk-modal")) {
+        closeModal(target);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        const openModalEl = document.querySelector<HTMLElement>(".speaker-talk-modal-overlay.is-open");
+        closeModal(openModalEl);
+      }
+    });
+  });
+</script>
