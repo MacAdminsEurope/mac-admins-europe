@@ -47,7 +47,11 @@ const slugify = (value: string) =>
               
             return (
               <>
-                <div class={`schedule-block ${item.type}`}>
+                <div 
+                  class={`schedule-block ${item.type}`}
+                  data-talk-modal-trigger={hasTalkDescription ? talkModalId : undefined}
+                  style={hasTalkDescription ? 'cursor: pointer;' : undefined}
+                >
                 <div class="block-time">{item.time}</div>
                 <div class="block-content">
                   {item.emoji && <span class="block-emoji">{item.emoji}</span>}
@@ -78,18 +82,6 @@ const slugify = (value: string) =>
                     </div>
                   ) : (
                     item.description ? <p>{item.description}</p> : null
-                  )}
-
-                  {hasTalkDescription && (
-                    <div class="speaker-actions" style="margin-top: 1rem;">
-                      <button
-                        type="button"
-                        class="btn btn-outline speaker-talk-btn"
-                        data-talk-modal-trigger={talkModalId}
-                      >
-                        About This Session
-                      </button>
-                    </div>
                   )}
                 </div>
               </div>
