@@ -1474,6 +1474,55 @@ section { padding: var(--space-4xl) 0; }
    PROGRAM PAGE
    ========================================================================== */
 
+.calendar-subscribe-banner {
+  background: var(--off-white);
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  padding: var(--space-lg) 0;
+}
+
+.calendar-subscribe-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.calendar-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--eu-blue);
+  flex-shrink: 0;
+}
+
+.calendar-subscribe-text {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.calendar-subscribe-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--eu-blue);
+  color: var(--white);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.calendar-subscribe-btn:hover {
+  background: var(--eu-gold, #c9a84c);
+  color: var(--eu-blue, #1e3a5f);
+  transform: translateY(-1px);
+}
+
 .program-content {
   padding: var(--space-4xl) 0;
 }
