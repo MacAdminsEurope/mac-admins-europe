@@ -3160,6 +3160,13 @@ section { padding: var(--space-4xl) 0; }
   gap: var(--space-lg);
 }
 
+.tier-grid-silver {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  justify-content: center;
+  gap: var(--space-xl);
+}
+
 /* Sponsor Card */
 .sponsor-card-wrapper {
   perspective: 1000px;

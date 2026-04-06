@@ -1,0 +1,161 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mac Admins Europe//Mac Admins Europe 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Mac Admins Europe 2026
+X-WR-CALDESC:Full conference schedule for Mac Admins Europe 2026 in Leiden
+X-WR-TIMEZONE:Europe/Amsterdam
+BEGIN:VTIMEZONE
+TZID:Europe/Amsterdam
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+END:STANDARD
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=3
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:mae2026-registration@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T083000
+DTEND;TZID=Europe/Amsterdam:20260430T093000
+SUMMARY:Registration & Welcome Coffee
+DESCRIPTION:Pick up your badge\, grab a coffee\, and start networking with fellow Mac Admins
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-opening@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T093000
+DTEND;TZID=Europe/Amsterdam:20260430T101500
+SUMMARY:Opening
+DESCRIPTION:Welcome to Mac Admins Europe 2026
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-session1@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T101500
+DTEND;TZID=Europe/Amsterdam:20260430T104000
+SUMMARY:A Few of Our Favorite (Mac Admin) Things
+DESCRIPTION:Armin and Rob will share a collection of tools\, tricks\, workflows\, and ideas that have made their lives as Mac admins easier (or at least more interesting). Expect practical insights\, unexpected discoveries\, and a few things you might immediately want to add to your own toolkit.\n\nSpeakers: Armin Briegel & Rob Potvin
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-sponsor1@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T104000
+DTEND;TZID=Europe/Amsterdam:20260430T111000
+SUMMARY:Workbrew – Securing Developer Workflows (With the Tools They Already Love)
+DESCRIPTION:Developers are often left to manage their own machines - installing what they need through Homebrew\, GitHub\, and increasingly via AI agents requesting additional tools on their behalf. This session explores how to secure macOS developer environments without disrupting how developers need to work.\n\nSpeaker: David Starr (Workbrew)
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-break1@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T111000
+DTEND;TZID=Europe/Amsterdam:20260430T115500
+SUMMARY:Coffee Break
+DESCRIPTION:Refresh and visit our exhibitors
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-session2@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T115500
+DTEND;TZID=Europe/Amsterdam:20260430T122000
+SUMMARY:Do Mac Administrators Dream of Electric Users?
+DESCRIPTION:We build elegant deployments\, polished scripts\, and "foolproof" workflows. And then... users surprise us. Borrowing ideas from psychology (and a certain sci-fi classic)\, we'll examine how users actually experience dialogs\, prompts\, and automated processes.\n\nSpeaker: Ulrik Aabye-Hansen
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-sponsor2@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T122000
+DTEND;TZID=Europe/Amsterdam:20260430T132000
+SUMMARY:Jamf – Think Different. Then Update: Software Updates\, It's been a journey.
+DESCRIPTION:Apple's software update ecosystem has evolved from manual updates to declarative management. Let's take a walk down memory to see how far we have come and where software updates is going.\n\nSpeaker: Rachelle Noel (Jamf)
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-lunch@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T132000
+DTEND;TZID=Europe/Amsterdam:20260430T140500
+SUMMARY:Lunch & Networking
+DESCRIPTION:Enjoy lunch\, visit exhibitors\, and connect with peers
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-specialguest@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T140500
+DTEND;TZID=Europe/Amsterdam:20260430T145000
+SUMMARY:Special Guest
+DESCRIPTION:More details coming soon
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-session3@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T145000
+DTEND;TZID=Europe/Amsterdam:20260430T152000
+SUMMARY:Trust\, But Verify: Exposing Risk in Your App Catalog
+DESCRIPTION:Every day\, our user communities request tools to improve their productivity. In this talk\, we'll explore techniques for inspecting the structure of mach binaries to make informed choices about the software we adopt and use.\n\nSpeaker: Alexandra Smith
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-break2@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T152000
+DTEND;TZID=Europe/Amsterdam:20260430T154500
+SUMMARY:Coffee Break
+DESCRIPTION:Last chance to visit exhibitors
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-sponsor3@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T154500
+DTEND;TZID=Europe/Amsterdam:20260430T163000
+SUMMARY:Fleet DM – Unlock the future of device management with Fleet
+DESCRIPTION:A practical look at Fleet's infrastructure-as-code approach to device management. Fleet's API-first design allows admins to control every endpoint management setting with version-controlled YAML files declaratively.\n\nSpeakers: Harrison Ravazzolo & Henry Stamerjohann (Fleet)
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-session4@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T163000
+DTEND;TZID=Europe/Amsterdam:20260430T165500
+SUMMARY:From Zero to Hero: Making Onboarding Magical
+DESCRIPTION:First impressions are everything\, yet the initial setup is often a source of confusion. This session traces the evolution of macOS interaction\, showing how to move from legacy prompts to modern\, sophisticated dialogues using powerful tools like Setup Manager\, swiftDialog or Support App.\n\nSpeaker: Guillaume Gète
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-sponsor4@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T165500
+DTEND;TZID=Europe/Amsterdam:20260430T171500
+SUMMARY:Iru – The Perpetual Promise of Passkeys & Passwordless
+DESCRIPTION:We've been promised powerful and profound superpowers with a passwordless future powered by passkeys. What are passkeys? What do they do and why do we want them? Weldon Dodd from Iru will share principles and pointers to help power a pragmatic passkey provisioning project.\n\nSpeaker: Weldon Dodd (Iru)
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+BEGIN:VEVENT
+UID:mae2026-closing@macadmins-eu.org
+DTSTART;TZID=Europe/Amsterdam:20260430T171500
+DTEND;TZID=Europe/Amsterdam:20260430T180000
+SUMMARY:Closing Session
+DESCRIPTION:Key takeaways and looking ahead
+LOCATION:Leidse Schouwburg – Stadsgehoorzaal\, Breestraat 60\, 2311 CS Leiden\, Netherlands
+URL:https://macadmins-eu.org/program
+END:VEVENT
+END:VCALENDAR
