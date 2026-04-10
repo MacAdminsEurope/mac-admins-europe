@@ -274,7 +274,7 @@ section { padding: var(--space-4xl) 0; }
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1100;
   padding: var(--space-md) 0;
   transition: all var(--transition-base);
 }
@@ -3210,10 +3210,10 @@ section { padding: var(--space-4xl) 0; }
 }
 
 .tier-grid-silver {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 200px));
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 /* Sponsor Card */
@@ -3428,7 +3428,7 @@ section { padding: var(--space-4xl) 0; }
 
 .tier-gold .sponsor-card { width: 290px; height: 280px; }
 .tier-silver .sponsor-card { height: 200px; }
-.tier-grid-silver .sponsor-card { width: 100%; }
+.tier-grid-silver .sponsor-card { flex: 0 0 200px; width: 200px; }
 
 a.sponsor-card:not(.tier-platinum):hover {
   transform: translateY(-4px);
@@ -3545,7 +3545,7 @@ a.sponsor-card.tier-gold:hover {
 }
 
 .sponsor-card.tier-silver {
-  width: 100%;
+  width: 200px;
   border: none;
   background: linear-gradient(145deg, #f8fafc, #f1f5f9);
   border-radius: var(--radius-lg);
@@ -3964,26 +3964,10 @@ a.sponsor-card.tier-silver:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .tier-grid-gold .sponsor-card {
-    flex: 1 1 45%;
-    max-width: 260px;
-  }
-
-  .tier-grid-silver {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 200px));
-  }
-}
-
-/* Responsive: Pricing Summary <=768px */
-@media (max-width: 768px) {
-  .tier-grid-silver {
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-  }
-
+  .tier-grid-gold .sponsor-card,
   .tier-grid-silver .sponsor-card {
-    width: 100%;
-    max-width: 200px;
+    flex: 1 1 45%;
+    max-width: 220px;
   }
 }
 
@@ -3993,23 +3977,14 @@ a.sponsor-card.tier-silver:hover {
     grid-template-columns: 1fr;
   }
 
-  .tier-grid-gold {
-    gap: var(--space-md);
-  }
-
-  .tier-grid-gold .sponsor-card {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
+  .tier-grid-gold,
   .tier-grid-silver {
-    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
-    justify-items: center;
   }
 
+  .tier-grid-gold .sponsor-card,
   .tier-grid-silver .sponsor-card {
-    width: 100%;
+    flex: 1 1 42%;
     max-width: 160px;
     height: 160px;
   }
