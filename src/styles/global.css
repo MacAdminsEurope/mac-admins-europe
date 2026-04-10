@@ -1047,12 +1047,14 @@ section { padding: var(--space-4xl) 0; }
   align-items: center;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .speaker-talk-modal-overlay.is-open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .speaker-talk-modal-content {
@@ -3322,6 +3324,7 @@ section { padding: var(--space-4xl) 0; }
   align-items: center;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   backdrop-filter: blur(4px);
   padding: var(--space-xl);
@@ -3330,6 +3333,7 @@ section { padding: var(--space-4xl) 0; }
 .sponsor-modal-overlay.is-open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .sponsor-modal-content {
