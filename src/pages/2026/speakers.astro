@@ -1,0 +1,283 @@
+---
+import EditionArchiveLayout from "../../layouts/EditionArchiveLayout.astro";
+
+// ============================================================
+// SPEAKERS - Add/update speakers in src/data/2026/speakers.ts
+// Put speaker images in /public/img/speakers/
+// ============================================================
+import { speakers, placeholderTalkTitle, placeholderTalkDescription } from '../../data/2026/speakers';
+import { edition2026 } from '../../data/2026/edition';
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "speaker";
+
+const sortedSpeakers = [...speakers].sort((a, b) => a.order - b.order);
+
+// Total number of speaker slots to show (fills remaining with TBA placeholders)
+const totalSlots = 10;
+---
+
+<EditionArchiveLayout
+  title="2026 Speakers | Mac Admins Europe Archive"
+  description="Archive of the Mac Admins Europe 2026 speakers, session titles, and talk details from Leiden."
+  edition={edition2026}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">2026 Archive</span>
+      <h1>Speakers</h1>
+      <p>Speaker and session archive from Mac Admins Europe 2026 in Leiden</p>
+    </div>
+  </section>
+
+  <section class="speakers-content">
+    <div class="container">
+      {
+        speakers.length === 0 && (
+          <div class="speakers-notice">
+            <div class="notice-icon">🎤</div>
+            <div class="notice-content">
+              <h3>Speaker Announcements Coming Soon</h3>
+              <p>
+                We're assembling an incredible lineup of speakers for Mac Admins
+                Europe 2026. Check back regularly or subscribe to our newsletter
+                to be the first to know!
+              </p>
+            </div>
+          </div>
+        )
+      }
+
+      <div class="speakers-placeholder">
+        <h2>2026 Speakers</h2>
+        <div class="schedule-day">
+          <div class="speakers-grid">
+            {
+              sortedSpeakers.map((speaker) => {
+                const talkModalId = `talk-modal-${slugify(speaker.name)}`;
+                const hasTalkDescription =
+                  speaker.talkDescription &&
+                  speaker.talkDescription !== placeholderTalkDescription;
+                const talkTitle = speaker.talk ?? placeholderTalkTitle;
+
+                return (
+                  <>
+                    <div class="speaker-card">
+                      <div class="speaker-card-top">
+                        <div class="speaker-image">
+                          <img
+                            src={speaker.image}
+                            alt={speaker.name}
+                            style="width:100%;height:100%;object-fit:cover;"
+                          />
+                        </div>
+                        <div class="speaker-info">
+                          <h3>{speaker.name}</h3>
+                          <div class="speaker-tags">
+                            <span class="speaker-tag role">{speaker.role}</span>
+                            {speaker.company && (
+                              <span class="speaker-tag company">
+                                {speaker.company}
+                              </span>
+                            )}
+                          </div>
+                          <div class="speaker-social">
+                            {speaker.linkedin && (
+                              <a
+                                href={speaker.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="speaker-social-link"
+                                aria-label="LinkedIn"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  width="20"
+                                  height="20"
+                                  fill="currentColor"
+                                >
+                                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                              </a>
+                            )}
+                            {speaker.slack && (
+                              <a
+                                href={speaker.slack}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="speaker-social-link"
+                                aria-label="Slack"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  width="20"
+                                  height="20"
+                                  fill="currentColor"
+                                >
+                                  <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" />
+                                </svg>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      {speaker.bio && (
+                        <div class="speaker-bio-row">
+                          <span class="speaker-bio">{speaker.bio}</span>
+                        </div>
+                      )}
+                      {talkTitle && talkTitle !== placeholderTalkTitle && (
+                        <div class="speaker-session-row">
+                          <span class="speaker-session-label">Session:</span>
+                          <span class="speaker-session-title">{talkTitle}</span>
+                        </div>
+                      )}
+                      {hasTalkDescription && (
+                        <div class="speaker-actions">
+                          <button
+                            type="button"
+                            class="btn btn-outline speaker-talk-btn"
+                            data-talk-modal-trigger={talkModalId}
+                          >
+                            About My Talk
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    {hasTalkDescription && (
+                      <div
+                        class="speaker-talk-modal-overlay"
+                        data-talk-modal={talkModalId}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-hidden="true"
+                      >
+                        <div class="speaker-talk-modal-content">
+                          <button
+                            class="speaker-talk-modal-close"
+                            data-talk-modal-close
+                            aria-label="Close talk details"
+                          >
+                            &times;
+                          </button>
+                          <div class="speaker-talk-modal-body">
+                            <span class="speaker-talk-modal-speaker">
+                              {speaker.name}
+                            </span>
+                            <h4>{talkTitle}</h4>
+                            <p>{speaker.talkDescription}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                );
+              })
+            }
+            {
+              Array.from({
+                length: Math.max(0, totalSlots - speakers.length),
+              }).map(() => (
+                <div class="speaker-card placeholder">
+                  <div class="speaker-card-top">
+                    <div
+                      class="speaker-image"
+                      style="display:flex;align-items:center;justify-content:center;"
+                    >
+                      <svg
+                        viewBox="0 0 200 200"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="width:100%;height:100%;"
+                      >
+                        <circle cx="100" cy="100" r="100" fill="#e5e7eb" />
+                        <circle cx="100" cy="75" r="35" fill="#9ca3af" />
+                        <path
+                          d="M 40 160 Q 40 120 100 120 Q 160 120 160 160 L 160 200 L 40 200 Z"
+                          fill="#9ca3af"
+                        />
+                      </svg>
+                    </div>
+                    <div class="speaker-info">
+                      <h3>To Be Announced</h3>
+                      <div class="speaker-tags">
+                        <span class="speaker-tag role">Speaker</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</EditionArchiveLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const talkButtons = document.querySelectorAll<HTMLButtonElement>(
+      "[data-talk-modal-trigger]",
+    );
+    const closeButtons = document.querySelectorAll<HTMLButtonElement>(
+      "[data-talk-modal-close]",
+    );
+    const body = document.body;
+
+    const openModal = (modal: HTMLElement) => {
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      body.style.overflow = "hidden";
+    };
+
+    const closeModal = (modal?: HTMLElement | null) => {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      body.style.overflow = "";
+    };
+
+    talkButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.dataset.talkModalTrigger;
+        if (!targetId) return;
+
+        const modal = document.querySelector<HTMLElement>(
+          `[data-talk-modal="${targetId}"]`,
+        );
+        if (modal) {
+          openModal(modal);
+        }
+      });
+    });
+
+    closeButtons.forEach((closeBtn) => {
+      closeBtn.addEventListener("click", () => {
+        const modal = closeBtn.closest<HTMLElement>("[data-talk-modal]");
+        closeModal(modal);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (target?.hasAttribute("data-talk-modal")) {
+        closeModal(target);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        const openModalEl = document.querySelector<HTMLElement>(
+          ".speaker-talk-modal-overlay.is-open",
+        );
+        closeModal(openModalEl);
+      }
+    });
+  });
+</script>

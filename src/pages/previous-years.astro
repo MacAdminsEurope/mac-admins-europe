@@ -1,0 +1,67 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getBaseUrl } from "../utils/baseUrl";
+import { archiveYears } from "../data/archive";
+
+const base = getBaseUrl();
+---
+
+<Layout
+  title="Previous Years | Mac Admins Europe"
+  description="Browse the Mac Admins Europe conference archive, including previous years, speakers, sponsors, program, and location details."
+>
+  <section class="page-hero archive-page-hero">
+    <div class="container">
+      <span class="section-label">Conference Archive</span>
+      <h1>Previous Years</h1>
+      <p>Preserving the people, sessions, sponsors, and places that shaped Mac Admins Europe.</p>
+    </div>
+  </section>
+
+  <section class="archive-content">
+    <div class="container">
+      <div class="archive-year-list">
+        {archiveYears.map((year) => (
+          <article class="archive-year-card">
+            <div>
+              <span class="archive-year-date">
+                <svg
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                {year.date}
+              </span>
+              <h2>{year.year}</h2>
+              <dl class="archive-year-place">
+                <div>
+                  <dt>City</dt>
+                  <dd>{year.location}</dd>
+                </div>
+                <div>
+                  <dt>Venue</dt>
+                  <dd>{year.venue}</dd>
+                </div>
+              </dl>
+              <p>{year.summary}</p>
+            </div>
+            <a href={`${base}/${year.year}`} class="btn btn-primary">
+              View {year.year} Archive
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

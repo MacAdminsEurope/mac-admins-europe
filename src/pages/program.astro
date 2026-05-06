@@ -1,194 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getBaseUrl } from '../utils/baseUrl';
-import { speakers } from '../data/speakers';
-import { scheduleItems } from '../data/schedule';
+import "../styles/global.css";
+import { getBaseUrl } from "../utils/baseUrl";
 
 const base = getBaseUrl();
-
-const getSpeakerById = (id: number) => speakers.find(s => s.order === id);
-
-const slugify = (value: string) =>
-  value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "") || "speaker";
+const target = `${base}/2026/program`;
 ---
 
-<Layout
-  title="Program | Mac Admins Europe 2026"
-  description="Explore the Mac Admins Europe 2026 conference schedule. Full day of sessions covering macOS, iOS management, security, automation, and networking opportunities in Leiden."
->
-  <section class="page-hero">
-    <div class="container">
-      <span class="section-label">April 30, 2026</span>
-      <h1>Program</h1>
-      <p>A full day of sessions, workshops, and networking opportunities</p>
-    </div>
-  </section>
-
-  <section class="calendar-subscribe-banner">
-    <div class="container">
-      <div class="calendar-subscribe-box">
-        <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-        </svg>
-        <span class="calendar-subscribe-text">Add the full conference schedule to your calendar</span>
-        <a
-          href="webcal://p55-caldav.icloud.com/published/2/OTM1MjY2MzI5MzUyNjYzMpuojqPs-89ZqH_VtqnnDOF3S2OHwRiibZ3GnJvYgQgCFTbetImt65TzatO7ioR781bGzPM8dOQq40SynSalS7s"
-          class="calendar-subscribe-btn"
-        >
-          Subscribe to Calendar
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="program-content">
-    <div class="container">
-      <div class="program-preview">
-        <h2>What's on the Day</h2>
-        
-        <div class="schedule-day">
-          <div class="day-header">
-            <span class="day-date">Thursday, April 30, 2026</span>
-          </div>
-
-          {scheduleItems.map((item) => {
-            const itemSpeakers = item.speakerIds 
-              ? item.speakerIds.map(id => getSpeakerById(id)).filter((s) => s !== undefined) as any[]
-              : [];
-            
-            const hasTalkDescription = itemSpeakers.length > 0 && itemSpeakers[0].talkDescription && itemSpeakers[0].talkDescription !== "Full session description coming soon. Check back for details about this talk.";
-            const talkModalId = hasTalkDescription ? `talk-modal-${slugify(itemSpeakers[0].talk || item.title)}` : '';
-              
-            return (
-              <>
-                <div 
-                  class={`schedule-block ${item.type}`}
-                  data-talk-modal-trigger={hasTalkDescription ? talkModalId : undefined}
-                  style={hasTalkDescription ? 'cursor: pointer;' : undefined}
-                >
-                <div class="block-time">{item.time}</div>
-                <div class="block-content">
-                  {item.emoji && <span class="block-emoji">{item.emoji}</span>}
-                  <span class="block-type">
-                    {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-                  </span>
-                  
-                  {itemSpeakers.length > 0 ? (
-                    <h3>{itemSpeakers[0].talk || item.title}</h3>
-                  ) : (
-                    <h3>{item.title}</h3>
-                  )}
-
-                  {itemSpeakers.length > 0 ? (
-                    <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:1rem;">
-                      {itemSpeakers.map((speaker: any) => (
-                        <div class="speaker-placeholder" style="border:none;background:transparent;padding:0;">
-                          <div class="speaker-avatar">
-                            {speaker.image ? (
-                              <img src={speaker.image} alt={speaker.name} style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
-                            ) : (
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            )}
-                          </div>
-                          <span class="speaker-tba" style="color:var(--text-main); font-weight: normal;">{speaker.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    item.description ? <p>{item.description}</p> : null
-                  )}
-                </div>
-              </div>
-
-              {hasTalkDescription && (
-                <div
-                  class="speaker-talk-modal-overlay"
-                  data-talk-modal={talkModalId}
-                  role="dialog"
-                  aria-modal="true"
-                  aria-hidden="true"
-                >
-                  <div class="speaker-talk-modal-content">
-                    <button
-                      class="speaker-talk-modal-close"
-                      data-talk-modal-close
-                      aria-label="Close talk details"
-                    >
-                      &times;
-                    </button>
-                    <div class="speaker-talk-modal-body">
-                      <h4>{itemSpeakers[0].talk || item.title}</h4>
-                      <p>{itemSpeakers[0].talkDescription}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </>
-            );
-          })}   </div>
-          </div>
-        </div>
-      </div>      
-    </div>
-  </section>
-</Layout>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const talkButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-trigger]");
-    const closeButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-close]");
-    const body = document.body;
-
-    const openModal = (modal: HTMLElement) => {
-      modal.classList.add("is-open");
-      modal.setAttribute("aria-hidden", "false");
-      body.style.overflow = "hidden";
-    };
-
-    const closeModal = (modal?: HTMLElement | null) => {
-      if (!modal) return;
-      modal.classList.remove("is-open");
-      modal.setAttribute("aria-hidden", "true");
-      body.style.overflow = "";
-    };
-
-    talkButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const targetId = btn.dataset.talkModalTrigger;
-        if (!targetId) return;
-
-        const modal = document.querySelector<HTMLElement>(`[data-talk-modal="${targetId}"]`);
-        if (modal) {
-          openModal(modal);
-        }
-      });
-    });
-
-    closeButtons.forEach((closeBtn) => {
-      closeBtn.addEventListener("click", () => {
-        const modal = closeBtn.closest<HTMLElement>("[data-talk-modal]");
-        closeModal(modal);
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      const target = event.target as HTMLElement;
-      if (target?.hasAttribute("data-talk-modal")) {
-        closeModal(target);
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        const openModalEl = document.querySelector<HTMLElement>(".speaker-talk-modal-overlay.is-open");
-        closeModal(openModalEl);
-      }
-    });
-  });
-</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={`https://macadmins-eu.org${target}`} />
+    <title>Program moved | Mac Admins Europe</title>
+  </head>
+  <body>
+    <main class="redirect-page">
+      <h1>Program moved to the 2026 archive</h1>
+      <p>The 2026 program is now preserved in the conference archive.</p>
+      <a href={target} class="btn btn-primary">View 2026 Program</a>
+    </main>
+  </body>
+</html>

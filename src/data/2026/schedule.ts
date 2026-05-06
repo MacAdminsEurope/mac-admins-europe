@@ -1,5 +1,3 @@
-import { speakers } from './speakers';
-
 export type ScheduleBlockType = 'registration' | 'keynote' | 'session' | 'sponsor' | 'break' | 'lunch';
 
 export interface ScheduleItem {

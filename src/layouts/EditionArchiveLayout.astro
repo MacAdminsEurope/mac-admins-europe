@@ -1,0 +1,45 @@
+---
+import Layout from "./Layout.astro";
+import type { ConferenceEditionIdentity } from "../data/archive";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonicalUrl?: string;
+  edition: ConferenceEditionIdentity;
+}
+
+const { title, description, canonicalUrl, edition } = Astro.props;
+const { colors } = edition.visualIdentity;
+
+const editionVariables = [
+  ["--eu-blue", colors.euBlue],
+  ["--eu-blue-dark", colors.euBlueDark],
+  ["--eu-blue-light", colors.euBlueLight],
+  ["--eu-gold", colors.euGold],
+  ["--eu-gold-dark", colors.euGoldDark],
+  ["--eu-gold-light", colors.euGoldLight],
+  ["--eu-green", colors.euGreen],
+  ["--eu-green-dark", colors.euGreenDark],
+  ["--eu-green-light", colors.euGreenLight],
+  ["--edition-primary", colors.euBlue],
+  ["--edition-primary-dark", colors.euBlueDark],
+  ["--edition-primary-light", colors.euBlueLight],
+  ["--edition-accent", colors.euGold],
+  ["--edition-accent-dark", colors.euGoldDark],
+  ["--edition-accent-light", colors.euGoldLight],
+]
+  .map(([name, value]) => `${name}: ${value}`)
+  .join("; ");
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl}>
+  <div
+    class:list={["edition-archive", edition.className]}
+    data-edition-year={edition.year}
+    data-visual-identity={edition.visualIdentity.name}
+    style={editionVariables}
+  >
+    <slot />
+  </div>
+</Layout>

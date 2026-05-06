@@ -1,156 +1,25 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-
-const base = getBaseUrl();
+import "../../styles/global.css";
 import { getBaseUrl } from "../../utils/baseUrl";
 
+const base = getBaseUrl();
+const target = `${base}/2026/sponsors/iru`;
 ---
 
-<Layout
-  title="Iru | Platinum Sponsor | Mac Admins Europe 2026"
-  description="Iru powers one of our Sponsor Sessions at Mac Admins Europe 2026. Discover how their support and Weldon Dodd’s session keep the program running."
->
-  <section class="page-hero sponsor-detail-hero">
-    <div class="container">
-      <span class="section-label">Platinum Sponsor</span>
-      <h1>Iru</h1>
-      <p>
-        Supporting modern Apple administration with practical expertise and a
-        strong commitment to the Mac Admins community.
-      </p>
-      <div class="sponsor-detail-hero-actions">
-        <a href="https://iru.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          Visit Iru
-        </a>
-        <a href={`${base}/sponsors`} class="btn btn-outline sponsor-detail-hero-back">
-          Back to Sponsors
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="sponsor-detail-content">
-    <div class="container">
-      <div class="sponsor-detail-shell">
-        <div class="sponsor-detail-overview">
-          <div class="sponsor-detail-brand-card">
-            <div class="sponsor-detail-tier-badge">Platinum Sponsor</div>
-            <div class="sponsor-detail-logo-wrap">
-              <img src="/img/sponsors/irulogo.png" alt="Iru logo" class="sponsor-detail-logo" />
-            </div>
-            <p class="sponsor-detail-brand-note">
-              Supporting the community-first mission of Mac Admins Europe 2026.
-            </p>
-          </div>
-
-          <div class="sponsor-detail-copy-card">
-            <span class="section-label">About Iru</span>
-            <h2>Supporting Apple admins with enterprise experience</h2>
-            <p>
-              Iru supports organizations working across modern Apple environments with practical guidance,
-              technical expertise, and a strong focus on real-world operational outcomes. Their work aligns
-              closely with the day-to-day needs of Mac admins managing scale, consistency, and reliability.
-            </p>
-            <p>
-              As a Platinum Sponsor of Mac Admins Europe 2026, Iru is helping create a stronger conference
-              experience for attendees while contributing thought leadership and technical insight to the
-              broader European Mac admin community.
-            </p>
-            <div class="sponsor-detail-actions">
-              <a href="https://iru.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                Explore Iru
-              </a>
-              <a href={`${base}/program`} class="btn btn-outline">
-                View Program
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="sponsor-detail-highlights">
-          <article class="sponsor-detail-highlight-card">
-            <h3>Community Support</h3>
-            <p>
-              Iru’s sponsorship helps support the event experience, from stage programming to the networking
-              spaces where Mac admins share ideas and practical solutions.
-            </p>
-          </article>
-          <article class="sponsor-detail-highlight-card">
-            <h3>Practical Expertise</h3>
-            <p>
-              Expect conversations grounded in real-world Apple fleet operations, modern management practices,
-              and the day-to-day realities of enterprise support.
-            </p>
-          </article>
-          <article class="sponsor-detail-highlight-card">
-            <h3>Meet the Team</h3>
-            <p>
-              Stop by during the event to connect with Iru experts, ask questions, and keep the conversation
-              going after their Sponsor Session—the event depends on partners like them.
-            </p>
-          </article>
-        </div>
-
-        <div class="sponsor-detail-speaker-section">
-          <div class="section-header text-center">
-            <span class="section-label">Sponsor Session Spotlight</span>
-            <h2>Weldon Dodd</h2>
-            <p>Distinguished Engineer at Iru</p>
-          </div>
-
-          <div class="sponsor-keynote-card">
-            <div class="sponsor-keynote-image">
-              <img src="/img/speakers/weldon.jpg" alt="Weldon Dodd" />
-            </div>
-
-            <div class="sponsor-keynote-content">
-              <div class="speaker-tags">
-                <span class="speaker-tag role">Distinguished Engineer</span>
-                <span class="speaker-tag company">Iru</span>
-                <span class="speaker-tag talk">🎤 Platinum Sponsor Speaker</span>
-              </div>
-
-              <h3>Weldon Dodd</h3>
-              <p>
-                Weldon Dodd began his career running a campus Mac lab and NeXT lab at the University of
-                California, then moved into wireless telecom during the rise of digital networks and mobile
-                internet. He later focused on automating large Apple deployments and running an Apple
-                Authorized Training Center in Colorado.
-              </p>
-              <p>
-                Weldon joined Kandji in early 2020, where he built and led several teams, and now serves as a
-                Distinguished Engineer at Iru. He brings a rare mix of long-term Apple platform experience and
-                enterprise-scale implementation knowledge.
-              </p>
-
-              <div class="sponsor-detail-actions">
-                <a
-                  href="https://www.linkedin.com/in/weldondodd/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-outline"
-                >
-                  Weldon on LinkedIn
-                </a>
-                <a href={`${base}/speakers`} class="btn btn-outline">
-                  See All Speakers
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sponsor-detail-event-note">
-          <span class="section-label">Mac Admins Europe 2026</span>
-          <h2>Community-first event, powered by Sponsor Sessions</h2>
-          <p>
-            This sponsor page highlights Iru’s support and the Sponsor Session they are leading. We’ll use the
-            same structure for the other Platinum sponsors so attendees can quickly learn about each company
-            and the essential sessions they make possible.
-          </p>
-          <a href={`${base}/sponsors`} class="sponsor-detail-back-link">← Back to all sponsors</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={`https://macadmins-eu.org${target}`} />
+    <title>Iru sponsor archive moved | Mac Admins Europe</title>
+  </head>
+  <body>
+    <main class="redirect-page">
+      <h1>Iru sponsor page moved</h1>
+      <p>This 2026 Platinum Sponsor page is now part of the conference archive.</p>
+      <a href={target} class="btn btn-primary">View Iru in the 2026 Archive</a>
+    </main>
+  </body>
+</html>

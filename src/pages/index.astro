@@ -1,122 +1,111 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { getBaseUrl } from "../utils/baseUrl";
 
 const base = getBaseUrl();
-import { getBaseUrl } from '../utils/baseUrl';
 
-
-const eventSchema = {
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Mac Admins Europe 2026",
-  "startDate": "2026-04-30",
-  "endDate": "2026-04-30",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
-    "@type": "Place",
-    "name": "Leidse Schouwburg – Stadsgehoorzaal",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Breestraat 60",
-      "addressLocality": "Leiden",
-      "postalCode": "2311 CS",
-      "addressCountry": "NL"
-    }
-  },
-  "image": "https://macadmins-eu.org/img/og-image.png",
-  "description": "European community meetup for Apple administrators. Join fellow Mac admins for knowledge sharing, networking, and discovering the latest in macOS and iOS device management.",
-  "offers": {
-    "@type": "Offer",
-    "url": "https://macadmins-eu.org/tickets",
-    "availability": "https://schema.org/InStock",
-    "price": "75.00",
-    "priceCurrency": "EUR",
-    "validFrom": "2026-01-01"
-  },
-  "organizer": {
-    "@type": "Organization",
-    "name": "Mac Admins Europe",
-    "url": "https://macadmins-eu.org"
-  }
+  "@type": "Organization",
+  name: "Mac Admins Europe",
+  url: "https://macadmins-eu.org",
+  description:
+    "A European, community-driven event for Apple admins and IT professionals.",
 };
 ---
 
-<Layout title="Mac Admins Europe 2026 | April 30th, Leiden">
-  <script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
-  
-  <!-- Hero Section -->
-  <section class="hero">
+<Layout
+  title="Mac Admins Europe | Community Archive"
+  description="Thank you to the Mac Admins Europe community. Browse the 2026 archive and previous years for speakers, sponsors, program, and location information."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+  <section class="hero thank-you-hero">
     <div class="hero-bg">
       <div class="hero-pattern"></div>
     </div>
     <div class="container hero-content">
       <div class="hero-badge">
-        <span class="cmd">⌘</span> April 30, 2026 • Leiden, Netherlands
+        <span class="cmd">⌘</span> For the community, by the community
       </div>
-      <h1>Mac Admins<br><span class="text-gold">Europe</span></h1>
-      <p class="hero-tagline">European community meetup for Apple Admins</p>
+      <h1>Thank You, Mac Admins Europe Community</h1>
+      <p class="hero-tagline">
+        Thank you to everyone who helped make Mac Admins Europe 2026 such a
+        meaningful day - attendees, speakers, sponsors, volunteers, and the
+        wider Apple admin community.
+      </p>
       <p class="hero-description">
-        Join fellow Apple administrators from across Europe for a day of knowledge sharing, 
-        networking, and discovering the latest in macOS and iOS device management.
+        Mac Admins Europe exists because people share knowledge generously,
+        support one another, and help keep this community practical, welcoming,
+        and strong. Thank you to everyone who joined us in Leiden and helped
+        make the 2026 event special.
       </p>
       <div class="hero-cta">
-        <a href={`${base}/tickets`} class="btn btn-primary">Get Your Ticket</a>
-        <a href={`${base}/program`} class="btn btn-secondary">View Program</a>
+        <a href={`${base}/2026`} class="btn btn-primary">View 2026 Archive</a>
+        <a href={`${base}/previous-years`} class="btn btn-secondary">Browse Previous Years</a>
       </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll to explore</span>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
-      </svg>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="about" id="about">
+  <section class="community-photo-section">
+    <div class="container">
+      <figure class="community-photo-frame">
+        <img
+          src={`${base}/img/archive/2026/community-thank-you.jpg`}
+          alt="Mac Admins Europe organizers standing on stage beneath a thank-you screen at the 2026 event"
+          loading="lazy"
+        />
+        <figcaption>
+          <span>Mac Admins Europe 2026, Leiden</span>
+          <a href="https://zedimages.com" target="_blank" rel="noopener noreferrer">
+            Photo credit: ZED Images
+          </a>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="about archive-home-about" id="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-content">
-          <span class="section-label">About the Event</span>
-          <h2>Where European Mac Admins Unite</h2>
+          <span class="section-label">Community Archive</span>
+          <h2>Keeping the 2026 Event Available</h2>
           <p>
-            Mac Admins Europe brings together system administrators, IT professionals, 
-            and Apple enthusiasts from across the continent. Whether you're managing 
-            a fleet of thousands of devices or just getting started with MDM, 
-            this is your conference.
+            The 2026 conference content has moved into the Mac Admins Europe
+            archive so the community can continue to find the program, speakers,
+            sponsors, and Leiden venue details in one clear place.
           </p>
           <p>
-            Learn from industry experts, discover new tools and techniques, 
-            and connect with peers who face the same challenges you do. 
-            From security best practices to automation workflows, 
-            we've got sessions for every skill level.
+            Mac Admins Europe remains a European, community-driven gathering for
+            Apple admins and IT professionals. The archive preserves the work
+            shared on stage and the partners who helped make the day possible.
           </p>
           <ul class="about-features">
             <li>
               <span class="feature-icon">⌘</span>
-              <span><strong>Expert Sessions</strong> - Deep dives into macOS, iOS, and enterprise Apple management</span>
+              <span><strong>Program</strong> - Review the 2026 schedule and sessions</span>
             </li>
             <li>
               <span class="feature-icon">⌘</span>
-              <span><strong>Networking</strong> - Connect with the European Mac Admin community</span>
+              <span><strong>Speakers</strong> - Browse names, bios, and session titles</span>
             </li>
             <li>
               <span class="feature-icon">⌘</span>
-              <span><strong>Exhibitors</strong> - Meet the vendors shaping Apple enterprise</span>
+              <span><strong>Sponsors</strong> - Revisit the partners who supported the event</span>
             </li>
           </ul>
         </div>
         <div class="about-visual">
           <div class="visual-card">
-            <video 
+            <video
               class="ring-video"
-              autoplay 
-              muted 
-              loop 
+              autoplay
+              muted
+              loop
               playsinline
             >
-              <source src={`${base}/video-header.mp4`} type="video/mp4">
+              <source src={`${base}/video-header.mp4`} type="video/mp4" />
             </video>
           </div>
         </div>
@@ -124,77 +113,25 @@ const eventSchema = {
     </div>
   </section>
 
-  <!-- Program Banner -->
-  <section class="programme-banner">
+  <section class="archive-home-links">
     <div class="container">
-      <div class="programme-banner-announce">
-        <span class="programme-announce-badge">Now Live</span>
-        <h2 class="programme-announce-heading">Program &amp; Speakers are Online!</h2>
-        <p class="programme-announce-sub">Explore the full day schedule and meet the incredible speaker lineup for Mac Admins Europe 2026.</p>
-        <div class="programme-announce-links">
-          <a href={`${base}/program`} class="btn btn-white">View Program</a>
-          <a href={`${base}/speakers`} class="btn btn-white-outline">Meet the Speakers</a>
-        </div>
+      <div class="text-center">
+        <span class="section-label">Explore</span>
+        <h2 class="section-title">Mac Admins Europe Archive</h2>
+        <p class="section-subtitle">
+          Start with the 2026 archive or browse the full previous-years index.
+        </p>
       </div>
-      <div class="programme-banner-ticket">
-        <span class="ticket-urgency-badge">Early Bird Sold Out - Limited Tickets Remaining</span>
-        <a href={`${base}/tickets`} class="btn btn-gold btn-lg">Get Your Ticket</a>
-        <p class="programme-ticket-note">Secure your spot at Mac Admins Europe 2026</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Location Preview -->
-  <section class="location-preview">
-    <div class="container">
-      <div class="location-grid">
-        <div class="location-info">
-          <span class="section-label">The Venue</span>
-          <h2>Leidse Schouwburg – Stadsgehoorzaal</h2>
-          <p class="venue-address-home">
-            Breestraat 60, 2311 CS Leiden, Netherlands
-          </p>
-          <p>
-            Experience the conference in a truly historic setting! Located in the heart of Leiden,
-            the Leidse Schouwburg (opened 1705, Netherlands' oldest theater) and Stadsgehoorzaal
-            (celebrating 200 years in 2026) combine stunning neorenaissance architecture with
-            modern conference facilities.
-          </p>
-          <ul class="location-features">
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>15 min from Schiphol Airport</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>Historic city center location</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>Excellent public transport connections</span>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                <polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <span>Hotels within walking distance</span>
-            </li>
-          </ul>
-          <a href={`${base}/location`} class="btn btn-outline mt-2">Full Venue & Travel Info</a>
-        </div>
-        <div class="location-image">
-          <img src={`${base}/img/venue-main-side.jpg`} alt="Stadsgehoorzaal venue in Leiden" loading="lazy">
-        </div>
+      <div class="archive-link-grid">
+        <a href={`${base}/2026`} class="archive-link-card">
+          <span>2026 Archive</span>
+          <p>Program, speakers, sponsors, and Leiden location details.</p>
+        </a>
+        <a href={`${base}/previous-years`} class="archive-link-card">
+          <span>Previous Years</span>
+          <p>A year-by-year index for Mac Admins Europe archives.</p>
+        </a>
       </div>
     </div>
   </section>

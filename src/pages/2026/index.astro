@@ -1,0 +1,48 @@
+---
+import EditionArchiveLayout from "../../layouts/EditionArchiveLayout.astro";
+import { getBaseUrl } from "../../utils/baseUrl";
+import { archiveYears } from "../../data/archive";
+
+const base = getBaseUrl();
+const archive = archiveYears.find((year) => year.year === 2026);
+
+if (!archive) {
+  throw new Error("2026 archive metadata is missing");
+}
+---
+
+<EditionArchiveLayout
+  title="2026 Archive | Mac Admins Europe"
+  description="Mac Admins Europe 2026 archive: program, speakers, sponsors, and Leiden location details."
+  edition={archive.edition}
+>
+  <section class="page-hero archive-page-hero">
+    <div class="container">
+      <span class="section-label">{archive.date}</span>
+      <h1>2026 Archive</h1>
+      <p>{archive.location} - {archive.venue}</p>
+    </div>
+  </section>
+
+  <section class="archive-content">
+    <div class="container">
+      <div class="archive-intro">
+        <h2>Mac Admins Europe 2026</h2>
+        <p>
+          {archive.summary} This archive keeps the 2026 conference material
+          available for the community: the program, speaker lineup, sponsor
+          partners, and Leiden venue information.
+        </p>
+      </div>
+
+      <div class="archive-link-grid">
+        {archive.links.map((link) => (
+          <a href={`${base}${link.href}`} class="archive-link-card">
+            <span>{link.label}</span>
+            <p>{link.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</EditionArchiveLayout>

@@ -1,0 +1,270 @@
+---
+import EditionArchiveLayout from "../../layouts/EditionArchiveLayout.astro";
+import { getBaseUrl } from "../../utils/baseUrl";
+import { edition2026 } from "../../data/2026/edition";
+import {
+  sponsors,
+  sponsorshipTiers,
+  tierLabels,
+  tierOrder,
+  tierPlaceholderCounts,
+} from "../../data/2026/sponsors";
+
+const base = getBaseUrl();
+const isExternalUrl = (url?: string) => Boolean(url?.startsWith("http"));
+const getSponsorUrl = (url?: string) => {
+  if (!url) return "#";
+  return isExternalUrl(url) ? url : `${base}${url}`;
+};
+
+---
+
+<EditionArchiveLayout
+  title="2026 Sponsors | Mac Admins Europe Archive"
+  description="Archive of the Mac Admins Europe 2026 sponsors, tiers, logos, links, and partner information."
+  edition={edition2026}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">2026 Archive</span>
+      <h1>Sponsors</h1>
+      <p>The partners who helped make Mac Admins Europe 2026 possible</p>
+    </div>
+  </section>
+
+  <section class="sponsors-content">
+    <div class="container">
+
+      <!-- Current Sponsors -->
+      <div class="current-sponsors">
+        <div class="text-center">
+          <h2 class="section-title">Our 2026 Sponsors</h2>
+          <p class="section-subtitle">These companies helped make Mac Admins Europe 2026 possible.</p>
+        </div>
+
+        {tierOrder.map((tier) => {
+          const tierSponsors = sponsors.filter((s) => s.tier === tier);
+          const placeholderCount = Math.max(0, tierPlaceholderCounts[tier] - tierSponsors.length);
+          return (
+            <div class={`sponsor-tier-section tier-${tier}`}>
+              <h3 class="sponsor-tier-heading">{tierLabels[tier]}</h3>
+              <div class={`sponsor-cards-grid tier-grid-${tier}`}>
+                {tierSponsors.map((sponsor) => {
+                  const isPlatinum = tier === 'platinum';
+                  return (
+                    <>
+                      <a
+                        href={isPlatinum ? getSponsorUrl(sponsor.url) : "javascript:void(0)"}
+                        target={isPlatinum && isExternalUrl(sponsor.url) ? "_blank" : undefined}
+                        rel={isPlatinum && isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
+                        class={`sponsor-card tier-${tier} logo-only`}
+                        aria-label={sponsor.name}
+                        data-sponsor-modal-trigger={isPlatinum ? undefined : "true"}
+                      >
+                        <div class="sponsor-card-logo">
+                          {sponsor.logo
+                            ? <img src={sponsor.logo} alt={sponsor.name} />
+                            : <span class="sponsor-card-name-only">{sponsor.name}</span>
+                          }
+                        </div>
+                      </a>
+
+                      {!isPlatinum && (
+                        <div class="sponsor-modal-overlay" data-sponsor-modal>
+                          <div class="sponsor-modal-content">
+                            <button class="sponsor-modal-close" aria-label="Close modal">&times;</button>
+                            <div class="sponsor-modal-header">
+                              {sponsor.logo ? (
+                                <img src={sponsor.logo} alt={sponsor.name} class="sponsor-modal-logo" />
+                              ) : (
+                                <h3 class="sponsor-modal-title">{sponsor.name}</h3>
+                              )}
+                            </div>
+                            <div class="sponsor-modal-body">
+                              <p>{sponsor.tagline ? sponsor.tagline : "More information coming soon."}</p>
+                            </div>
+                            <div class="sponsor-modal-footer">
+                              {sponsor.url && (
+                                <a
+                                  href={getSponsorUrl(sponsor.url)}
+                                  target={isExternalUrl(sponsor.url) ? "_blank" : undefined}
+                                  rel={isExternalUrl(sponsor.url) ? "noopener noreferrer" : undefined}
+                                  class="btn btn-primary"
+                                >
+                                  Visit {sponsor.name}
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  );
+                })}
+                {Array.from({ length: placeholderCount }).map(() => (
+                  <div class={`sponsor-card tier-${tier} sponsor-card-placeholder`}>
+                    <div class="sponsor-card-logo">
+                      <svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="120" height="60" rx="6" fill="none"/>
+                        <text x="60" y="36" text-anchor="middle" font-size="11" fill="currentColor" font-family="sans-serif">Your Logo Here</text>
+                      </svg>
+                    </div>
+                    <div class="sponsor-card-info">
+                      <span class="sponsor-card-name">To Be Announced</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+
+      </div>
+
+      <!-- Sponsorship Packages -->
+      <div class="sponsor-packages-section archived-sponsor-packages">
+        <div class="text-center mb-2">
+          <span class="section-label">Opportunities</span>
+          <h2 class="packages-title">2026 Sponsorship Packages</h2>
+          <p class="packages-subtitle">
+            Preserved for historical reference
+          </p>
+        </div>
+
+        <div class="packages-grid-new">
+          {
+            sponsorshipTiers.map((tier) => (
+              <div class={`package-card ${tier.class}${tier.soldOut ? ' sold-out' : ''}`}>
+                {tier.soldOut && <div class="sold-out-overlay"><span>Sold Out</span></div>}
+                <div class="package-header">
+                  <h3>{tier.name}</h3>
+                  <div class="package-availability-wrapper">
+                    <span class="availability spacer">&nbsp;</span>
+                  </div>
+                </div>
+                <ul class="package-features mt-auto">
+                  {tier.isIncremental && (
+                    <li class="incremental-label">
+                      {tier.name === "Patron" ? "Includes:" : `Includes ${sponsorshipTiers[sponsorshipTiers.indexOf(tier) - 1].name} plus:`}
+                    </li>
+                  )}
+                  {tier.benefits
+                    .filter((b) => b.value !== false)
+                    .map((benefit) => (
+                      <li>
+                        {benefit.label}
+                        {typeof benefit.value === "string" && ` (${benefit.value})`}
+                      </li>
+                    ))}
+                </ul>
+                <div class="package-cta">
+                  {tier.soldOut ? (
+                    <span class="btn btn-primary btn-sm w-full btn-disabled">Sold Out</span>
+                  ) : (
+                    <span class="btn btn-primary btn-sm w-full btn-disabled">Archived</span>
+                  )}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Why Sponsor Section -->
+      <div class="sponsor-benefits-section">
+        <div class="text-center mb-2">
+          <span class="section-label">Partner with Us</span>
+          <h2>Why Sponsors Supported Mac Admins Europe 2026</h2>
+        </div>
+        <p class="sponsor-intro">
+          Mac Admins Europe brought together IT professionals from across the
+          continent who manage Apple devices in enterprise environments. These
+          partners helped make the 2026 event possible and supported a practical,
+          community-first day of learning and connection.
+        </p>
+
+        <div class="sponsor-benefits">
+          <div class="benefit">
+            <div class="benefit-icon">👥</div>
+            <h3>Connecting Communities</h3>
+            <p>Connecting local communities across Europe (4000+ members)</p>
+            <!-- <h3>Community Impact</h3> -->
+            <!-- <p>Connect with 4,000+ Mac Admin community members</p> -->
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🎯</div>
+            <h3>Targeted Audience</h3>
+            <p>IT professionals with purchasing influence</p>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">🤝</div>
+            <h3>Face-to-Face</h3>
+            <p>In-person networking and relationship building</p>
+          </div>
+          <div class="benefit">
+            <div class="benefit-icon">📣</div>
+            <h3>Brand Visibility</h3>
+            <p>Logo placement, booth space, and speaking opportunities</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</EditionArchiveLayout>
+
+<script>
+  // Add click handlers for modals
+  document.addEventListener('DOMContentLoaded', () => {
+    // Handle opening modals
+    const modalTriggers = document.querySelectorAll('[data-sponsor-modal-trigger="true"]');
+    
+    modalTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Find the modal next to this trigger
+        const modal = trigger.nextElementSibling;
+        
+        if (modal && modal.hasAttribute('data-sponsor-modal')) {
+          modal.classList.add('is-open');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+      });
+    });
+    
+    // Handle closing modals via button
+    const closeButtons = document.querySelectorAll('.sponsor-modal-close');
+    
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        const modal = btn.closest('.sponsor-modal-overlay');
+        if (modal) {
+          modal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+    
+    // Close modal when clicking outside the content
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target && target.classList.contains('sponsor-modal-overlay')) {
+        target.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const openModal = document.querySelector('.sponsor-modal-overlay.is-open');
+        if (openModal) {
+          openModal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  });
+</script>

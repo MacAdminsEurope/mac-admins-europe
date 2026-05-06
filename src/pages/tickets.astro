@@ -1,173 +1,36 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const base = getBaseUrl();
-import { getBaseUrl } from '../utils/baseUrl';
-
+import { getBaseUrl } from "../utils/baseUrl";
 ---
 
-<Layout title="Tickets | Mac Admins Europe 2026">
-  <section class="page-hero">
+<Layout
+  title="Ticketing Closed | Mac Admins Europe"
+  description="Ticketing for Mac Admins Europe 2026 has closed. Browse the 2026 archive for program, speakers, sponsors, and location information."
+>
+  <section class="page-hero archive-page-hero">
     <div class="container">
-      <span class="section-label">Join Us</span>
-      <h1>Get Your Ticket</h1>
-      <p>Secure your spot at Mac Admins Europe 2026</p>
+      <span class="section-label">2026 Archive</span>
+      <h1>Ticketing Closed</h1>
+      <p>Mac Admins Europe 2026 has now moved into the conference archive.</p>
     </div>
   </section>
 
-  <section class="tickets-content">
+  <section class="archive-content">
     <div class="container">
-      <div class="tickets-notice">
-        <div class="notice-icon">🎟️</div>
-        <div class="notice-content">
-          <h3>Early Bird Sold Out - Regular Tickets Available!</h3>
-          <p>Early bird tickets sold out fast! Regular tickets are going quickly - secure your spot at Mac Admins Europe 2026 today.</p>
-        </div>
-      </div>
-
-      <div class="tickets-preview">
-        <h2>Ticket Options</h2>
-        <p class="tickets-intro">
-          All tickets include full conference access, lunch, refreshments, and the networking drinks.
+      <div class="archive-intro">
+        <h2>Thank You for Joining Us</h2>
+        <p>
+          Ticket sales for the 2026 event are no longer active. You can still
+          explore the archived program, speaker lineup, sponsors, and Leiden
+          venue information.
         </p>
-
-        <div class="tickets-grid">
-          <div class="ticket-card group sold-out">
-            <div class="sold-out-overlay"><span>Sold Out</span></div>
-            <div class="ticket-badge">Only 100 tickets</div>
-            <div class="ticket-header">
-              <h3>Early Bird</h3>
-              <div class="ticket-price">
-                <span class="price">€149,00*</span>
-                <span class="price-note">incl. VAT</span>
-              </div>
-            </div>
-            <div class="ticket-body">
-              <ul class="ticket-features">
-                <li>Full conference access</li>
-                <li>All sessions & workshops</li>
-                <li>Lunch & refreshments</li>
-                <li>Networking drinks</li>
-                <li>Conference swag bag</li>
-                <li>Access to recordings</li>
-              </ul>
-              <p class="ticket-availability">Available till sold out!</p>
-            </div>
-            <div class="ticket-footer">
-              <span class="btn btn-primary btn-disabled">Sold Out</span>
-            </div>
-          </div>
-
-          <div class="ticket-card regular featured">
-            <div class="ticket-badge gold">Available Now</div>
-            <div class="ticket-header">
-              <h3>Regular</h3>
-              <div class="ticket-price">
-                <span class="price">€199,00*</span>
-                <span class="price-note">incl. VAT</span>
-              </div>
-            </div>
-            <div class="ticket-body">
-              <ul class="ticket-features">
-                <li>Full conference access</li>
-                <li>All sessions & workshops</li>
-                <li>Lunch & refreshments</li>
-                <li>Networking drinks</li>
-                <li>Conference swag bag</li>
-                <li>Access to recordings</li>
-              </ul>
-              <p class="ticket-availability"></p>
-            </div>
-            <div class="ticket-footer">
-              <a href="https://apps.ticketmatic.com/widgets/leidse_schouwburg_stadsgehoorzaal/flow/verkooplink?event=883186246278&l=en#!/addtickets" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Buy Ticket</a>
-            </div>
-          </div>
-        </div>
-        <p class="tickets-fee-note" style="text-align: center; margin-top: 1rem; font-size: 0.9rem; opacity: 0.75;">*A €2.50 service fee per ticket sale will be added at checkout. <br/>If you need a VAT invoice for business purposes or expense reimbursement, <br/>you can request one by emailing <a href="mailto:kaartverkoop@leidseschouwburg-stadsgehoorzaal.nl">kaartverkoop@leidseschouwburg-stadsgehoorzaal.nl</a></p>
-      </div>
-<br /><br />
-      <div class="whats-included">
-        <h2>What's Included</h2>
-        <div class="included-grid">
-          <div class="included-item">
-            <span class="included-icon">🎤</span>
-            <h4>All Sessions</h4>
-            <p>Access to keynotes, sessions, and workshops across all tracks</p>
-          </div>
-          <div class="included-item">
-            <span class="included-icon">🍽️</span>
-            <h4>Catering</h4>
-            <p>Lunch, coffee breaks, and refreshments throughout the day</p>
-          </div>
-          <div class="included-item">
-            <span class="included-icon">🍻</span>
-            <h4>Networking Drinks</h4>
-            <p>Post-conference social event with drinks and snacks</p>
-          </div>
-          <div class="included-item">
-            <span class="included-icon">👕</span>
-            <h4>T-Shirt</h4>
-            <p>Conference badge, t-shirt, and maybe some goodies</p>
-          </div>
+        <div class="hero-cta">
+          <a href={`${base}/2026`} class="btn btn-primary">View 2026 Archive</a>
+          <a href={`${base}/previous-years`} class="btn btn-outline">Browse Previous Years</a>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- Convince the Boss CTA -->
-  <section class="cta-section bg-blue">
-    <div class="container text-center">
-      <h2 class="text-white">Need to Convince Your Boss?</h2>
-      <p class="text-white opacity-90 max-w-500 mb-2">
-        We've got you covered. Get five solid arguments to make your case for attending Mac Admins Europe 2026.
-      </p>
-      <a href={`${base}/convince-the-boss`} class="btn btn-primary">Get the Arguments</a>
-    </div>
-  </section>
-
-  <section class="tickets-content">
-    <div class="container">
-      <div class="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-grid">
-          <div class="faq-item">
-            <h4>Can I get a refund?</h4>
-            <p>Yes, full refunds are available until April 1, 2026. After that, tickets can be transferred to another person.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Do you offer student discounts?</h4>
-            <p>No, we do not offer student discounts.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Can I transfer my ticket?</h4>
-            <p>Yes, tickets can be transferred to another person at any time before the event.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Is VAT included in the price?</h4>
-            <p>Yes, prices shown are Included Dutch VAT 21%.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Will there be dietary options?</h4>
-            <p>Yes, we'll accommodate vegetarian, vegan, and other dietary requirements. You can specify these during registration.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Is the venue accessible?</h4>
-            <p>Yes, the venue is fully wheelchair accessible. Contact us if you have specific accessibility needs.</p>
-          </div>
-        </div>
-      </div>
-
-<!--       <div class="newsletter-cta">
-        <h3>Be the First to Know</h3>
-        <p>Subscribe to our newsletter to get notified when ticket sales open.</p>
-        <form class="newsletter-form" action="https://getform.io/f/aroxxeqb" method="POST">
-          <input type="email" name="email" placeholder="your@email.com" required>
-          <button type="submit" class="btn btn-primary">Notify Me</button>
-        </form>
-      </div> -->
-
     </div>
   </section>
 </Layout>
-

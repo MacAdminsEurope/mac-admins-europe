@@ -6,34 +6,34 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://macadmins-eu.org/program</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://macadmins-eu.org/speakers</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://macadmins-eu.org/sponsors</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://macadmins-eu.org/sponsor-contact</loc>
+    <loc>https://macadmins-eu.org/previous-years</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://macadmins-eu.org/location</loc>
+    <loc>https://macadmins-eu.org/2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://macadmins-eu.org/2026/program</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://macadmins-eu.org/tickets</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://macadmins-eu.org/2026/speakers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://macadmins-eu.org/2026/sponsors</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://macadmins-eu.org/2026/location</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://macadmins-eu.org/community</loc>
