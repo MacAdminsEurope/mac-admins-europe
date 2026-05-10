@@ -1991,6 +1991,36 @@ section { padding: var(--space-4xl) 0; }
   font-size: 1.25rem;
 }
 
+.block-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.block-title-row h3 {
+  margin-bottom: 0;
+}
+
+.youtube-icon-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #FF0000;
+  transition: transform 0.15s ease, color 0.15s ease;
+  line-height: 1;
+}
+
+.youtube-icon-link:hover {
+  transform: scale(1.15);
+  color: #cc0000;
+}
+
+.youtube-icon-link svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .speaker-placeholder {
   display: flex;
   align-items: center;

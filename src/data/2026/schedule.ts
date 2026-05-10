@@ -11,6 +11,10 @@ export interface ScheduleItem {
    * E.g. [2, 10] places Armin and Rob together in the same session.
    */
   speakerIds?: number[];
+  /**
+   * YouTube URL for the recorded talk.
+   */
+  youtubeUrl?: string;
 }
 
 export const scheduleItems: ScheduleItem[] = [
@@ -21,6 +25,7 @@ export const scheduleItems: ScheduleItem[] = [
     type: 'session',
     title: 'A Few of Our Favorite (Mac Admin) Things',
     speakerIds: [2, 10],
+    youtubeUrl: 'https://www.youtube.com/watch?v=MKPJPUc_1x0',
   },
   {
     time: '10:15 - 10:40',
@@ -34,12 +39,14 @@ export const scheduleItems: ScheduleItem[] = [
     type: 'session',
     title: 'Do Mac Administrators Dream of Electric Users?',
     speakerIds: [1],
+    youtubeUrl: 'https://www.youtube.com/watch?v=3PCKYq6KZZE&t=1034s',
   },
   {
     time: '11:55 - 12:20',
     type: 'sponsor',
     title: 'Think Different. Then Update: Software Updates, It\'s been a journey.',
     speakerIds: [5],
+    youtubeUrl: 'https://www.youtube.com/watch?v=Mpp9yoW9olo',
   },
   { time: '12:20 - 13:20', type: 'lunch', emoji: '🍽️', title: 'Lunch & Networking', description: 'Enjoy lunch, visit exhibitors, and connect with peers' },
   {
@@ -54,6 +61,7 @@ export const scheduleItems: ScheduleItem[] = [
     type: 'session',
     title: 'Trust, But Verify: Exposing Risk in Your App Catalog',
     speakerIds: [7],
+    youtubeUrl: 'https://www.youtube.com/watch?v=l5DXOagVtpA',
   },
   { time: '14:50 - 15:20', type: 'break', emoji: '☕️', title: 'Coffee Break', description: 'Last chance to visit exhibitors' },
   {
@@ -61,18 +69,21 @@ export const scheduleItems: ScheduleItem[] = [
     type: 'sponsor',
     title: 'Unlock the future of device management with Fleet',
     speakerIds: [6, 8],
+    youtubeUrl: 'https://www.youtube.com/watch?v=OQln89CXldw',
   },
   {
     time: '15:45 - 16:30',
     type: 'session',
     title: 'From Zero to Hero : Making Onboarding Magical',
     speakerIds: [4],
+    youtubeUrl: 'https://www.youtube.com/watch?v=e1yehdbIJqI',
   },
   {
     time: '16:30 - 16:55',
     type: 'sponsor',
     title: 'The Perpetual Promise of Passkeys & Passwordless',
     speakerIds: [3],
+    youtubeUrl: 'https://www.youtube.com/watch?v=ZXdUnoX-YYo',
   },
   { time: '16:55 - 17:15', type: 'keynote', emoji: '🎬', title: 'Closing Session', description: 'Key takeaways and looking ahead' },
 ];

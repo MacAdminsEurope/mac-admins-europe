@@ -7,6 +7,9 @@ import EditionArchiveLayout from "../../layouts/EditionArchiveLayout.astro";
 // ============================================================
 import { speakers, placeholderTalkTitle, placeholderTalkDescription } from '../../data/2026/speakers';
 import { edition2026 } from '../../data/2026/edition';
+import { getBaseUrl } from '../../utils/baseUrl';
+
+const base = getBaseUrl();
 
 const slugify = (value: string) =>
   value
@@ -30,6 +33,9 @@ const totalSlots = 10;
       <span class="section-label">2026 Archive</span>
       <h1>Speakers</h1>
       <p>Speaker and session archive from Mac Admins Europe 2026 in Leiden</p>
+      <div style="margin-top: 1.5rem;">
+        <a href={`${base}/2026`} class="btn btn-primary">&larr; Back to 2026 Overview</a>
+      </div>
     </div>
   </section>
 

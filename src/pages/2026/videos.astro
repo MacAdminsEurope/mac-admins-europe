@@ -1,0 +1,259 @@
+---
+import EditionArchiveLayout from '../../layouts/EditionArchiveLayout.astro';
+import { speakers } from '../../data/2026/speakers';
+import { scheduleItems } from '../../data/2026/schedule';
+import { edition2026 } from '../../data/2026/edition';
+import { getBaseUrl } from '../../utils/baseUrl';
+
+const base = getBaseUrl();
+
+const getSpeakerById = (id: number) => speakers.find(s => s.order === id);
+
+const getYouTubeId = (url: string): string => {
+  const match = url.match(/[?&]v=([^&]+)/);
+  return match ? match[1] : '';
+};
+
+const videoItems = scheduleItems
+  .filter(item => item.youtubeUrl)
+  .map(item => {
+    const itemSpeakers = item.speakerIds
+      ? item.speakerIds.map(id => getSpeakerById(id)).filter((s) => s !== undefined) as any[]
+      : [];
+    const talkTitle = itemSpeakers.length > 0
+      ? (itemSpeakers[0].talk || item.title)
+      : item.title;
+    const videoId = getYouTubeId(item.youtubeUrl!);
+    return { item, itemSpeakers, talkTitle, videoId };
+  });
+---
+
+<EditionArchiveLayout
+  title="2026 Videos | Mac Admins Europe Archive"
+  description="Watch all recorded talks from Mac Admins Europe 2026 in Leiden."
+  edition={edition2026}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">2026 Archive</span>
+      <h1>Videos</h1>
+      <p>All recorded talks from Mac Admins Europe 2026 in Leiden</p>
+      <div style="margin-top: 1.5rem;">
+        <a href={`${base}/2026`} class="btn btn-primary">
+          &larr; Back to 2026 Overview
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="videos-content">
+    <div class="container">
+      <div class="videos-grid">
+        {videoItems.map(({ item, itemSpeakers, talkTitle, videoId }) => (
+          <a
+            href={item.youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="video-card"
+            aria-label={`Watch: ${talkTitle}`}
+          >
+            <div class="video-thumbnail">
+              <img
+                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                alt={talkTitle}
+                loading="lazy"
+              />
+              <div class="video-play-overlay">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">{talkTitle}</h3>
+              {itemSpeakers.length > 0 && (
+                <div class="video-speakers">
+                  {itemSpeakers.map((speaker: any) => (
+                    <div class="video-speaker">
+                      <div class="video-speaker-avatar">
+                        {speaker.image ? (
+                          <img src={speaker.image} alt={speaker.name} />
+                        ) : (
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                          </svg>
+                        )}
+                      </div>
+                      <span class="video-speaker-name">{speaker.name}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <span class="video-watch-label">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                Watch on YouTube
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</EditionArchiveLayout>
+
+<style>
+  .videos-content {
+    padding: var(--space-3xl) 0;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-card);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .video-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: #FF0000;
+  }
+
+  .video-thumbnail {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .video-card:hover .video-thumbnail img {
+    transform: scale(1.03);
+  }
+
+  .video-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    transition: background 0.2s ease;
+  }
+
+  .video-card:hover .video-play-overlay {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .video-play-overlay svg {
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #fff;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    transition: transform 0.2s ease;
+  }
+
+  .video-card:hover .video-play-overlay svg {
+    transform: scale(1.1);
+  }
+
+  .video-info {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    flex: 1;
+  }
+
+  .video-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .video-speakers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .video-speaker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .video-speaker-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-speaker-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-speaker-avatar svg {
+    width: 16px;
+    height: 16px;
+    color: var(--gray-400);
+  }
+
+  .video-speaker-name {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .video-watch-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #FF0000;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 640px) {
+    .videos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

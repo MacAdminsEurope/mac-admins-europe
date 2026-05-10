@@ -30,5 +30,10 @@ export const archive2026 = {
       href: "/2026/location",
       description: "Venue, address, Leiden travel details, and accommodation notes.",
     },
+    {
+      label: "Videos",
+      href: "/2026/videos",
+      description: "Watch all recorded talks from Mac Admins Europe 2026 on YouTube.",
+    },
   ],
 };
