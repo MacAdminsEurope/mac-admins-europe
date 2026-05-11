@@ -1,0 +1,436 @@
+---
+import EditionArchiveLayout from '../../layouts/EditionArchiveLayout.astro';
+import { edition2026 } from '../../data/2026/edition';
+import { getBaseUrl } from '../../utils/baseUrl';
+
+const base = getBaseUrl();
+
+const photoPath = (filename: string): string =>
+  `${base}/photo_gallery/${encodeURIComponent(filename)}`;
+
+const photos: string[] = [
+  ...Array.from({ length: 4 }, (_, i) =>
+    photoPath(`2026-04-29_MacAdmins_Europe_${String(i + 1).padStart(4, '0')}.jpg`)
+  ),
+  ...Array.from({ length: 37 }, (_, i) =>
+    photoPath(`2026-04-30_MacAdmins_Europe_${String(i + 5).padStart(4, '0')}.jpg`)
+  ),
+  photoPath(`2026-04-30_MacAdmins_Europe_0042 (blurred).jpg`),
+  ...Array.from({ length: 58 }, (_, i) =>
+    photoPath(`2026-04-30_MacAdmins_Europe_${String(i + 43).padStart(4, '0')}.jpg`)
+  ),
+];
+---
+
+<EditionArchiveLayout
+  title="2026 Photos | Mac Admins Europe Archive"
+  description="Photo gallery from Mac Admins Europe 2026 in Leiden. Photography by ZED Images."
+  edition={edition2026}
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-label">2026 Archive</span>
+      <h1>Photos</h1>
+      <p>{photos.length} photos from Mac Admins Europe 2026 in Leiden</p>
+      <div style="margin-top: 1.5rem;">
+        <a href={`${base}/2026`} class="btn btn-primary">&larr; Back to 2026 Overview</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container-full">
+      <div class="gallery-credit-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="16" height="16">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="13" r="4"></circle>
+        </svg>
+        Photography by <a href="https://zedimages.com" target="_blank" rel="noopener noreferrer">ZED Images</a>
+      </div>
+      <div class="gallery-grid">
+        {photos.map((src, i) => (
+          <button
+            class="gallery-item"
+            data-index={i}
+            aria-label={`Open photo ${i + 1} of ${photos.length}`}
+          >
+            <img src={src} alt={`Mac Admins Europe 2026 — photo ${i + 1}`} loading="lazy" />
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div
+    class="gallery-lightbox"
+    id="gallery-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo lightbox"
+    aria-hidden="true"
+  >
+    <button class="lb-close" aria-label="Close photo viewer">&times;</button>
+    <button class="lb-prev" aria-label="Previous photo">&#8249;</button>
+    <button class="lb-next" aria-label="Next photo">&#8250;</button>
+    <div class="lb-image-wrap">
+      <img id="lb-img" src="" alt="" />
+    </div>
+    <div class="lb-footer">
+      <span id="lb-counter" class="lb-counter"></span>
+      <a
+        href="https://zedimages.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="lb-credit"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="14" height="14">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="13" r="4"></circle>
+        </svg>
+        Photography: ZED Images
+      </a>
+    </div>
+  </div>
+</EditionArchiveLayout>
+
+<style>
+  .gallery-section {
+    padding: var(--space-2xl) 0 var(--space-3xl);
+  }
+
+  .container-full {
+    width: 100%;
+    padding: 0 var(--space-md);
+  }
+
+  .gallery-credit-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: 0 0 var(--space-xl);
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--gray-600);
+  }
+
+  .gallery-credit-bar svg {
+    color: var(--gray-500);
+    flex-shrink: 0;
+  }
+
+  .gallery-credit-bar a {
+    color: var(--eu-blue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .gallery-credit-bar a:hover,
+  .gallery-credit-bar a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--gray-200);
+    border: none;
+    padding: 0;
+    display: block;
+    border-radius: var(--radius-md, 8px);
+    isolation: isolate;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    transition: transform 0.2s ease;
+  }
+
+  .gallery-item:focus-visible {
+    outline: 3px solid var(--eu-gold);
+    outline-offset: 2px;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+
+  .gallery-item:hover img,
+  .gallery-item:focus-visible img {
+    transform: scale(1.05);
+  }
+
+  /* Lightbox */
+  .gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.93);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .gallery-lightbox.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .lb-image-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 3.5rem 5rem 1rem;
+    min-height: 0;
+  }
+
+  .lb-image-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+  }
+
+  .lb-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 2.75rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.15s;
+  }
+
+  .lb-close:hover { color: #fff; }
+
+  .lb-prev,
+  .lb-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 2.25rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .lb-prev:hover,
+  .lb-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+  }
+
+  .lb-prev { left: 1rem; }
+  .lb-next { right: 1rem; }
+
+  .lb-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .lb-counter {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+  }
+
+  .lb-credit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .lb-credit:hover { color: #fff; }
+
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xs);
+    }
+
+    .gallery-credit-bar {
+      font-size: 0.9rem;
+      padding-bottom: var(--space-lg);
+    }
+
+    .lb-image-wrap {
+      padding: 3rem 0.5rem 1rem;
+    }
+
+    .lb-prev,
+    .lb-next {
+      font-size: 1.75rem;
+      padding: 0.4rem 0.75rem;
+    }
+
+    .lb-prev { left: 0.25rem; }
+    .lb-next { right: 0.25rem; }
+
+    .lb-footer {
+      padding: 0.5rem var(--space-md);
+      font-size: 0.8rem;
+    }
+  }
+
+  .lb-close:focus-visible,
+  .lb-prev:focus-visible,
+  .lb-next:focus-visible {
+    outline: 2px solid var(--eu-gold);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-item,
+    .gallery-item img,
+    .gallery-lightbox,
+    .lb-close,
+    .lb-prev,
+    .lb-next {
+      transition: none !important;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:focus-visible img {
+      transform: none;
+    }
+  }
+</style>
+
+<script define:vars={{ photos }}>
+  const lightbox = document.getElementById('gallery-lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbClose = document.querySelector('.lb-close');
+  const lbPrev = document.querySelector('.lb-prev');
+  const lbNext = document.querySelector('.lb-next');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  // Defensive guard: bail if any required element is missing
+  if (lightbox && lbImg && lbCounter && lbClose && lbPrev && lbNext && galleryItems.length) {
+    let currentIndex = 0;
+    let lastFocused = null;
+
+    const preloadNeighbors = () => {
+      const next = (currentIndex + 1) % photos.length;
+      const prev = (currentIndex - 1 + photos.length) % photos.length;
+      new Image().src = photos[next];
+      new Image().src = photos[prev];
+    };
+
+    const updateLightbox = () => {
+      lbImg.src = photos[currentIndex];
+      lbImg.alt = `Mac Admins Europe 2026 — photo ${currentIndex + 1} of ${photos.length}`;
+      lbCounter.textContent = `${currentIndex + 1} / ${photos.length}`;
+      preloadNeighbors();
+    };
+
+    const openLightbox = (index) => {
+      lastFocused = document.activeElement;
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      // Move focus into the dialog for keyboard users
+      lbClose.focus();
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    };
+
+    const showPrev = () => {
+      currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+      updateLightbox();
+    };
+
+    const showNext = () => {
+      currentIndex = (currentIndex + 1) % photos.length;
+      updateLightbox();
+    };
+
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        const idx = Number(item.dataset.index);
+        if (Number.isFinite(idx)) openLightbox(idx);
+      });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    lbNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+
+    // Close when clicking anywhere that's NOT a button (backdrop, image, padding)
+    lightbox.addEventListener('click', (e) => {
+      if (!(e.target instanceof Element)) return;
+      if (e.target.closest('button')) return;
+      closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); showPrev(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); showNext(); }
+    });
+
+    // Touch swipe support on mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      const t = e.changedTouches[0];
+      touchStartX = t.screenX;
+      touchStartY = t.screenY;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      const t = e.changedTouches[0];
+      const dx = t.screenX - touchStartX;
+      const dy = t.screenY - touchStartY;
+      // Only treat as swipe if mostly horizontal and over threshold
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        if (dx < 0) showNext();
+        else showPrev();
+      }
+    }, { passive: true });
+  }
+</script>

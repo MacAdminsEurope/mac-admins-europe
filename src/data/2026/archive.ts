@@ -35,5 +35,10 @@ export const archive2026 = {
       href: "/2026/videos",
       description: "Watch all recorded talks from Mac Admins Europe 2026 on YouTube.",
     },
+    {
+      label: "Photos",
+      href: "/2026/gallery",
+      description: "100 photos from the day, shot by ZED Images.",
+    },
   ],
 };
