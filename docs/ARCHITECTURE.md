@@ -122,7 +122,7 @@ Speakers, schedule, sponsors, etc. live in TypeScript files. This means:
 - Trade-off: editors need to be comfortable with code
 
 ### `public` branch as the deploy trigger
-Day-to-day commits go to `main`. When the team is ready to deploy, they push `main` → `public`. This decouples "merged to the trunk" from "live on the site" and acts as a soft staging step. See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+Reviewed work lands on `main` via feature-branch PRs. When the team is ready to deploy, they open a second PR from `main` into `public`; merging that PR triggers GitHub Pages. This decouples "merged to the trunk" from "live on the site" and acts as a soft staging step. See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 
 ### Per-year subfolders rather than dynamic routes
 `/2026/program` is a real file at `src/pages/2026/program.astro`, not `/[year]/program.astro`. This:

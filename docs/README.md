@@ -19,5 +19,5 @@ Welcome to the project docs. These pages explain how the site is built, why it's
 - **Astro 5** static site, hosted on **GitHub Pages** via custom domain `macadmins-eu.org`
 - **TypeScript-typed data files** under `src/data/<year>/` drive the per-year pages
 - **One layout per archive year** (`EditionArchiveLayout.astro`) injects that year's color identity as CSS custom properties
-- **Branch model:** day-to-day work happens on `main`; pushing `main` → `public` triggers the GitHub Actions deploy
+- **Branch model:** work happens on feature branches, then PR into `main`, then a second `main` → `public` PR triggers the GitHub Actions deploy
 - **Adding a new year:** copy `src/pages/2026/` and `src/data/2026/`, swap colors, populate data, register in `src/data/archive.ts`. The shared layout + global CSS does the rest.

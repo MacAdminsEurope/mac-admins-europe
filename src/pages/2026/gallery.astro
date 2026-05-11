@@ -388,6 +388,11 @@ const photos: string[] = [
       updateLightbox();
     };
 
+    const getFocusableElements = () =>
+      Array.from(lightbox.querySelectorAll('a[href], button:not([disabled])')).filter(
+        (element) => element instanceof HTMLElement && element.tabIndex !== -1
+      ) as HTMLElement[];
+
     galleryItems.forEach((item) => {
       item.addEventListener('click', () => {
         const idx = Number(item.dataset.index);
@@ -408,7 +413,29 @@ const photos: string[] = [
 
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('is-open')) return;
-      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+      if (e.key === 'Tab') {
+        const focusableElements = getFocusableElements();
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        if (!firstFocusable || !lastFocusable) {
+          e.preventDefault();
+          return;
+        }
+
+        const activeElement = document.activeElement;
+
+        if (!(activeElement instanceof HTMLElement) || !focusableElements.includes(activeElement)) {
+          e.preventDefault();
+          firstFocusable.focus();
+        } else if (e.shiftKey && activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable.focus();
+        } else if (!e.shiftKey && activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      } else if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
       else if (e.key === 'ArrowLeft') { e.preventDefault(); showPrev(); }
       else if (e.key === 'ArrowRight') { e.preventDefault(); showNext(); }
     });
