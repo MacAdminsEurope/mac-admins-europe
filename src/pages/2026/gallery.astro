@@ -391,7 +391,7 @@ const photos: string[] = [
     const getFocusableElements = () =>
       Array.from(lightbox.querySelectorAll('a[href], button:not([disabled])')).filter(
         (element) => element instanceof HTMLElement && element.tabIndex !== -1
-      ) as HTMLElement[];
+      );
 
     galleryItems.forEach((item) => {
       item.addEventListener('click', () => {

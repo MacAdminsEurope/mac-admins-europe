@@ -228,21 +228,21 @@ const totalSlots = 10;
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const talkButtons = document.querySelectorAll<HTMLButtonElement>(
+    const talkButtons = document.querySelectorAll(
       "[data-talk-modal-trigger]",
     );
-    const closeButtons = document.querySelectorAll<HTMLButtonElement>(
+    const closeButtons = document.querySelectorAll(
       "[data-talk-modal-close]",
     );
     const body = document.body;
 
-    const openModal = (modal: HTMLElement) => {
+    const openModal = (modal) => {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       body.style.overflow = "hidden";
     };
 
-    const closeModal = (modal?: HTMLElement | null) => {
+    const closeModal = (modal) => {
       if (!modal) return;
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
@@ -254,7 +254,7 @@ const totalSlots = 10;
         const targetId = btn.dataset.talkModalTrigger;
         if (!targetId) return;
 
-        const modal = document.querySelector<HTMLElement>(
+        const modal = document.querySelector(
           `[data-talk-modal="${targetId}"]`,
         );
         if (modal) {
@@ -265,13 +265,13 @@ const totalSlots = 10;
 
     closeButtons.forEach((closeBtn) => {
       closeBtn.addEventListener("click", () => {
-        const modal = closeBtn.closest<HTMLElement>("[data-talk-modal]");
+        const modal = closeBtn.closest("[data-talk-modal]");
         closeModal(modal);
       });
     });
 
     document.addEventListener("click", (event) => {
-      const target = event.target as HTMLElement;
+      const target = event.target;
       if (target?.hasAttribute("data-talk-modal")) {
         closeModal(target);
       }
@@ -279,7 +279,7 @@ const totalSlots = 10;
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        const openModalEl = document.querySelector<HTMLElement>(
+        const openModalEl = document.querySelector(
           ".speaker-talk-modal-overlay.is-open",
         );
         closeModal(openModalEl);
