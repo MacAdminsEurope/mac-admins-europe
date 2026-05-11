@@ -180,12 +180,13 @@ Once the 2027 conference happens:
 Standard flow ([`CONTRIBUTING.md`](./CONTRIBUTING.md)):
 
 ```bash
-git checkout main
+git checkout -b feat/add-2027-archive
 git add .
 git commit -m "feat: add 2027 archive"
-git push origin main
-git push origin main:public    # triggers the GitHub Pages deploy
+git push origin feat/add-2027-archive
 ```
+
+Then open a PR from `feat/add-2027-archive` into `main`. After that PR is reviewed and merged, open the second deploy PR from `main` into `public`; merging that deploy PR triggers the GitHub Pages deploy.
 
 ## Common pitfalls
 
