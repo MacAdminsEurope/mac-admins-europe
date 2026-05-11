@@ -252,7 +252,7 @@ const getSponsorUrl = (url?: string) => {
     
     // Close modal when clicking outside the content
     document.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
+      const target = e.target;
       if (target && target.classList.contains('sponsor-modal-overlay')) {
         target.classList.remove('is-open');
         document.body.style.overflow = '';

@@ -272,12 +272,12 @@ const base = getBaseUrl();
   <script>
     // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+    const lightboxImage = document.getElementById('lightbox-image');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.querySelector('.lightbox-close');
     const lightboxPrev = document.querySelector('.lightbox-prev');
     const lightboxNext = document.querySelector('.lightbox-next');
-    const thumbnails = document.querySelectorAll<HTMLElement>('.venue-thumbnail');
+    const thumbnails = document.querySelectorAll('.venue-thumbnail');
 
     if (!lightbox || !lightboxImage || !lightboxClose || !lightboxPrev || !lightboxNext) {
       throw new Error('Lightbox elements not found');
@@ -286,7 +286,7 @@ const base = getBaseUrl();
     let currentIndex = 0;
 
     // Get image data from thumbnails
-    const getImageData = (index: number) => {
+    const getImageData = (index) => {
       const thumbnail = thumbnails[index];
       return {
         src: thumbnail.dataset.image,
@@ -295,7 +295,7 @@ const base = getBaseUrl();
     };
 
     // Show image at index
-    const showImage = (index: number) => {
+    const showImage = (index) => {
       currentIndex = index;
       const data = getImageData(index);
       lightboxImage.src = data.src ?? '';

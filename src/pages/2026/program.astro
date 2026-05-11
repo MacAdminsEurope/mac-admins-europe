@@ -158,17 +158,17 @@ const slugify = (value: string) =>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const talkButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-trigger]");
-    const closeButtons = document.querySelectorAll<HTMLButtonElement>("[data-talk-modal-close]");
+    const talkButtons = document.querySelectorAll("[data-talk-modal-trigger]");
+    const closeButtons = document.querySelectorAll("[data-talk-modal-close]");
     const body = document.body;
 
-    const openModal = (modal: HTMLElement) => {
+    const openModal = (modal) => {
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       body.style.overflow = "hidden";
     };
 
-    const closeModal = (modal?: HTMLElement | null) => {
+    const closeModal = (modal) => {
       if (!modal) return;
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
@@ -180,7 +180,7 @@ const slugify = (value: string) =>
         const targetId = btn.dataset.talkModalTrigger;
         if (!targetId) return;
 
-        const modal = document.querySelector<HTMLElement>(`[data-talk-modal="${targetId}"]`);
+        const modal = document.querySelector(`[data-talk-modal="${targetId}"]`);
         if (modal) {
           openModal(modal);
         }
@@ -189,13 +189,13 @@ const slugify = (value: string) =>
 
     closeButtons.forEach((closeBtn) => {
       closeBtn.addEventListener("click", () => {
-        const modal = closeBtn.closest<HTMLElement>("[data-talk-modal]");
+        const modal = closeBtn.closest("[data-talk-modal]");
         closeModal(modal);
       });
     });
 
     document.addEventListener("click", (event) => {
-      const target = event.target as HTMLElement;
+      const target = event.target;
       if (target?.hasAttribute("data-talk-modal")) {
         closeModal(target);
       }
@@ -203,7 +203,7 @@ const slugify = (value: string) =>
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        const openModalEl = document.querySelector<HTMLElement>(".speaker-talk-modal-overlay.is-open");
+        const openModalEl = document.querySelector(".speaker-talk-modal-overlay.is-open");
         closeModal(openModalEl);
       }
     });
