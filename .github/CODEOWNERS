@@ -1,0 +1,28 @@
+# Mac Admins Europe — Code Owners
+#
+# These owners will be automatically requested for review when a PR
+# modifies matching files. Order matters: the LAST matching pattern
+# wins for any given file. Add more-specific rules below the catch-all.
+#
+# GitHub docs: https://docs.github.com/en/repositories/managing-your-repositories-settings-and-customization/customizing-your-repository/about-code-owners
+
+# Default: any change to the repo requests a review from all maintainers
+*               @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+
+# Deploy workflow and CI — keep tight ownership here
+/.github/                           @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+
+# Archive registry — touching this affects every conference year
+/src/data/archive.ts                @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+
+# Shared layouts — changes ripple across every page
+/src/layouts/                       @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+
+# Global design system — every page depends on this
+/src/styles/global.css              @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+
+# Agent instructions — treat as security-relevant configuration
+/AGENTS.md                          @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+/CLAUDE.md                          @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+/.cursor/                           @motionbug @cantscript @JordyThery @mvdbent @scriptingosx
+/.windsurf/                         @motionbug @cantscript @JordyThery @mvdbent @scriptingosx

@@ -14,6 +14,16 @@ This site is built with [Astro](https://astro.build/), a modern static site gene
 
 This site is hosted by [GitHub Pages](https://pages.github.com/) via GitHub Actions.
 
+## Documentation
+
+In-depth docs for contributors and maintainers live in [`/docs`](./docs/README.md):
+
+- [Architecture](./docs/ARCHITECTURE.md) — tech stack, folder layout, design decisions
+- [Design System](./docs/DESIGN-SYSTEM.md) — tokens, brand, component patterns
+- [Archive System](./docs/ARCHIVE-SYSTEM.md) — how each conference year is structured
+- [Adding a New Year](./docs/ADDING-A-NEW-YEAR.md) — step-by-step recipe for the next edition
+- [Contributing](./docs/CONTRIBUTING.md) — local dev, branch model, deploy
+
 ## Questions?
 
 For any questions or inquiries, please email: [hello@macadmins-eu.org](mailto:hello@macadmins-eu.org)
