@@ -37,9 +37,9 @@ export const scheduleItems: ScheduleItem[] = [
   {
     time: '11:10 - 11:55',
     type: 'session',
-    title: 'Do Mac Administrators Dream of Electric Users?',
+    title: 'There’s Something Strange in the Management Neighbourhood',
     speakerIds: [1],
-    youtubeUrl: 'https://www.youtube.com/watch?v=3PCKYq6KZZE&t=1034s',
+    youtubeUrl: 'https://www.youtube.com/watch?v=3PCKYq6KZZE',
   },
   {
     time: '11:55 - 12:20',
