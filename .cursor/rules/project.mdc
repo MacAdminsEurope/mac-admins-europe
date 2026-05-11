@@ -14,7 +14,7 @@ This is an **Astro 5** static site for the Mac Admins Europe conference, deploye
 1. **Never modify `src/data/2026/` or `src/pages/2026/`** — frozen archive
 2. **Only use CSS tokens that exist in `src/styles/global.css`** — see [`docs/DESIGN-SYSTEM.md`](mdc:docs/DESIGN-SYSTEM.md) for the canonical list. **Do not use** `--surface-card`, `--text-main`, `--text-muted` (they don't exist)
 3. **Single mobile breakpoint:** `768px`
-4. **Branch model:** push to `main` for work, push to `public` to trigger deploy
+4. **Branch workflow:** all work on a feature branch → PR into `main` → merge → second PR from `main` → `public` → merge triggers deploy. **Never commit directly to `main` or `public`.** Always offer to create a feature branch at the start of a task. See [`docs/CONTRIBUTING.md`](mdc:docs/CONTRIBUTING.md)
 5. **No Tailwind, no React/Vue, no CSS-in-JS** — plain Astro + plain CSS
 
 ## Where to read before changing

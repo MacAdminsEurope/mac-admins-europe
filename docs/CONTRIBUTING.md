@@ -36,36 +36,90 @@ These are TypeScript files but they're just typed JSON in practice. If a field i
 
 ## Branch model
 
-Two long-lived branches:
+Two long-lived branches plus short-lived feature branches:
 
 | Branch | Purpose |
 | --- | --- |
-| `main` | Day-to-day development. Merge PRs here. Commits to `main` do **not** deploy. |
-| `public` | Production. A push to `public` triggers the GitHub Pages deploy via `.github/workflows/deploy.yml`. |
+| `main` | Reviewed, integrated work. The trunk. Not deployed. |
+| `public` | Production. Merging into `public` triggers the GitHub Pages deploy via `.github/workflows/deploy.yml`. |
+| `feat/...`, `fix/...`, `chore/...`, etc. | Short-lived feature branches. All work happens here first. |
 
-### Typical flow
+### The required flow
 
-```bash
-# Work on main
-git checkout main
-git pull origin main
-# … edit files …
-git add .
-git commit -m "feat: short description"
-git push origin main
+Every change goes through this exact path. No direct commits to `main` or `public`.
 
-# When ready to deploy
-git push origin main:public
+```
+feature branch  →  PR into main  →  (merge)  →  PR into public  →  (merge → deploys)
 ```
 
-This pattern means:
-- Multiple commits can land on `main` before any of them go live
-- `public` always reflects what's currently on the production site
-- Rolling back is a matter of pushing an earlier commit to `public`
+### Step-by-step
 
-### Why not deploy from `main`?
+```bash
+# 1. Start from an up-to-date main
+git checkout main
+git pull origin main
 
-The `public` branch acts as a soft gate. It separates "the team has agreed this is correct" from "this is live for the world to see". Useful when the team is testing several changes together before a coordinated deploy (for example, right before announcing a new sponsor or speaker batch).
+# 2. Create a feature branch with a conventional prefix
+git checkout -b feat/add-2027-keynote
+
+# 3. Make your changes, then verify the build
+npm run build
+
+# 4. Commit with a conventional-commit subject line
+git add .
+git commit -m "feat: add 2027 keynote speaker"
+
+# 5. Push and open a PR into main
+git push origin feat/add-2027-keynote
+```
+
+Then in the GitHub UI:
+
+6. Open a **pull request from your feature branch into `main`**
+7. Code owners (listed in `.github/CODEOWNERS`) are auto-requested for review
+8. After at least one approval, merge the PR (squash merge keeps history tidy)
+9. **Open a second PR from `main` into `public`** when you're ready to deploy
+   - Title format: `deploy: <brief summary or date>`
+   - This can batch multiple already-reviewed `main` changes into one coordinated deploy
+10. Merging that PR triggers the GitHub Actions workflow and deploys to <https://macadmins-eu.org>
+
+### Branch name conventions
+
+| Prefix | Use for |
+| --- | --- |
+| `feat/` | New feature, content addition, or capability |
+| `fix/` | Bug fix |
+| `chore/` | Tooling, dependency bumps, config changes |
+| `docs/` | Documentation only |
+| `style/` | CSS or visual tweaks with no functional change |
+| `refactor/` | Internal restructure without behavior change |
+
+After the branch prefix, use a short kebab-case description: `feat/add-2027-speakers`, `fix/gallery-mobile-padding`, `docs/contributing-update`.
+
+### Why two PRs?
+
+Splitting "code reviewed" from "deployed to production" is intentional:
+
+- **The PR into `main`** answers "is this change correct, reviewed, tested?"
+- **The PR from `main` → `public`** answers "should this go live to the world right now?"
+
+Real benefits:
+
+- Multiple already-reviewed changes can batch into one coordinated deploy (useful around announcements)
+- A final pre-deploy review window catches anything that slipped through
+- `main` always reflects "what we've agreed on", `public` always reflects "what visitors see right now"
+- Reverting is trivial — revert the deploy PR
+- Audit trail: every deploy is a discrete, dated, reviewable PR on GitHub
+
+### When working with an AI coding assistant
+
+The agent instructions (in `AGENTS.md`, `CLAUDE.md`, `.cursor/`, `.windsurf/`) tell assistants to:
+
+- **Offer to create a feature branch** at the start of any non-trivial task
+- **Never push directly to `main` or `public`**
+- **Suggest the branch name and PR title** at the end of a task rather than opening the PR themselves
+
+You can always override this if you have a specific reason — the rule exists to prevent accidents, not to slow you down on genuine emergencies.
 
 ## Commit message style
 

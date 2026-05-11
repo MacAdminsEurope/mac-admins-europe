@@ -38,14 +38,27 @@ The full canonical list is in [`docs/DESIGN-SYSTEM.md`](./docs/DESIGN-SYSTEM.md#
 
 The site has one primary responsive breakpoint. Do not invent new breakpoints (`640px`, `480px`, `1024px`) without a real reason.
 
-### 4. Branch model: `main` for work, `public` for deploy
+### 4. Branch workflow — feature branch → PR → main → PR → public
 
-Pushing to `public` triggers the GitHub Pages deploy. Day-to-day commits go on `main`. Do not push to `public` without verifying the build.
+**No direct commits to `main` or `public`.** Every change follows this flow:
 
-```bash
-git push origin main           # safe, no deploy
-git push origin main:public    # triggers deploy
 ```
+feature branch  →  PR into main  →  (merge)  →  PR into public  →  (merge → deploys)
+```
+
+1. Start from an up-to-date `main`, then create a feature branch:
+   ```bash
+   git checkout main && git pull
+   git checkout -b feat/short-description
+   ```
+2. Use conventional prefixes: `feat/`, `fix/`, `chore/`, `docs/`, `style/`, `refactor/`
+3. Commit, run `npm run build` locally, push, and open a PR into `main`
+4. After review + merge, open a **second PR** from `main` → `public` to deploy
+5. Merging into `public` triggers the GitHub Actions deploy
+
+**As an AI assistant working here:** always offer to create a feature branch at the start of a task. Never push to `main` or `public` directly. At the end of a task, suggest the branch name + PR title; don't open the PR yourself unless asked.
+
+See [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md) for the full rationale.
 
 ### 5. Per-edition theming
 

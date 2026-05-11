@@ -18,4 +18,4 @@ For any task, the relevant deep-dive doc is in [`/docs/`](../docs/):
 - **Use only CSS tokens defined in `src/styles/global.css`** — `--surface-card`, `--text-main`, `--text-muted` look real but don't exist
 - **Single responsive breakpoint:** `768px`
 - **No Tailwind, no React, no CSS-in-JS** — plain Astro + plain CSS + custom properties
-- **Push to `main` for work; push to `public` to deploy**
+- **Branch workflow:** feature branch → PR into `main` → merge → second PR from `main` → `public` → merge triggers deploy. Never commit directly to `main` or `public`

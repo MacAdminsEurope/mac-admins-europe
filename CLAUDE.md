@@ -9,7 +9,7 @@ This is an **Astro 5** static site for the Mac Admins Europe conference, deploye
 1. **Never modify `src/data/2026/` or `src/pages/2026/`** — frozen archive (the event happened; data is fixed)
 2. **Only use CSS tokens that exist in `src/styles/global.css`** — see [`docs/DESIGN-SYSTEM.md`](./docs/DESIGN-SYSTEM.md#complete-token-reference). **Do not use** `--surface-card`, `--text-main`, `--text-muted` — they look real but don't exist
 3. **Single mobile breakpoint:** `768px`
-4. **Branch model:** push to `main` for work, push to `public` to trigger the GitHub Pages deploy
+4. **Branch workflow:** all work on a feature branch → PR into `main` → merge → second PR from `main` into `public` → merge triggers the GitHub Pages deploy. **Never commit directly to `main` or `public`.** See [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md). When starting a task, offer to create a feature branch first.
 5. **No Tailwind, no React/Vue, no CSS-in-JS** — plain Astro + plain CSS + CSS custom properties
 6. **Per-edition theming:** inside an archive page, prefer `--theme-primary` / `--theme-accent` over the raw `--eu-*` or `--edition-*` tokens
 
