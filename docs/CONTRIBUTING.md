@@ -136,7 +136,7 @@ Keep the subject line short and imperative ("add gallery page", not "added galle
 
 ## Pre-commit checklist
 
-Before pushing to `public`:
+Before opening or merging the deploy PR into `public`:
 
 - [ ] `npm run build` succeeds with no TypeScript errors
 - [ ] You've clicked through changed pages locally
@@ -148,7 +148,7 @@ Before pushing to `public`:
 
 ## Deployment
 
-GitHub Actions (`.github/workflows/deploy.yml`) runs on every push to `public`:
+GitHub Actions (`.github/workflows/deploy.yml`) runs whenever `public` is updated, normally by merging the deploy PR:
 
 1. Checks out the repo
 2. Installs Node 20 + dependencies (`npm ci`)
@@ -158,7 +158,7 @@ GitHub Actions (`.github/workflows/deploy.yml`) runs on every push to `public`:
 
 The custom domain `macadmins-eu.org` is set via the `CNAME` file in the repo root. Don't delete it.
 
-**Typical deploy time:** ~2 minutes from `git push origin main:public` to the live site updating.
+**Typical deploy time:** ~2 minutes from merging the `main` → `public` deploy PR to the live site updating.
 
 You can watch progress at the [Actions tab](https://github.com/MacAdminsEurope/mac-admins-europe/actions).
 
@@ -196,7 +196,7 @@ See the gallery and program pages for working examples.
    git push --force origin public
    ```
    GitHub Pages will redeploy the older commit in ~2 minutes.
-3. Fix forward on `main`, push to `public` once verified.
+3. Fix forward on `main`, then open and merge a new `main` → `public` deploy PR once verified.
 
 ## Questions
 

@@ -1807,7 +1807,7 @@ section { padding: var(--space-4xl) 0; }
 
 .calendar-subscribe-text {
   font-size: 0.95rem;
-  color: var(--text-main);
+  color: var(--gray-900);
   font-weight: 500;
 }
 
