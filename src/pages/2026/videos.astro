@@ -118,7 +118,7 @@ const videoItems = scheduleItems
   .video-card {
     display: flex;
     flex-direction: column;
-    background: var(--surface-card);
+    background: var(--white, #fff);
     border: 1px solid var(--gray-200);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -190,7 +190,7 @@ const videoItems = scheduleItems
   .video-title {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-main);
+    color: var(--gray-900);
     line-height: 1.4;
     margin: 0;
   }
@@ -234,7 +234,7 @@ const videoItems = scheduleItems
 
   .video-speaker-name {
     font-size: 0.875rem;
-    color: var(--text-muted);
+    color: var(--gray-600);
     font-weight: 500;
   }
 
@@ -251,9 +251,10 @@ const videoItems = scheduleItems
     letter-spacing: 0.04em;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .videos-grid {
       grid-template-columns: 1fr;
+      gap: var(--space-lg);
     }
   }
 </style>

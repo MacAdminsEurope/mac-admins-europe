@@ -191,4 +191,103 @@ A few rules of thumb to keep the archive system healthy:
 4. **Visual evolution is fine, brand discipline matters.** Each year picks its own palette via `edition.ts`, but stay within the design system — same spacing scale, same typography, same component shapes. The site should feel like one site across years, just with a different accent.
 5. **Add, don't migrate.** Adding a new year should never require touching `src/data/2026/`.
 
+## Data-file reference (for editors)
+
+This is the authoritative shape for every file under `src/data/<year>/`. If you only edit content (not code), this is the section you'll come back to.
+
+### `edition.ts`
+
+One exported object: `edition<YEAR>`. Required fields:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `year` | `number` | e.g. `2026` |
+| `label` | `string` | Human-readable, used in `<title>` and OG meta |
+| `className` | `string` | Unique CSS class (`edition-2026`) attached to the wrapper |
+| `visualIdentity.name` | `string` | Palette name, shown only as a `data-` attribute |
+| `visualIdentity.colors.*` | 9 hex strings | `euBlue/euBlueDark/euBlueLight`, `euGold/…`, `euGreen/…` |
+
+End with `as const;` so TypeScript narrows the literal types.
+
+### `archive.ts`
+
+One exported object: `archive<YEAR>`. Required fields:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `year` | `number` | Must match `edition.year` |
+| `date` | `string` | Display string, e.g. `"April 30, 2026"` |
+| `location` | `string` | Pulled from `location.city` |
+| `venue` | `string` | Pulled from `location.venue` |
+| `edition` | `editionXXXX` | Imported from `./edition` |
+| `summary` | `string` | 1–2 sentence event description |
+| `links[]` | `{ label, href, description }[]` | Cards on the `/YEAR` overview page |
+
+**Convention:** only add a `links` entry once the target page has real content. Adding `Videos` before recordings exist will publish a broken card.
+
+### `location.ts`
+
+| Field | Notes |
+| --- | --- |
+| `city` | Used in archive cards and meta |
+| `venue` | Plain ASCII version |
+| `venueDisplayName` | May include en-dashes / typography |
+| `address` | Full street address |
+| `mapsUrl` | A `google.com/maps/search/?api=1&query=…` URL |
+| `summary` | 1-sentence description |
+
+### `speakers.ts`
+
+Defines `Speaker` (or `Person`) interface locally and exports a `speakers: Speaker[]` array.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `order` | `number` | **Stable ID, not display order.** Schedule items link to speakers via `speakerIds`. Once set, don't change. New speakers get a fresh unused number. |
+| `name` | `string` | Display name |
+| `role` | `string` | Job title |
+| `company` | `string` | |
+| `image` | `string` | Path to headshot in `public/img/speakers/` |
+| `bio` | `string` | Plain text |
+| `talk` | `string` | Talk title (placeholder allowed — see below) |
+| `talkDescription` | `string` | Talk abstract |
+| `linkedin` | `string?` | URL |
+| `slack` | `string?` | Mac Admins Slack profile URL |
+| `type` | `'speaker' \| 'sponsor'?` | Defaults to `'speaker'`. Sponsor talks render slightly differently. |
+
+**Placeholder pattern:** if a speaker is confirmed but their talk isn't finalised, set `talk` and `talkDescription` to the values exported as `placeholderTalkTitle` / `placeholderTalkDescription`. The speakers and program pages detect this and render a "talk details TBA" state.
+
+### `schedule.ts`
+
+Defines `ScheduleItem` interface locally and exports `scheduleItems: ScheduleItem[]` plus the `ScheduleBlockType` union.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `time` | `string` | Display string, e.g. `"09:30 - 10:15"` |
+| `type` | `ScheduleBlockType` | `'registration' \| 'keynote' \| 'session' \| 'sponsor' \| 'break' \| 'lunch'`. Drives the left-border color. |
+| `title` | `string` | Falls back if no `speakerIds`. Speakers' `talk` title takes precedence when joined. |
+| `description` | `string?` | Used for non-talk blocks (registration, breaks, lunch) |
+| `emoji` | `string?` | Renders before the title on non-talk blocks |
+| `speakerIds` | `number[]?` | Array of speaker `order` values. Multiple IDs = joint talk. |
+| `youtubeUrl` | `string?` | Adding this enables the inline YouTube icon AND adds the item to the `/YEAR/videos` page automatically. |
+
+### `sponsors.ts`
+
+Defines `Sponsor` interface locally and exports `sponsors: Sponsor[]` plus the `SponsorTier` type alias.
+
+| Field | Notes |
+| --- | --- |
+| `name` | Display name |
+| `tier` | `'platinum' \| 'gold' \| 'silver' \| 'patron'` — drives grouping and tier badge |
+| `logo` | Path in `public/img/sponsors/` |
+| `url` | Either an external URL OR an internal `/YEAR/sponsors/<slug>` route. **Both patterns are valid.** Internal routes go to a dedicated sponsor sub-page; external URLs open the sponsor's own site. |
+| `tagline` | Long blurb shown on the sponsor sub-page |
+
+### Type discipline
+
+Each data file currently declares its own local `interface`. This works but means a schema change has to be repeated per year. If schema reuse becomes painful, the next step is a shared `src/types/conference.ts` — but we deliberately haven't done that yet, to preserve per-year freedom.
+
+If you do extract shared types, treat them as **additive only**: never remove or rename a field that older years rely on.
+
+---
+
 Ready to add a new year? Continue to [`ADDING-A-NEW-YEAR.md`](./ADDING-A-NEW-YEAR.md).

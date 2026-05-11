@@ -1,0 +1,44 @@
+---
+description: Mac Admins Europe — agent guardrails and pointers to project docs
+trigger: always_on
+---
+
+# Mac Admins Europe — Windsurf Rules
+
+This is an **Astro 5** static site for the Mac Admins Europe conference, deployed to GitHub Pages at <https://macadmins-eu.org>.
+
+**Always read `@AGENTS.md` first** — it's the canonical agent guide. The deeper docs live in `@docs/`.
+
+## Critical rules
+
+1. **Never modify `src/data/2026/` or `src/pages/2026/`** — frozen archive
+2. **Only use CSS tokens that exist in `src/styles/global.css`** — see `@docs/DESIGN-SYSTEM.md` for the canonical list. **Do not use** `--surface-card`, `--text-main`, `--text-muted` (they don't exist)
+3. **Single mobile breakpoint:** `768px`
+4. **Branch model:** push to `main` for work, push to `public` to trigger deploy
+5. **No Tailwind, no React/Vue, no CSS-in-JS** — plain Astro + plain CSS
+
+## Where to read before changing
+
+| Task | Doc |
+| --- | --- |
+| Codebase overview | `@docs/ARCHITECTURE.md` |
+| CSS / colors / spacing | `@docs/DESIGN-SYSTEM.md` |
+| Anything in `2026/` | `@docs/ARCHIVE-SYSTEM.md` |
+| Adding 2027 (or any new year) | `@docs/ADDING-A-NEW-YEAR.md` |
+| Dev workflow / deploy | `@docs/CONTRIBUTING.md` |
+
+## Style
+
+- TypeScript-typed data files; build fails on schema violations
+- Inline SVG icons (no icon library)
+- External links: `target="_blank" rel="noopener noreferrer"`
+- `:focus-visible` outlines on interactive elements
+- Respect `prefers-reduced-motion`
+- Commit prefixes: `feat:`, `fix:`, `chore:`, `docs:`, `style:`, `refactor:`
+
+## Verifying before committing
+
+```bash
+npm run build    # must pass
+npm run dev      # local server at http://localhost:4321
+```

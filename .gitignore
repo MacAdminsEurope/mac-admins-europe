@@ -1,46 +1,40 @@
-# Build Artifacts
+# Build artifacts
 dist/
+dist-ssr/
 .astro/
 
-# Claude Code
-CLAUDE.md
-.claude/
-.planning/
-
-# Project Documentation (local only)
-project.md
-todo.md
-websitedoc.md
-forminit-setup.md
+# Project documentation (root-level only, local to maintainers)
+/project.md
+/todo.md
+/websitedoc.md
+/forminit-setup.md
 
 # Dependencies
 node_modules/
 
-# Environment Variables
+# Environment variables (except the example template)
 .env
-.env.local
-.env.production
-.env.development
-.env.test
-*.env
+.env.*
 !.env.example
 
-# OS Generated Files
+# OS-generated files
 .DS_Store
 Thumbs.db
 ._*
 
 # Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+*.log
 
-# Editor Directories
+# Caches
+.cache/
+.eslintcache
+*.tsbuildinfo
+
+# Editor directories
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# TypeScript
-*.tsbuildinfo
+# Local overrides
+*.local

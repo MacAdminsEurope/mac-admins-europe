@@ -12,6 +12,8 @@ Welcome to the project docs. These pages explain how the site is built, why it's
 | Add a new conference year (e.g. 2027) | [`ADDING-A-NEW-YEAR.md`](./ADDING-A-NEW-YEAR.md) |
 | Set up local dev, branching, and deploy | [`CONTRIBUTING.md`](./CONTRIBUTING.md) |
 
+> **AI coding assistants** (Cursor, Windsurf, Claude Code, Codex, Copilot, etc.): start with [`/AGENTS.md`](../AGENTS.md) at the repo root. It's a condensed version of these docs with the critical rules.
+
 ## TL;DR
 
 - **Astro 5** static site, hosted on **GitHub Pages** via custom domain `macadmins-eu.org`

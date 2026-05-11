@@ -151,3 +151,108 @@ Below this:
 - Schedule blocks stack the time above the content
 
 Some pages (e.g. gallery) have a secondary mobile breakpoint they own internally. Keep `768px` as the default unless there's a real reason to deviate.
+
+## Scoped page styles vs. `global.css` — the contract
+
+Some pages (notably `2026/gallery.astro` and `2026/videos.astro`) keep their CSS inside an Astro `<style>` block at the bottom of the page rather than in `global.css`. Astro automatically scopes those rules, so:
+
+- **Class names declared inside a scoped `<style>` block are isolated.** They cannot collide with anything in `global.css` now or in the future. Renaming a class in `global.css` will *not* affect a scoped page's own selectors.
+
+But two things still couple a scoped page to `global.css`:
+
+### CSS custom properties cascade through
+
+Every `var(--space-md)`, `var(--gray-600)`, `var(--eu-blue)` etc. inside a scoped block reads the value defined at `:root` in `global.css`. If a token is **renamed or deleted**, the scoped style silently loses that value (CSS falls back to the property's initial value, e.g. `transparent` for a background).
+
+**Rules:**
+- Only reference tokens that actually exist in `global.css`. Run `grep "^\s*--" src/styles/global.css` to see the canonical list.
+- For critical values, use a fallback: `border-radius: var(--radius-md, 8px);`
+- If you rename a token in `global.css`, **also update every page that references it**. Search the codebase before renaming.
+
+### Global classes used in the page markup
+
+Every archive page uses global classes for the chrome: `.page-hero`, `.container`, `.section-label`, `.btn`, `.btn-primary`. These live in `global.css` and are *not* scoped. If renamed there, the hero and CTA buttons on every page break.
+
+**Rule:** treat these as a public API. If you rename one, it's a coordinated change across many files.
+
+### Why keep page-specific CSS scoped instead of in `global.css`?
+
+- The gallery's lightbox styles only apply to one page. Putting them in `global.css` bloats it for every other page.
+- Scoped styles document themselves by being next to the markup they style.
+- Hot reload during dev is faster (smaller stylesheet recompile).
+
+If a pattern starts appearing on multiple pages, **move it into `global.css` as a reusable component class** — that's the signal it has graduated from "page-specific" to "design-system".
+
+## Complete token reference
+
+These are the **only** CSS custom properties safe to use across the site. Generated from `global.css`:
+
+**Brand & edition colors** (per-edition: re-bound by `EditionArchiveLayout`)
+`--eu-blue`, `--eu-blue-dark`, `--eu-blue-light`
+`--eu-gold`, `--eu-gold-dark`, `--eu-gold-light`
+`--eu-green`, `--eu-green-dark`, `--eu-green-light`
+
+**Edition tokens** (only valid *inside* an `.edition-archive` wrapper — i.e. on any 2026 sub-page)
+`--edition-primary`, `--edition-primary-dark`, `--edition-primary-light`
+`--edition-accent`, `--edition-accent-dark`, `--edition-accent-light`
+`--theme-primary`, `--theme-primary-dark`, `--theme-primary-light`
+`--theme-accent`, `--theme-accent-dark`, `--theme-accent-light`
+
+> Prefer `--theme-*` inside archive pages — it's the consumer-facing alias. `--edition-*` is the input, `--theme-*` is the output. The site uses `--theme-*` in `global.css` for things like the page-hero gradient and section labels.
+
+**Neutrals**
+`--white`, `--off-white`, `--black`
+`--gray-100` … `--gray-900`
+
+**Status**
+`--error-red`, `--error-red-light`
+`--success-green-bg`, `--success-green-text`
+`--social-pink-bg`, `--social-pink-text`
+
+**Typography**
+`--font-display`, `--font-mono`
+
+**Spacing**
+`--space-xs` (0.25rem), `--space-sm` (0.5rem), `--space-md` (1rem), `--space-lg` (1.5rem), `--space-xl` (2rem), `--space-2xl` (3rem), `--space-3xl` (4rem), `--space-4xl` (6rem)
+
+**Radius**
+`--radius-sm`, `--radius-md`, `--radius-lg`, `--radius-xl`, `--radius-2xl`, `--radius-full`
+
+**Shadows**
+`--shadow-sm`, `--shadow-md`, `--shadow-lg`, `--shadow-xl`, `--shadow-gold`
+
+**Transitions**
+`--transition-fast`, `--transition-base`, `--transition-slow`
+
+**Container**
+`--container-max`, `--container-padding`
+
+**Component-scoped (inside their own rules; don't use elsewhere)**
+`--footer-grid-columns`, `--footer-grid-gap` — `.footer`
+`--lightbox-nav-size`, `--lightbox-nav-font-size`, `--lightbox-nav-offset` — `.lightbox-prev/.lightbox-next`
+
+### Tokens that DO NOT exist (don't use these)
+
+These names have appeared in old code but are not defined anywhere. Using them silently fails:
+
+- ❌ `--surface-card` → use `var(--white)` or `var(--off-white)`
+- ❌ `--text-main` → use `var(--gray-900)` for body, `var(--gray-700)` for secondary
+- ❌ `--text-muted` → use `var(--gray-600)`. There's a `.text-muted` *class* in `global.css`, but no matching variable.
+
+### Verifying tokens before committing
+
+```bash
+# List every token defined in global.css
+grep -oE '^\s*--[a-z0-9-]+' src/styles/global.css | sort -u
+
+# List every token referenced across all pages
+grep -rhEo 'var\(--[a-z0-9-]+' src/pages/ src/components/ src/layouts/ | sort -u
+```
+
+Diff the two lists. Every reference must appear in the definitions.
+
+## Shared lightbox system
+
+There's a `.lightbox-prev` / `.lightbox-next` / `.lightbox-content` system in `global.css` (around line 2728) intended for reuse. The 2026 gallery (`gallery.astro`) does *not* use it — it implements its own scoped `.lb-prev` / `.lb-next` classes because the gallery has slightly different requirements (image counter, ZED credit footer, swipe).
+
+If you build another image viewer somewhere on the site, **prefer the shared `.lightbox-*` classes** unless you have a clear reason to fork. Forking is fine — but document it inside the page so future maintainers know it's intentional.
