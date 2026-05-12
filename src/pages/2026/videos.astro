@@ -14,6 +14,8 @@ const getYouTubeId = (url: string): string => {
   return match ? match[1] : '';
 };
 
+const isExternalUrl = (url: string): boolean => /^https?:\/\//i.test(url);
+
 const videoItems = scheduleItems
   .filter(item => item.youtubeUrl)
   .map(item => {
@@ -50,54 +52,82 @@ const videoItems = scheduleItems
     <div class="container">
       <div class="videos-grid">
         {videoItems.map(({ item, itemSpeakers, talkTitle, videoId }) => (
-          <a
-            href={item.youtubeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="video-card"
-            aria-label={`Watch: ${talkTitle}`}
-          >
-            <div class="video-thumbnail">
-              <img
-                src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                alt={talkTitle}
-                loading="lazy"
-              />
-              <div class="video-play-overlay">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="video-info">
-              <h3 class="video-title">{talkTitle}</h3>
-              {itemSpeakers.length > 0 && (
-                <div class="video-speakers">
-                  {itemSpeakers.map((speaker: any) => (
-                    <div class="video-speaker">
-                      <div class="video-speaker-avatar">
-                        {speaker.image ? (
-                          <img src={speaker.image} alt={speaker.name} />
-                        ) : (
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                          </svg>
-                        )}
-                      </div>
-                      <span class="video-speaker-name">{speaker.name}</span>
-                    </div>
-                  ))}
+          <div class="video-card">
+            <a
+              href={item.youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="video-main"
+              aria-label={`Watch: ${talkTitle}`}
+            >
+              <div class="video-thumbnail">
+                <img
+                  src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                  alt={talkTitle}
+                  loading="lazy"
+                />
+                <div class="video-play-overlay">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
                 </div>
-              )}
-              <span class="video-watch-label">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                Watch on YouTube
-              </span>
-            </div>
-          </a>
+              </div>
+              <div class="video-info">
+                <h3 class="video-title">{talkTitle}</h3>
+                {itemSpeakers.length > 0 && (
+                  <div class="video-speakers">
+                    {itemSpeakers.map((speaker: any) => (
+                      <div class="video-speaker">
+                        <div class="video-speaker-avatar">
+                          {speaker.image ? (
+                            <img src={speaker.image} alt={speaker.name} />
+                          ) : (
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                          )}
+                        </div>
+                        <span class="video-speaker-name">{speaker.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <span class="video-watch-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="14" height="14">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  Watch on YouTube
+                </span>
+              </div>
+            </a>
+            {item.resources && item.resources.length > 0 && (
+              <div class="video-resources">
+                <span class="video-resources-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                  </svg>
+                  Talk Resources
+                </span>
+                <div class="video-resources-pills">
+                  {item.resources.map((resource) => {
+                    const external = isExternalUrl(resource.url);
+                    return (
+                      <a
+                        href={resource.url}
+                        class="video-resource-pill"
+                        target={external ? '_blank' : undefined}
+                        rel={external ? 'noopener noreferrer' : undefined}
+                      >
+                        {resource.label}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </div>
@@ -122,9 +152,15 @@ const videoItems = scheduleItems
     border: 1px solid var(--gray-200);
     border-radius: var(--radius-lg);
     overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .video-main {
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    flex: 1;
   }
 
   .video-card:hover {
@@ -249,6 +285,61 @@ const videoItems = scheduleItems
     color: #FF0000;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+  }
+
+  .video-resources {
+    padding: var(--space-md) var(--space-lg);
+    border-top: 1px solid var(--gray-200);
+    background: var(--gray-100);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .video-resources-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .video-resources-label svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .video-resources-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .video-resource-pill {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    background: var(--white, #fff);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .video-resource-pill:hover,
+  .video-resource-pill:focus-visible {
+    color: var(--eu-blue);
+    border-color: var(--eu-blue);
+  }
+
+  .video-resource-pill:focus-visible {
+    outline: 2px solid var(--eu-blue);
+    outline-offset: 2px;
   }
 
   @media (max-width: 768px) {

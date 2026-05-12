@@ -1,5 +1,20 @@
 export type ScheduleBlockType = 'registration' | 'keynote' | 'session' | 'sponsor' | 'break' | 'lunch';
 
+/**
+ * A single resource link associated with a talk — e.g. a slides PDF,
+ * a website, a GitHub repo, a blog post.
+ *
+ * - `url` may be external (https://…) or internal (e.g. /2026/slides/foo.pdf).
+ *   External URLs open in a new tab; internal URLs (PDFs) open in the same tab
+ *   so the browser can render them inline.
+ * - Self-hosted PDFs go in `public/2026/slides/` and are referenced as
+ *   `/2026/slides/<filename>.pdf`.
+ */
+export interface TalkResource {
+  label: string;
+  url: string;
+}
+
 export interface ScheduleItem {
   time: string;
   type: ScheduleBlockType;
@@ -15,6 +30,13 @@ export interface ScheduleItem {
    * YouTube URL for the recorded talk.
    */
   youtubeUrl?: string;
+  /**
+   * Optional list of resources for this talk (slides, repo, docs, etc.).
+   * Rendered as pills at the bottom of the corresponding card on
+   * `/<year>/videos`. Only appears on talks that already have a `youtubeUrl`
+   * — the videos page filters by `youtubeUrl` first.
+   */
+  resources?: TalkResource[];
 }
 
 export const scheduleItems: ScheduleItem[] = [
@@ -24,6 +46,7 @@ export const scheduleItems: ScheduleItem[] = [
     time: '09:30 - 10:15',
     type: 'session',
     title: 'A Few of Our Favorite (Mac Admin) Things',
+    resources: [{ label: 'Slides (PDF)', url: '/2026/slides/armin-rob-few-favs-mac-admins.pdf' }],
     speakerIds: [2, 10],
     youtubeUrl: 'https://www.youtube.com/watch?v=MKPJPUc_1x0',
   },
@@ -38,6 +61,7 @@ export const scheduleItems: ScheduleItem[] = [
   {
     time: '11:10 - 11:55',
     type: 'session',
+    resources: [{ label: 'Website', url: 'https://compostbusters.com/' }],
     title: 'There’s Something Strange in the Management Neighbourhood',
     speakerIds: [1],
     youtubeUrl: 'https://www.youtube.com/watch?v=3PCKYq6KZZE',
@@ -61,6 +85,7 @@ export const scheduleItems: ScheduleItem[] = [
     time: '14:05 - 14:50',
     type: 'session',
     title: 'Trust, But Verify: Exposing Risk in Your App Catalog',
+    resources: [{ label: 'Slides (PDF)', url: '/2026/slides/trust-but-verify.pdf' }],
     speakerIds: [7],
     youtubeUrl: 'https://www.youtube.com/watch?v=l5DXOagVtpA',
   },

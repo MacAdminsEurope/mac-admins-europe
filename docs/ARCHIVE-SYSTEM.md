@@ -269,6 +269,39 @@ Defines `ScheduleItem` interface locally and exports `scheduleItems: ScheduleIte
 | `emoji` | `string?` | Renders before the title on non-talk blocks |
 | `speakerIds` | `number[]?` | Array of speaker `order` values. Multiple IDs = joint talk. |
 | `youtubeUrl` | `string?` | Adding this enables the inline YouTube icon AND adds the item to the `/YEAR/videos` page automatically. |
+| `resources` | `TalkResource[]?` | Optional list of post-talk resources (slides PDF, GitHub repo, website, docs). Rendered as pills at the bottom of the corresponding card on `/YEAR/videos`. Only shows on talks that already have a `youtubeUrl`. |
+
+#### Adding talk resources
+
+A `TalkResource` is just `{ label: string, url: string }`. The renderer is dumb on purpose: it shows the label as a pill, and the URL is the link target.
+
+```ts
+{
+  time: '10:15 - 10:40',
+  type: 'sponsor',
+  title: 'Securing Developer Workflows ...',
+  speakerIds: [9],
+  youtubeUrl: 'https://www.youtube.com/watch?v=hRrSXQrtWmc',
+  resources: [
+    { label: 'Slides (PDF)', url: '/2026/slides/starr-securing-workflows.pdf' },
+    { label: 'Workbrew docs', url: 'https://workbrew.com/docs' },
+  ],
+}
+```
+
+**URL conventions:**
+
+- **External URLs** (`https://…`) — open in a new tab with `rel="noopener noreferrer"`
+- **Internal URLs** (`/2026/…`) — open in the same tab. Browsers render PDFs inline.
+
+**Self-hosted PDFs:**
+
+- Drop the file into `public/<year>/slides/`
+- Reference it as `/<year>/slides/<filename>.pdf` in the `url` field
+- Naming convention: `<speaker-lastname>-<short-talk-keyword>.pdf` (e.g. `starr-securing-workflows.pdf`). Keeps the folder readable when listing.
+- No size processing happens; the file is served as-is. Keep PDFs under ~20 MB for sensible mobile loading.
+
+**Visibility rule:** the resources block only renders on the `/YEAR/videos` page, only on cards where `youtubeUrl` is set, only when `resources` has at least one entry. Adding `resources` to a non-recorded talk does nothing visible — it'll just sit in the data file. (We may add a separate `/YEAR/talks` view later if there's demand.)
 
 ### `sponsors.ts`
 
