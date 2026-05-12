@@ -46,6 +46,7 @@ export const scheduleItems: ScheduleItem[] = [
     time: '09:30 - 10:15',
     type: 'session',
     title: 'A Few of Our Favorite (Mac Admin) Things',
+    resources: [{ label: 'Slides (PDF)', url: '/2026/slides/armin-rob-few-favs-mac-admins.pdf' }],
     speakerIds: [2, 10],
     youtubeUrl: 'https://www.youtube.com/watch?v=MKPJPUc_1x0',
   },
@@ -60,6 +61,7 @@ export const scheduleItems: ScheduleItem[] = [
   {
     time: '11:10 - 11:55',
     type: 'session',
+    resources: [{ label: 'Website', url: 'https://compostbusters.com/' }],
     title: 'There’s Something Strange in the Management Neighbourhood',
     speakerIds: [1],
     youtubeUrl: 'https://www.youtube.com/watch?v=3PCKYq6KZZE',
@@ -83,6 +85,7 @@ export const scheduleItems: ScheduleItem[] = [
     time: '14:05 - 14:50',
     type: 'session',
     title: 'Trust, But Verify: Exposing Risk in Your App Catalog',
+    resources: [{ label: 'Slides (PDF)', url: '/2026/slides/trust-but-verify.pdf' }],
     speakerIds: [7],
     youtubeUrl: 'https://www.youtube.com/watch?v=l5DXOagVtpA',
   },
