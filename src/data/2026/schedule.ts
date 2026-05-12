@@ -32,6 +32,7 @@ export const scheduleItems: ScheduleItem[] = [
     type: 'sponsor',
     title: 'Securing Developer Workflows (With the Tools They Already Love)',
     speakerIds: [9],
+    youtubeUrl: 'https://www.youtube.com/watch?v=hRrSXQrtWmc',
   },
   { time: '10:40 - 11:10', type: 'break', emoji: '☕️', title: 'Coffee Break', description: 'Refresh and visit our exhibitors' },
   {
