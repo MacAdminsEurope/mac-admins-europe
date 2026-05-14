@@ -70,6 +70,7 @@ export const scheduleItems: ScheduleItem[] = [
     time: '11:55 - 12:20',
     type: 'sponsor',
     title: 'Think Different. Then Update: Software Updates, It\'s been a journey.',
+    resources: [{ label: 'Slides (PDF)', url: '/2026/slides/software_updates_think_different.pdf' }],
     speakerIds: [5],
     youtubeUrl: 'https://www.youtube.com/watch?v=Mpp9yoW9olo',
   },
