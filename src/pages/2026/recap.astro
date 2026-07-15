@@ -1,0 +1,543 @@
+---
+import EditionArchiveLayout from '../../layouts/EditionArchiveLayout.astro';
+import { edition2026 } from '../../data/2026/edition';
+import { getBaseUrl } from '../../utils/baseUrl';
+
+const base = getBaseUrl();
+---
+
+<EditionArchiveLayout
+  title="2026 Recap | Mac Admins Europe"
+  description="Mac Admins Europe 2026 highlight reel: 264 attendees, 16 countries, 4.24/5 happiness, and every speaker wanting to come back."
+  edition={edition2026}
+>
+  <script>document.body.classList.add('recap-page');</script>
+  <div class="recap-root">
+
+    <!-- ── Hero ─────────────────────────────────────────────────── -->
+    <section class="recap-hero">
+      <div class="watermark" aria-hidden="true">⌘</div>
+
+      <div class="badge">
+        <span aria-hidden="true">⌘</span> Our 2026 Recap
+      </div>
+
+      <h1 class="recap-headline">
+        Every Single Speaker Said<br>"Sign Me Up Again!"
+      </h1>
+
+      <p class="recap-subtext">
+        Our community gave a <strong>9 or 10 out of 10</strong> when asked if they'd come back.
+        Nobody said maybe. Nobody said no.
+      </p>
+
+      <div class="hero-photo-wrap">
+        <img
+          src={`${base}/photo_gallery/2026-04-30_MacAdmins_Europe_0018.jpg`}
+          alt="Attendees at Mac Admins Europe 2026 in Leiden"
+          class="hero-photo"
+          loading="eager"
+        />
+      </div>
+
+      <div class="stat-chips">
+        <span class="chip chip-gold">264 ATTENDEES</span>
+        <span class="chip chip-blue">16 COUNTRIES</span>
+        <span class="chip chip-green">4.24/5 HAPPINESS</span>
+        <span class="chip chip-orange">99.25% TURNOUT</span>
+      </div>
+    </section>
+
+    <!-- ── Top 5 Wins ────────────────────────────────────────────── -->
+    <section class="wins-section">
+      <h2 class="wins-heading">Top 5 Wins</h2>
+
+      <div class="wins-grid">
+        <div class="win-card win-card--full win-card--parchment">
+          <div class="win-icon win-icon--gold">★</div>
+          <div>
+            <div class="win-title">"Trust, But Verify" was the talk of the event</div>
+            <div class="win-desc">
+              Alexandra Smith · <strong>4.70/5</strong>, the highest-rated session of the
+              conference. One attendee said it "made the trip 100% worth it."
+            </div>
+          </div>
+        </div>
+
+        <div class="win-card win-card--blue">
+          <div class="win-icon win-icon--blue-bg">☺</div>
+          <div class="win-title">The crowd brought the energy</div>
+          <div class="win-desc">
+            Every speaker rated audience engagement a perfect <strong>5/5</strong>.
+          </div>
+        </div>
+
+        <div class="win-card win-card--green">
+          <div class="win-icon win-icon--green-bg">✦</div>
+          <div class="win-title">Sponsors felt taken care of</div>
+          <div class="win-desc">
+            A perfect <strong>5.00/5</strong> from all 11 sponsors on staff helpfulness —
+            called "fantastic" and "exceptional."
+          </div>
+        </div>
+
+        <div class="win-card win-card--parchment">
+          <div class="win-title">We stuck the landing</div>
+          <div class="win-desc">
+            Closing Session scored <strong>4.63/5</strong>, sending everyone home happy.
+          </div>
+        </div>
+
+        <div class="win-card win-card--peach">
+          <div class="win-title">Strong start, right out of the gate</div>
+          <div class="win-desc">
+            Opening Keynote hit <strong>4.60/5</strong>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── What people said ──────────────────────────────────────── -->
+    <section class="quotes-section">
+      <div class="bg-watermark" aria-hidden="true">⌘</div>
+
+      <h2 class="quotes-heading">What people kept saying</h2>
+
+      <div class="word-cloud" aria-label="Words attendees used to describe the event">
+        <span class="wc-word wc-community">COMMUNITY</span>
+        <span class="wc-word wc-sm wc-light-italic">hallway track</span>
+        <span class="wc-word wc-md wc-orange">friendly</span>
+        <span class="wc-word wc-xs wc-muted">welcoming</span>
+        <span class="wc-word wc-lg wc-teal">relaxed</span>
+        <span class="wc-word wc-xs wc-muted2">smooth</span>
+        <span class="wc-word wc-md wc-gold">fabulous</span>
+        <span class="wc-word wc-sm wc-muted">exceptional</span>
+        <span class="wc-word wc-xl wc-orange">felt like home</span>
+        <span class="wc-word wc-xs wc-muted2">first-time-done-right</span>
+      </div>
+
+      <div class="quotes-row">
+        <blockquote class="quote-card quote-card--left">
+          <p>"Made the trip 100% worth it."</p>
+          <footer>— an attendee, on Alexandra Smith's session</footer>
+        </blockquote>
+        <blockquote class="quote-card quote-card--right">
+          <p>"Best event I've been to."</p>
+          <footer>— a sponsor</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ── Closing / CTA ─────────────────────────────────────────── -->
+    <section class="closing-section">
+      <div class="closing-chips">
+        <span class="cchip cchip-blue">264 people · 16 countries</span>
+        <span class="cchip cchip-dark">4.24/5 average happiness</span>
+        <span class="cchip cchip-orange">99.25% turnout</span>
+        <span class="cchip cchip-dark">Every speaker wants to come back</span>
+        <span class="cchip cchip-dark">Every sponsor wants to come back</span>
+      </div>
+
+      <p class="closing-tagline">⌘ For the community, by the community</p>
+
+      <a href={`${base}/2026`} class="recap-cta">
+        Explore the 2026 Archive &rarr;
+      </a>
+    </section>
+
+  </div>
+</EditionArchiveLayout>
+
+<style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  /* Header is transparent by default; force dark bg on this parchment page */
+  .recap-page .header {
+    background: rgba(31, 27, 22, 0.96);
+    backdrop-filter: blur(10px);
+  }
+</style>
+
+<style>
+  /* ── Root / palette ─────────────────────────────────────────── */
+  .recap-root {
+    --r-parchment: #EDE7DC;
+    --r-dark:      #1F1B16;
+    --r-dark-2:    #2A251F;
+    --r-mid:       #453F36;
+    --r-muted:     #5C5548;
+    --r-gold:      #F2C230;
+    --r-blue:      #003399;
+    --r-green:     #2E7D6B;
+    --r-teal:      #2E9C82;
+    --r-orange:    #E8683D;
+    --r-white:     #ffffff;
+
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--r-parchment);
+  }
+
+  /* ── Hero ───────────────────────────────────────────────────── */
+  .recap-hero {
+    background: var(--r-parchment);
+    padding: 120px 48px 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .watermark {
+    position: absolute;
+    top: 40px;
+    left: -60px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(140px, 20vw, 260px);
+    color: rgba(31, 27, 22, 0.04);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--r-dark);
+    color: var(--r-parchment);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transform: rotate(-2deg);
+    position: relative;
+    z-index: 1;
+  }
+
+  .recap-headline {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.06;
+    color: var(--r-dark);
+    max-width: 820px;
+    margin: 24px 0 0;
+  }
+
+  .recap-subtext {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--r-mid);
+    max-width: 560px;
+    margin: 16px 0 0;
+  }
+
+  .hero-photo-wrap {
+    width: 100%;
+    max-width: 960px;
+    margin-top: 36px;
+    transform: rotate(-1deg);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(31, 27, 22, 0.18);
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .stat-chips {
+    display: flex;
+    gap: 10px;
+    margin-top: -14px;
+    z-index: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .chip {
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 13px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    letter-spacing: 0.02em;
+  }
+
+  .chip-gold   { background: var(--r-gold);   color: var(--r-dark);  transform: rotate(2deg); }
+  .chip-blue   { background: var(--r-blue);   color: #fff;           transform: rotate(-2deg); }
+  .chip-green  { background: var(--r-green);  color: #fff;           transform: rotate(1deg); }
+  .chip-orange { background: var(--r-orange); color: #fff;           transform: rotate(-1.5deg); }
+
+  /* ── Top 5 Wins ─────────────────────────────────────────────── */
+  .wins-section {
+    background: var(--r-white);
+    padding: 60px 48px;
+  }
+
+  .wins-heading {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 38px;
+    color: var(--r-dark);
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  .wins-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .win-card {
+    border: 2px solid var(--r-dark);
+    border-radius: 16px;
+    padding: 24px 26px;
+  }
+
+  .win-card--full      { grid-column: 1 / -1; display: flex; gap: 18px; align-items: flex-start; transform: rotate(-1deg); }
+  .win-card--parchment { background: #FBF3DE; }
+  .win-card--blue      { background: rgba(0, 51, 153, 0.07); transform: rotate(1.5deg); }
+  .win-card--green     { background: #E9F2EE; transform: rotate(-1.5deg); }
+  .win-card--peach     { background: #FDEFE8; transform: rotate(-1deg); }
+
+  .win-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .win-icon--gold     { background: var(--r-gold);  color: var(--r-dark); font-size: 26px; width: 52px; height: 52px; }
+  .win-icon--blue-bg  { background: var(--r-blue);  color: #fff; margin-bottom: 14px; }
+  .win-icon--green-bg { background: var(--r-green); color: #fff; margin-bottom: 14px; }
+
+  .win-title {
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--r-dark);
+    line-height: 1.3;
+  }
+
+  .win-desc {
+    font-size: 13.5px;
+    color: var(--r-muted);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* ── Quotes / word cloud ─────────────────────────────────────── */
+  .quotes-section {
+    background: var(--r-dark);
+    padding: 60px 48px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .bg-watermark {
+    position: absolute;
+    bottom: -40px;
+    right: -20px;
+    font-size: 200px;
+    color: rgba(255, 255, 255, 0.03);
+    font-weight: 800;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .quotes-heading {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--r-parchment);
+    margin: 0 0 28px;
+  }
+
+  .word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    justify-content: center;
+    align-items: center;
+    max-width: 860px;
+    margin: 0 auto 36px;
+  }
+
+  .wc-word { display: inline-block; font-weight: 600; }
+
+  .wc-community    { font-family: 'Fredoka', system-ui, sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 52px); color: var(--r-gold); transform: rotate(-2deg); }
+  .wc-sm           { font-size: 17px; }
+  .wc-md           { font-size: 22px; }
+  .wc-lg           { font-size: 26px; }
+  .wc-xl           { font-size: 30px; }
+  .wc-xs           { font-size: 15px; }
+  .wc-light-italic { color: var(--r-parchment); font-style: italic; font-weight: 400; }
+  .wc-orange       { color: var(--r-orange); }
+  .wc-muted        { color: rgba(237, 231, 220, 0.7); }
+  .wc-muted2       { color: rgba(237, 231, 220, 0.55); }
+  .wc-teal         { color: var(--r-teal); transform: rotate(1deg); }
+  .wc-gold         { color: var(--r-gold); }
+
+  .quotes-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .quote-card {
+    background: var(--r-dark-2);
+    border-radius: 14px;
+    padding: 22px 26px;
+    max-width: 340px;
+    margin: 0;
+    text-align: left;
+  }
+
+  .quote-card--left  { transform: rotate(-1deg); }
+  .quote-card--right { transform: rotate(1deg); }
+
+  .quote-card p {
+    font-size: 16px;
+    color: var(--r-parchment);
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .quote-card footer {
+    font-size: 12.5px;
+    color: rgba(237, 231, 220, 0.5);
+    margin-top: 10px;
+  }
+
+  /* ── Closing / CTA ───────────────────────────────────────────── */
+  .closing-section {
+    background: var(--r-parchment);
+    padding: 48px 48px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .closing-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .cchip {
+    background: var(--r-white);
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--r-dark);
+    border: 2px solid transparent;
+  }
+
+  .cchip-blue   { border-color: var(--r-blue); }
+  .cchip-orange { border-color: var(--r-orange); }
+  .cchip-dark   { border-color: var(--r-dark); }
+
+  .closing-tagline {
+    font-size: clamp(20px, 3vw, 32px);
+    color: var(--r-muted);
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    margin: 4px 0 0;
+  }
+
+  .recap-cta {
+    display: inline-block;
+    background: var(--r-dark);
+    color: var(--r-parchment);
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 200ms ease, transform 200ms ease;
+    margin-top: 8px;
+  }
+
+  .recap-cta:hover {
+    background: var(--r-blue);
+    transform: translateY(-2px);
+  }
+
+  .recap-cta:focus-visible {
+    outline: 3px solid var(--r-gold);
+    outline-offset: 3px;
+  }
+
+  /* ── Responsive 768px ────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .recap-hero {
+      padding: 96px 24px 40px;
+    }
+
+    .hero-photo {
+      height: 220px;
+    }
+
+    .stat-chips {
+      gap: 8px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 6px 12px;
+    }
+
+    .wins-section {
+      padding: 40px 24px;
+    }
+
+    .wins-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .win-card--full {
+      flex-direction: column;
+    }
+
+    /* remove rotations on small screens to avoid clipping */
+    .win-card,
+    .win-card--full,
+    .win-card--blue,
+    .win-card--green,
+    .win-card--parchment,
+    .win-card--peach {
+      transform: none;
+    }
+
+    .quotes-section {
+      padding: 40px 24px;
+    }
+
+    .closing-section {
+      padding: 36px 24px 48px;
+    }
+  }
+</style>
