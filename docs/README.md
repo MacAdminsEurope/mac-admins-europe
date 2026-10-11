@@ -11,6 +11,7 @@ Welcome to the project docs. These pages explain how the site is built, why it's
 | Understand how each conference year is archived | [`ARCHIVE-SYSTEM.md`](./ARCHIVE-SYSTEM.md) |
 | Add a new conference year (e.g. 2027) | [`ADDING-A-NEW-YEAR.md`](./ADDING-A-NEW-YEAR.md) |
 | Set up local dev, branching, and deploy | [`CONTRIBUTING.md`](./CONTRIBUTING.md) |
+| Rebuild the forms in a new repo and collect Forminit settings | [`FORMS-FORMINIT-HANDOFF.md`](./FORMS-FORMINIT-HANDOFF.md) |
 
 > **AI coding assistants** (Cursor, Windsurf, Claude Code, Codex, Copilot, etc.): start with [`/AGENTS.md`](../AGENTS.md) at the repo root. It's a condensed version of these docs with the critical rules.
 

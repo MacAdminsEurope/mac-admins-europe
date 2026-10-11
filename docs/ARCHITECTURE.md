@@ -8,7 +8,7 @@
 | Language | **TypeScript** | All data files (`src/data/**`) are typed so a typo or missing field fails at build time, not at runtime. |
 | Styling | **Plain CSS** (`src/styles/global.css`) + Astro scoped `<style>` | No CSS framework dependency. One global file holds the design tokens and shared components; per-page styles are scoped via Astro's built-in scoping. |
 | Icons | Inline SVG | No external icon library. Each SVG is small enough to live inline next to its usage. |
-| Forms | `forminit` | Lightweight client-side form library, only used on the newsletter component. |
+| Forms | **Forminit** via native HTML POST | Contact and sponsorship forms submit directly to hosted Forminit endpoints. Newsletter is handled separately by **EmailOctopus**, per the site owner; legacy newsletter code in this checkout is not the migration target. The `forminit` npm package is installed but not used by the current components. See [`FORMS-FORMINIT-HANDOFF.md`](./FORMS-FORMINIT-HANDOFF.md). |
 | Hosting | **GitHub Pages** + **GitHub Actions** | Free, reliable, integrates directly with the repo. Custom domain `macadmins-eu.org` via the `CNAME` file. |
 
 The site is **static-only**: `astro.config.mjs` has the server adapter commented out. Every page is pre-rendered to HTML at build time.
